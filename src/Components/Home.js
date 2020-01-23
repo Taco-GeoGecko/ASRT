@@ -10,9 +10,10 @@ import geoLogo from '../Components/geoLogo.png';
 import OutlinedButtons from './Button'
 import ControlledExpansionPanels from './SideBar'
 import '../App.css';
+import { lightGreen } from '@material-ui/core/colors';
 
 
-const drawerWidth = 240;
+const drawerWidth = 400;
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -20,6 +21,7 @@ const useStyles = makeStyles(theme => ({
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
+    // height: 128
 
   },
   drawer: {
@@ -69,6 +71,7 @@ export default function ClippedDrawer() {
   
         </Toolbar>
       </AppBar>
+      <div id="sideBar">
       <Drawer
         className={classes.drawer}
         variant="permanent"
@@ -77,6 +80,11 @@ export default function ClippedDrawer() {
         }}
       >
         <div className={classes.toolbar} />
+        <div id="indicatorText">
+          <small>
+          <h5>AGRICULTURAL INDICATORS</h5>
+        </small>
+        </div>
         <ControlledExpansionPanels />
         <Divider />
        
@@ -88,6 +96,7 @@ export default function ClippedDrawer() {
         </Typography>
         
       </main>
+      </div>
     </div>
     </StylesProvider>
   );

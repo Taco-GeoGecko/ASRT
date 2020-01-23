@@ -9,7 +9,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width: '40%',
+    width: '100%',
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -54,9 +54,7 @@ export default function ControlledExpansionPanels() {
           id="panel2bh-header"
         >
           <Typography className={classes.heading}><b>Soil Nutrients</b></Typography>
-          <Typography className={classes.secondaryHeading}>
-            
-          </Typography>
+          
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Typography>
