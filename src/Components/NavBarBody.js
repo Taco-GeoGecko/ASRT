@@ -4,8 +4,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-//import IconButton from '@material-ui/core/IconButton';
-//import MenuIcon from '@material-ui/icons/Menu';
 import geoLogo from '../Components/geoLogo.png';
 import '../App.css'
 
@@ -19,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     flexGrow: 1,
-    paddingLeft: 450
+    paddingLeft: 10
   },
   navigation: {
   height:  30,
@@ -30,7 +28,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-export default function ButtonAppBar() {
+export default function NavBar() {
   const classes = useStyles();
 
   return (
@@ -39,7 +37,7 @@ export default function ButtonAppBar() {
         
       <AppBar position="static">
         <Toolbar>
-          <img src={geoLogo} className={classes.navigation}/>
+          <img src={geoLogo} alt="geo gecko logo" className={classes.navigation}/>
           <Typography variant="h6" className={classes.title}>
             ASRT
           </Typography>

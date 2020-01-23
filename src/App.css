@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  font-family: "Arial Narrow", "Roboto", "Helvetica", sans-serif, Arial;
+
 }
 
 .App-logo {
@@ -35,4 +37,35 @@
   to {
     transform: rotate(360deg);
   }
+}
+#button{
+  background-color: #2db44b;
+  width: 100%;
+  text-transform: capitalize;
+  border-radius: 10px;
+  border: 1px solid white;
+  color: white;
+  font-size: 18px;
+}
+#button:hover{
+  background-color: white;
+  color: rgb(45, 180, 75);
+  border-color: white;
+}
+.makeStyles-drawerPaper-4 {
+  width: 300px;
+  background-color: rgb(67, 67, 67);
+}
+
+.MuiAppBar-colorPrimary {
+  color: #fff;
+  background-color: rgb(45, 180, 75);
+}
+.makeStyles-root-127 {
+  margin-top: 1%;
+}
+#indicatorText{
+  color: #fff;
+  padding: 3%;
+
 }
