@@ -117,9 +117,9 @@ export default function ControlledExpansionPanels() {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Typography>
-            <p>Slope</p><br/>
+            Slope<br/>
 
-            <p>Elevation</p><br/>
+            Elevation<br/>
           </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>
