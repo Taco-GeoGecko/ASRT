@@ -39,33 +39,46 @@
   }
 }
 #button{
-  background-color: #2db44b;
+  background-color: rgb(42, 179, 75);
   width: 100%;
   text-transform: capitalize;
   border-radius: 10px;
-  border: 1px solid white;
-  color: white;
-  font-size: 18px;
-}
+  border: 1px solid #fff;
+  color: #fff;
+  }
 #button:hover{
-  background-color: white;
-  color: rgb(45, 180, 75);
-  border-color: white;
+  background-color: #fff;
+  color: rgb(42, 179, 75);
+  border-color: #fff;
 }
-.makeStyles-drawerPaper-4 {
+.makeStyles-drawerPaper-4{
   width: 300px;
-  background-color: rgb(67, 67, 67);
+  background-color: rgb(43, 47, 58);
 }
 
 .MuiAppBar-colorPrimary {
   color: #fff;
-  background-color: rgb(45, 180, 75);
+  background-color: rgb(42, 179, 75);
 }
-.makeStyles-root-127 {
-  margin-top: 1%;
-}
+
 #indicatorText{
   color: #fff;
   padding: 3%;
+  text-align: center;
 
+}
+.MuiExpansionPanel-rounded{
+  background-color: rgb(87, 90, 99);
+  color: #fff;
+  margin: 2%
+}
+.MuiIconButton-root {
+  color: #fff;
+ 
+}
+.makeStyles-heading-128{
+  font-size: middle;
+  font-weight: 100;
+  flex-basis: 80%;
+  flex-shrink: 0;
 }

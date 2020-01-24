@@ -5,7 +5,8 @@ import '../App.css';
 
 const useStyles = makeStyles(theme => ({
   button: {
-    margin: theme.spacing(1)
+    margin: theme.spacing(1),
+    fontWeight: 10
   },
   input: {
     display: "none"
