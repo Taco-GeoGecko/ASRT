@@ -7,10 +7,10 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import geoLogo from '../Components/geoLogo.png';
-import OutlinedButtons from './Button'
+import ContainedButtons from './Button'
 import ControlledExpansionPanels from './SideBar'
 import '../App.css';
-import { lightGreen } from '@material-ui/core/colors';
+
 
 
 const drawerWidth = 400;
@@ -37,12 +37,12 @@ const useStyles = makeStyles(theme => ({
   },
   toolbar: theme.mixins.toolbar,
   navigation: {
-    height:  30,
-    width:80,
+    height: 40,
+    width: 100,
     },
     title: {
         flexGrow: 1,
-        paddingLeft: 450
+        paddingLeft: '40%'
       },
     spacing:{
       margin:10,
@@ -64,9 +64,9 @@ export default function ClippedDrawer() {
             ASRT
           </Typography>
           
-          <OutlinedButtons caption="Home" />
+          <ContainedButtons caption="Home" />
           <div className={classes.spacing} />
-          <OutlinedButtons caption= "Orientation" />
+          <ContainedButtons caption= "Orientation" />
         
   
         </Toolbar>
