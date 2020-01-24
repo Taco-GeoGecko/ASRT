@@ -7,10 +7,14 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import geoLogo from '../Components/geoLogo.png';
-import OutlinedButtons from './Button'
-import ControlledExpansionPanels from './SideBar'
+import OutlinedButtons from './Button';
+import ControlledExpansionPanels from './SideBar';
+import MatIcons from './MatIcons';
 import '../App.css';
-import { lightGreen } from '@material-ui/core/colors';
+//import { lightGreen } from '@material-ui/core/colors';
+
+
+
 
 
 const drawerWidth = 400;
@@ -87,15 +91,10 @@ export default function ClippedDrawer() {
         </div>
         <ControlledExpansionPanels />
         <Divider />
-       
-      </Drawer>
-      <main className={classes.content}>
-        <div className={classes.toolbar} />
-        <Typography paragraph>
-         
-        </Typography>
+        <MatIcons />
         
-      </main>
+      </Drawer>
+      
       </div>
     </div>
     </StylesProvider>
