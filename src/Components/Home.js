@@ -37,8 +37,8 @@ const useStyles = makeStyles(theme => ({
   },
   toolbar: theme.mixins.toolbar,
   navigation: {
-    height: 40,
-    width: 100,
+    height: 50,
+    width: 120,
     },
     title: {
         flexGrow: 1,
@@ -60,9 +60,7 @@ export default function ClippedDrawer() {
     
         <Toolbar>
           <img src={geoLogo} alt="geo gecko logo" className={classes.navigation}/>
-          <Typography variant="h6" className={classes.title}>
-            ASRT
-          </Typography>
+          <Typography variant="h6" className={classes.title} />
           
           <ContainedButtons caption="Home" />
           <div className={classes.spacing} />
@@ -82,7 +80,7 @@ export default function ClippedDrawer() {
         <div className={classes.toolbar} />
         <div id="indicatorText">
           <small>
-          <h5>AGRICULTURAL INDICATORS</h5>
+          <h6>AGRICULTURAL INDICATORS</h6>
         </small>
         </div>
         <ControlledExpansionPanels />
