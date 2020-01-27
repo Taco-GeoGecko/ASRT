@@ -67,6 +67,21 @@
   text-align: center;
 
 }
+.Icons{
+  padding-top: 170px;
+  padding-left: 140px;
+  /* font-size: 50px; */
+
+}
+#twitter{
+  padding-right: 140px;
+  color: blue;
+  size: 50px;
+}
+
+#facebook{
+  color: blue;
+}
 .MuiExpansionPanel-rounded{
   background-color: rgb(87, 90, 99);
   color: #fff;
