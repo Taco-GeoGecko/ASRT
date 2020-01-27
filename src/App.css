@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  font-family: "Arial Narrow", "Roboto", "Helvetica", sans-serif, Arial;
+
 }
 
 .App-logo {
@@ -35,4 +37,68 @@
   to {
     transform: rotate(360deg);
   }
+}
+#button{
+  background-color: rgb(42, 179, 75);
+  width: 100%;
+  text-transform: capitalize;
+  border-radius: 10px;
+  border: 1px solid #fff;
+  color: #fff;
+  }
+#button:hover{
+  background-color: #fff;
+  color: rgb(42, 179, 75);
+  border-color: #fff;
+}
+.makeStyles-drawerPaper-4{
+  width: 300px;
+  background-color: rgb(43, 47, 58);
+}
+
+.MuiAppBar-colorPrimary {
+  color: #fff;
+  background-color: rgb(42, 179, 75);
+}
+
+#indicatorText{
+  color: #fff;
+  padding: 3%;
+  text-align: center;
+
+}
+.Icons{
+  padding-top: 170px;
+  /* padding-left: 100px; */
+  /* font-size: 50px; */
+  color: #fff;
+  display: inline;
+
+}
+#twitter{
+  padding-right: 140px;
+  color: blue;
+  size: 50px;
+}
+
+#facebook{
+  color: blue;
+}
+.MuiExpansionPanel-rounded{
+  background-color: rgb(87, 90, 99);
+  color: #fff;
+  margin: 2%
+}
+.MuiIconButton-root {
+  color: #fff;
+ 
+}
+.makeStyles-heading-128{
+  font-size: middle;
+  font-weight: 100;
+  flex-basis: 80%;
+  flex-shrink: 0;
+}
+.HorizontalSpacing{
+margin-left: 8%;
 }
