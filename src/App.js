@@ -6,7 +6,6 @@ import './App.css';
 import UgMap from "./Components/maps"
 // import districts from "./Components/uganda_districts_2019.geojson" 
 // import HomePage from "./Components/newstaff"
-
 class App extends Component{
     render(){
         return(
@@ -15,7 +14,6 @@ class App extends Component{
                 <CustomizedSlider />
                 <UgMap/>
                 {/* <HomePage/> */}
-                <districts/>
             </div>
         )
     }
