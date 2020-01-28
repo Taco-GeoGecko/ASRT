@@ -6,11 +6,12 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import EmailIcon from '@material-ui/icons/Email';
 import { makeStyles } from '@material-ui/core/styles';
+import { blue, red } from '@material-ui/core/colors';
 
 
 const useStyles = makeStyles(theme => ({
     horizontalSpacing: {
-      marginLeft: '5%',
+      marginLeft: '2%',
     }
   }));
   
@@ -22,10 +23,11 @@ function MatIcons() {
 
             <a><span className={classes.horizontalSpacing}>Feedback</span></a>
 
-            <TwitterIcon className={classes.horizontalSpacing}/>
+            <TwitterIcon className={classes.horizontalSpacing}style={{ color: blue[500] }} />
+
             <InstagramIcon className={classes.horizontalSpacing}/>
             
-            <FacebookIcon className={classes.horizontalSpacing}/>
+            <FacebookIcon className={classes.horizontalSpacing} className="fa fa " style={{ color: [500] }}/>
             <EmailIcon className={classes.horizontalSpacing}/>
 
 
