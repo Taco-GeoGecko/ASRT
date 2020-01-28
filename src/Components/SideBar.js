@@ -5,11 +5,12 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import CustomizedSlider from './Slider';
 
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width: '30%',
+    width: '100%',
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -20,6 +21,9 @@ const useStyles = makeStyles(theme => ({
     fontSize: theme.typography.pxToRem(15),
     color: theme.palette.text.secondary,
   },
+  spacing:{
+    margin:10,
+  }
 }));
 
 export default function ControlledExpansionPanels() {
@@ -38,13 +42,13 @@ export default function ControlledExpansionPanels() {
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
-          <Typography className={classes.heading}><b>Population</b></Typography>
+          <Typography className={classes.heading}>Population</Typography>
           <Typography className={classes.secondaryHeading}></Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <Typography>
-            ppp-sum
-          </Typography>
+        <div className={classes.spacing}>
+            <CustomizedSlider IndicatorSlider="population"/>
+          </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>
       <ExpansionPanel expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
@@ -53,23 +57,24 @@ export default function ControlledExpansionPanels() {
           aria-controls="panel2bh-content"
           id="panel2bh-header"
         >
-          <Typography className={classes.heading}><b>Soil Nutrients</b></Typography>
-          <Typography className={classes.secondaryHeading}>
-            
-          </Typography>
+          <Typography className={classes.heading}>Soil Nutrients</Typography>
+          
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <Typography>
           
-              <p>Soil Copper</p><br/>
-              <p>Soil Phospherous</p><br/>
-              <p>Soil Pottasium</p><br/>
-              <p>Soil Boron</p><br/>
-              <p>Soil Aluminium</p><br/>
-              <p>Soil Iron</p><br/>
-              <p>Soil Magnesium</p><br/>
+          <div className={classes.spacing}>
+          <CustomizedSlider IndicatorSlider="Soil Copper"/>
+              <CustomizedSlider IndicatorSlider="Soil Phospherous"/>
+              <CustomizedSlider IndicatorSlider="Soil Pottasium"/>
+              <CustomizedSlider IndicatorSlider="Soil Boron"/>
+              <CustomizedSlider IndicatorSlider="Soil Aluminium"/>
+              <CustomizedSlider IndicatorSlider="Soil Iron"/>
+              <CustomizedSlider IndicatorSlider="Soil Magnesium"/>
+          </div>
+              
+              
             
-          </Typography>
+          
         </ExpansionPanelDetails>
       </ExpansionPanel>
       <ExpansionPanel expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
@@ -78,16 +83,16 @@ export default function ControlledExpansionPanels() {
           aria-controls="panel3bh-content"
           id="panel3bh-header"
         >
-          <Typography className={classes.heading}><b>Soil Moisture and Rainfall</b> </Typography>
+          <Typography className={classes.heading}>Soil Moisture and Rainfall </Typography>
           <Typography className={classes.secondaryHeading}>
             
           </Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <Typography>
-            <p>Soil Moisture</p><br/>
-            <p>Rainfall</p><br/>
-          </Typography>
+        <div className={classes.spacing}>
+            <CustomizedSlider IndicatorSlider="Soil Moisture"/>
+            <CustomizedSlider IndicatorSlider="Rainfall"/>
+          </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>
       <ExpansionPanel expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
@@ -96,15 +101,15 @@ export default function ControlledExpansionPanels() {
           aria-controls="panel4bh-content"
           id="panel4bh-header"
         >
-          <Typography className={classes.heading}><b>Crop Health and Landcover</b></Typography>
+          <Typography className={classes.heading}>Crop Health and Landcover</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <Typography>
-            <p>crop health</p><br/>
-            <p>Landcover</p><br></br>
+        <div className={classes.spacing}>
+            <CustomizedSlider IndicatorSlider="crop health"/>
+            <CustomizedSlider IndicatorSlider="Landcover"/>
             
 
-          </Typography>
+          </div>
           
         </ExpansionPanelDetails>
       </ExpansionPanel>
@@ -115,14 +120,28 @@ export default function ControlledExpansionPanels() {
           aria-controls="panel5bh-content"
           id="panel5bh-header"
         >
-          <Typography className={classes.heading}><b>Terrain</b></Typography>
+          <Typography className={classes.heading}>Terrain</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <Typography>
-            <p>Slope</p><br/>
+        <div className={classes.spacing}>
+            <CustomizedSlider IndicatorSlider="Slope"/>
 
-            <p>Elevation</p><br/>
-          </Typography>
+            <CustomizedSlider IndicatorSlider="Elevation"/>
+          </div>
+        </ExpansionPanelDetails>
+      </ExpansionPanel>
+      <ExpansionPanel expanded={expanded === 'panel6'} onChange={handleChange('panel6')}>
+        <ExpansionPanelSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel5bh-content"
+          id="panel5bh-header"
+        >
+          <Typography className={classes.heading}>Land Surface Temperature</Typography>
+        </ExpansionPanelSummary>
+        <ExpansionPanelDetails>
+        <div className={classes.spacing}>
+            <CustomizedSlider IndicatorSlider="Land surface temperature"/>
+</div>
         </ExpansionPanelDetails>
       </ExpansionPanel>
     </div>

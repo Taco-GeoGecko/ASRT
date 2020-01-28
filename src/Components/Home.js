@@ -1,27 +1,102 @@
-import React, { Component } from 'react';
-import ButtonAppBar from './NavBar';
-import ControlledExpansionPanels from './SideBar';
-import IndicatorThumbComponent from './Slider';
+import React from 'react';
+import { makeStyles, StylesProvider } from '@material-ui/core/styles';
+import Drawer from '@material-ui/core/Drawer';
+import AppBar from '@material-ui/core/AppBar';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
+import geoLogo from '../Components/geoLogo.png';
+import MatIcons from './MatIcons';
+import ContainedButtons from './Button'
+import ControlledExpansionPanels from './SideBar'
+import '../App.css';
+import UgMap from './maps'
 
+const drawerWidth = 400;
 
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: 'flex',
+  },
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1,
+    // height: 128
 
-
-class Home extends Component {
-    state = {}
-    render() {
-
-        return (
-            <div className="Container" style={{backgroundColor:"red"}}>
-                <div className="row" style={{backgroundColor:"green"}}>
-                    <div className="col-lg-12"></div>
-                </div>
-                <div className="row" style={{backgroundColor:"blue"}}>
-                    <div className="col-lg-4"></div>
-                    <div className="col-lg-8"></div>
-                </div>
-            </div>
-         );
+  },
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
+  },
+  drawerPaper: {
+    width: drawerWidth,
+  },
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(3),
+  },
+  toolbar: theme.mixins.toolbar,
+  navigation: {
+    height: 50,
+    width: 120,
+    },
+    title: {
+        flexGrow: 1,
+        paddingLeft: '40%'
+      },
+    spacing:{
+      margin:10,
     }
-}
+}));
 
-export default Home;
+export default function ClippedDrawer() {
+  const classes = useStyles();
+
+  return (
+  <StylesProvider injectFirst>
+    <div className={classes.root}>
+      <CssBaseline />
+      <AppBar position="fixed" className={classes.appBar}>
+    
+        <Toolbar>
+          <img src={geoLogo} alt="geo gecko logo" className={classes.navigation}/>
+          <Typography variant="h6" className={classes.title} />
+          
+          <ContainedButtons caption="Home" />
+          <div className={classes.spacing} />
+          <ContainedButtons caption= "Orientation" />
+        
+  
+        </Toolbar>
+      </AppBar>
+      <div id="sideBar">
+      <Drawer
+        className={classes.drawer}
+        variant="permanent"
+        classes={{
+          paper: classes.drawerPaper,
+        }}
+      >
+        <div className={classes.toolbar} />
+        <div id="indicatorText">
+          <small>
+          <h6>AGRICULTURAL INDICATORS</h6>
+        </small>
+        </div>
+        <ControlledExpansionPanels />
+        <Divider />
+        <MatIcons />
+        
+      </Drawer>
+      
+      <main className={classes.content}>
+        <div className={classes.toolbar}/>
+        <UgMap/>
+      </main>
+
+      
+      </div>
+    </div>
+    </StylesProvider>
+  );
+}
