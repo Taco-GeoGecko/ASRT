@@ -67,7 +67,7 @@
 }
 .MuiAppBar-colorPrimary {
   color: #fff;
-  background-color: rgb(42, 179, 75);
+  background-color: #149685;
 }
 
 #indicatorText{
@@ -77,7 +77,7 @@
 
 }
 .Icons{
-  padding-top: 100px;
+  padding-top: 250px;
   /* padding-left: 100px; */
   /* font-size: 50px; */
   color: #fff;

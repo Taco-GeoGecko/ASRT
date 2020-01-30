@@ -34,11 +34,11 @@ function MatIcons() {
 
       <a href='https://twitter.com/geogecko'><TwitterIcon className={classes.horizontalSpacing} style={{ color: blue[500] }} /></a>
 
-      <a href='https://www.instagram.com/geogecko1/'><img src={Instagram} target="blank" alt="geo gecko logo" className={classes.navigation} /></a>
+      <a href='https://www.instagram.com/geogecko1/'><img src={Instagram} target="_blank" alt="geo gecko logo" className={classes.navigation} /></a>
 
-      <a href='https://www.facebook.com/geogecko/'><img src={FaceBook} target="blank" alt="geo gecko logo" className={classes.navigation} /></a>
+      <a href='https://www.facebook.com/geogecko/'><img src={FaceBook} target="_blank" alt="geo gecko logo" className={classes.navigation} /></a>
 
-      <a href='https://www.facebook.com/geogecko/'><img src={Gmail} target="blank" alt="geo gecko logo" className={classes.navigation} /></a>
+      <a href='https://www.facebook.com/geogecko/'><img src={Gmail} target="_blank" alt="geo gecko logo" className={classes.navigation} /></a>
 
 
     </div>

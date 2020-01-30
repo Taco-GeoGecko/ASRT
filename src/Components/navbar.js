@@ -29,7 +29,7 @@ export default function MenuAppBar() {
         <Toolbar>
   
           <Typography variant="h6" className={classes.title}>
-          <a href="https://www.geogecko.com/" ><img src={geoLogo} alt="geo gecko logo" className={classes.navigation}/></a>
+          <a href="https://www.geogecko.com/" ><img src={geoLogo} alt="geo gecko logo" target="_blank" className={classes.navigation}/></a>
 
           </Typography>
        
