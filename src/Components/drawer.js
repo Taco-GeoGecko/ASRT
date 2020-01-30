@@ -14,6 +14,7 @@ import MatIcons from './MatIcons';
 import ControlledExpansionPanels from './SideBar';
 import PrimarySearchAppBar from './navbar';
 import '../App.css';
+import UgMap from './maps'
 const drawerWidth = 400;
 const useStyles = makeStyles(theme => ({
   root: {
@@ -139,9 +140,10 @@ return (
           </Drawer>
         </Hidden>
       </nav>
-      <div className={classes.content}>
+      {/* <div className={classes.content}>
         <div className={classes.toolbar} />
-      </div>
+      </div> */}
+      <UgMap />
     </div>
     </StylesProvider>
   );

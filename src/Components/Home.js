@@ -12,6 +12,7 @@ import ContainedButtons from './Button'
 import ControlledExpansionPanels from './SideBar'
 import '../App.css';
 
+
 const drawerWidth = 400;
 
 const useStyles = makeStyles(theme => ({
@@ -46,6 +47,13 @@ const useStyles = makeStyles(theme => ({
     spacing:{
       margin:10,
     },
+    mappingstyles:{
+      height: 500,
+      width: '80%',
+      marginLeft: 10,
+      marginTop: 0,
+    }
+    
 }));
 
 export default function ClippedDrawer() {
@@ -68,7 +76,7 @@ export default function ClippedDrawer() {
   
         </Toolbar>
       </AppBar>
-      <div id="sideBar">
+      {/* <div id="sideBar"> */}
       <Drawer
         className={classes.drawer}
         variant="permanent"
@@ -88,8 +96,16 @@ export default function ClippedDrawer() {
         
       </Drawer>
       
+      {/* <main className={classes.content}> */}
+         <div className={classes.mappingstyles}> 
+        <UgMap />
+
+        </div>
+       {/* </main> */}
+
+      
       </div>
-    </div>
+    {/* </div> */}
     </StylesProvider>
   );
 }
