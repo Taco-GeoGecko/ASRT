@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import ClippedDrawer from './Components/Home';
+import ClippedDrawer from './Components/drawer';
 class App extends Component{
     render(){
         return(

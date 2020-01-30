@@ -51,11 +51,13 @@
   color: rgb(42, 179, 75);
   border-color: #fff;
 }
-.makeStyles-drawerPaper-4{
+.makeStyles-drawerPaper-6{
   width: 300px;
   background-color: rgb(43, 47, 58);
 }
-
+.MuiPaper-root {
+  background-color: rgb(43, 47, 58);
+}
 .MuiAppBar-colorPrimary {
   color: #fff;
   background-color: rgb(42, 179, 75);
