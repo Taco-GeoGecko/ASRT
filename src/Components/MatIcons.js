@@ -10,29 +10,29 @@ import { blue, red } from '@material-ui/core/colors';
 
 
 const useStyles = makeStyles(theme => ({
-    horizontalSpacing: {
-      marginLeft: '2%',
-    }
-  }));
-  
+  horizontalSpacing: {
+    marginLeft: '5%',
+  }
+}));
+
 function MatIcons() {
-    const classes = useStyles();
-    return (
-        <div className='Icons'>
-            <a><span className={classes.horizontalSpacing}>FAQS</span></a>
+  const classes = useStyles();
+  return (
+    <div className='Icons'>
+      <a><span className={classes.horizontalSpacing}>FAQS</span></a>
 
-            <a><span className={classes.horizontalSpacing}>Feedback</span></a>
+      <a><span className={classes.horizontalSpacing}>Feedback</span></a>
 
-            <TwitterIcon className={classes.horizontalSpacing}style={{ color: blue[500] }} />
+      <a href='https://twitter.com/geogecko'><TwitterIcon className={classes.horizontalSpacing} style={{ color: blue[500] }} /></a>
 
-            <InstagramIcon className={classes.horizontalSpacing}/>
-            
-            <FacebookIcon className={classes.horizontalSpacing} className="fa fa " style={{ color: [500] }}/>
-            <EmailIcon className={classes.horizontalSpacing}/>
+      <a><InstagramIcon className={classes.horizontalSpacing} /></a>
+
+      <a href="https://www.facebook.com/GeoGeckoUganda/"><FacebookIcon className={classes.horizontalSpacing} style={{ color: blue[500] }} /></a>
+      <EmailIcon className={classes.horizontalSpacing} />
 
 
-        </div>
-    )
+    </div>
+  )
 
 
 
