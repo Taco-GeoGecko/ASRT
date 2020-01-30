@@ -38,28 +38,28 @@
     transform: rotate(360deg);
   }
 }
-
- /* .map{
-  height: 400px;
-  width: 50%;
-  margin-left: 790px;
-  margin-top: 20px;
+ .map{
+  height: 700px;
+  width: 99%;
+  margin-left: 0px;
+  margin-top: 78px;
+  }
   
 
-} */
+
 #button{
-  background-color: rgb(42, 179, 75);
+  background-color: rgb(160, 199, 70);
   width: 100%;
   text-transform: capitalize;
   border-radius: 15px;
   border: 1px solid #fff;
   color: #fff;
   }
-#button:hover{
+/* #button:hover{
   background-color: #fff;
   color: rgb(42, 179, 75);
   border-color: #fff;
-}
+} */
 .makeStyles-drawerPaper-4{
   width: 300px;
   background-color: rgb(43, 47, 58);
@@ -67,7 +67,7 @@
 
 .MuiAppBar-colorPrimary {
   color: #fff;
-  background-color: rgb(42, 179, 75);
+  background-color: rgb(160, 199, 70);
 }
 
 #indicatorText{

@@ -2,16 +2,19 @@ import React, {Component} from "react";
 import L from "leaflet";
 import {Map,TileLayer, Marker, Popup, GeoJSON} from "react-leaflet";
 import Control from "react-leaflet-control"
-import districts from ".\\uganda_districts_2019";
+import districts from "./uganda_districts_2019";
 
 
 class UgMap extends Component{
 
 
     state = {
-        lat: 0.32958802605356885,
-        lng: 32.34375,
-        zoom: 7.5,
+        // lat: 0.32958802605356885,
+        // lng: 32.34375,
+        // zoom: 7,
+        lat: 1.67,
+        lng: 32.48,
+        zoom: 7,
       }
 
       onEachFeature = (feature, layer) => {
@@ -34,10 +37,12 @@ class UgMap extends Component{
         const position = [this.state.lat, this.state.lng]
         
         return (
-          <Map className="map" center={position} zoom={this.state.zoom}>
+          <Map className="map" center={position} zoom={this.state.zoom} style={{height:"800px"}}>
             <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-              url='https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png'
+             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              // attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+             url= 'http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+              // url='https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png'
             />
 
             {<GeoJSON
@@ -52,7 +57,7 @@ class UgMap extends Component{
 
             <Marker position={position}>
               <Popup>
-                {/* A pretty CSS3 popup. <br /> Easily customizable. */}
+               <span> Hello! <br /> I am a Popup! </span> 
               </Popup>
             </Marker>
           </Map>
