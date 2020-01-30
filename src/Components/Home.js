@@ -41,11 +41,11 @@ const useStyles = makeStyles(theme => ({
     },
     title: {
         flexGrow: 1,
-        paddingLeft: '40%'
+        // paddingLeft: '40%'
       },
     spacing:{
       margin:10,
-    }
+    },
 }));
 
 export default function ClippedDrawer() {
@@ -58,9 +58,9 @@ export default function ClippedDrawer() {
       <AppBar position="fixed" className={classes.appBar}>
     
         <Toolbar>
-          <img src={geoLogo} alt="geo gecko logo" className={classes.navigation}/>
-          <Typography variant="h6" className={classes.title} />
-          
+        <Typography variant="h6" className={classes.title} >
+          <a href="https://www.geogecko.com/" ><img src={geoLogo} alt="geo gecko logo" className={classes.navigation}/></a>
+        </Typography>
           <ContainedButtons caption="Home" />
           <div className={classes.spacing} />
           <ContainedButtons caption= "Orientation" />
