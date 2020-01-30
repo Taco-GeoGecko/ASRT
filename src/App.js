@@ -1,10 +1,10 @@
 import React, {Component} from "react";
-import ClippedDrawer from './Components/Home';
+import ResponsiveDrawer from './Components/drawer';
 class App extends Component{
     render(){
         return(
             <div>  
-                <ClippedDrawer />
+                <ResponsiveDrawer />
             </div>
         );
     }
