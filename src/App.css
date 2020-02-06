@@ -112,43 +112,7 @@
   flex-basis: 80%;
   flex-shrink: 0;
 }
-.MuiSlider-root {
-  width: 90%;
-}
-.MuiSlider-rail {
-    height: 40%;
-    position: absolute;
-    border-radius: 3px;
-    background-color: #fff;
-}
 
-.MuiSlider-track {
-    height: 40%;
-    border-radius: 3px;
-    background-color: rgb(42, 179, 75);
-}
-.MuiSlider-thumb {
-  width: 5%;
-  height: 50%;
-  display: flex;
-  outline: 0;
-  position: absolute;
-  box-sizing: border-box;
-  margin-top: 0px;
-  transition: box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  align-items: center;
-  margin-left: -6px;
-  border-radius: 60%;
-  justify-content: center;
-  background-color: currentColor;
-}
-
-/* .callout {
-  display: block;
-   background-color: red;
-    left: 10px;
-    top: 30px; 
-} */
 #callout {
   border-radius: 10px;
   position: absolute;

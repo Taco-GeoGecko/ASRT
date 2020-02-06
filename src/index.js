@@ -4,8 +4,6 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import App from './App';
 import "leaflet/dist/leaflet.css"
-//import App from './Components/Callout'
-//import CallOut from './Components/Callout';
 
 //import * as serviceWorker from './serviceWorker';
 

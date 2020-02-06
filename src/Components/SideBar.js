@@ -6,6 +6,8 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import CustomizedSlider from './Slider';
+import Checkboxes from './CheckBox';
+//import SimpleCard from './IndicatorCard';
 
 
 
@@ -48,7 +50,7 @@ export default function ControlledExpansionPanels() {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
         <div className={classes.spacing}>
-            <CustomizedSlider IndicatorSlider="population"/>
+            <CustomizedSlider IndicatorSlider=""/>
           </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>
@@ -103,12 +105,12 @@ export default function ControlledExpansionPanels() {
           aria-controls="panel4bh-content"
           id="panel4bh-header"
         >
-          <Typography className={classes.heading}>Crop Health and Landcover</Typography>
+          <Typography className={classes.heading}>Vegetation Health</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
         <div className={classes.spacing}>
-            <CustomizedSlider IndicatorSlider="crop health"/>
-            <CustomizedSlider IndicatorSlider="Landcover"/>
+            <CustomizedSlider IndicatorSlider="Vegetation health"/>
+            <  Checkboxes IndicatorSlider="Land cover" />
             
 
           </div>
@@ -126,9 +128,9 @@ export default function ControlledExpansionPanels() {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
         <div className={classes.spacing}>
-            <CustomizedSlider IndicatorSlider="Slope"/>
+            <CustomizedSlider IndicatorSlider="Slope" MinValue={0} MaxValue={20} />
 
-            <CustomizedSlider IndicatorSlider="Elevation"/>
+            <CustomizedSlider IndicatorSlider="Elevation" MinValue={100} MaxValue={5000} />/>
           </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>
@@ -142,7 +144,7 @@ export default function ControlledExpansionPanels() {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
         <div className={classes.spacing}>
-            <CustomizedSlider IndicatorSlider="Land surface temperature"/>
+            <CustomizedSlider IndicatorSlider="" MinValue={10} MaxValue={30}/>
 </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>
