@@ -11,8 +11,9 @@ import Toolbar from '@material-ui/core/Toolbar';
 import { makeStyles, useTheme, StylesProvider } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
 import MatIcons from './MatIcons';
+import ExpansionSideBar from './SidebarOrientation';
+import PrimarySearchAppBar from './navBarOrientation';
 import ControlledExpansionPanels from './SideBar';
-import PrimarySearchAppBar from './navbar';
 import '../App.css';
 import UgMap from './maps'
 const drawerWidth = 400;
@@ -65,7 +66,7 @@ const useStyles = makeStyles(theme => ({
     },
     
 }));
-function ResponsiveDrawer() {
+function Orientation() {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -134,7 +135,7 @@ return (
           <h6>AGRICULTURAL INDICATORS</h6>
         </small>
         </div>
-        <ControlledExpansionPanels />
+        <ExpansionSideBar />
         <Divider />
         <MatIcons />
           </Drawer>
@@ -148,9 +149,9 @@ return (
     </StylesProvider>
   );
 }
-ResponsiveDrawer.propTypes = {
+Orientation.propTypes = {
   // Injected by the documentation to work in an iframe.
   // You won't need it on your project.
   container: PropTypes.object,
 };
-export default ResponsiveDrawer;
+export default Orientation;

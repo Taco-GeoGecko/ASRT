@@ -10,6 +10,7 @@ import Checkboxes from './CheckBox';
 //import SimpleCard from './IndicatorCard';
 
 
+
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
@@ -38,7 +39,7 @@ export default function ControlledExpansionPanels() {
 
   return (
     <div className={classes.root}>
-      <ExpansionPanel expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+       <ExpansionPanel expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1bh-content"
@@ -53,6 +54,7 @@ export default function ControlledExpansionPanels() {
           </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>
+      
       <ExpansionPanel expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon />}

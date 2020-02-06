@@ -34,7 +34,7 @@ function MatIcons() {
       <a target='_blank' href='https://www.facebook.com/GeoGeckoUganda/'><img src={FaceBook} target="blank" alt="geo gecko logo" className={classes.navigation} /></a>
 
       <a target='_blank' href='https://www.info@geogecko.com/'><img src={Gmail} target="blank" alt="geo gecko logo" className={classes.navigation} /></a>
-
+    
 
     </div>
   )
