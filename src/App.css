@@ -39,7 +39,7 @@
   }
 }
 #button{
-  background-color: rgb(42, 179, 75);
+  background-color: #149685;
   width: 100%;
   text-transform: capitalize;
   border-radius: 15px;
@@ -48,7 +48,7 @@
   }
 #button:hover{
   background-color: #fff;
-  color: rgb(42, 179, 75);
+  color: #149685;
   border-color: #fff;
 }
 .makeStyles-drawerPaper-6{
@@ -141,4 +141,27 @@
   border-radius: 60%;
   justify-content: center;
   background-color: currentColor;
+}
+
+/* .callout {
+  display: block;
+   background-color: red;
+    left: 10px;
+    top: 30px; 
+} */
+#callout {
+  border-radius: 10px;
+  position: absolute;
+  padding: 8px;
+  cursor: pointer;
+  z-index: 9999;
+  display: block; 
+ }
+
+.callout-arrow {
+  height: 0;
+  width: 0;
+  position: absolute;
+  cursor: pointer;
+  
 }
