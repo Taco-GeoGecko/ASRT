@@ -1,10 +1,10 @@
-
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import ContainedButtons from './Button';
 import geoLogo from './geoLogo.png';
+import App from './Callout'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -20,6 +20,10 @@ const useStyles = makeStyles(theme => ({
     height: 50,
     width: 120,
     },
+    calloutstyles:{
+      height:100,
+      width: 120,
+    }
 }));
 
 export default function MenuAppBar() {
@@ -33,10 +37,10 @@ export default function MenuAppBar() {
           <a href="https://www.geogecko.com/" ><img src={geoLogo} alt="geo gecko logo" target="_blank" className={classes.navigation}/></a>
 
           </Typography>
-          <ContainedButtons caption="Home" />
+          <App myComponent={<ContainedButtons caption="Home" />} side="bottom" styles={classes.calloutstyles} 
+          message="Click on this home button to return on the home page"/>
           <div className={classes.spacing} />
-          <ContainedButtons caption= "Orientation" />
-    
+          <ContainedButtons caption="Orientation" />
           
         </Toolbar>
       

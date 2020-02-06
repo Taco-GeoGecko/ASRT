@@ -39,7 +39,7 @@ function MatIcons() {
       <a href='https://www.facebook.com/geogecko/'><img src={FaceBook} target="_blank" alt="geo gecko logo" className={classes.navigation} /></a>
 
       <a href='https://www.facebook.com/geogecko/'><img src={Gmail} target="_blank" alt="geo gecko logo" className={classes.navigation} /></a>
-
+    
 
     </div>
   )
