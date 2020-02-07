@@ -39,36 +39,50 @@
   }
 }
 #button{
-  background-color: rgb(42, 179, 75);
+  background-color: #149685;
   width: 100%;
   text-transform: capitalize;
-  border-radius: 10px;
+  border-radius: 15px;
   border: 1px solid #fff;
   color: #fff;
   }
 #button:hover{
   background-color: #fff;
-  color: rgb(42, 179, 75);
+  color: #149685;
   border-color: #fff;
 }
-.makeStyles-drawerPaper-4{
+.makeStyles-drawerPaper-6{
   width: 300px;
+  /* background-color: rgb(43, 47, 58); */
+  background-color: #196559;
+}
+.map{
+  height: 700px;
+  width: 99%;
+  margin-left: 0px;
+  margin-top: 78px;
+  }
+  /* .ugmap{
+    margin-top: 0px;
+    width: 50%;
+    height: 80%;
+  } */
+.MuiPaper-root {
   background-color: rgb(43, 47, 58);
 }
-
 .MuiAppBar-colorPrimary {
   color: #fff;
   background-color: rgb(42, 179, 75);
 }
 
 #indicatorText{
+  margin-top: 15%;
   color: #fff;
-  padding: 3%;
   text-align: center;
 
 }
 .Icons{
-  padding-top: 170px;
+  padding-top: 250px;
   /* padding-left: 100px; */
   /* font-size: 50px; */
   color: #fff;
@@ -87,18 +101,53 @@
 .MuiExpansionPanel-rounded{
   background-color: rgb(87, 90, 99);
   color: #fff;
-  margin: 2%
+  margin: 2%;
+}
+.MuiExpansionPanel-rounded:first-child {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
 }
 .MuiIconButton-root {
   color: #fff;
  
 }
 .makeStyles-heading-128{
-  font-size: middle;
+  font-size: large;
   font-weight: 100;
   flex-basis: 80%;
   flex-shrink: 0;
 }
-.HorizontalSpacing{
-margin-left: 8%;
+
+#callout {
+  border-radius: 10px;
+  position: absolute;
+  padding: 8px;
+  cursor: pointer;
+  z-index: 9999;
+  display: block; 
+ }
+
+.callout-arrow {
+  height: 0;
+  width: 0;
+  position: absolute;
+  cursor: pointer;
+  
 }
+
+
+.info {
+  padding: 6px 8px;
+  font: 14px/16px Arial, Helvetica, sans-serif;
+  background: white;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  width: 150px;
+  height: 30px;
+
+}
+
+/* .popup{
+  width: 30px;
+} */
