@@ -2,8 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
-//import Checkboxes from './Components/CheckBox';
 import App from './App';
+import "leaflet/dist/leaflet.css"
+
+
+
 //import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<App/>, document.getElementById('root'));
