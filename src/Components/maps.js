@@ -12,10 +12,12 @@ class UgMap extends Component{
         lat: 0.32958802605356885,
         lng: 32.34375,
         zoom: 7,
+        
         // lat: 1.67,
         // lng: 32.48,
         // zoom: 7,
       }
+      
 
       onEachFeature = (feature, layer) => {
         console.log('onEachFeature fired: ');
@@ -33,16 +35,20 @@ class UgMap extends Component{
         console.log(feature)
       }
 
+      handleMasaka = () => {
+        return districts.features[0].properties.DName2016;
+      }
+
     render() {
         const position = [this.state.lat, this.state.lng]
         
         return (
           <Map className="map" center={position} zoom={this.state.zoom} style={{height:"800px"}}>
             <TileLayer
-            //  attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-            //  url= 'http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-              url='https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png'
+             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              // attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+             url= 'http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+              // url='https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png'
             />
             maxZoom: 19
 
