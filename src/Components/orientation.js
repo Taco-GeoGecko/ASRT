@@ -15,7 +15,7 @@ import ExpansionSideBar from './SidebarOrientation';
 import PrimarySearchAppBar from './navBarOrientation';
 import ControlledExpansionPanels from './SideBar';
 import '../App.css';
-import UgMap from './maps'
+import MapGuide from './mapOrientation'
 const drawerWidth = 400;
 const useStyles = makeStyles(theme => ({
   root: {
@@ -144,7 +144,7 @@ return (
       {/* <div className={classes.content}>
         <div className={classes.toolbar} />
       </div> */}
-      <UgMap />
+      <MapGuide />
     </div>
     </StylesProvider>
   );
