@@ -5,6 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import ContainedButtons from './Button';
 import geoLogo from './geoLogo.png';
+import Orientation from './orientation';
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -32,9 +33,7 @@ export default function MenuAppBar() {
           <a href="https://www.geogecko.com/" ><img src={geoLogo} alt="geo gecko logo" target="_blank" className={classes.navigation}/></a>
 
           </Typography>
-       
-          
-            <ContainedButtons caption="Home" />
+          <ContainedButtons caption="Home" />
           <div className={classes.spacing} />
           <ContainedButtons caption= "Orientation" />
     
