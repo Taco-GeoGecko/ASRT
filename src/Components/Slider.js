@@ -1,6 +1,7 @@
 import React from "react";
 import Nouislider from "nouislider-react";
 import "nouislider/distribute/nouislider.css";
+import Kiboga from "../Components/Kiboga";
 
 const styles = {
   fontFamily: "sans-serif",
@@ -19,12 +20,11 @@ export default class CustomizedSlider extends React.Component {
     
   };
 
-handleClick = () => {
-  this.setState({
-    value: [50, 55],
-    // range: { min: 45, max: 60 }
-  });
-};
+  onSlide = (render, handle, value, un, percent) => {
+    console.log(value)
+  };
+
+
 
 render() {
   const { value } = this.state;
@@ -41,7 +41,7 @@ render() {
       </div>
 
 
-      <Nouislider start={value} range={range} tooltips={true} />
+      <Nouislider start={value} range={range} tooltips={true} onUpdate={this.onSlide} />
 
     </div>
   );
