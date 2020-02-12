@@ -38,7 +38,7 @@ export default function MenuAppBar() {
 
           </Typography>
           <App myComponent={<ContainedButtons caption="Home" />} side="bottom" styles={classes.calloutstyles} 
-          message="Click on this home button to return on the home page"/>
+          message="Click Home button to return to the Home page"/>
           <div className={classes.spacing} />
           <ContainedButtons caption="Orientation" />
           

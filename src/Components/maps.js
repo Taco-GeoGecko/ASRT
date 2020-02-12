@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import L from "leaflet";
 import {Map,TileLayer, Marker, Popup, GeoJSON} from "react-leaflet";
 import Control from "react-leaflet-control"
-import  districts from "./uganda_districts_2019.js";
+import  grids from "./uganda_grid_5by5km_noWater_withDistrict.js";
 
 
 
@@ -79,7 +79,7 @@ class UgMap extends Component{
 
     render() {
         const position = [this.state.lat, this.state.lng]
-        console.log(districts.features[2].properties.DName2019);
+        console.log(grids.features[2].properties.DName2019);
         let status = this.state.district;
         return (
           
@@ -96,10 +96,10 @@ class UgMap extends Component{
             
           {/* {this.handleMasaka()} */}
 
-            {console.log(districts.features[2])}
+            {console.log(grids.features[2])}
 
 
-            {<GeoJSON data={districts}
+            {<GeoJSON data={grids}
          
           
           onEachFeature={this.onEachFeature} />}
