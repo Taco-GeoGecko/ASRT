@@ -130,7 +130,7 @@ export default function ControlledExpansionPanels() {
         <div className={classes.spacing}>
             <CustomizedSlider IndicatorSlider="Slope" MinValue={0} MaxValue={20} />
 
-            <CustomizedSlider IndicatorSlider="Elevation" MinValue={100} MaxValue={5000} />/>
+            <CustomizedSlider IndicatorSlider="Elevation" MinValue={100} MaxValue={5000} />
           </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>

@@ -22,8 +22,7 @@ export default function ExpansionSideBar() {
   return (
     <div className={classes.root}>
       <App myComponent={<ControlledExpansionPanels />} side="right" arrowsize={20} styles={classes.calloutstyles} 
-      message="These are the agricultural indicators available in this portal. Utilise the sliders with in these headings to filter 
-      through the various agricultural indicators."/>
+      message="Click on the drop downs besides the different Agricultural indicators to filter through data using the sliders provided"/>
       
     </div>
   );
