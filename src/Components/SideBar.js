@@ -130,18 +130,10 @@ export default function ControlledExpansionPanels() {
           <Typography className={classes.heading}>Terrain</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <div className={classes.spacing}>
-            <CustomizedSlider
-              IndicatorSlider="Slope"
-              MinValue={0}
-              MaxValue={20}
-            />
-            <CustomizedSlider
-              IndicatorSlider="Elevation"
-              MinValue={100}
-              MaxValue={5000}
-            />
-            />
+        <div className={classes.spacing}>
+            <CustomizedSlider IndicatorSlider="Slope" MinValue={0} MaxValue={20} />
+
+            <CustomizedSlider IndicatorSlider="Elevation" MinValue={100} MaxValue={5000} />
           </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>

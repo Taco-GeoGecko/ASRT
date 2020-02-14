@@ -1,6 +1,8 @@
 import React from "react";
 import Nouislider from "nouislider-react";
 import "nouislider/distribute/nouislider.css";
+import axios from 'axios';
+
 
 const styles = {
   fontFamily: "sans-serif",
@@ -12,16 +14,22 @@ const styles = {
 
 export default class CustomizedSlider extends React.Component {
   state = {
-    value: [1, 100]
+    value: []
     // range: { min: this.props.MinValue, max: this.props.MaxValue }
   };
 
-  handleClick = () => {
+// onSlide = (props)=>{{props.value} 
+//  console.log(props.value)}
+componentDidMount(){
+  axios.get(`http://127.0.0.1:8000/sliders/`)
+  .then(response=>{
+    console.log(response)
     this.setState({
-      value: [50, 55]
-      // range: { min: 45, max: 60 }
-    });
-  };
+      value:response.data.slice(0,10)
+    })
+  })
+}
+
 
   render() {
     const { value } = this.state;
@@ -31,12 +39,19 @@ export default class CustomizedSlider extends React.Component {
     const range = { min: MinValue, max: MaxValue };
 
     return (
+      <div>
       <div style={styles}>
         <div style={{ textAlign: "center", marginBottom: 40 }}>
           {this.props.IndicatorSlider}
         </div>
-        <Nouislider start={value} range={range} tooltips={true} />
+        
       </div>
-    );
-  }
+
+
+      <Nouislider start={value} range={range} tooltips={true}/>
+
+    </div>
+  );
 }
+}
+

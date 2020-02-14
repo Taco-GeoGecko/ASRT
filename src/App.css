@@ -39,12 +39,12 @@
   }
 }
 #button{
-  background-color: #149685;
+  background-color: rgba(250, 243, 243, 0.603);
   width: 100%;
   text-transform: capitalize;
   border-radius: 15px;
-  border: 1px solid #fff;
-  color: #fff;
+  border: 1px solid #149685;
+  color: #149685;
   }
 #button:hover{
   background-color: #fff;
@@ -141,11 +141,12 @@
   padding: 6px 8px;
   font: 14px/16px Arial, Helvetica, sans-serif;
   background: white;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(250, 243, 243, 0.603);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   width: 150px;
   height: 30px;
+ 
 
 }
 
