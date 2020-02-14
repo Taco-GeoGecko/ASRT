@@ -3,20 +3,21 @@ import L from "leaflet";
 import {Map,TileLayer, Marker, Popup, GeoJSON} from "react-leaflet";
 import Control from "react-leaflet-control"
 import  grids from "./uganda_grid_5by5km_noWater_withDistrict.js";
-
-
-
+import { connect } from 'react-redux';
 
 class UgMap extends Component{
+constructor(props){
+  super(props);
+  // this.state={feature:this.props.featureState}
+}
 
-
-    state = {
-        lat: 0.32958802605356885,
-        lng: 32.34375,
-        zoom: 7,
-        district: 'Hover over district',
+    // state = {
+    //     lat: 0.32958802605356885,
+    //     lng: 32.34375,
+    //     zoom: 7,
+    //     district: 'Hover over district',
         
-      }
+    //   }
       
 
       onEachFeature = (feature, layer) => {
@@ -32,15 +33,7 @@ class UgMap extends Component{
       };
     
       MouseOverFeature(e, feature) {
-        this.setState({
-          lat: 0.32958802605356885,
-          lng: 32.34375,
-          zoom: 7,
-          district: feature.properties.DName2019,
-          
-        }
-
-        )
+        // {this.state.feature}
 
         e.target.setStyle({
           // fillColor: '#000000',
@@ -52,15 +45,15 @@ class UgMap extends Component{
       }
       
       MouseOutFeature(e, feature) {
-        this.setState({
-          lat: 0.32958802605356885,
-          lng: 32.34375,
-          zoom: 7,
-          district: 'Hover over district',
+      //   this.setState({
+      //     lat: 0.32958802605356885,
+      //     lng: 32.34375,
+      //     zoom: 7,
+      //     district: 'Hover over district',
           
-        }
+      //   }
 
-        )
+        // )
         e.target.setStyle({
           // fillColor: '#ffffff',
           // fillOpacity: 1, 
@@ -78,12 +71,12 @@ class UgMap extends Component{
 
 
     render() {
-        const position = [this.state.lat, this.state.lng]
+        // const position = [{this.props.featureState.lat}, {this.props.featureState.lng}]
         console.log(grids.features[2].properties.DName2019);
-        let status = this.state.district;
+        // let status = this.state.feature.district;
         return (
           
-          <Map className="map" center={position} zoom={this.state.zoom} style={{height:"800px"}}>
+          <Map className="map" center={[this.props.lat, this.props.lng]} zoom={this.props.zoom} style={{height:"800px"}}>
             <TileLayer
             
             //  attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -108,26 +101,19 @@ class UgMap extends Component{
         <Control
           className='info'
           position='topright'>
-          <div>{status}</div>
-          
+          <div>{grids.features.District}</div>
         </Control>
-
-
-        
-
-            <Marker position={position}>
-              <Popup>
-        <div>Hello! <br /> I am a Popup!{this.state.Map}</div>
-              </Popup>
-            </Marker>
-          </Map>
-        )
-      }
-    }
-    
-
-    export default UgMap
-    
-
-
-
+      </Map>
+    );
+  }
+}
+const mapStateToProps = (state) => {
+  
+  return {
+    lat: state.lat,
+    lng: state.lng,
+    zoom: state.zoom,
+    district: state.district
+  }
+}
+export default connect(mapStateToProps)(UgMap);
