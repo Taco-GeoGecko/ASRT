@@ -1,7 +1,7 @@
 import React from "react";
 import Nouislider from "nouislider-react";
 import "nouislider/distribute/nouislider.css";
-import Kiboga from "../Components/Kiboga";
+
 
 const styles = {
   fontFamily: "sans-serif",
@@ -16,7 +16,7 @@ const styles = {
 export default class CustomizedSlider extends React.Component {
   state = {
     value: [1, 100],
-    // range: { min: this.props.MinValue, max: this.props.MaxValue }
+
     
   };
 
@@ -39,12 +39,13 @@ render() {
         {this.props.IndicatorSlider}
 
       </div>
-
-
       <Nouislider start={value} range={range} tooltips={true} onUpdate={this.onSlide} />
 
     </div>
   );
 }
 }
+
+
+
 
