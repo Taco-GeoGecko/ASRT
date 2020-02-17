@@ -20,7 +20,7 @@ def view(request):
         # creating the cursor (vessel to the db)
     cursor=connection.cursor()
         # executing the query
-    cursor.execute("select * from project_taco_schema.regional_structure")
+    cursor.execute("select region,district,rsd_id from project_taco_schema.regional_structure")
 
     rows=cursor.fetchall()
     cursor.close()

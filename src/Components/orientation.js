@@ -12,7 +12,7 @@ import { makeStyles, useTheme, StylesProvider } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
 import MatIcons from './MatIcons';
 import ExpansionSideBar from './SidebarOrientation';
-import PrimarySearchAppBar from './navBarOrientation';
+import MenuAppBarOrientation from './navBarOrientation';
 import ControlledExpansionPanels from './SideBar';
 import '../App.css';
 import MapGuide from './mapOrientation'
@@ -89,7 +89,7 @@ return (
           >
             <MenuIcon />
           </IconButton>
-          <PrimarySearchAppBar />
+          <MenuAppBarOrientation />
         </Toolbar>
         
       </AppBar>
@@ -149,9 +149,9 @@ return (
     </StylesProvider>
   );
 }
-Orientation.propTypes = {
-  // Injected by the documentation to work in an iframe.
-  // You won't need it on your project.
-  container: PropTypes.object,
-};
+// Orientation.propTypes = {
+//   // Injected by the documentation to work in an iframe.
+//   // You won't need it on your project.
+//   container: PropTypes.object,
+// };
 export default Orientation;

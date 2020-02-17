@@ -40,7 +40,8 @@ constructor(props){
           // fillOpacity: 0.8,
         })
         // status = 'hello'
-        console.log(feature)
+        // console.log(feature)
+
         // feature.showPopup();
       }
       
@@ -59,7 +60,7 @@ constructor(props){
           // fillOpacity: 1, 
         })       
         // status = 'hello'
-        console.log(feature)
+        // console.log(feature)
         // feature.showPopup();
       }
 
@@ -72,7 +73,8 @@ constructor(props){
 
     render() {
         // const position = [{this.props.featureState.lat}, {this.props.featureState.lng}]
-        console.log(grids.features[2].properties.DName2019);
+        // console.log(grids.features[2].properties.DName2019);
+       
         // let status = this.state.feature.district;
         return (
           
@@ -86,10 +88,20 @@ constructor(props){
               // minimmum zoom="3"
             />
             
-            
           {/* {this.handleMasaka()} */}
+         {console.log( <ul>
+         {this.props.locationData.map(item=>{
+            return(<li key={item.id}>
+              {item.district})
 
-            {console.log(grids.features[2])}
+            </li>)
+          })}
+          </ul>)}
+          
+          {/* console.log(this.props.locationData[2]); */}
+
+
+            {/* {console.log(grids.features[2])} */}
 
 
             {<GeoJSON data={grids}
@@ -113,7 +125,9 @@ const mapStateToProps = (state) => {
     lat: state.lat,
     lng: state.lng,
     zoom: state.zoom,
-    district: state.district
+    district: state.district,
+    locationData:state.value,
+    grids:state.grid
   }
 }
 export default connect(mapStateToProps)(UgMap);
