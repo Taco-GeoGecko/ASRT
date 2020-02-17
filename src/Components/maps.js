@@ -96,7 +96,7 @@ class UgMap extends Component{
             
           {/* {this.handleMasaka()} */}
 
-            {console.log(grids.features[2])}
+           '' {console.log(grids.features[2])}
 
 
             {<GeoJSON data={grids}
@@ -123,7 +123,7 @@ class UgMap extends Component{
           </Map>
         )
       }
-    }
+    j}
     
 
     export default UgMap
