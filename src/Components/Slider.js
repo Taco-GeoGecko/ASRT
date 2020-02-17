@@ -14,21 +14,21 @@ const styles = {
 
 export default class CustomizedSlider extends React.Component {
   state = {
-    value: []
+    value: [1,10]
     // range: { min: this.props.MinValue, max: this.props.MaxValue }
   };
 
 // onSlide = (props)=>{{props.value} 
 //  console.log(props.value)}
-componentDidMount(){
-  axios.get(`http://127.0.0.1:8000/sliders/`)
-  .then(response=>{
-    console.log(response)
-    this.setState({
-      value:response.data.slice(0,10)
-    })
-  })
-}
+// componentDidMount(){
+//   axios.get(`http://127.0.0.1:8000/sliders/`)
+//   .then(response=>{
+//     console.log(response)
+//     this.setState({
+//       value:response.data.slice(0,10)
+//     })
+//   })
+// }
 
 
   render() {

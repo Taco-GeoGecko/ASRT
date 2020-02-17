@@ -12,7 +12,7 @@ import { makeStyles, useTheme, StylesProvider } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
 import MatIcons from './MatIcons';
 import ControlledExpansionPanels from './SideBar';
-import PrimarySearchAppBar from './navbar';
+import MenuAppBar from './navbar';
 import '../App.css';
 import UgMap from './maps'
 const drawerWidth = 400;
@@ -88,7 +88,7 @@ return (
           >
             <MenuIcon />
           </IconButton>
-          <PrimarySearchAppBar />
+          <MenuAppBar />
         </Toolbar>
         
       </AppBar>
