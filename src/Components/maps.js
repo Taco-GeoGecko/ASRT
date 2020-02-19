@@ -1,9 +1,10 @@
 import React, {Component} from "react";
-import L from "leaflet";
 import {Map,TileLayer, Marker, Popup, GeoJSON} from "react-leaflet";
 import Control from "react-leaflet-control"
 import  grids from "./uganda_grid_5by5km_noWater_withDistrict.js";
 import { connect } from 'react-redux';
+import {getData} from '../redux/actions/mapAction';
+import {getLocation} from '../redux/actions/locationActions'
 
 class UgMap extends Component{
 constructor(props){
@@ -41,6 +42,7 @@ constructor(props){
         })
         // status = 'hello'
         // console.log(feature)
+       
 
         // feature.showPopup();
       }
@@ -88,28 +90,23 @@ constructor(props){
               // minimmum zoom="3"
             />
             
-          {/* {this.handleMasaka()} */}
-         {console.log( <ul>
-         {this.props.locationData.map(item=>{
-            return(<li key={item.id}>
-              {item.district})
-
-            </li>)
-          })}
-          </ul>)}
-          
+        {console.log(this.props.locationData)} 
+        {console.log(this.props.grids())}
           {/* console.log(this.props.locationData[2]); */}
 
 
             {/* {console.log(grids.features[2])} */}
 
 
-            {<GeoJSON data={grids}
+            <GeoJSON data={this.props.grids()}
+            
          
           
-          onEachFeature={this.onEachFeature} />}
+          onEachFeature={this.onEachFeature} />
           
-          
+          {console.log(this.props.grids)}
+          {console.log(this.props.location)} 
+
         <Control
           className='info'
           position='topright'>
@@ -127,7 +124,21 @@ const mapStateToProps = (state) => {
     zoom: state.zoom,
     district: state.district,
     locationData:state.value,
-    grids:state.grid
+    // grids:state.grid
+    
   }
+  
 }
-export default connect(mapStateToProps)(UgMap);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    grids:()=>{
+        dispatch(getData())
+    },
+    location:()=>{
+      dispatch(getLocation())
+    }
+    
+  }
+  
+}
+export default connect(mapStateToProps, mapDispatchToProps)(UgMap);
