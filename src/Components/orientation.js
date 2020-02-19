@@ -13,9 +13,11 @@ import Divider from '@material-ui/core/Divider';
 import MatIcons from './MatIcons';
 import ExpansionSideBar from './SidebarOrientation';
 import MenuAppBarOrientation from './navBarOrientation';
+import ExpansionMaps from './MapOrientation';
+import UgMap from './maps'
 import ControlledExpansionPanels from './SideBar';
 import '../App.css';
-import MapGuide from './mapOrientation'
+
 const drawerWidth = 400;
 const useStyles = makeStyles(theme => ({
   root: {
@@ -144,7 +146,8 @@ return (
       {/* <div className={classes.content}>
         <div className={classes.toolbar} />
       </div> */}
-      <MapGuide />
+      <UgMap />
+      <ExpansionMaps/>
     </div>
     </StylesProvider>
   );
