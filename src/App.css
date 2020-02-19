@@ -111,6 +111,7 @@
   color: #fff;
  
 }
+
 .makeStyles-heading-128{
   font-size: large;
   font-weight: 100;
@@ -149,6 +150,7 @@
 
 }
 
-/* .popup{
-  width: 30px;
-} */
+.btn-link:link,
+a:link {
+  text-decoration: none;
+}

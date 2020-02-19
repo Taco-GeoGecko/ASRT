@@ -1,19 +1,19 @@
-import React from 'react';
-import ControlledExpansionPanels from './SideBar';
-import App from './Callout';
-import { makeStyles } from '@material-ui/core/styles';
+import React from "react";
+import ControlledExpansionPanels from "./SideBar";
+import Callouts from "./Callout";
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width: '100%',
-  lor: theme.palette.text.secondary,
+    width: "100%",
+    lor: theme.palette.text.secondary
   },
-  spacing:{
-    margin:10,
+  spacing: {
+    margin: 10
   },
-  calloutstyles:{
+  calloutstyles: {
     // height:100
-    width: 200,
+    width: 200
   }
 }));
 
@@ -21,10 +21,14 @@ export default function ExpansionSideBar() {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <App myComponent={<ControlledExpansionPanels />} side="right" arrowsize={20} styles={classes.calloutstyles} 
-      message="Click on the drop downs besides the different Agricultural indicators to filter through data using the sliders provided"/>
-      
+      <Callouts
+        myComponent={<ControlledExpansionPanels />}
+        side="right"
+        arrowsize={20}
+        styles={classes.calloutstyles}
+        message="These are the agricultural indicators available in this portal. Utilise the sliders with in these headings to filter 
+      through the various agricultural indicators."
+      />
     </div>
   );
 }
-
