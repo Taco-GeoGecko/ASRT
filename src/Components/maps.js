@@ -1,6 +1,6 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import L from "leaflet";
-import {Map,TileLayer, Marker, Popup, GeoJSON} from "react-leaflet";
+import { Map, TileLayer, Marker, Popup, GeoJSON } from "react-leaflet";
 import Control from "react-leaflet-control"
 import  grids from "./uganda_grid_5by5km_noWater_withDistrict.js";
 import { connect } from 'react-redux';
@@ -20,17 +20,6 @@ constructor(props){
     //   }
       
 
-      onEachFeature = (feature, layer) => {
-        // var popup = feature.properties.DName2019
-        // feature.bindPopup(popup)
-        console.log('onEachFeature fired: ');
-        layer.on({
-          mouseover: (e) => this.MouseOverFeature(e, feature),
-          mouseout: (e) => this.MouseOutFeature(e, feature),
-          
-
-        });
-      };
     
       MouseOverFeature(e, feature) {
         // {this.state.feature}
@@ -108,8 +97,8 @@ constructor(props){
          
           
           onEachFeature={this.onEachFeature} />}
-          
-          
+
+
         <Control
           className='info'
           position='topright'>
