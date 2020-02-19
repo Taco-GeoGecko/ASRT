@@ -1,16 +1,16 @@
 import React from "react";
 import Nouislider from "nouislider-react";
 import "nouislider/distribute/nouislider.css";
+import axios from 'axios';
+
 
 
 const styles = {
   fontFamily: "sans-serif",
   textAlign: "center",
-  width: '300px',
-  marginLeft: '10px',
-  marginTop: '60px',
-
-
+  width: "300px",
+  marginLeft: "10px",
+  marginTop: "60px"
 };
 
 export default class CustomizedSlider extends React.Component {
