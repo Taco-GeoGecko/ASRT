@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import ContainedButtons from "./Button";
 import geoLogo from "./geoLogo.png";
 import App from "./Callout";
-import { withRouter } from "react-router-dom";
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -50,9 +50,7 @@ export default function MenuAppBar() {
         />
         <div className={classes.spacing} />
         <ContainedButtons
-          click={() => {
-            alert("I am clicked");
-          }}
+         
           caption="Orientation"
         />
       </Toolbar>

@@ -1,45 +1,54 @@
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import ContainedButtons from "./Button";
+import geoLogo from "./geoLogo.png";
+import Orientation from "./orientation";
+import { withRouter } from "react-router-dom";
 
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import ContainedButtons from './Button';
-import geoLogo from './geoLogo.png';
-import Orientation from './orientation';
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   title: {
-    flexGrow: 1,
+    flexGrow: 1
   },
-  spacing:{
-    margin:10,
+  spacing: {
+    margin: 10
   },
   navigation: {
     height: 50,
-    width: 120,
-    },
+    width: 120
+  }
 }));
 
-export default function MenuAppBar() {
+export default function MenuAppBar(props) {
   const classes = useStyles();
-   return (
+  return (
     <div className={classes.root}>
-     
-        <Toolbar>
-  
-          <Typography variant="h6" className={classes.title}>
-          <a href="https://www.geogecko.com/" ><img src={geoLogo} alt="geo gecko logo" target="_blank" className={classes.navigation}/></a>
-
-          </Typography>
-          <ContainedButtons caption="Home" />
-          <div className={classes.spacing} />
-          <ContainedButtons caption= "Orientation" />
-    
-          
-        </Toolbar>
-      
+      <Toolbar>
+        <Typography variant="h6" className={classes.title}>
+          <a href="https://www.geogecko.com/">
+            <img
+              src={geoLogo}
+              alt="geo gecko logo"
+              target="_blank"
+              className={classes.navigation}
+            />
+          </a>
+        </Typography>
+        <ContainedButtons caption="Home" />
+        <div className={classes.spacing} />
+        <a href="/orientation">
+          <ContainedButtons
+            // click={() => {
+            //   alert("I am clicked");
+            // }}
+            caption="Orientation"
+          ></ContainedButtons>
+        </a>
+      </Toolbar>
     </div>
   );
 }

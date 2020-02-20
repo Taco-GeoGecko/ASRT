@@ -26,6 +26,8 @@ handleClick = () => {
   });
 };
 
+
+
 render() {
   const { value } = this.state;
   let {MinValue, MaxValue} = this.props;
