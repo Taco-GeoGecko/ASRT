@@ -9,10 +9,12 @@ import { blue} from "@material-ui/core/colors";
 
 const useStyles = makeStyles(theme => ({
   horizontalSpacing: {
-    marginLeft: 5
+    marginLeft: 5,
+    
   },
   navigation: {
     height: 20,
+
     width: 25,
     marginLeft: "5%"
   }

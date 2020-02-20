@@ -21,17 +21,6 @@ constructor(props){
     //   }
       
 
-      onEachFeature = (feature, layer) => {
-        // var popup = feature.properties.DName2019
-        // feature.bindPopup(popup)
-        console.log('onEachFeature fired: ');
-        layer.on({
-          mouseover: (e) => this.MouseOverFeature(e, feature),
-          mouseout: (e) => this.MouseOutFeature(e, feature),
-          
-
-        });
-      };
     
       MouseOverFeature(e, feature) {
         // {this.state.feature}
