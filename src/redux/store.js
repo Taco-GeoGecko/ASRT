@@ -1,6 +1,5 @@
 import {createStore} from 'redux';
-import mapReducer from '../redux/reducers/mapreducer'
-// import {grids} from '../Components/uganda_grid_5by5km_noWater_withDistrict';
+import rootReducer from '../redux/reducers/reducersIndex'
 
-const store = createStore(mapReducer);
+const store = createStore(rootReducer);
 export default store;
