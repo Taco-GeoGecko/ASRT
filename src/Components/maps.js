@@ -34,6 +34,7 @@ constructor(props){
         // feature.showPopup();
       }
       
+      
       MouseOutFeature(e, feature) {
       //   this.setState({
       //     lat: 0.32958802605356885,
@@ -119,4 +120,4 @@ const mapStateToProps = (state) => {
     grids:state.grid
   }
 }
-export default connect(mapStateToProps)(UgMap);
+export default connect (mapStateToProps)(UgMap);
