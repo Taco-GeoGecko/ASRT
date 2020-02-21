@@ -14,12 +14,11 @@ def view(request):
         # creating the cursor (vessel to the db)
     cursor=connection.cursor()
         # executing the query
-    cursor.execute("select * from project_taco_schema.geometric_structure where rsd_id=1")
+    cursor.execute("SELECT ppp_sum, Slope FROM project_taco_schema.agric_indicator where gs_id<5 ")
 
-    rows=cursor.fetchall()
-    # for r in rows:
-    #         print (f"id {r[0]} name {r[1]}")
+    agricRows=cursor.fetchall()
+
 
     cursor.close()
     connection.close()
-    return Response({"data": rows})
+    return Response({"agricData": agricRows})
