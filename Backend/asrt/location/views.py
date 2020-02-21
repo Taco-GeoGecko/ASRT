@@ -1,9 +1,6 @@
 from django.shortcuts import render
 
 # Create your views here.
-from django.shortcuts import render
-
-# Create your views here.
 from rest_framework.decorators import api_view
 import psycopg2
 from rest_framework.response import Response
