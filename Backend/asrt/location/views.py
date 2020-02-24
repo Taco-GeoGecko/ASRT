@@ -9,7 +9,8 @@ from rest_framework.response import Response
 @api_view(['GET'])
 def view(request):
         # establishing a connection
-    connection = psycopg2.connect(user = "postgres",
+    connection = psycopg2.connect(
+                                    user = "postgres",
                                     password = "lambtex",
                                     host = "127.0.0.1",
                                     port = "5432",
@@ -22,4 +23,4 @@ def view(request):
     rows=cursor.fetchall()
     cursor.close()
     connection.close()
-    return Response({"data": rows})
+    return Response({'data':rows})
