@@ -88,7 +88,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'project_taco_db',
         'USER': 'postgres',
-        'PASSWORD': 'lambtex',
+        'PASSWORD': '508282044',
         'HOST': '127.0.0.1',
         'PORT': '5432',
          

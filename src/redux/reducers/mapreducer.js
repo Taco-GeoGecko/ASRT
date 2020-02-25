@@ -1,4 +1,4 @@
-import {loadLocationData} from '../actions/actionTypes/actionTypes';
+import {loadGridData} from '../actions/actionTypes/actionTypes';
 
 let initialState={
     lat: 0.32958802605356885,
@@ -10,10 +10,10 @@ let initialState={
 
 const mapReducer = (state = initialState, action) => {
     switch (action.type) {
-      case loadLocationData:
+      case loadGridData:
         return{
           ...state,
-          value:[...state, action.payload.response.data]
+          value:[...state.value, action.payload]
         }
       default:
         return state

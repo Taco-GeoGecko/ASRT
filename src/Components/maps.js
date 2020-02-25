@@ -71,31 +71,36 @@ class UgMap extends Component {
     return (
 
       <Map className="map" center={[this.props.lat, this.props.lng]} zoom={this.props.zoom} style={{ height: "800px" }}>
-        <TileLayer
+        {/* <TileLayer
 
           //  attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
           //  url= 'http://{s}.tile.osm.org/{z}/{x}/{y}.png'
           url='https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png'
-        // minimmum zoom="3"
-        />
+          // minimmum zoom="3"
+        /> */}
+
 
         {console.log(this.props.locationData)}
-        {console.log(this.props.grids())}
+        {/* {console.log(this.props.lat)} */}
         {/* console.log(this.props.locationData[2]); */}
 
 
-        {/* {console.log(grids.features[2])} */}
-
-
-        <GeoJSON data={this.props.grids()}
+    
 
 
 
-          onEachFeature={this.onEachFeature} />
+          {/* {console.log(grids.features[2])} */}
 
-        {console.log(this.props.grids)}
-        {console.log(this.props.location)}
+
+        < GeoJSON data={this.props.locationData}
+
+
+
+        onEachFeature={this.onEachFeature} />
+
+        {/* {console.log(this.props.grids)} */}
+        {/* {console.log(this.props.location)} */}
         {/* 
         <Control
           className='info'
@@ -112,7 +117,7 @@ const mapStateToProps = (state) => {
     lat: state.lat,
     lng: state.lng,
     zoom: state.zoom,
-    district: state.district,
+    // district: state.district,
     locationData: state.value,
     // grids:state.grid
 
@@ -131,4 +136,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 
 }
-export default connect(mapStateToProps, mapDispatchToProps)(UgMap);
+export default connect(mapStateToProps)(UgMap);

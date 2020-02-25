@@ -21,7 +21,7 @@ export default class CustomizedSlider extends React.Component {
   };
 
   onSlide = (render, handle, value, un, percent) => {
-    console.log(value)
+    // console.log(value)
   };
 
 
