@@ -18,7 +18,8 @@ const state = {
 export default class Rainfall extends React.Component {
   render() {
     return (
-      <div className="charts">
+      <div className = "mega">
+        <div className="charts">
         <h1 className="chartHeading">rainfall</h1>
         <hr className="HR"/>
         
@@ -49,6 +50,9 @@ export default class Rainfall extends React.Component {
           }}
           height='110%'
         />
+      </div>
+
+
       </div>
     );
   }

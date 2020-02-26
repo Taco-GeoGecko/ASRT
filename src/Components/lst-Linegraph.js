@@ -6,7 +6,7 @@ const state = {
            'Q4'],
   datasets: [
     {
-      label: 'Rainfall',
+      label: 'land surface temperature',
       fill: false,
       lineTension: 0.5,
       backgroundColor: 'rgba(75,192,192,1)',
@@ -20,7 +20,9 @@ const state = {
 export default class Lst extends React.Component {
   render() {
     return (
-      <div className="charts">
+      <div className="mega">
+
+<div className="charts">
         <h1 className="chartHeading">land surface temperature</h1>
         <hr className="HR"  />
         <Line
@@ -50,6 +52,8 @@ export default class Lst extends React.Component {
           }}
           height='110%'
         />
+      </div>
+
       </div>
     );
   }

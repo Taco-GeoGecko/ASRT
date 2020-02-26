@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Drawer from "@material-ui/core/Drawer";
@@ -11,7 +11,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import { makeStyles, useTheme, StylesProvider } from "@material-ui/core/styles";
 import Divider from "@material-ui/core/Divider";
 import MatIcons from "./MatIcons";
-import ControlledExpansionPanels from "./SideBar";
+// import ControlledExpansionPanels from "./SideBar";
 import PrimarySearchAppBar from "./navbar";
 import "../App.css";
 import UgMap from "./maps";
@@ -72,11 +72,11 @@ const useStyles = makeStyles(theme => ({
     height: 50,
     width: 120
   },
-  whitediv:{
-    backgroundColor:'white'
+  whitediv: {
+    backgroundColor: "white"
   }
 }));
-function ResponsiveDrawer() {
+function Analysis() {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -104,105 +104,105 @@ function ResponsiveDrawer() {
         </AppBar>
 
         <div className={classes.whitediv}>
-        <nav  className={classes.drawer}>
-          <Hidden smUp implementation="css">
-            <Drawer
-              variant="temporary"
-              anchor={theme.direction === "rtl" ? "right" : "left"}
-              open={mobileOpen}
-              onClose={handleDrawerToggle}
-              classes={{
-                paper: classes.drawerPaper
-              }}
-              ModalProps={{
-                keepMounted: true // Better open performance on mobile.
-              }}
-            >
-              <IconButton
-                onClick={handleDrawerToggle}
-                className={classes.closeMenuButton}
+          <nav className={classes.drawer}>
+            <Hidden smUp implementation="css">
+              <Drawer
+                variant="temporary"
+                anchor={theme.direction === "rtl" ? "right" : "left"}
+                open={mobileOpen}
+                onClose={handleDrawerToggle}
+                classes={{
+                  paper: classes.drawerPaper
+                }}
+                ModalProps={{
+                  keepMounted: true // Better open performance on mobile.
+                }}
               >
-                <CloseIcon />
-              </IconButton>
-              <div id="indicatorText">
-                <small>
-                  <h1 id="CHARTS">CHARTS</h1>
-                </small>
-              </div>
+                <IconButton
+                  onClick={handleDrawerToggle}
+                  className={classes.closeMenuButton}
+                >
+                  <CloseIcon />
+                </IconButton>
+                <div id="indicatorText">
+                  <small>
+                    <h1 id="CHARTS">CHARTS</h1>
+                  </small>
+                </div>
 
-              {/* <ControlledExpansionPanels /> */}
-              <div id="PIECHART">
-                <PieChartComponent />
-              </div>
-              <div className={classes.spacing} />
-              <div id="RAINFALL">
-                <Rainfall />
-              </div>
-              <div className={classes.spacing} />
-              <div id="NDVI">
-                <Ndvilinegraph />
-              </div>
-              <div className={classes.spacing} />
-              <div id="NDWI">
-                <Ndwilinegraph />
-              </div>
-              <div className={classes.spacing} />
-              <div id="LST">
-                <Lst />
-              </div>
-              <div className={classes.spacing} />
-              <div id="POPULATION">
-                <Population />
-              </div>
-              {/* <ControlledExpansionPanels /> */}
+                {/* <ControlledExpansionPanels /> */}
+                <div id="PIECHART">
+                  <PieChartComponent />
+                </div>
+                <div className={classes.spacing} />
+                <div id="RAINFALL">
+                  <Rainfall />
+                </div>
+                <div className={classes.spacing} />
+                <div id="NDVI">
+                  <Ndvilinegraph />
+                </div>
+                <div className={classes.spacing} />
+                <div id="NDWI">
+                  <Ndwilinegraph />
+                </div>
+                <div className={classes.spacing} />
+                <div id="LST">
+                  <Lst />
+                </div>
+                <div className={classes.spacing} />
+                <div id="POPULATION">
+                  <Population />
+                </div>
+                {/* <ControlledExpansionPanels /> */}
 
-              <Divider />
-              <MatIcons />
-            </Drawer>
-          </Hidden>
-          <Hidden xsDown implementation="css">
-            <Drawer
-              className={classes.drawer}
-              variant="permanent"
-              classes={{
-                paper: classes.drawerPaper
-              }}
-            >
-              <div className={classes.toolbar} />
-              <div id="indicatorText">
-                <small></small>
-              </div>
-              <h1 id="CHARTS">CHARTS</h1>
-              {/* <ControlledExpansionPanels /> */}
-              <div id="PIECHART">
-                <PieChartComponent />
-              </div>
-              <div className={classes.spacing} />
-              <div id="RAINFALL">
-                <Rainfall />
-              </div>
-              <div className={classes.spacing} />
-              <div id="NDVI">
-                <Ndvilinegraph />
-              </div>
-              <div className={classes.spacing} />
-              <div id="NDWI">
-                <Ndwilinegraph />
-              </div>
-              <div className={classes.spacing} />
-              <div id="LST">
-                <Lst />
-              </div>
-              <div className={classes.spacing} />
-              <div id="POPULATION">
-                <Population />
-              </div>
-              <div className={classes.spacing} />
-              <Divider />
-              <MatIcons />
-            </Drawer>
-          </Hidden>
-        </nav>
+                <Divider />
+                <MatIcons />
+              </Drawer>
+            </Hidden>
+            <Hidden xsDown implementation="css">
+              <Drawer
+                className={classes.drawer}
+                variant="permanent"
+                classes={{
+                  paper: classes.drawerPaper
+                }}
+              >
+                <div className={classes.toolbar} />
+                <div id="indicatorText">
+                  <small></small>
+                </div>
+                <h1 id="CHARTS">CHARTS</h1>
+                {/* <ControlledExpansionPanels /> */}
+                <div id="PIECHART">
+                  <PieChartComponent />
+                </div>
+                <div className={classes.spacing} />
+                <div id="RAINFALL">
+                  <Rainfall />
+                </div>
+                <div className={classes.spacing} />
+                <div id="NDVI">
+                  <Ndvilinegraph />
+                </div>
+                <div className={classes.spacing} />
+                <div id="NDWI">
+                  <Ndwilinegraph />
+                </div>
+                <div className={classes.spacing} />
+                <div id="LST">
+                  <Lst />
+                </div>
+                <div className={classes.spacing} />
+                <div id="POPULATION">
+                  <Population />
+                </div>
+                <div className={classes.spacing} />
+                <Divider />
+                <MatIcons />
+              </Drawer>
+            </Hidden>
+          </nav>
         </div>
         {/* <div className={classes.content}>
         <div className={classes.toolbar} />
@@ -213,9 +213,9 @@ function ResponsiveDrawer() {
     </StylesProvider>
   );
 }
-ResponsiveDrawer.propTypes = {
-  // Injected by the documentation to work in an iframe.
-  // You won't need it on your project.
-  container: PropTypes.object
-};
-export default ResponsiveDrawer;
+// ResponsiveDrawer.propTypes = {
+//   // Injected by the documentation to work in an iframe.
+//   // You won't need it on your project.
+//   container: PropTypes.object
+// };
+export default Analysis;

@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
@@ -12,12 +12,11 @@ import { makeStyles, useTheme, StylesProvider } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
 import MatIcons from './MatIcons';
 import ExpansionSideBar from './SidebarOrientation';
-import PrimarySearchAppBar from './navBarOrientation';
+import MenuAppBarOrientation from './navBarOrientation';
+import ExpansionMaps from './MapOrientation';
+import UgMap from './maps'
 import ControlledExpansionPanels from './SideBar';
 import '../App.css';
-import UgMap from './maps'
-
-
 
 const drawerWidth = 400;
 const useStyles = makeStyles(theme => ({
@@ -92,7 +91,7 @@ return (
           >
             <MenuIcon />
           </IconButton>
-          <PrimarySearchAppBar />
+          <MenuAppBarOrientation />
         </Toolbar>
         
       </AppBar>
@@ -148,13 +147,14 @@ return (
         <div className={classes.toolbar} />
       </div> */}
       <UgMap />
+      <ExpansionMaps/>
     </div>
     </StylesProvider>
   );
 }
-Orientation.propTypes = {
-  // Injected by the documentation to work in an iframe.
-  // You won't need it on your project.
-  container: PropTypes.object,
-};
+// Orientation.propTypes = {
+//   // Injected by the documentation to work in an iframe.
+//   // You won't need it on your project.
+//   container: PropTypes.object,
+// };
 export default Orientation;

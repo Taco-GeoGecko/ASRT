@@ -6,7 +6,7 @@ const state = {
            'Q4'],
   datasets: [
     {
-      label: 'Rainfall',
+      label: 'Population',
       backgroundColor: 'rgba(75,192,192,1)',
       borderColor: 'rgba(75,192,192,1)',
       borderWidth: 6,
@@ -18,7 +18,9 @@ const state = {
 export default class Population extends React.Component {
   render() {
     return (
-      <div className="charts">
+     <div className= "mega">
+
+<div className="charts">
       <h1 className="chartHeading">population</h1>
       <hr className="HR"/>
         <Bar
@@ -48,6 +50,8 @@ export default class Population extends React.Component {
           height='110%'
         />
       </div>
+
+     </div>
     );
   }
 }

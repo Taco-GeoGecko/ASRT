@@ -1,72 +1,55 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import L from "leaflet";
-import {Map,TileLayer, Marker, Popup, GeoJSON} from "react-leaflet";
+import { Map, TileLayer, Marker, Popup, GeoJSON } from "react-leaflet";
 import Control from "react-leaflet-control"
-import  districts from "./uganda_districts_2019.js";
-
-
-
+import  grids from "./uganda_grid_5by5km_noWater_withDistrict.js";
+import { connect } from 'react-redux';
 
 class UgMap extends Component{
+constructor(props){
+  super(props);
+  // this.state={feature:this.props.featureState}
+}
 
-
-    state = {
-        lat: 0.32958802605356885,
-        lng: 32.34375,
-        zoom: 7,
-        district: 'Hover over district',
+    // state = {
+    //     lat: 0.32958802605356885,
+    //     lng: 32.34375,
+    //     zoom: 7,
+    //     district: 'Hover over district',
         
-      }
+    //   }
       
 
-      onEachFeature = (feature, layer) => {
-        // var popup = feature.properties.DName2019
-        // feature.bindPopup(popup)
-        console.log('onEachFeature fired: ');
-        layer.on({
-          mouseover: (e) => this.MouseOverFeature(e, feature),
-          mouseout: (e) => this.MouseOutFeature(e, feature),
-          
-
-        });
-      };
     
       MouseOverFeature(e, feature) {
-        this.setState({
-          lat: 0.32958802605356885,
-          lng: 32.34375,
-          zoom: 7,
-          district: feature.properties.DName2019,
-          
-        }
-
-        )
+        // {this.state.feature}
 
         e.target.setStyle({
           // fillColor: '#000000',
           // fillOpacity: 0.8,
         })
         // status = 'hello'
-        console.log(feature)
+        // console.log(feature)
+
         // feature.showPopup();
       }
       
       MouseOutFeature(e, feature) {
-        this.setState({
-          lat: 0.32958802605356885,
-          lng: 32.34375,
-          zoom: 7,
-          district: 'Hover over district',
+      //   this.setState({
+      //     lat: 0.32958802605356885,
+      //     lng: 32.34375,
+      //     zoom: 7,
+      //     district: 'Hover over district',
           
-        }
+      //   }
 
-        )
+        // )
         e.target.setStyle({
           // fillColor: '#ffffff',
           // fillOpacity: 1, 
         })       
         // status = 'hello'
-        console.log(feature)
+        // console.log(feature)
         // feature.showPopup();
       }
 
@@ -77,17 +60,18 @@ class UgMap extends Component{
       // }
 
 
-      handleMasaka = () => {
-        return districts.features[0].properties.DName2016;
-      }
+      // handleMasaka = () => {
+      //   return districts.features[0].properties.DName2016;
+      // }
 
     render() {
-        const position = [this.state.lat, this.state.lng]
-        console.log(districts.features[2].properties.DName2019);
-        let status = this.state.district;
+        // const position = [{this.props.featureState.lat}, {this.props.featureState.lng}]
+        // console.log(grids.features[2].properties.DName2019);
+       
+        // let status = this.state.feature.district;
         return (
           
-          <Map className="map" center={position} zoom={this.state.zoom} style={{height:"800px"}}>
+          <Map className="map" center={[this.props.lat, this.props.lng]} zoom={this.props.zoom} style={{height:"800px"}}>
             <TileLayer
             
             //  attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -97,41 +81,46 @@ class UgMap extends Component{
               // minimmum zoom="3"
             />
             
-            
           {/* {this.handleMasaka()} */}
+         {console.log( <ul>
+         {this.props.locationData.map(item=>{
+            return(<li key={item.id}>
+              {item.district})
 
-            {console.log(districts.features[2])}
+            </li>)
+          })}
+          </ul>)}
+          
+          {/* console.log(this.props.locationData[2]); */}
 
 
-            {<GeoJSON data={districts}
+            {/* {console.log(grids.features[2])} */}
+
+
+            {<GeoJSON data={grids}
          
           
           onEachFeature={this.onEachFeature} />}
-          
-          
+
+
         <Control
           className='info'
           position='topright'>
-          <div>{status}</div>
-          
+          <div>{grids.features.District}</div>
         </Control>
-
-
-        
-
-            <Marker position={position}>
-              <Popup>
-        <div>Hello! <br /> I am a Popup!{this.state.Map}</div>
-              </Popup>
-            </Marker>
-          </Map>
-        )
-      }
-    }
-    
-
-    export default UgMap
-    
-
-
-
+      </Map>
+    );
+  }
+}
+const mapStateToProps = (state) => {
+  
+  return {
+    lat: state.lat,
+    lng: state.lng,
+    zoom: state.zoom,
+    district: state.district,
+    locationData:state.value,
+    grids:state.grid
+  }
+}
+export default connect(mapStateToProps)(UgMap);

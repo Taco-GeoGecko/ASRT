@@ -17,6 +17,8 @@ class PieChartComponent extends Component {
 
     render() {
         return (
+            <div className = "mega">
+                
             <div className= "charts" >
                 <h1 className="chartHeading">soil nutrients</h1>
                 <hr className="HR"/>
@@ -32,6 +34,7 @@ class PieChartComponent extends Component {
                     position:'bottom'}}}
                  />
                  <br />
+            </div>
             </div>
         )
     }

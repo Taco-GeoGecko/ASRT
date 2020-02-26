@@ -3,9 +3,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import ContainedButtons from "./Button";
-import geoLogo from "./geoLogo.png";
-import App from "./Callout";
-
+import geoLogo from "../Images/geoLogo.png";
+import Callouts from "./Callout";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -23,36 +23,40 @@ const useStyles = makeStyles(theme => ({
   },
   calloutstyles: {
     height: 100,
-    width: 120
+    width: 130
   }
 }));
 
-export default function MenuAppBar() {
+export default function MenuAppBarOrientation() {
   const classes = useStyles();
   return (
     <div className={classes.root}>
       <Toolbar>
         <Typography variant="h6" className={classes.title}>
-          <a href="https://www.geogecko.com/">
+          <a
+            href="https://www.geogecko.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img
               src={geoLogo}
               alt="geo gecko logo"
-              target="_blank"
               className={classes.navigation}
             />
           </a>
         </Typography>
-        <App
-          myComponent={<ContainedButtons caption="Home" />}
+        <Callouts
+          myComponent={
+          <ContainedButtons caption="Home" />
+          }
           side="bottom"
           styles={classes.calloutstyles}
-          message="Click on this home button to return to the home page"
+          message="Click on this home button to return on the home page"
         />
         <div className={classes.spacing} />
-        <ContainedButtons
-         
-          caption="Orientation"
-        />
+        <Link to="/orientation" className="btn-link">
+        <ContainedButtons caption="Orientation" />
+        </Link>
       </Toolbar>
     </div>
   );

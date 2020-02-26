@@ -3,9 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import ContainedButtons from "./Button";
-import geoLogo from "./geoLogo.png";
-import Orientation from "./orientation";
-import { withRouter } from "react-router-dom";
+import geoLogo from "../Images/geoLogo.png";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -29,25 +28,26 @@ export default function MenuAppBar(props) {
     <div className={classes.root}>
       <Toolbar>
         <Typography variant="h6" className={classes.title}>
-          <a href="https://www.geogecko.com/">
+          <a
+            href="https://www.geogecko.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img
               src={geoLogo}
               alt="geo gecko logo"
-              target="_blank"
               className={classes.navigation}
             />
           </a>
         </Typography>
+        <Link to="/" className="btn-link">
         <ContainedButtons caption="Home" />
+        </Link>
         <div className={classes.spacing} />
-        <a href="/orientation">
-          <ContainedButtons
-            // click={() => {
-            //   alert("I am clicked");
-            // }}
-            caption="Orientation"
-          ></ContainedButtons>
-        </a>
+        <Link to="/orientation" className="btn-link">
+        <ContainedButtons caption="Orientation" />
+        </Link>
+        
       </Toolbar>
     </div>
   );

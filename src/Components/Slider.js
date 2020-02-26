@@ -1,30 +1,30 @@
 import React from "react";
 import Nouislider from "nouislider-react";
 import "nouislider/distribute/nouislider.css";
+import axios from 'axios';
+
+
 
 const styles = {
   fontFamily: "sans-serif",
   textAlign: "center",
-  width: '300px',
-  marginLeft: '10px',
-  marginTop: '60px',
-
-
+  width: "300px",
+  marginLeft: "10px",
+  marginTop: "60px"
 };
 
 export default class CustomizedSlider extends React.Component {
   state = {
     value: [1, 100],
-    // range: { min: this.props.MinValue, max: this.props.MaxValue }
+
     
   };
 
-handleClick = () => {
-  this.setState({
-    value: [50, 55],
-    // range: { min: 45, max: 60 }
-  });
-};
+  onSlide = (render, handle, value, un, percent) => {
+    console.log(value)
+  };
+
+
 
 
 
@@ -41,12 +41,13 @@ render() {
         {this.props.IndicatorSlider}
 
       </div>
-
-
-      <Nouislider start={value} range={range} tooltips={true} />
+      <Nouislider start={value} range={range} tooltips={true} onUpdate={this.onSlide} />
 
     </div>
   );
 }
 }
+
+
+
 

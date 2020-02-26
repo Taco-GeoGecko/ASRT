@@ -39,12 +39,12 @@
   }
 }
 #button{
-  background-color: #149685;
+  background-color: rgba(250, 243, 243, 0.603);
   width: 100%;
   text-transform: capitalize;
   border-radius: 15px;
-  border: 1px solid #fff;
-  color: #fff;
+  border: 1px solid #149685;
+  color: #149685;
   }
 #button:hover{
   background-color: #fff;
@@ -60,23 +60,34 @@
 
 #CHARTS {
 
-  text-align: center;
+  text-align: left;
   margin-bottom: 35px;
-  color: firebrick;
-  font-size:80px;
+  color: rgb(179, 171, 171);
+  font-size:50px;
 }
+.mega {
+  margin-bottom: 35px;
+  border: solid;
+  border-color: rgb(18, 18, 19);
+  border-radius: 10%;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: rgb(203, 224, 175);
+  box-shadow: indigo;
 
+
+}
 .chartHeading{
   text-align: center;
-  color: aliceblue;
+  color: rgb(49, 51, 53);
 
 }
 /* .charts {
   width: 80%;
 } */
 .HR {
-  width: 50%;
-  border: solid 5px firebrick;
+  /* width: 50%; */
+  border: solid 1px rgb(41, 42, 43);
 }
 
 .makeStyles-drawerPaper-6{
@@ -140,6 +151,7 @@
   color: #fff;
  
 }
+
 .makeStyles-heading-128{
   font-size: large;
   font-weight: 100;
@@ -169,14 +181,16 @@
   padding: 6px 8px;
   font: 14px/16px Arial, Helvetica, sans-serif;
   background: white;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(250, 243, 243, 0.603);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   width: 150px;
   height: 30px;
+ 
 
 }
 
-/* .popup{
-  width: 30px;
-} */
+.btn-link:link,
+a:link {
+  text-decoration: none;
+}
