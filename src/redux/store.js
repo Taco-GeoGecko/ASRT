@@ -1,6 +1,12 @@
-import {createStore} from 'redux';
-import mapReducer from '../redux/reducers/mapreducer'
-// import {grids} from '../Components/uganda_grid_5by5km_noWater_withDistrict';
+import {createStore, applyMiddleware} from 'redux';  
+import thunk from 'redux-thunk';
+import rootReducer from '../redux/reducers/reducersIndex';
+// import locationReducer from './reducers/locationReducer';
+import sliderReducer from './reducers/slidersReducer';
+// import mapReducer from './reducers/mapreducer';
 
-const store = createStore(mapReducer);
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
+// const store = createStore(mapReducer);
 export default store;
+ 
