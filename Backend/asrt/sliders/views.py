@@ -6,7 +6,8 @@ from rest_framework.response import Response
 @api_view(['GET'])
 def view(request):
         # establishing a connection
-    connection = psycopg2.connect(user = "postgres",
+    connection = psycopg2.connect(
+                                    user = "postgres",
                                     password = "lambtex",
                                     host = "127.0.0.1",
                                     port = "5432",
@@ -14,12 +15,11 @@ def view(request):
         # creating the cursor (vessel to the db)
     cursor=connection.cursor()
         # executing the query
-    cursor.execute("select * from project_taco_schema.geometric_structure where rsd_id=1")
+    cursor.execute("SELECT ppp_sum FROM project_taco_schema.agric_indicator where gs_id<10 ")
 
-    rows=cursor.fetchall()
-    # for r in rows:
-    #         print (f"id {r[0]} name {r[1]}")
+    agricRows=cursor.fetchall()
+
 
     cursor.close()
     connection.close()
-    return Response({"data": rows})
+    return Response({'agridata':agricRows})
