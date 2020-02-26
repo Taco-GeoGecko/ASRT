@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import L from "leaflet";
+// import L from "leaflet";
 import { Map, TileLayer, Marker, ZoomControl, GeoJSON } from "react-leaflet";
 import Control from "react-leaflet-control"
 // import  grids from "./uganda_grid_5by5km_noWater_withDistrict.js";

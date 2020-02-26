@@ -51,6 +51,45 @@
   color: #616161;
   /* border-color: #77BB85; */
 }
+
+/* this css is for the charts that were designed by sabbiti */
+
+#whitediv {
+  background-color: #fff;
+}
+
+#CHARTS {
+
+  text-align: left;
+  margin-bottom: 35px;
+  color: rgb(179, 171, 171);
+  font-size:50px;
+}
+.mega {
+  margin-bottom: 35px;
+  border: solid;
+  border-color: rgb(18, 18, 19);
+  border-radius: 10%;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: rgb(203, 224, 175);
+  box-shadow: indigo;
+
+
+}
+.chartHeading{
+  text-align: center;
+  color: rgb(49, 51, 53);
+
+}
+/* .charts {
+  width: 80%;
+} */
+.HR {
+  /* width: 50%; */
+  border: solid 1px rgb(41, 42, 43);
+}
+
 .makeStyles-drawerPaper-6{
   width: 300px;
   /* background-color: rgb(43, 47, 58); */
@@ -88,7 +127,6 @@
   
 
 }
-
 
 
 #indicatorText{

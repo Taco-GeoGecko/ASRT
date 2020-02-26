@@ -23,6 +23,8 @@ class CustomizedSlider extends React.Component {
 
 
 
+
+
 render() {
   let arr = this.props.sliderValue;
 
