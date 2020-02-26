@@ -1,4 +1,3 @@
-
 import React, { Component } from "react";
 // import L from "leaflet";
 import { Map, TileLayer, Marker, ZoomControl, GeoJSON } from "react-leaflet";

@@ -27,7 +27,7 @@ export default function MatIcons() {
   const classes = useStyles();
   return (
     <div className="Icons">
-      <div className="MatIcons">
+      
       <a target="_blank" rel="noopener noreferrer" href="https://www.geogecko.com/"> 
         <span className={classes.horizontalSpacing}>FAQS</span>
       </a>
@@ -36,7 +36,7 @@ export default function MatIcons() {
      <a target="_blank" rel="noopener noreferrer" href="https://www.geogecko.com/">
         <span className={classes.horizontalSpacing} >Feedback</span>
       </a>
-      </div>
+    
 
       <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/geogecko">
         <TwitterIcon
