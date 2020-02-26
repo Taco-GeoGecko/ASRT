@@ -1,20 +1,20 @@
-import {loadLocationData} from '../actions/actionTypes/actionTypes';
+import {sliderData} from '../actions/actionTypes/actionTypes';
+import AppState from '../applicationState';
 
-let initialState={
-    value:[1, 100],
-} 
+// let initialState={
+//     value:[],
+//     // onslide:[]
+// } 
+// let onSlide = (render, handle, value, un, percent) => {
+//   console.log(value)
+// }
 
-const mapReducer = (state = initialState, action) => {
-    // const { value } = this.state;
-    // let {MinValue, MaxValue} = this.props;
-    MinValue = MinValue ? MinValue : 1
-    MaxValue = MaxValue ? MaxValue : 100
-    const range = { min: MinValue, max: MaxValue }
-    switch (action.type) {
-      case loadLocationData:
+const sliderReducer = (state = AppState.initialSliderState, action) => {
+        switch (action.type) {
+      case sliderData:
         return{
           ...state,
-          value:[...state, action.payload.response.data]
+          sliderValue:[...state.sliderValue, action.payload]
           
         }
       default:
@@ -22,4 +22,4 @@ const mapReducer = (state = initialState, action) => {
     }
   }
   
-  export default mapReducer
+  export default sliderReducer

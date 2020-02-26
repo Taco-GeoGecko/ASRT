@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'asrt.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'project_taco_db',
         'USER': 'postgres',
         'PASSWORD': '508282044',

@@ -17,9 +17,9 @@ def view(request):
         # creating the cursor (vessel to the db)
     cursor=connection.cursor()
         # executing the query
-    cursor.execute("select id, rsd_id, gs_id from project_taco_schema.geometric_structure")
+    cursor.execute("select rsd_id, id from project_taco_schema.geometric_structure")
 
     rows=cursor.fetchall()
     cursor.close()
     connection.close()
-    return Response({"data": rows})
+    return Response({'data':rows})

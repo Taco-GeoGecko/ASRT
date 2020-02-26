@@ -21,4 +21,4 @@ def view(request):
 
     cursor.close()
     connection.close()
-    return Response({"agricData": agricRows})
+    return Response({'agridata':agricRows})

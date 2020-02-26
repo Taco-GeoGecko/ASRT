@@ -1,17 +1,17 @@
 import {loadLocationData} from '../actions/actionTypes/actionTypes';
-import axios from "axios";
+import AppState from '../applicationState';
+//  const locationState={
+//   value:[] 
+// }
 
-  let gridState={
-    grid: []
-} 
-
-const locationReducer= (state = gridState, action) => {
+const locationReducer= (state = AppState.initialLocationState, action) => {
     switch (action.type) {
       case loadLocationData:
         return{
           ...state,
-          value:[...state.grid, action.payload]
+          LocationValue: action.payload
         }
+      
        default:
         return state
     }

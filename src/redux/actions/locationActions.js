@@ -3,12 +3,12 @@ import axios from "axios";
 let LocationUrl =`http://127.0.0.1:8000/location/`;
 
 export const getLocation=()=>{
-        return (dispatch)=>{
+        return(dispatch)=> {
         axios.get(LocationUrl)  
-        .then(response=>{
-            dispatch({
+        .then(async response=>{
+            await dispatch({
             type: loadLocationData,
-            payload: response.data
+            payload: response.data.data
             })
         
         })

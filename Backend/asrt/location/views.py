@@ -22,4 +22,4 @@ def view(request):
     rows=cursor.fetchall()
     cursor.close()
     connection.close()
-    return Response({"data": rows})
+    return Response({'data':rows})
