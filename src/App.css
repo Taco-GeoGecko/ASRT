@@ -93,28 +93,30 @@
 
 #indicatorText{
   
-  color: #000000;
+  color: #616161;
   text-align: center;
 background-color:#d0d0d0 ;
 border-radius: 0.5em;
 padding-top: 1em;
 margin-top: 20px;
+margin-right: 10px;
+margin-left: 10px;
 }
 .Icons{
   
   color: #fff;
-  display: inline;
+  /* display: inline; */
   position: relative;
-  bottom: -3em;
+  bottom: -4em;
   background-color: #d0d0d0;
   padding: 0.7em;
-  border-radius: 0.7em;
+  border-radius: 0.5em;
+  margin-right: 10px;
+  margin-left: 10px;
  
 
 }
- .MatIcons{ 
-  margin-bottom: 20px;
-} 
+ 
 
 #twitter{
   padding-right: 140px;
@@ -129,6 +131,7 @@ margin-top: 20px;
   background-color: #2AB34B;
   color: #fff;
   margin: 2%;
+  
  
 }
 .MuiExpansionPanel-rounded:first-child {
