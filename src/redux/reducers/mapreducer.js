@@ -16,10 +16,19 @@ let gridData=[];
 //                 gridData.push(response.data)
 //               })
 
+
+
+
+
+
+
+
 let initialState={
     lat: 0.32958802605356885,
     lng: 32.34375,
     zoom: 7,
+    zoomcontrol: true,
+    
     district: 'Hover over district',
     value:[],
     grid: gridData
@@ -36,6 +45,7 @@ const mapReducer = (state = initialState, action) => {
         return state
     }
   }
+
   
   // creates a root reducer and combines different reducers
 //   const rootReducer = combineReducers({
