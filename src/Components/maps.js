@@ -1,26 +1,42 @@
+
 import React, { Component } from "react";
 import L from "leaflet";
 import { Map, TileLayer, Marker, ZoomControl, GeoJSON } from "react-leaflet";
 import Control from "react-leaflet-control"
-import  grids from "./uganda_grid_5by5km_noWater_withDistrict.js";
+// import  grids from "./uganda_grid_5by5km_noWater_withDistrict.js";
 import { connect } from 'react-redux';
+import {getMapGrids} from '../redux/actions/mapAction';
+import {getLocation} from '../redux/actions/locationActions';
 
 class UgMap extends Component{
-constructor(props){
-  super(props);
+// constructor(props){
+//   super(props);
   // this.state={feature:this.props.featureState}
-}
+// }
 
     // state = {
     //     lat: 0.32958802605356885,
     //     lng: 32.34375,
     //     zoom: 7,
     //     district: 'Hover over district',
-        
+    //     grids:[]
     //   }
       
-
+    componentWillMount() {
+      console.log('first mount')
+      getMapGrids()
+    }
     
+    // componentWillUpdate(nextProps, nextState) {
+    //   if (nextProps.grids) {
+    //     console.log('next state')
+    //     this.setState({
+    //       ...this.state,
+    //       grids: this.props.grids
+    //   });
+    //   }
+    // }
+
       MouseOverFeature(e, feature) {
         // {this.state.feature}
 
@@ -30,6 +46,7 @@ constructor(props){
         })
         // status = 'hello'
         // console.log(feature)
+       
 
         // feature.showPopup();
       }
@@ -59,12 +76,46 @@ constructor(props){
 
       // }
 
-
     render() {
         // const position = [{this.props.featureState.lat}, {this.props.featureState.lng}]
         // console.log(grids.features[2].properties.DName2019);
        
         // let status = this.state.feature.district;
+        // var arr = this.props.mapValue;
+        var arr = this.props.mapGrids;
+        console.log(arr)
+// var geojson = {
+//   type: "FeatureCollection",
+//   features: [],
+// };
+
+// for (let i = 0; i < arr.data.len; i++) {
+//   if (window.CP.shouldStopExecution(1)) {
+//     break;
+//   }
+//   geojson.features.push({
+//     "type": "Feature",
+//     "geometry": {
+//       "type": "polygon",
+//       "coordinates": [arr.data[i].wkt_geom]
+//     },
+//     "properties": {
+//       "id": arr.data[i].id,
+//       "left": arr.data[i].left_metrics,
+//       "top": arr.data[i].top_metrics,
+//       "right": arr.data[i].right_metrics,
+//       "bottom":arr.data[i].bottom_metrics,
+//       "rsd_id": arr.data[i].rsd_id,
+//       "gs_id": arr.data[i].gs_id,
+      
+//     }
+//   });
+// }
+
+// window.CP.exitedLoop(1);
+
+// let myobj= JSON.stringify(geojson, null, 2);
+      
         return (
           
           
@@ -86,32 +137,30 @@ constructor(props){
         </button>
       </Control>
             
-          {/* {this.handleMasaka()} */}
-         {console.log( <ul>
-         {this.props.locationData.map(item=>{
-            return(<li key={item.id}>
-              {item.district})
-
-            </li>)
-          })}
-          </ul>)}
-          
+        {/* {console.log(this.props.locationData)}  */}
+        {console.log('in components',this.props.mapGrids)}
           {/* console.log(this.props.locationData[2]); */}
+          
 
 
-            {/* {console.log(grids.features[2])} */}
+            {/* {console.log(this.props.grids())} */}
 
 
-            {<GeoJSON data={grids}
+            {/* <GeoJSON data={this.props.MapValue} */}
+            <GeoJSON data={this.props.mapGrids}
+            
          
           
-          onEachFeature={this.onEachFeature} />}
-
-
+          onEachFeature={this.onEachFeature} />
+          
+          {/* {console.log(this.props.grids)} */}
+      
+    {/* {console.log(this.props.location)}  */}
         <Control
           className='info'
           position='topright'>
-          <div>{grids.features.District}</div>
+          {/* <div>{grids.features.District}</div> */}
+          <div></div>
         </Control>
       </Map>
     );
@@ -120,12 +169,22 @@ constructor(props){
 const mapStateToProps = (state) => {
   
   return {
-    lat: state.lat,
-    lng: state.lng,
-    zoom: state.zoom,
-    district: state.district,
-    locationData:state.value,
-    grids:state.grid
+    lat: state.mapReducer.lat, 
+    lng: state.mapReducer.lng,
+    zoom: state.mapReducer.zoom,
+    // district: state.district,
+    mapGrids: state.mapReducer.mapGrids,
+    // locationValue:state.LocationValue
+    
   }
+  
 }
-export default connect(mapStateToProps)(UgMap);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    grids: dispatch(getMapGrids()),
+    // location: dispatch(getLocation())
+
+  }
+  
+}
+export default connect(mapStateToProps, mapDispatchToProps)(UgMap);
