@@ -11,6 +11,13 @@ const state = {
       borderColor: 'rgba(75,192,192,1)',
       borderWidth: 6,
       data: [65, 59, 80, 81]
+    },
+    {
+      label: 'Population',
+      backgroundColor: 'rgba(75,192,192,1)',
+      borderColor: 'rgba(75,192,192,0.5)',
+      borderWidth: 6,
+      data: [64, 79, 60, 71]
     }
   ]
 }
