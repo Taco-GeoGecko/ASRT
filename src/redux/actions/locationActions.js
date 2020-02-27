@@ -8,7 +8,7 @@ export const getLocation=()=>{
         .then(async response=>{
             await dispatch({
             type: loadLocationData,
-            payload: response.data.data
+            payload: response.data
             })
         
         })

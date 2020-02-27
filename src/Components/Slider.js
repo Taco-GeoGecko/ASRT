@@ -2,8 +2,7 @@ import React from "react";
 import Nouislider from "nouislider-react";
 import "nouislider/distribute/nouislider.css";
 import { connect } from 'react-redux';
-
-
+import {getSliderData} from '../redux/actions/sliderActions';
 
 const styles = {
   fontFamily: "sans-serif",
@@ -14,20 +13,11 @@ const styles = {
 };
 
 class CustomizedSlider extends React.Component {
-  // state = {
-  //   value: [1, 100],
-
-    
-  // };
- 
-
-
 
 
 
 render() {
   let arr = this.props.sliderValue;
-
   const onSlide = (render, handle, arr, un, percent) => {
     console.log(arr)
   };
@@ -50,7 +40,7 @@ render() {
        
         {/* console.log({this.props.value}) */}
       </div>
-      {/* <Nouislider start={arr} range={range} tooltips={true} onUpdate={this.onSlide} /> */}
+      <Nouislider start={arr} range={range} tooltips={true} onUpdate={this.onSlide} />
 
     </div>
   );
@@ -59,15 +49,20 @@ render() {
 const mapStateToProps = (state) => {
   
   return {
-    // mapValue: state.mapValue,
-    locationValue:state.locationValue,
-    sliderValue: state.sliderValue
+    sliderValue: state.sliderReducer.sliderValue
       
   }
   
 }
-export default connect(mapStateToProps)(CustomizedSlider)
-// export default CustomizedSlider
+const mapDispatchToProps = (dispatch) => {
+  return {
+    sliders: dispatch(getSliderData()),
+    
+
+  }
+  
+}
+export default connect(mapStateToProps, mapDispatchToProps)(CustomizedSlider)
 
 
 

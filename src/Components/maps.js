@@ -13,11 +13,18 @@ class UgMap extends Component{
   // this.state={feature:this.props.featureState}
 // }
 
-
-       
-    componentWillMount() {
+    // state = {
+    //     lat: 0.32958802605356885,
+    //     lng: 32.34375,
+    //     zoom: 7,
+    //     district: 'Hover over district',
+    //     grids:[]
+    //   }
+      
+    componentDidMount() {
       console.log('first mount')
-      getMapGrids()
+      // getMapGrids()
+      console.log(this.props.locationValue)
     }
     
     // componentWillUpdate(nextProps, nextState) {
@@ -75,39 +82,9 @@ class UgMap extends Component{
        
         // let status = this.state.feature.district;
         // var arr = this.props.mapValue;
-        var arr = this.props.mapGrids;
-        console.log(arr)
-var geojson = {
-  type: "FeatureCollection",
-  features: [],
-};
-
-// for (let i = 0; i < arr.data.len; i++) {
-//   if (window.CP.shouldStopExecution(1)) {
-//     break;
-//   }
-//   geojson.features.push({
-//     "type": "Feature",
-//     "geometry": {
-//       "type": "polygon",
-//       "coordinates": [arr.data[i].wkt_geom]
-//     },
-//     "properties": {
-//       "id": arr.data[i].id,
-//       "left": arr.data[i].left_metrics,
-//       "top": arr.data[i].top_metrics,
-//       "right": arr.data[i].right_metrics,
-//       "bottom":arr.data[i].bottom_metrics,
-//       "rsd_id": arr.data[i].rsd_id,
-//       "gs_id": arr.data[i].gs_id,
-      
-//     }
-//   });
-// }
-
-// window.CP.exitedLoop(1);
-
-// let myobj= JSON.stringify(geojson, null, 2);
+        // var arr = this.props.mapGrids;
+        // console.log(arr);
+        let locationState=this.props.locationValue;
       
         return (
           
@@ -133,22 +110,12 @@ var geojson = {
         {/* {console.log(this.props.locationData)}  */}
         {console.log('in components',this.props.mapGrids)}
           {/* console.log(this.props.locationData[2]); */}
-          
-
-
-            {/* {console.log(this.props.grids())} */}
-
 
             {/* <GeoJSON data={this.props.MapValue} */}
-            <GeoJSON data={this.props.mapGrids}
-            
-         
-          
+            <GeoJSON data={locationState}
           onEachFeature={this.onEachFeature} />
-          
-          {/* {console.log(this.props.grids)} */}
       
-    {/* {console.log(this.props.location)}  */}
+    {console.log(this.props.locationValue)} 
         <Control
           className='info'
           position='topright'>
@@ -167,7 +134,7 @@ const mapStateToProps = (state) => {
     zoom: state.mapReducer.zoom,
     // district: state.district,
     mapGrids: state.mapReducer.mapGrids,
-    // locationValue:state.LocationValue
+    locationValue: state.locationReducer.locationValue
     
   }
 
@@ -175,7 +142,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     grids: dispatch(getMapGrids()),
-    // location: dispatch(getLocation())
+    location: dispatch(getLocation())
 
   }
 
