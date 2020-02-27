@@ -21,8 +21,8 @@ export default function ContainedButtons(props) {
     <div>
       <Button
         id="button"
-        variant="contained"
-        color="primary"
+        // variant="contained"
+        // color="primary"
         className={classes.button}
         onClick={props.click}
       >

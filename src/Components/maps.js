@@ -1,5 +1,7 @@
-import React, {Component} from "react";
-import {Map,TileLayer, Marker, Popup, GeoJSON} from "react-leaflet";
+
+import React, { Component } from "react";
+// import L from "leaflet";
+import { Map, TileLayer, Marker, ZoomControl, GeoJSON } from "react-leaflet";
 import Control from "react-leaflet-control"
 // import  grids from "./uganda_grid_5by5km_noWater_withDistrict.js";
 import { connect } from 'react-redux';
@@ -116,15 +118,24 @@ class UgMap extends Component{
       
         return (
           
+          
           <Map className="map" center={[this.props.lat, this.props.lng]} zoom={this.props.zoom} style={{height:"800px"}}>
+            {/* <ZoomControl position="topleft" /> */}
             <TileLayer
             
             //  attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright"></a> contributors &copy; <a href="https://carto.com/attributions"></a>'
             //  url= 'http://{s}.tile.osm.org/{z}/{x}/{y}.png'
               url='https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png'
-              // minimmum zoom="3"
+              maxzoom="10"
             />
+            <Control position="topleft" >
+        <button 
+          onClick={ () => this.setState({bounds: [51.3, 0.7]}) }
+        >
+          
+        </button>
+      </Control>
             
         {/* {console.log(this.props.locationData)}  */}
         {console.log('in components',this.props.mapGrids)}

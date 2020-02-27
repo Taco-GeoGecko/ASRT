@@ -143,18 +143,12 @@ return (
           </Drawer>
         </Hidden>
       </nav>
-      {/* <div className={classes.content}>
-        <div className={classes.toolbar} />
-      </div> */}
+      
       <UgMap />
       <ExpansionMaps/>
     </div>
     </StylesProvider>
   );
 }
-// Orientation.propTypes = {
-//   // Injected by the documentation to work in an iframe.
-//   // You won't need it on your project.
-//   container: PropTypes.object,
-// };
+
 export default Orientation;

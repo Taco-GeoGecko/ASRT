@@ -18,7 +18,8 @@ const useStyles = makeStyles(theme => ({
   },
   navigation: {
     height: 50,
-    width: 120
+    width: 120,
+    marginLeft: -40
   }
 }));
 
