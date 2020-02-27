@@ -20,7 +20,7 @@ def view(request):
         # executing the query
     cursor.execute("select region,district,rsd_id from project_taco_schema.regional_structure")
 
-    rows=cursor.fetchall()
+    Rows=cursor.fetchall()
     cursor.close()
     connection.close()
-    return Response({'data':rows})
+    return Response({'data':Rows})
