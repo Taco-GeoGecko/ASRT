@@ -28,7 +28,7 @@ export default function ExpansionMaps() {
         side="left"
         arrowsize={20}
         styles={classes.calloutstyles}
-        message="hovering on the map will help you get a district you need in the box at the top right corner on the page."
+        message="This map contains the suitable districts that fit in your criteria of the agricultural indicators after filtering on the sliders. "
       />
     </div>
   );

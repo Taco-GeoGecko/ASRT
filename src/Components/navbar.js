@@ -18,11 +18,12 @@ const useStyles = makeStyles(theme => ({
   },
   navigation: {
     height: 50,
-    width: 120
+    width: 120,
+    marginLeft: -40
   }
 }));
 
-export default function MenuAppBar() {
+export default function MenuAppBar(props) {
   const classes = useStyles();
   return (
     <div className={classes.root}>

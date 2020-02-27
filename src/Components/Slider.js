@@ -14,6 +14,8 @@ const styles = {
 
 class CustomizedSlider extends React.Component {
 
+
+
 render() {
   let arr = this.props.sliderValue;
   const onSlide = (render, handle, arr, un, percent) => {

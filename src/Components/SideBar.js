@@ -10,7 +10,9 @@ import Checkboxes from "./CheckBox";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width: "100%"
+    width: "100%",
+    marginTop: 35,
+  
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),

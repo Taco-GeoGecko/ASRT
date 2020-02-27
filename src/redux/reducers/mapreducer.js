@@ -12,5 +12,6 @@ const mapReducer = (state = AppState.initialMapState, action) => {
       default: return state;
     }
   }
+
   
   export default mapReducer
