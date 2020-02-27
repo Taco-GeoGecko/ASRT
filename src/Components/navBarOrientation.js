@@ -52,7 +52,7 @@ export default function MenuAppBarOrientation() {
           }
           side="bottom"
           styles={classes.calloutstyles}
-          message="Click this home button to return on the home page"
+          message="Click this button to return to the home page"
         />
         <div className={classes.spacing} />
         <Link to="/orientation" className="btn-link">
