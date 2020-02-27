@@ -6,7 +6,7 @@ class PieChartComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            labels: ['a', 'b', 'c', 'd'],
+            labels: ['Iron', 'Copper', 'Boron', 'Phosphorous'],
             datasets: [{
                 data: [100, 400, 600, 1000],
                 backgroundColor: ['red', 'blue', 'green', 'yellow']
