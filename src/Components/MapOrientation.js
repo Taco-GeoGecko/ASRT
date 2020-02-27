@@ -1,6 +1,6 @@
 import React from 'react';
 import UgMap from './maps';
-import Callouts from "./Callout";
+import Callouts from "./callout";
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
@@ -28,7 +28,7 @@ export default function ExpansionMaps() {
         side="left"
         arrowsize={20}
         styles={classes.calloutstyles}
-        message="hovering on the map will help you get a district you need in the box at the top right corner on the page."
+        message="This map shows district boundaries and reflects the  various changes as per the user's filtering via the sliders"
       />
     </div>
   );

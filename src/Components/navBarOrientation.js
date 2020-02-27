@@ -4,7 +4,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import ContainedButtons from "./Button";
 import geoLogo from "../Images/geoLogo.png";
-import Callouts from "./Callout";
+import Callouts from "./callout";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
@@ -19,7 +19,8 @@ const useStyles = makeStyles(theme => ({
   },
   navigation: {
     height: 50,
-    width: 120
+    width: 120,
+    marginLeft: -40
   },
   calloutstyles: {
     height: 100,
@@ -47,11 +48,11 @@ export default function MenuAppBarOrientation() {
         </Typography>
         <Callouts
           myComponent={
-          <ContainedButtons caption="Home" />
+            <Link to="/" className="btn-link"><ContainedButtons caption="Home" /></Link>
           }
           side="bottom"
           styles={classes.calloutstyles}
-          message="Click on this home button to return on the home page"
+          message="Click this home button to return on the home page"
         />
         <div className={classes.spacing} />
         <Link to="/orientation" className="btn-link">

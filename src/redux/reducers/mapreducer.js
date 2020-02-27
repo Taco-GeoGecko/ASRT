@@ -1,14 +1,6 @@
 import {loadGridData} from '../actions/actionTypes/actionTypes';
 import AppState from '../applicationState';
 
-// let initialState={
-//     lat: 0.32958802605356885,
-//     lng: 32.34375,
-//     zoom: 7,
-//     district: 'Hover over district',
-//     value:[],
-// } 
-
 const mapReducer = (state = AppState.initialMapState, action) => {
   switch (action.type) {
       case loadGridData:
@@ -20,5 +12,6 @@ const mapReducer = (state = AppState.initialMapState, action) => {
       default: return state;
     }
   }
+
   
   export default mapReducer
