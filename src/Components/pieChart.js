@@ -1,5 +1,7 @@
 import { Pie } from "react-chartjs-2";
 import React, {Component} from 'react'
+import { connect }  from 'react-redux';
+// import { sliderData } from '../redux/actions/actionTypes';
 
 class PieChartComponent extends Component {
 
