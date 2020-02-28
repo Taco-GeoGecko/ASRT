@@ -2,15 +2,21 @@ import React from 'react';
 import {Bar} from 'react-chartjs-2';
 
 const state = {
-  labels: ['Q1', 'Q2', 'Q3',
-           'Q4'],
+  labels: ['Q1'],
   datasets: [
     {
       label: 'Population',
       backgroundColor: 'rgba(75,192,192,1)',
       borderColor: 'rgba(75,192,192,1)',
       borderWidth: 6,
-      data: [65, 59, 80, 81]
+      data: [85]
+    },
+    {
+      label: 'Population',
+      backgroundColor: 'rgba(75,192,192,1)',
+      borderColor: 'rgba(255, 0, 0, 1)',
+      borderWidth: 6,
+      data: [89]
     }
   ]
 }
