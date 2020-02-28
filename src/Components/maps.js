@@ -21,11 +21,21 @@ class UgMap extends Component{
     //     grids:[]
     //   }
       
-    componentDidMount() {
-      console.log('first mount')
+    // componentDidUpdate() {
+      // console.log('first mount')
       // getMapGrids()
-      console.log(this.props.locationValue)
-    }
+      // console.log(this.props.locationValue)
+      // console.log('in components',this.props.mapGrids)
+     
+      // let  jsonObject = collection.map(JSON.stringify); 
+ 
+      // let  uniqueSet = new Set(jsonObject); 
+      // let uniqueArray = Array.from(uniqueSet).map(JSON.parse); 
+ 
+      //  console.log(typeof(collection[0]));
+       
+       
+    // }
     
     // componentWillUpdate(nextProps, nextState) {
     //   if (nextProps.grids) {
@@ -36,6 +46,10 @@ class UgMap extends Component{
     //   });
     //   }
     // }
+
+    onEachFeature = (feature, layer) => {
+      // console.log(feature)
+    }
 
       MouseOverFeature(e, feature) {
         // {this.state.feature}
@@ -85,47 +99,60 @@ class UgMap extends Component{
         // let status = this.state.feature.district;
         // var arr = this.props.mapValue;
         // var arr = this.props.mapGrids;
-        // console.log(arr);
+        // // console.log(arr);
+     
         let locationState=this.props.locationValue;
-      
-        return (
-          
-          
-          <Map className="map" center={[this.props.lat, this.props.lng]} zoom={this.props.zoom} style={{height:"800px"}}>
-            {/* <ZoomControl position="topleft" /> */}
-            <TileLayer
-            
-            //  attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright"></a> contributors &copy; <a href="https://carto.com/attributions"></a>'
-            //  url= 'http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-              url='https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png'
-              maxzoom="10"
-            />
-            <Control position="topleft" >
-        <button 
-          onClick={ () => this.setState({bounds: [51.3, 0.7]}) }
-        >
-          
-        </button>
-      </Control>
-            
-        {/* {console.log(this.props.locationData)}  */}
-        {console.log('in components',this.props.mapGrids)}
-          {/* console.log(this.props.locationData[2]); */}
 
-            {/* <GeoJSON data={this.props.MapValue} */}
-            <GeoJSON data={locationState}
-          onEachFeature={this.onEachFeature} />
-      
-    {console.log(this.props.locationValue)} 
-        <Control
-          className='info'
-          position='topright'>
-          {/* <div>{grids.features.District}</div> */}
-          <div></div>
+        let collection =this.props.mapGrids;
+
+         if(collection[0]) {
+
+          console.log(collection[0][0])
+           console.log('here')
+           return (
+          
+          
+            <Map className="map" center={[this.props.lat, this.props.lng]} zoom={this.props.zoom} style={{height:"800px"}}>
+              {/* <ZoomControl position="topleft" /> */}
+              <TileLayer
+              
+              //  attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright"></a> contributors &copy; <a href="https://carto.com/attributions"></a>'
+              //  url= 'http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+                url='https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png'
+                maxzoom="10"
+              />
+              <Control position="topleft" >
+          <button 
+            onClick={ () => this.setState({bounds: [51.3, 0.7]}) }
+          >
+            
+          </button>
         </Control>
-      </Map>
-    );
+              
+          {/* {console.log(this.props.locationData)}  */}
+          {/* {console.log('in components',this.props.mapGrids)} */}
+            {/* console.log(this.props.locationData[2]); */}
+  
+              {/* <GeoJSON data={this.props.MapValue} */}
+              <GeoJSON data={collection[0][0]}
+            onEachFeature={this.onEachFeature} />
+        
+      {/* {console.log(this.props.locationValue)}  */}
+          <Control
+            className='info'
+            position='topright'>
+            {/* <div>{grids.features.District}</div> */}
+            <div></div>
+          </Control>
+        </Map>
+      );
+         
+       }else 
+
+       return('hello')
+      
+       
   }
 }
 const mapStateToProps = (state) => {

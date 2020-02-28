@@ -13,6 +13,15 @@ const state = {
       borderColor: 'white',
       borderWidth: 6,
       data: [65, 59, 80, 81]
+    },
+    {
+      label: 'soil moisture',
+      fill: false,
+      lineTension: 0.5,
+      backgroundColor: 'rgba(255,250,250,1)',
+      borderColor: 'red',
+      borderWidth: 6,
+      data: [87, 50, 70, 41]
     }
   ]
 }
