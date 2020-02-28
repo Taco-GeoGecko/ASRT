@@ -76,6 +76,8 @@ class UgMap extends Component{
 
       // }
 
+     
+
     render() {
         // const position = [{this.props.featureState.lat}, {this.props.featureState.lng}]
         // console.log(grids.features[2].properties.DName2019);
@@ -137,6 +139,8 @@ const mapStateToProps = (state) => {
     locationValue: state.locationReducer.locationValue
     
   }
+
+  
 
 }
 const mapDispatchToProps = (dispatch) => {

@@ -22,7 +22,7 @@ def view(request):
     cursor.execute('''SELECT row_to_json(fc) FROM (SELECT 'FeatureCollection' As type, array_to_json(array_agg(f)) 
                       As features FROM (SELECT 'Feature' As type, ST_AsGeoJSON(project_taco_schema.geometric_structure.wkt_geom)
                       ::json As geometry, row_to_json((left_metrics, top_metrics, right_metrics, bottom_metrics, id, rsd_id, gs_id)) 
-                      As properties  FROM project_taco_schema.geometric_structure) As f )  As fc;''')
+                      As properties FROM project_taco_schema.geometric_structure) As f ) As fc;''')
     rows=cursor.fetchone()
     cursor.close()
     connection.close()
