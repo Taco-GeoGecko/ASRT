@@ -13,6 +13,15 @@ const state = {
       borderColor: 'white',
       borderWidth: 6,
       data: [65, 59, 80, 81]
+    },
+    {
+      label: 'vegetation health',
+      fill: false,
+      lineTension: 0.5,
+      backgroundColor: 'rgba(75,192,192,1)',
+      borderColor: 'red',
+      borderWidth: 6,
+      data: [68, 68, 90, 76]
     }
   ]
 }

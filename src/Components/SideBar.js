@@ -71,8 +71,8 @@ export default function ControlledExpansionPanels() {
         <ExpansionPanelDetails>
           <div className={classes.spacing}>
             <CustomizedSlider IndicatorSlider="Soil Copper" />
-            <CustomizedSlider IndicatorSlider="Soil Phospherous" />
-            <CustomizedSlider IndicatorSlider="Soil Pottasium" />
+            <CustomizedSlider IndicatorSlider="Soil Phosphorous" />
+            <CustomizedSlider IndicatorSlider="Soil Potassium" />
             <CustomizedSlider IndicatorSlider="Soil Boron" />
             <CustomizedSlider IndicatorSlider="Soil Aluminium" />
             <CustomizedSlider IndicatorSlider="Soil Iron" />
