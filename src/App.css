@@ -59,35 +59,34 @@
 }
 
 #CHARTS {
-
-  text-align: left;
+  text-align: center;
   margin-bottom: 35px;
-  color: rgb(179, 171, 171);
+  color:#0d0d0d;
   font-size:50px;
 }
 .mega {
-  margin-bottom: 35px;
+  /* margin-bottom: 30px; */
+  margin-top: 15px;
   border: solid;
-  border-color: rgb(18, 18, 19);
-  border-radius: 10%;
-  margin-left: 20px;
-  margin-right: 20px;
-  background-color: rgb(203, 224, 175);
-  box-shadow: indigo;
-
+  border-color: #d3d0d0;
+  border-radius: 10px;
+  margin-left: 40px;
+  margin-right: 40px;
+  /* background-color: #77BB85; */
 
 }
 .chartHeading{
   text-align: center;
   color: rgb(49, 51, 53);
 
+
+} 
+.HR{
+  width:'50%';
+  border-color: #d3d0d0;
 }
-/* .charts {
-  width: 80%;
-} */
-.HR {
-  /* width: 50%; */
-  border: solid 1px rgb(41, 42, 43);
+.charts{
+  width:'100%';
 }
 
 .makeStyles-drawerPaper-6{

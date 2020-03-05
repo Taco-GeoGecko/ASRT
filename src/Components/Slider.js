@@ -2,8 +2,7 @@ import React from "react";
 import Nouislider from "nouislider-react";
 import "nouislider/distribute/nouislider.css";
 import { connect } from 'react-redux';
-import { getSliderData } from '../redux/actions/sliderActions';
-
+import {getSliderData} from '../redux/actions/sliderActions';
 const styles = {
   fontFamily: "sans-serif",
   textAlign: "center",
@@ -57,7 +56,6 @@ const mapStateToProps = (state) => {
   return {
     sliderValue: state.sliderReducer.sliderValue
   }
-
 }
 const mapDispatchToProps = (dispatch) => {
   return {

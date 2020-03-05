@@ -28,7 +28,6 @@ class App extends Component{
                      <Route path="/" exact component={ResponsiveDrawer} />
                      <Route path="/orientation" exact component={Orientation} />
                      <Route path="/analysis" exact component={Analysis} />
-
                      <Route component={notfound} />
                     </Switch>  
                 

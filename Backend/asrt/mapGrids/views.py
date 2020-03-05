@@ -30,3 +30,4 @@ def view(request):
     connection.close()
     return Response({'data':rows})
 
+

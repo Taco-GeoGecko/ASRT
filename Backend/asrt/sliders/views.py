@@ -22,6 +22,7 @@ rainfall,soil_alumi,soil_potas,(lst_jfm+lst_amj+lst_jas+lst_ond)/4,slope,elevati
 land_cover, gs_id from project_taco_schema.agric_indicator where gs_id<10 ''')
 
 
+
     agricRows=cursor.fetchall()
 
 

@@ -6,7 +6,9 @@ const sliderReducer = (state = AppState.initialSliderState, action) => {
       case sliderData:
         return{
           ...state,
+
           sliderValue: action.payload
+
           
         }
       default:
