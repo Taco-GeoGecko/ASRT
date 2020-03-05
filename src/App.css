@@ -16,7 +16,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #2db44b;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -27,7 +27,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #2db44b;
 }
 
 @keyframes App-logo-spin {
@@ -39,22 +39,62 @@
   }
 }
 #button{
-  background-color: rgba(250, 243, 243, 0.603);
+  /* background-color: #616161; */
   width: 100%;
   text-transform: capitalize;
-  border-radius: 15px;
-  border: 1px solid #149685;
-  color: #149685;
+  /* border-radius: 15px; */
+  /* border: 1px solid #2AB34B; */
+  color: #616161;
   }
 #button:hover{
-  background-color: #fff;
-  color: #149685;
-  border-color: #fff;
+  /* background-color: #616161; */
+  color: #616161;
+  /* border-color: #77BB85; */
 }
+
+/* this css is for the charts that were designed by sabbiti */
+
+#whitediv {
+  background-color: #fff;
+}
+
+#CHARTS {
+
+  text-align: center;
+  margin-bottom: 35px;
+  color:#0d0d0d;
+  font-size:50px;
+}
+.mega {
+  /* margin-bottom: 30px; */
+  margin-top: 15px;
+  border: solid;
+  border-color: #d3d0d0;
+  border-radius: 10px;
+  margin-left: 40px;
+  margin-right: 40px;
+  /* background-color: #77BB85; */
+
+}
+
+
+.chartHeading{
+  text-align: center;
+  color: rgb(49, 51, 53);
+
+} 
+.HR{
+  width:'50%';
+  border-color: #d3d0d0;
+}
+.charts{
+  width:'100%';
+}
+
 .makeStyles-drawerPaper-6{
   width: 300px;
   /* background-color: rgb(43, 47, 58); */
-  background-color: #196559;
+  background-color: #e15c26;
 }
 .map{
   height: 700px;
@@ -67,28 +107,56 @@
     width: 50%;
     height: 80%;
   } */
-.MuiPaper-root {
-  background-color: rgb(43, 47, 58);
+
+
+  .MuiPaper-root {
+  background-color: #fff;
+  border: #77bb85  solid 2px;
+  border-top: springgreen;
+  
+
+  
+  
 }
 .MuiAppBar-colorPrimary {
   color: #fff;
-  background-color: rgb(42, 179, 75);
+  background-color: #2AB34B;
+  border: solid #77bb85 1px;
+  position: fixed;
+ 
+  border-radius: 0.5em;
+  
+
 }
+
 
 #indicatorText{
-  margin-top: 15%;
-  color: #fff;
+  
+  color: #616161;
   text-align: center;
-
+background-color:#d0d0d0 ;
+border-radius: 0.5em;
+padding-top: 1em;
+margin-top: 20px;
+margin-right: 10px;
+margin-left: 10px;
 }
 .Icons{
-  padding-top: 250px;
-  /* padding-left: 100px; */
-  /* font-size: 50px; */
+  
   color: #fff;
-  display: inline;
+  /* display: inline; */
+  position: relative;
+  bottom: -4em;
+  background-color: #d0d0d0;
+  padding: 0.7em;
+  border-radius: 0.5em;
+  margin-right: 10px;
+  margin-left: 10px;
+ 
 
 }
+ 
+
 #twitter{
   padding-right: 140px;
   color: blue;
@@ -99,18 +167,20 @@
   color: blue;
 }
 .MuiExpansionPanel-rounded{
-  background-color: rgb(87, 90, 99);
+  background-color: #2AB34B;
   color: #fff;
   margin: 2%;
+  
+ 
 }
 .MuiExpansionPanel-rounded:first-child {
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
 }
-.MuiIconButton-root {
-  color: #fff;
+/* .MuiIconButton-root {
+  /* color: #fff; */
  
-}
+/* } */ */
 
 .makeStyles-heading-128{
   font-size: large;

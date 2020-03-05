@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import ResponsiveDrawer from './Components/drawer';
 import Orientation from './Components/orientation';
+import Analysis from './Components/Analysis';
+// import ResponsiveDrawer from './Components/drawer';
 import {
     BrowserRouter as Router,
     Switch,
@@ -25,7 +27,8 @@ class App extends Component{
                      <Switch>
                      <Route path="/" exact component={ResponsiveDrawer} />
                      <Route path="/orientation" exact component={Orientation} />
-                    <Route component={notfound} />
+                     <Route path="/analysis" exact component={Analysis} />
+                     <Route component={notfound} />
                     </Switch>  
                 
             </div>
@@ -36,5 +39,3 @@ class App extends Component{
 }
 
 export default App;
-
-

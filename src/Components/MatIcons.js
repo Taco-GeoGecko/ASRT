@@ -10,13 +10,16 @@ import { blue} from "@material-ui/core/colors";
 const useStyles = makeStyles(theme => ({
   horizontalSpacing: {
     marginLeft: 5,
+    marginRight:20,
     
   },
   navigation: {
     height: 20,
+    // marginRight:20,
 
     width: 25,
-    marginLeft: "5%"
+    marginLeft: "5%",
+    
   }
 }));
 
@@ -24,17 +27,20 @@ export default function MatIcons() {
   const classes = useStyles();
   return (
     <div className="Icons">
-      <a target="_blank" rel="noopener noreferrer" href="https://www.geogecko.com/">
+      
+      <a target="_blank" rel="noopener noreferrer" href="https://www.geogecko.com/"> 
         <span className={classes.horizontalSpacing}>FAQS</span>
       </a>
 
-      <a target="_blank" rel="noopener noreferrer" href="https://www.geogecko.com/">
-        <span className={classes.horizontalSpacing}>Feedback</span>
+
+     <a target="_blank" rel="noopener noreferrer" href="https://www.geogecko.com/">
+        <span className={classes.horizontalSpacing} >Feedback</span>
       </a>
+    
 
       <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/geogecko">
         <TwitterIcon
-          className={classes.horizontalSpacing}
+          className={classes.navigation}
           style={{ color: blue[500] }}
         />
       </a>
