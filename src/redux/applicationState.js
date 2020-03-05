@@ -13,6 +13,6 @@ const AppState={
         sliderValue:[1, 100],
         // onslide:[]
         },
-    
+
 }
 export default AppState;

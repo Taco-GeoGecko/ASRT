@@ -8,8 +8,10 @@ from django.http import JsonResponse
 import postgis
 @api_view(['GET'])
 def view(request):
-        # establishing a connection
-    connection = psycopg2.connect(user = "postgres",
+    
+#     # establishing a connection
+    connection = psycopg2.connect(
+                                    user = "postgres",
                                     password = "508282044",
                                     host = "127.0.0.1",
                                     port = "5432",
