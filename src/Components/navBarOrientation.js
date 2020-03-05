@@ -4,7 +4,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import ContainedButtons from "./Button";
 import geoLogo from "../Images/geoLogo.png";
-import Callouts from "./Callout";
+import Callouts from "./callout";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
@@ -52,7 +52,9 @@ export default function MenuAppBarOrientation() {
           }
           side="bottom"
           styles={classes.calloutstyles}
+
           message="Click this button to return to the home page"
+
         />
         <div className={classes.spacing} />
         <Link to="/orientation" className="btn-link">

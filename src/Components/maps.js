@@ -11,22 +11,7 @@ class UgMap extends Component{
 // constructor(props){
 //   super(props);
   // this.state={feature:this.props.featureState}
-// }
-
-    // state = {
-    //     lat: 0.32958802605356885,
-    //     lng: 32.34375,
-    //     zoom: 7,
-    //     district: 'Hover over district',
-    //     grids:[]
-    //   }
-      
-    componentDidMount() {
-      console.log('first mount')
-      // getMapGrids()
-      console.log(this.props.locationValue)
-    }
-    
+// }    
     // componentWillUpdate(nextProps, nextState) {
     //   if (nextProps.grids) {
     //     console.log('next state')
@@ -36,6 +21,11 @@ class UgMap extends Component{
     //   });
     //   }
     // }
+
+
+    onEachFeature = (feature, layer) => {
+      // console.log(feature)
+    }
 
       MouseOverFeature(e, feature) {
         // {this.state.feature}
@@ -83,6 +73,37 @@ class UgMap extends Component{
         // let status = this.state.feature.district;
         // var arr = this.props.mapValue;
         // var arr = this.props.mapGrids;
+        // // console.log(arr);
+     
+        let locationState=this.props.locationValue;
+
+        let collection =this.props.mapGrids;
+
+         if(collection[0]) {
+
+          console.log(collection[0][0])
+          console.log(this.props.locationValue)
+           console.log('here')
+           return (
+          
+          
+            <Map className="map" center={[this.props.lat, this.props.lng]} zoom={this.props.zoom} style={{height:"800px"}}>
+              {/* <ZoomControl position="topleft" /> */}
+              <TileLayer
+              
+              //  attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright"></a> contributors &copy; <a href="https://carto.com/attributions"></a>'
+              //  url= 'http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+                url='https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png'
+                maxzoom="10"
+              />
+              <Control position="topleft" >
+          <button 
+            onClick={ () => this.setState({bounds: [51.3, 0.7]}) }
+          >
+            
+          </button>
+
         // console.log(arr);
         let locationState=this.props.locationValue;
       
@@ -120,8 +141,30 @@ class UgMap extends Component{
           {/* <div>{grids.features.District}</div> */}
           <div></div>
         </Control>
-      </Map>
-    );
+              
+          {/* {console.log(this.props.locationData)}  */}
+          {/* {console.log('in components',this.props.mapGrids)} */}
+            {/* console.log(this.props.locationData[2]); */}
+  
+              {/* <GeoJSON data={this.props.MapValue} */}
+              <GeoJSON data={collection[0][0]}
+            onEachFeature={this.onEachFeature} />
+        
+      {/* {console.log(this.props.locationValue)}  */}
+          <Control
+            className='info'
+            position='topright'>
+            {/* <div>{grids.features.District}</div> */}
+            <div></div>
+          </Control>
+        </Map>
+      );
+         
+       }else 
+
+       return('hello')
+      
+       
   }
 }
 const mapStateToProps = (state) => {

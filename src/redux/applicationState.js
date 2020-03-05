@@ -10,11 +10,8 @@ const AppState={
         locationValue:[] 
         },
     initialSliderState:{
-        sliderValue:[1, 100],
-        // onslide:[]
-        },
 
-       
-    
+        sliderValue:[1, 100]
+        },   
 }
 export default AppState;

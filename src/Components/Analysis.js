@@ -1,5 +1,4 @@
 import React from "react";
-
 import AppBar from "@material-ui/core/AppBar";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Drawer from "@material-ui/core/Drawer";
@@ -11,7 +10,6 @@ import Toolbar from "@material-ui/core/Toolbar";
 import { makeStyles, useTheme, StylesProvider } from "@material-ui/core/styles";
 import Divider from "@material-ui/core/Divider";
 import MatIcons from "./MatIcons";
-
 import PrimarySearchAppBar from "./navbar";
 import "../App.css";
 import UgMap from "./maps";
@@ -21,6 +19,7 @@ import Ndvilinegraph from "./ndvi-linegraph";
 import Ndwilinegraph from "./ndwi-linegraph";
 import Population from "./populationBarchart";
 import Lst from "./lst-Linegraph";
+
 
 const drawerWidth = 650;
 const useStyles = makeStyles(theme => ({
@@ -129,8 +128,6 @@ function Analysis() {
                     <h1 id="CHARTS">CHARTS</h1>
                   </small>
                 </div>
-
-                
                 <div id="PIECHART">
                   <PieChartComponent />
                 </div>
@@ -154,7 +151,6 @@ function Analysis() {
                 <div id="POPULATION">
                   <Population />
                 </div>
-                
 
                 <Divider />
                 <MatIcons />
@@ -170,11 +166,12 @@ function Analysis() {
               >
                 <div className={classes.toolbar} />
                 <div id="indicatorText">
+<
                   <small>
                   <h1 id="CHARTS">CHARTS</h1>
                   </small>
                 </div>
-                
+
                 {/* <ControlledExpansionPanels /> */}
                 <div id="PIECHART">
                   <PieChartComponent />
@@ -206,12 +203,9 @@ function Analysis() {
             </Hidden>
           </nav>
         </div>
-        
-
         <UgMap />
       </div>
     </StylesProvider>
   );
 }
-
 export default Analysis;

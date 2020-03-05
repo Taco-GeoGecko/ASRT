@@ -5,7 +5,6 @@ export const getSliderData=()=>{
         return(dispatch)=>{
         axios.get(sliderUrl)  
         .then(response=>{
-            // console.log(response.data)
             dispatch({
             type: sliderData,
             payload: response.data

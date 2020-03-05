@@ -6,6 +6,7 @@ const state = {
            'Q4'],
   datasets: [
     {
+
       label: 'National soil moisture',
       fill: false,
       // lineTension: 0.5,
@@ -31,7 +32,9 @@ export default class Ndwilinegraph extends React.Component {
     return (
       <div className="mega">
         <div className="charts">
+
         <h5 className="chartHeading">Soil Moisture</h5>
+
         <hr className="HR"/>
         <Line
           data={state}
@@ -47,8 +50,10 @@ export default class Ndwilinegraph extends React.Component {
             scales: {
               yAxes: [{
                   gridLines: {
+
                       color: '#929292',
                       height:100
+
                   }
               }],
               xAxes: [{

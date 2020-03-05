@@ -59,7 +59,6 @@
 }
 
 #CHARTS {
-
   text-align: center;
   margin-bottom: 35px;
   color:#0d0d0d;
@@ -76,11 +75,10 @@
   /* background-color: #77BB85; */
 
 }
-
-
 .chartHeading{
   text-align: center;
   color: rgb(49, 51, 53);
+
 
 } 
 .HR{

@@ -3,7 +3,6 @@ import Nouislider from "nouislider-react";
 import "nouislider/distribute/nouislider.css";
 import { connect } from 'react-redux';
 import {getSliderData} from '../redux/actions/sliderActions';
-
 const styles = {
   fontFamily: "sans-serif",
   textAlign: "center",
@@ -11,56 +10,57 @@ const styles = {
   marginLeft: "10px",
   marginTop: "60px"
 };
-
 class CustomizedSlider extends React.Component {
-
-
-
-render() {
-  let arr = this.props.sliderValue;
-  const onSlide = (render, handle, arr, un, percent) => {
-    console.log(arr)
+  onSlide = (render, handle, value, un, percent) => {
+    console.log(value)
   };
-// var max2=Math.max(...arr.agric_data)
-// console.log(max2)
-// var min2=Math.min(...arr.agric_data)
-// console.log(min2)
-// // let valu=[min2, max2]
-// let {value}=this.state;
-  let {MinValue, MaxValue} = this.props;
-  MinValue = MinValue ? MinValue : 1
-  MaxValue = MaxValue ? MaxValue : 100
-  const range = { min: MinValue, max: MaxValue }
-// var arr = this.props.mapValue;
-// console.log(arr)
-  return (
-    <div style={styles}>
-      <div style={{ textAlign: "center", marginBottom: 40 }}>
-        {this.props.IndicatorSlider}
-       
-        {/* console.log({this.props.value}) */}
-      </div>
-      <Nouislider start={arr} range={range} tooltips={true} onUpdate={this.onSlide} />
+  render() {
+    let arr = this.props.sliderValue;
+    let arr2 = arr.agridata;
+    function arrayColumn(arr, n) {
+      if (arr && typeof arr !== undefined) {
+        let y = arr.map(x => x[n]);
+        let max = Math.max(...y);
+        let min = Math.min(...y);
+        return ([min, max]);
+      }
+    }
+    let twoDimensionalArray = arr2;
+    console.log(twoDimensionalArray)
+    let { sliderKey } = this.props;
+    console.log(this.props);
+    let result = [1, 100];
+    result = arrayColumn(twoDimensionalArray, sliderKey);
+    console.log(result)
+    let value = [1, 100];
+    if (result && typeof result !== undefined) {
+      value = result;
+    }
+    let { MinValue, MaxValue } = this.props;
+    let range = { min: 1, max: 100 };
+    if (value) {
+      range = { min: value[0], max: value[1] }
+    }
+    return (
+      <div style={styles}>
+        <div style={{ textAlign: "center", marginBottom: 40 }}>
+          {this.props.IndicatorSlider}
+        </div>
+        <Nouislider start={value} key={sliderKey} range={range} tooltips={true} onChange={this.onSlide} />
 
-    </div>
-  );
-}
+      </div>
+    );
+  }
 }
 const mapStateToProps = (state) => {
-  
   return {
     sliderValue: state.sliderReducer.sliderValue
-      
   }
-  
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    sliders: dispatch(getSliderData()),
-    
-
+    sliders: dispatch(getSliderData())
   }
-  
 }
 export default connect(mapStateToProps, mapDispatchToProps)(CustomizedSlider)
 
