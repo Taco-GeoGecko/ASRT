@@ -38,7 +38,7 @@ onEachFeature = (feature, layer) => {
 };
 
 
-      MouseOverFeature(e, feature) {
+      onClick(e, feature) {
         // feature=this.state.feature
        
         this.setState({
