@@ -100,11 +100,9 @@ class UgMap extends Component{
               maxzoom="10"
             />
             <Control position="topleft" >
-        <button 
-          onClick={ () => this.setState({bounds: [51.3, 0.7]}) }
-        >
+        
           
-        </button>
+        
       </Control>
             
         {/* {console.log(this.props.locationData)}  */}

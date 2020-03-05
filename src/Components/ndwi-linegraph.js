@@ -6,20 +6,20 @@ const state = {
            'Q4'],
   datasets: [
     {
-      label: 'soil moisture',
+      label: 'National soil moisture',
       fill: false,
-      lineTension: 0.5,
+      // lineTension: 0.5,
       backgroundColor: 'rgba(255,250,250,1)',
-      borderColor: 'white',
+      borderColor: '#77BB85',
       borderWidth: 6,
       data: [65, 59, 80, 81]
     },
     {
-      label: 'soil moisture',
+      label: 'District soil moisture',
       fill: false,
-      lineTension: 0.5,
+      // lineTension: 0.5,
       backgroundColor: 'rgba(255,250,250,1)',
-      borderColor: 'red',
+      borderColor: '#616161',
       borderWidth: 6,
       data: [87, 50, 70, 41]
     }
@@ -31,7 +31,7 @@ export default class Ndwilinegraph extends React.Component {
     return (
       <div className="mega">
         <div className="charts">
-        <h1 className="chartHeading">soil moisture</h1>
+        <h5 className="chartHeading">Soil Moisture</h5>
         <hr className="HR"/>
         <Line
           data={state}
@@ -47,7 +47,8 @@ export default class Ndwilinegraph extends React.Component {
             scales: {
               yAxes: [{
                   gridLines: {
-                      color: 'white'
+                      color: '#929292',
+                      height:100
                   }
               }],
               xAxes: [{

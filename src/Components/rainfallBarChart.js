@@ -20,7 +20,7 @@ export default class Rainfall extends React.Component {
     return (
       <div className = "mega">
         <div className="charts">
-        <h1 className="chartHeading">rainfall</h1>
+        <h5 className="chartHeading">Rainfall</h5>
         <hr className="HR"/>
         
         <Bar
@@ -38,7 +38,7 @@ export default class Rainfall extends React.Component {
             scales: {
               yAxes: [{
                   gridLines: {
-                      color: 'white'
+                      color: '#929292'
                   }
               }],
               xAxes: [{
