@@ -106,6 +106,7 @@ class UgMap extends Component{
          if(collection[0]) {
 
           console.log(collection[0][0])
+          console.log(this.props.locationValue)
            console.log('here')
            return (
           

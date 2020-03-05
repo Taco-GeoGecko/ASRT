@@ -52,7 +52,7 @@ export default function ControlledExpansionPanels() {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <div className={classes.spacing}>
-            <CustomizedSlider IndicatorSlider="" />
+            <CustomizedSlider IndicatorSlider="" sliderKey={0} />
           </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>
@@ -70,13 +70,13 @@ export default function ControlledExpansionPanels() {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <div className={classes.spacing}>
-            <CustomizedSlider IndicatorSlider="Soil Copper" />
-            <CustomizedSlider IndicatorSlider="Soil Phosphorous" />
-            <CustomizedSlider IndicatorSlider="Soil Potassium" />
-            <CustomizedSlider IndicatorSlider="Soil Boron" />
-            <CustomizedSlider IndicatorSlider="Soil Aluminium" />
-            <CustomizedSlider IndicatorSlider="Soil Iron" />
-            <CustomizedSlider IndicatorSlider="Soil Magnesium" />
+            <CustomizedSlider IndicatorSlider="Soil Copper" sliderKey={1} />
+            <CustomizedSlider IndicatorSlider="Soil Phosphorous" sliderKey={2} />
+            <CustomizedSlider IndicatorSlider="Soil Potassium" sliderKey={3} />
+            <CustomizedSlider IndicatorSlider="Soil Boron" sliderKey={4} />
+            <CustomizedSlider IndicatorSlider="Soil Aluminium" sliderKey={5} />
+            <CustomizedSlider IndicatorSlider="Soil Iron" sliderKey={6} />
+            <CustomizedSlider IndicatorSlider="Soil Magnesium" sliderKey={7} />
           </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>
@@ -96,8 +96,8 @@ export default function ControlledExpansionPanels() {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <div className={classes.spacing}>
-            <CustomizedSlider IndicatorSlider="Soil Moisture" />
-            <CustomizedSlider IndicatorSlider="Rainfall" />
+            <CustomizedSlider IndicatorSlider="Soil Moisture" sliderKey={8} />
+            <CustomizedSlider IndicatorSlider="Rainfall" sliderKey={9} />
           </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>
@@ -114,8 +114,8 @@ export default function ControlledExpansionPanels() {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <div className={classes.spacing}>
-            <CustomizedSlider IndicatorSlider="Vegetation health" />
-            <Checkboxes IndicatorSlider="Land cover" />
+            <CustomizedSlider IndicatorSlider="Vegetation health" sliderKey={10} />
+            <Checkboxes IndicatorSlider="Land cover" sliderKey={11} />
           </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>
@@ -133,9 +133,9 @@ export default function ControlledExpansionPanels() {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
         <div className={classes.spacing}>
-            <CustomizedSlider IndicatorSlider="Slope" MinValue={0} MaxValue={20} />
+            <CustomizedSlider IndicatorSlider="Slope" sliderKey={12} />
 
-            <CustomizedSlider IndicatorSlider="Elevation" MinValue={100} MaxValue={5000} />
+            <CustomizedSlider IndicatorSlider="Elevation" sliderKey={13} />
           </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>
@@ -154,7 +154,7 @@ export default function ControlledExpansionPanels() {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <div className={classes.spacing}>
-            <CustomizedSlider IndicatorSlider="" MinValue={10} MaxValue={30} />
+            <CustomizedSlider IndicatorSlider="" MinValue={10} MaxValue={30} sliderKey={14} />
           </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>
