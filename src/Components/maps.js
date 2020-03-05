@@ -28,7 +28,7 @@ handleClick(e){
 onEachFeature = (feature, layer) => {
   console.log('onEachFeature fired: ');
   layer.on({
-    mouseover: (e) => this.MouseOverFeature(e, feature),
+    mouseover: (e) => this.MouseOverFeature(e, feature)
     // mouseout: (e) => this.MouseOutFeature(e, feature)
 
 
@@ -38,14 +38,14 @@ onEachFeature = (feature, layer) => {
 };
 
 
-      onClick(e, feature) {
+      MouseOverFeature(e, feature) {
         // feature=this.state.feature
        
         this.setState({
           lat: this.props.lat,
           lng: this.props.lng,
           zoom: this.props.zoom,
-          district: this.props.locationValue.data,
+          district: this.props.locationValue
         }
 
         )
