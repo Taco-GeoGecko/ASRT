@@ -20,7 +20,7 @@ render() {
   let arr = this.props.sliderValue;
   const onSlide = (render, handle, arr, un, percent) => {
     console.log(arr)
-  };
+  }; 
 // var max2=Math.max(...arr.agric_data)
 // console.log(max2)
 // var min2=Math.min(...arr.agric_data)

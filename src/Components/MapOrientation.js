@@ -1,6 +1,6 @@
 import React from 'react';
 import UgMap from './maps';
-import Callouts from "./Callout";
+import Callouts from "./callout";
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
@@ -28,7 +28,7 @@ export default function ExpansionMaps() {
         side="left"
         arrowsize={20}
         styles={classes.calloutstyles}
-        message="This map contains the suitable districts that fit in your criteria of the agricultural indicators after filtering on the sliders. "
+        message="This map shows district boundaries and reflects the  various changes as per the user's filtering via the sliders"
       />
     </div>
   );
