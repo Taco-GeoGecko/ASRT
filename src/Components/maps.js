@@ -24,8 +24,8 @@ class UgMap extends Component {
   onEachFeature = (feature, layer) => {
     console.log("onEachFeature fired: ");
     layer.on({
-      mouseover: e => this.MouseOverFeature(e, feature)
-      // mouseout: (e) => this.MouseOutFeature(e, feature)
+      mouseover: (e) => this.MouseOverFeature(e, feature),
+      mouseout: (e)=> this.MouseOutFeature(e, feature)
     });
   };
 
@@ -43,8 +43,8 @@ class UgMap extends Component {
 onEachFeature = (feature, layer) => {
   console.log('onEachFeature fired: ');
   layer.on({
-    mouseover: (e) => this.MouseOverFeature(e, feature)
-    // mouseout: (e) => this.MouseOutFeature(e, feature)
+    mouseover: (e) => this.MouseOverFeature(e, feature),
+    mouseout: (e) => this.MouseOutFeature(e, feature)
 
     // feature.showPopup();
   })}
@@ -130,7 +130,9 @@ console.log(this.props.locationValue)
 
           {/* {console.log(this.props.locationValue.data)}  */}
           {/* {console.log(this.props.district)} */}
-          <Control className="info" position="topright">
+          <Control 
+          className="info"
+          position="topright">
             {/* <div>{this.props.locationValue}</div> */}
             <div></div>
           </Control>
