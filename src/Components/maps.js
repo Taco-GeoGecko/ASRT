@@ -38,18 +38,18 @@ class UgMap extends Component {
       zoom: this.props.zoom,
       district: this.props.locationValue.data
     });
-
-    e.target.setStyle({
-      // fillColor: '#000000',
-      // fillOpacity: 0.8,
-    });
-    // status = 'hello'
-    console.log(feature);
-
-    // feature.showPopup();
   }
 
-  MouseOutFeature(e, feature) {
+onEachFeature = (feature, layer) => {
+  console.log('onEachFeature fired: ');
+  layer.on({
+    mouseover: (e) => this.MouseOverFeature(e, feature)
+    // mouseout: (e) => this.MouseOutFeature(e, feature)
+
+    // feature.showPopup();
+  })}
+
+  MouseOutFeature(e, feature){
     this.setState({
       lat: this.props.lat,
       lng: this.props.lng,
@@ -98,28 +98,29 @@ console.log(this.props.locationValue)
       // console.log(collection[0][0])
       // console.log(this.props.locationValue)
       //  console.log('here')
-      return (
-        <Map
-          className="map"
-          center={[this.props.lat, this.props.lng]}
-          zoom={this.props.zoom}
-          style={{ height: "800px" }}
-          onClick={this.handleClick}
-        >
-          {/* <ZoomControl position="topleft" /> */}
-          <TileLayer
-            //  attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright"></a> contributors &copy; <a href="https://carto.com/attributions"></a>'
-            //  url= 'http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-            url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
-            maxzoom="10"
-          />
-          <Control position="topleft">
-            <button
-              onClick={() => this.setState({ bounds: [51.3, 0.7] })}
-            ></button>
-          </Control>
+     
 
+           return (
+          
+          
+            <Map className="map" center={[this.props.lat, this.props.lng]} zoom={this.props.zoom} style={{height:"800px"}} onClick={this.handleClick}>
+              {/* <ZoomControl position="topleft" /> */}
+              <TileLayer
+              
+              //  attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright"></a> contributors &copy; <a href="https://carto.com/attributions"></a>'
+              //  url= 'http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+                url='https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png'
+                maxzoom="10"
+              />
+              <Control position="topleft" >
+          <button 
+            onClick={ () => this.setState({bounds: [51.3, 0.7]}) }
+          >
+            
+          </button>
+        </Control>
+              
           {/* {console.log(this.props.locationData)}  */}
           {/* {console.log('in components',this.props.mapGrids)} */}
           {/* console.log(this.props.locationData[2]); */}
@@ -137,7 +138,7 @@ console.log(this.props.locationValue)
       );
     } else return "hello";
   }
-}
+} 
 const mapStateToProps = state => {
   return {
     lat: state.mapReducer.lat,
