@@ -29,7 +29,7 @@ class CustomizedSlider extends React.Component {
     let twoDimensionalArray = arr2;
     console.log(twoDimensionalArray)
     let { sliderKey } = this.props;
-    console.log(this.props);
+    // console.log(this.props);
     let result = [1, 100];
     result = arrayColumn(twoDimensionalArray, sliderKey);
     console.log(result)
@@ -37,7 +37,7 @@ class CustomizedSlider extends React.Component {
     if (result && typeof result !== undefined) {
       value = result;
     }
-    let { MinValue, MaxValue } = this.props;
+    // let { MinValue, MaxValue } = this.props;
     let range = { min: 1, max: 100 };
     if (value) {
       range = { min: value[0], max: value[1] }

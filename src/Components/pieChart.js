@@ -1,6 +1,8 @@
 import { Pie } from "react-chartjs-2";
 import React, {Component} from 'react'
 import { connect }  from 'react-redux';
+import {getSliderData} from '../redux/actions/sliderActions';
+
 // import { sliderData } from '../redux/actions/actionTypes';
 
 class PieChartComponent extends Component {
@@ -18,6 +20,17 @@ class PieChartComponent extends Component {
     }
 
     render() {
+    
+        // let arr = this.props.sliderValue;
+//   const onSlide = (render, handle, arr, un, percent) => {
+//     console.log(arr)
+//   };
+
+//   let {MinValue, MaxValue} = this.props;
+//   MinValue = MinValue ? MinValue : 1
+//   MaxValue = MaxValue ? MaxValue : 100
+//   const range = { min: MinValue, max: MaxValue }
+
         return (
             <div className = "mega">
                 
@@ -42,4 +55,21 @@ class PieChartComponent extends Component {
     }
 }
 
-export default PieChartComponent
+const mapStateToProps = (state) => {
+  
+    return {
+      sliderValue: state.sliderValue
+        
+    }
+    
+  }
+  const mapDispatchToProps = (dispatch) => {
+    return {
+      sliders: dispatch(getSliderData()),
+      
+  
+    }
+    
+  }
+
+export default connect (mapStateToProps,mapDispatchToProps)(PieChartComponent)

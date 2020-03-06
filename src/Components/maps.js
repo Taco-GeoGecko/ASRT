@@ -1,178 +1,157 @@
 import React, { Component } from "react";
 // import L from "leaflet";
 import { Map, TileLayer, Marker, ZoomControl, GeoJSON } from "react-leaflet";
-import Control from "react-leaflet-control"
-// import  grids from "./uganda_grid_5by5km_noWater_withDistrict.js";
-import { connect } from 'react-redux';
-import {getMapGrids} from '../redux/actions/mapAction';
-import {getLocation} from '../redux/actions/locationActions';
+import Control from "react-leaflet-control";
+import grids from "./uganda_grid_5by5km_noWater_withDistrict.js";
+import { connect } from "react-redux";
+import { getMapGrids } from "../redux/actions/mapAction";
+import { getLocation } from "../redux/actions/locationActions";
 
-class UgMap extends Component{
-// constructor(props){
-//   super(props);
-  // this.state={feature:this.props.featureState}
-// }
+class UgMap extends Component {
+  constructor(props) {
+    super(props);
+    // this.state={feature:[this.props.lat, this.props.lng]}
+    this.state = {
+      currentPos: null
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
 
-    // state = {
-    //     lat: 0.32958802605356885,
-    //     lng: 32.34375,
-    //     zoom: 7,
-    //     district: 'Hover over district',
-    //     grids:[]
-    //   }
-      
-    // componentDidUpdate() {
-      // console.log('first mount')
-      // getMapGrids()
+  handleClick(e) {
+    this.setState({ currentPos: e.latlng });
+  }
+
+  onEachFeature = (feature, layer) => {
+    console.log("onEachFeature fired: ");
+    layer.on({
+      mouseover: e => this.MouseOverFeature(e, feature)
+      // mouseout: (e) => this.MouseOutFeature(e, feature)
+    });
+  };
+
+  MouseOverFeature(e, feature) {
+    // feature=this.state.feature
+
+    this.setState({
+      lat: this.props.lat,
+      lng: this.props.lng,
+      zoom: this.props.zoom,
+      district: this.props.locationValue.data
+    });
+
+    e.target.setStyle({
+      // fillColor: '#000000',
+      // fillOpacity: 0.8,
+    });
+    // status = 'hello'
+    console.log(feature);
+
+    // feature.showPopup();
+  }
+
+  MouseOutFeature(e, feature) {
+    this.setState({
+      lat: this.props.lat,
+      lng: this.props.lng,
+      zoom: this.props.zoom,
+      district: this.props.district
+    });
+    e.target.setStyle({
+      // fillColor: '#ffffff',
+      // fillOpacity: 1,
+    });
+    // status = 'hello'
+    console.log(feature);
+    // feature.showPopup();
+  }
+
+  // handleMasaka = () => {
+  //   return districts.features[0].properties.DName2016;
+
+  // }
+
+  handleClick = e => {
+    // console.log(e);
+    this.setState({
+      lat: this.props.lat,
+      lng: this.props.lng,
+      zoom: this.props.zoom,
+      district: this.props.locationValue
+    });
+console.log(this.props.locationValue)
+    const { lat, lng } = e.latlng;
+    console.log(lat, lng);
+  };
+
+  render() {
+    // const position = [{this.props.featureState.lat}, {this.props.featureState.lng}]
+    // console.log(grids.features[2].properties.DName2019);
+
+    // let status = this.state.feature.district;
+    // var arr = this.props.mapValue;
+    // var arr = this.props.mapGrids;
+    // // console.log(arr);
+
+    let collection = this.props.mapGrids;
+
+    if (collection[0]) {
+      // console.log(collection[0][0])
       // console.log(this.props.locationValue)
-      // console.log('in components',this.props.mapGrids)
-     
-      // let  jsonObject = collection.map(JSON.stringify); 
- 
-      // let  uniqueSet = new Set(jsonObject); 
-      // let uniqueArray = Array.from(uniqueSet).map(JSON.parse); 
- 
-      //  console.log(typeof(collection[0]));
-       
-       
-    // }
-    
-    // componentWillUpdate(nextProps, nextState) {
-    //   if (nextProps.grids) {
-    //     console.log('next state')
-    //     this.setState({
-    //       ...this.state,
-    //       grids: this.props.grids
-    //   });
-    //   }
-    // }
+      //  console.log('here')
+      return (
+        <Map
+          className="map"
+          center={[this.props.lat, this.props.lng]}
+          zoom={this.props.zoom}
+          style={{ height: "800px" }}
+          onClick={this.handleClick}
+        >
+          {/* <ZoomControl position="topleft" /> */}
+          <TileLayer
+            //  attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright"></a> contributors &copy; <a href="https://carto.com/attributions"></a>'
+            //  url= 'http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+            url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
+            maxzoom="10"
+          />
+          <Control position="topleft">
+            <button
+              onClick={() => this.setState({ bounds: [51.3, 0.7] })}
+            ></button>
+          </Control>
 
-    onEachFeature = (feature, layer) => {
-      // console.log(feature)
-    }
-
-      MouseOverFeature(e, feature) {
-        // {this.state.feature}
-
-        e.target.setStyle({
-          // fillColor: '#000000',
-          // fillOpacity: 0.8,
-        })
-        // status = 'hello'
-        // console.log(feature)
-       
-
-        // feature.showPopup();
-      }
-      
-      MouseOutFeature(e, feature) {
-      //   this.setState({
-      //     lat: 0.32958802605356885,
-      //     lng: 32.34375,
-      //     zoom: 7,
-      //     district: 'Hover over district',
-          
-      //   }
-
-        // )
-        e.target.setStyle({
-          // fillColor: '#ffffff',
-          // fillOpacity: 1, 
-        })       
-        // status = 'hello'
-        // console.log(feature)
-        // feature.showPopup();
-      }
-
-
-      // handleMasaka = () => {
-      //   return districts.features[0].properties.DName2016;
-
-      // }
-
-    render() {
-        // const position = [{this.props.featureState.lat}, {this.props.featureState.lng}]
-        // console.log(grids.features[2].properties.DName2019);
-       
-        // let status = this.state.feature.district;
-        // var arr = this.props.mapValue;
-        // var arr = this.props.mapGrids;
-        // // console.log(arr);
-     
-        let locationState=this.props.locationValue;
-
-        let collection =this.props.mapGrids;
-
-         if(collection[0]) {
-
-          console.log(collection[0][0])
-          console.log(this.props.locationValue)
-           console.log('here')
-           return (
-          
-          
-            <Map className="map" center={[this.props.lat, this.props.lng]} zoom={this.props.zoom} style={{height:"800px"}}>
-              {/* <ZoomControl position="topleft" /> */}
-              <TileLayer
-              
-              //  attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright"></a> contributors &copy; <a href="https://carto.com/attributions"></a>'
-              //  url= 'http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-                url='https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png'
-                maxzoom="10"
-              />
-              <Control position="topleft" >
-          <button 
-            onClick={ () => this.setState({bounds: [51.3, 0.7]}) }
-          >
-            
-          </button>
-        </Control>
-              
           {/* {console.log(this.props.locationData)}  */}
           {/* {console.log('in components',this.props.mapGrids)} */}
-            {/* console.log(this.props.locationData[2]); */}
-  
-              {/* <GeoJSON data={this.props.MapValue} */}
-              <GeoJSON data={collection[0][0]}
-            onEachFeature={this.onEachFeature} />
-        
-      {/* {console.log(this.props.locationValue)}  */}
-          <Control
-            className='info'
-            position='topright'>
-            {/* <div>{grids.features.District}</div> */}
+          {/* console.log(this.props.locationData[2]); */}
+
+          {/* <GeoJSON data={this.props.MapValue} */}
+          <GeoJSON data={collection[0][0]} onEachFeature={this.onEachFeature} />
+
+          {/* {console.log(this.props.locationValue.data)}  */}
+          {/* {console.log(this.props.district)} */}
+          <Control className="info" position="topright">
+            {/* <div>{this.props.locationValue}</div> */}
             <div></div>
           </Control>
         </Map>
       );
-         
-       }else 
-
-       return('hello')
-      
-       
+    } else return "hello";
   }
 }
-const mapStateToProps = (state) => {
-  
+const mapStateToProps = state => {
   return {
-    lat: state.mapReducer.lat, 
+    lat: state.mapReducer.lat,
     lng: state.mapReducer.lng,
     zoom: state.mapReducer.zoom,
-    // district: state.district,
+    district: state.locationReducer.district,
     mapGrids: state.mapReducer.mapGrids,
     locationValue: state.locationReducer.locationValue
-    
-  }
-  
-}
-const mapDispatchToProps = (dispatch) => {
+  };
+};
+const mapDispatchToProps = dispatch => {
   return {
     grids: dispatch(getMapGrids()),
     location: dispatch(getLocation())
-
-  }
-  
-}
+  };
+};
 export default connect(mapStateToProps, mapDispatchToProps)(UgMap);
