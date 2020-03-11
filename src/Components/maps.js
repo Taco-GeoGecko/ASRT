@@ -17,14 +17,15 @@ class UgMap extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(e) {
-    this.setState({ currentPos: e.latlng });
-  }
+  // handleClick(e) {
+  //   this.setState({ currentPos: e.latlng });
+  // }
 
   onEachFeature = (feature, layer) => {
     console.log("onEachFeature fired: ");
     layer.on({
-      mouseover: e => this.MouseOverFeature(e, feature)
+      mouseover: e => this.MouseOverFeature(e, feature),
+      click: e => this.handleClick(e, feature)
       // mouseout: (e) => this.MouseOutFeature(e, feature)
     });
   };
@@ -70,7 +71,7 @@ class UgMap extends Component {
 
   // }
 
-  handleClick = e => {
+  handleClick = (e, feature) => {
     // console.log(e);
     this.setState({
       lat: this.props.lat,
@@ -78,7 +79,8 @@ class UgMap extends Component {
       zoom: this.props.zoom,
       district: this.props.locationValue
     });
-console.log(this.props.locationValue)
+    console.log(feature);
+    console.log(this.props.locationValue.data);
     const { lat, lng } = e.latlng;
     console.log(lat, lng);
   };
@@ -104,6 +106,7 @@ console.log(this.props.locationValue)
           center={[this.props.lat, this.props.lng]}
           zoom={this.props.zoom}
           style={{ height: "800px" }}
+          // onClick={this.onEachFeature}          
           onClick={this.handleClick}
         >
           {/* <ZoomControl position="topleft" /> */}
