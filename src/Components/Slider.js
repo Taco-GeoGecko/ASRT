@@ -29,25 +29,30 @@ class CustomizedSlider extends React.Component {
     
   render() {
     
-    // let arr = this.props.sliderValue;
-    // let arr2 = arr
-    // console.log(arr2)
+    let arr = this.props.sliderValue;
+    let arr2 = arr.agridata
+    let twoDimensionalArray=arr2;
+    // console.log(arr)
+    function arrayColumn(Array, n) {
+      if (Array && typeof Array !== undefined) {
+        let y = Array.map(x => x[n]);
+        let max = Math.max(...y);
+        let min = Math.min(...y);
+        return ([min, max]);
+        // console.log({sliderNumber:n, sliderData:[min ,max]});
+      }
+    }
     
     let {sliderKey} = this.props; 
     // console.log(sliderKey);
-    // let result = [1, 100];
-    // for(var arrValue=0; arrValue<5; arrValue++){
-      // let jk = sliderKey.map(x => x[n]);
-      // var valu=arr[arrValue]
-      // console.log("va")
-  // }
-    // let result = arrayColumn(twoDimensionalArray, sliderKey);
+    let result = [1, 100];
+    result = arrayColumn(twoDimensionalArray, sliderKey);
     // console.log(result)
     let value = [1,100];  
-    // if (result && typeof result !== undefined) {
-    //   value = result;
-    // }
-    // let { MinValue, MaxValue } = this.props;
+    if (result && typeof result !== undefined) {
+      value = result;
+    }
+    let { MinValue, MaxValue } = this.props;
     let range = { min: 1, max: 100 };
     if (value) {
       range = { min: value[0], max: value[1] }
@@ -66,6 +71,7 @@ class CustomizedSlider extends React.Component {
     );
   }
 }
+
 const mapStateToProps = (state) => {
   return {
 
