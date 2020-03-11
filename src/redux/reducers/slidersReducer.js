@@ -4,14 +4,15 @@ import AppState from '../applicationState';
 const sliderReducer = (state = AppState.initialSliderState, action) => {
         switch (action.type) {
       case sliderData:
+        // console.log(action.payload)
         return{
           ...state,
-          sliderValue:[...state.sliderValue, action.payload]
-          
+          sliderValue: action.payload
         }
       default:
         return state
     }
+    
   }
   
   export default sliderReducer

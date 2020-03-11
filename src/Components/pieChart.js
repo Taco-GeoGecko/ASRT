@@ -21,9 +21,9 @@ class PieChartComponent extends Component {
 
     render() {
     
-        // let arr = this.props.sliderValue;
+        let arr = this.props.sliderValue;
 //   const onSlide = (render, handle, arr, un, percent) => {
-//     console.log(arr)
+    console.log(arr)
 //   };
 
 //   let {MinValue, MaxValue} = this.props;
