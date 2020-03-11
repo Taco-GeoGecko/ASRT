@@ -2,27 +2,50 @@ import React, { Component } from "react";
 // import L from "leaflet";
 import { Map, TileLayer, Marker, ZoomControl, GeoJSON } from "react-leaflet";
 import Control from "react-leaflet-control";
-import grids from "./uganda_grid_5by5km_noWater_withDistrict.js";
+// import grids from "./uganda_grid_5by5km_noWater_withDistrict.js";
 import { connect } from "react-redux";
 import { getMapGrids } from "../redux/actions/mapAction";
 import { getLocation } from "../redux/actions/locationActions";
+import { getSliderData } from '../redux/actions/sliderActions';
+import { getSliderKey } from '../redux/actions/sliderKey';
+
+
 
 class UgMap extends Component {
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+    // super(props);
     // this.state={feature:[this.props.lat, this.props.lng]}
-    this.state = {
-      currentPos: null
-    };
-    this.handleClick = this.handleClick.bind(this);
-  }
+  //   this.state = {
+  //     currentPos: null,
+  //     sliderData:this.props.sliderValue
+  //   };
+  //   this.handleClick = this.handleClick.bind(this);
+  // }
 
-  handleClick(e) {
-    this.setState({ currentPos: e.latlng });
-  }
+  // handleClick(e) {
+  //   this.setState({ currentPos: e.latlng });
+  // }
+  componentDidUpdate(){
+   let sliderData=this.props.sliderValue;
+   console.log(sliderData)
+   let collection = this.props.mapGrids;
+  //  let collection1=collection[0];
+  //  console.log(collection)
+
+  //  if(sliderData.agridata[0][15]==1){
+    // let result= collection1.filter(agic=>{
+    //   // collection[0][0].features[0].properties.gs_id
+
+    // })
+
+  //  }
+     
+      //  console.log(collection[0][0].features[0].properties.gs_id))
+   } 
+  
 
   onEachFeature = (feature, layer) => {
-    console.log("onEachFeature fired: ");
+    // console.log("onEachFeature fired: ");
     layer.on({
       mouseover: e => this.MouseOverFeature(e, feature)
       // mouseout: (e) => this.MouseOutFeature(e, feature)
@@ -39,16 +62,6 @@ class UgMap extends Component {
       district: this.props.locationValue.data
     });
   }
-
-onEachFeature = (feature, layer) => {
-  console.log('onEachFeature fired: ');
-  layer.on({
-    mouseover: (e) => this.MouseOverFeature(e, feature)
-    // mouseout: (e) => this.MouseOutFeature(e, feature)
-
-    // feature.showPopup();
-  })}
-
   MouseOutFeature(e, feature){
     this.setState({
       lat: this.props.lat,
@@ -61,7 +74,7 @@ onEachFeature = (feature, layer) => {
       // fillOpacity: 1,
     });
     // status = 'hello'
-    console.log(feature);
+    // console.log(feature);
     // feature.showPopup();
   }
 
@@ -78,29 +91,19 @@ onEachFeature = (feature, layer) => {
       zoom: this.props.zoom,
       district: this.props.locationValue
     });
-console.log(this.props.locationValue)
+// console.log(this.props.locationValue)
     const { lat, lng } = e.latlng;
-    console.log(lat, lng);
+    // console.log(lat, lng);
   };
 
   render() {
-    // const position = [{this.props.featureState.lat}, {this.props.featureState.lng}]
-    // console.log(grids.features[2].properties.DName2019);
-
-    // let status = this.state.feature.district;
-    // var arr = this.props.mapValue;
-    // var arr = this.props.mapGrids;
-    // // console.log(arr);
 
     let collection = this.props.mapGrids;
-
+    // console.log(collection)
+    let collection1=collection[0];
+   
     if (collection[0]) {
-      // console.log(collection[0][0])
-      // console.log(this.props.locationValue)
-      //  console.log('here')
-     
-
-           return (
+                return (
           
           
             <Map className="map" center={[this.props.lat, this.props.lng]} zoom={this.props.zoom} style={{height:"800px"}} onClick={this.handleClick}>
@@ -113,21 +116,8 @@ console.log(this.props.locationValue)
                 url='https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png'
                 maxzoom="10"
               />
-              <Control position="topleft" >
-          <button 
-            onClick={ () => this.setState({bounds: [51.3, 0.7]}) }
-          >
-            
-          </button>
-        </Control>
-              
-          {/* {console.log(this.props.locationData)}  */}
-          {/* {console.log('in components',this.props.mapGrids)} */}
-          {/* console.log(this.props.locationData[2]); */}
-
-          {/* <GeoJSON data={this.props.MapValue} */}
-          <GeoJSON data={collection[0][0]} onEachFeature={this.onEachFeature} />
-
+       <GeoJSON data={collection[0][0]} onEachFeature={this.onEachFeature} />
+     
           {/* {console.log(this.props.locationValue.data)}  */}
           {/* {console.log(this.props.district)} */}
           <Control className="info" position="topright">
@@ -146,13 +136,17 @@ const mapStateToProps = state => {
     zoom: state.mapReducer.zoom,
     district: state.locationReducer.district,
     mapGrids: state.mapReducer.mapGrids,
-    locationValue: state.locationReducer.locationValue
+    locationValue: state.locationReducer.locationValue,
+    slider: state.sliderReducer.sliderKey,
+    sliderValue: state.sliderReducer.sliderValue
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
     grids: dispatch(getMapGrids()),
-    location: dispatch(getLocation())
+    location: dispatch(getLocation()),
+    sliders: dispatch(getSliderData()),
+    sliderKeys: dispatch(getSliderKey())
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(UgMap);
