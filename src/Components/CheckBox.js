@@ -1,76 +1,88 @@
 import React from "react";
 import Checkbox from "@material-ui/core/Checkbox";
 import "../App.css";
+import { connect } from "react-redux";
+import { green } from "@material-ui/core/colors";
+import FormGroup from "@material-ui/core/FormGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 
-
-export default function Checkboxes(props) {
+function Checkboxes(props) {
   const [checked, setChecked] = React.useState(true);
 
+  let { checkboxKey } = props;
+  let indicators = props.landCoverIndicators;
+  let defaultIndicator = props.indicator;
+  let result = props.landCoverValue;
+  let mapData = props.mapGrids;
+   
+  result = result.map(sliderInfo => sliderInfo);
+  // console.log(props.value)
+  let newResult = result[props.value];
+  // console.log(newResult)
+  if (newResult!==undefined){
+    checkboxKey=newResult
+  }
+
+
   const handleChange = event => {
-    setChecked(event.target.checked);
+   
+    (() => {
+      setChecked(event.target.checked);
+    // console.log(mapData);
+    mapData[0][0].features = mapData[0][0].features.filter(piece => {
+    // console.log(piece.properties.land_cover)
+    // if (key===piece.properties.land_cover){
+    // console.log("here i am")
+    for (let [key, property] of Object.entries(piece.properties)) {
+    // console.log(key)
+    if (key == "land_cover") {
+    // console.log(property)
+    // console.log(checkboxKey)
+      if (property >16 || property < 0) {
+    //       // return false;
+    // console.log(checkboxKey)
+      console.log("warning")
+    }else{
+      console.log("here i am")
+    }
+    
+    //     // return true;
+    // console.log("problems")
+
+      }
+    }
+    });
+    // });
+    // console.log(checkboxKey)
+    //   console.log(mapData);
+    //   this.props.dispatch({ type: updateGridData, payload: mapData });
+    })();
   };
- 
   return (
     <div>
-      <div style={{ textAlign: "center", marginTop: 20 }}>
-        {props.IndicatorSlider}
-      </div>
-
+      <FormGroup>
+      <FormControlLabel
+              control={
       <Checkbox
         // checked={checked}
         onChange={handleChange}
-        value="default"
-        inputProps={{ "aria-label": 'checkbox with default color' }}
+        value={checkboxKey}
+        inputProps={{ "aria-label": "checkbox with default color" }}
       />
-
-      <Checkbox
-        // checked={checked}
-        onChange={handleChange}
-        value="primary"
-        inputProps={{ "aria-label": "checkbox" }}
+    }
+      label={props.label}
       />
-      <Checkbox
-        // checked={checked}
-        onChange={handleChange}
-        value="default"
-        inputProps={{ "aria-label": 'checkbox with default color' }}
-      />
-      <Checkbox
-        // checked={checked}
-        onChange={handleChange}
-        value="default"
-        inputProps={{ "aria-label": 'checkbox with default color' }}
-      />
-      <Checkbox
-        // checked={checked}
-        onChange={handleChange}
-        value="primary"
-        inputProps={{ "aria-label": "primary checkbox" }}
-      />
-      <Checkbox
-        // checked={checked}
-        onChange={handleChange}
-        value="primary"
-        inputProps={{ "aria-label": "primary checkbox" }}
-      />
-      <Checkbox
-        // checked={checked}
-        onChange={handleChange}
-        value="primary"
-        inputProps={{ "aria-label": "primary checkbox" }}
-      />
-      <Checkbox
-        // checked={checked}
-        onChange={handleChange}
-        value="primary"
-        inputProps={{ "aria-label": "primary checkbox" }}
-      />
-      <Checkbox
-        //checked={checked}
-        onChange={handleChange}
-        value="primary"
-        inputProps={{ "aria-label": "primary checkbox" }}
-      />
+      </FormGroup>
+      
     </div>
   );
 }
+const mapStateToProps = state => {
+  return {
+    landCoverValue: state.slider.landCoverResults,
+    landCoverIndicators: state.slider.landCoverCheckBox,
+    indicator: state.slider.land_cover,
+    mapGrids: state.map.mapGrids
+  };
+};
+export default connect(mapStateToProps)(Checkboxes);
