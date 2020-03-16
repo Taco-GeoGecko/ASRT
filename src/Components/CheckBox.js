@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import { green } from "@material-ui/core/colors";
 import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
+import { updateGridData } from "../redux/actions/actionTypes/actionTypes";
+
 
 function Checkboxes(props) {
   const [checked, setChecked] = React.useState(true);
@@ -25,9 +27,9 @@ function Checkboxes(props) {
 
 
   const handleChange = event => {
-   
+    if(setChecked(event.target.checked)){
+
     (() => {
-      setChecked(event.target.checked);
     // console.log(mapData);
     mapData[0][0].features = mapData[0][0].features.filter(piece => {
     // console.log(piece.properties.land_cover)
@@ -39,24 +41,18 @@ function Checkboxes(props) {
     // console.log(property)
     // console.log(checkboxKey)
       if (property >16 || property < 0) {
-    //       // return false;
-    // console.log(checkboxKey)
+          return false;
       console.log("warning")
     }else{
-      console.log("here i am")
+      return true;
     }
-    
-    //     // return true;
-    // console.log("problems")
-
       }
     }
     });
-    // });
-    // console.log(checkboxKey)
-    //   console.log(mapData);
-    //   this.props.dispatch({ type: updateGridData, payload: mapData });
+      console.log(mapData);
+      props.dispatch({ type: updateGridData, payload: mapData });
     })();
+  }
   };
   return (
     <div>

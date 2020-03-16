@@ -6,7 +6,7 @@ import {
 import AppState from "../applicationState";
 
 const mapReducer = (state = AppState.initialMapState, action) => {
-  // console.log(action)
+  console.log(action)
   switch (action.type) {
     case loadGridData:
       return {
