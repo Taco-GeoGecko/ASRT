@@ -1,48 +1,41 @@
 import React, { Component } from "react";
-// import L from "leaflet";
 import { Map, TileLayer, Marker, ZoomControl, GeoJSON } from "react-leaflet";
 import Control from "react-leaflet-control";
-// import grids from "./uganda_grid_5by5km_noWater_withDistrict.js";
 import { connect } from "react-redux";
+import { updateGridDataSuccess } from "../redux/actions/actionTypes/actionTypes";
 import { getMapGrids } from "../redux/actions/mapAction";
 import { getLocation } from "../redux/actions/locationActions";
-import { getSliderData } from '../redux/actions/sliderActions';
-import { getSliderKey } from '../redux/actions/sliderKey';
-
-
+import { getSliderData } from "../redux/actions/sliderActions";
 
 class UgMap extends Component {
-  // constructor(props) {
-    // super(props);
-    // this.state={feature:[this.props.lat, this.props.lng]}
-  //   this.state = {
-  //     currentPos: null,
-  //     sliderData:this.props.sliderValue
-  //   };
-  //   this.handleClick = this.handleClick.bind(this);
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      feature: [this.props.lat, this.props.lng],
+      district: this.props.locationValue,
+      map: null
+    };
+    this.geoJsonLayer = React.createRef();
+    //   this.handleClick = this.handleClick.bind(this);
+  }
 
   // handleClick(e) {
   //   this.setState({ currentPos: e.latlng });
   // }
-  componentDidUpdate(){
-   let sliderData=this.props.sliderValue;
-   console.log(sliderData)
-   let collection = this.props.mapGrids;
-  //  let collection1=collection[0];
-  //  console.log(collection)
+  componentWillMount() {
+    this.props.dispatch(getMapGrids());
+    this.props.dispatch(getLocation());
+    this.props.dispatch(getSliderData());
+  }
 
-  //  if(sliderData.agridata[0][15]==1){
-    // let result= collection1.filter(agic=>{
-    //   // collection[0][0].features[0].properties.gs_id
-
-    // })
-
-  //  }
-     
-      //  console.log(collection[0][0].features[0].properties.gs_id))
-   } 
-  
+  componentWillReceiveProps(nextProps) {
+    // console.log(nextProps)
+    if (nextProps.mapUpdated === true) {
+      // console.log(this.props.mapGrids[0][0].features.length, this.state.map);
+      // this.geoJsonLayer.current.leafletElement.clearLayers().addData(this.props.mapGrids)
+      this.props.dispatch({ type: updateGridDataSuccess, payload: false });
+    }
+  }
 
   onEachFeature = (feature, layer) => {
     // console.log("onEachFeature fired: ");
@@ -62,7 +55,7 @@ class UgMap extends Component {
       district: this.props.locationValue.data
     });
   }
-  MouseOutFeature(e, feature){
+  MouseOutFeature(e, feature) {
     this.setState({
       lat: this.props.lat,
       lng: this.props.lng,
@@ -91,62 +84,50 @@ class UgMap extends Component {
       zoom: this.props.zoom,
       district: this.props.locationValue
     });
-// console.log(this.props.locationValue)
-    const { lat, lng } = e.latlng;
-    // console.log(lat, lng);
   };
 
   render() {
-
-    let collection = this.props.mapGrids;
-    // console.log(collection)
-    let collection1=collection[0];
-   
-    if (collection[0]) {
-                return (
-          
-          
-            <Map className="map" center={[this.props.lat, this.props.lng]} zoom={this.props.zoom} style={{height:"800px"}} onClick={this.handleClick}>
-              {/* <ZoomControl position="topleft" /> */}
-              <TileLayer
-              
-              //  attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright"></a> contributors &copy; <a href="https://carto.com/attributions"></a>'
-              //  url= 'http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-                url='https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png'
-                maxzoom="10"
-              />
-       <GeoJSON data={collection[0][0]} onEachFeature={this.onEachFeature} />
-     
-          {/* {console.log(this.props.locationValue.data)}  */}
-          {/* {console.log(this.props.district)} */}
+    let collectionOfGridcells = this.props.mapGrids;
+    if (collectionOfGridcells[0]) {
+      this.state.map = (
+        <Map
+          className="map"
+          center={[this.props.lat, this.props.lng]}
+          zoom={this.props.zoom}
+          style={{ height: "800px" }}
+          onClick={this.handleClick}
+        >
+          {/* <ZoomControl position="topleft" /> */}
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright"></a> contributors &copy; <a href="https://carto.com/attributions"></a>'
+            url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
+            maxzoom="10"
+          />
+          <GeoJSON
+            key={this.props.mapGrids[0][0].features.length}
+            data={collectionOfGridcells[0][0]}
+            onEachFeature={this.onEachFeature}
+          />
           <Control className="info" position="topright">
-            {/* <div>{this.props.locationValue}</div> */}
             <div></div>
           </Control>
         </Map>
       );
+      return this.state.map;
     } else return "hello";
   }
-} 
+}
 const mapStateToProps = state => {
   return {
-    lat: state.mapReducer.lat,
-    lng: state.mapReducer.lng,
-    zoom: state.mapReducer.zoom,
-    district: state.locationReducer.district,
-    mapGrids: state.mapReducer.mapGrids,
-    locationValue: state.locationReducer.locationValue,
-    slider: state.sliderReducer.sliderKey,
-    sliderValue: state.sliderReducer.sliderValue
+    lat: state.map.lat,
+    lng: state.map.lng,
+    zoom: state.map.zoom,
+    district: state.map.district,
+    mapGrids: state.map.updatedMapGrids,
+    locationValue: state.location.locationValue,
+    sliderValue: state.slider.sliderValue,
+    mapUpdated: state.map.mapUpdated
   };
 };
-const mapDispatchToProps = dispatch => {
-  return {
-    grids: dispatch(getMapGrids()),
-    location: dispatch(getLocation()),
-    sliders: dispatch(getSliderData()),
-    sliderKeys: dispatch(getSliderKey())
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(UgMap);
+
+export default connect(mapStateToProps)(UgMap);
