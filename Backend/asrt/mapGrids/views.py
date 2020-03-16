@@ -12,7 +12,7 @@ def view(request):
 #     # establishing a connection
     connection = psycopg2.connect(
                                     user = "postgres",
-                                    password = "lambtex",
+                                    password = "508282044",
                                     host = "127.0.0.1",
                                     port = "5432",
                                     database = "project_taco_db")
@@ -24,7 +24,7 @@ def view(request):
     cursor.execute('''SELECT row_to_json(fc) FROM (SELECT 'FeatureCollection' As type, array_to_json(array_agg(f)) 
                       As features FROM (SELECT 'Feature' As type, ST_AsGeoJSON(project_taco_schema.geometric_structure.wkt_geom)
                       ::json As geometry, row_to_json((id, rsd_id, gs_id)) 
-                      As properties  FROM project_taco_schema.geometric_structure) As f )  As fc;''')
+                      As properties FROM project_taco_schema.geometric_structure where gs_id > 0) As f )  As fc;''')
     rows=cursor.fetchall()
     cursor.close()
     connection.close()

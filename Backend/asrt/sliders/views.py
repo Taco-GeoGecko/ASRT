@@ -8,7 +8,7 @@ def view(request):
         # establishing a connection
     connection = psycopg2.connect(
                                     user = "postgres",
-                                    password = "lambtex",
+                                    password = "508282044",
                                     host = "127.0.0.1",
                                     port = "5432",
                                     database = "project_taco_db")
@@ -19,7 +19,7 @@ def view(request):
     cursor.execute('''select ppp_sum,(ndvi_jfm+ndvi_amj+ndvi_jas+ndvi_ond)/4,
 (ndwi_jfm+ndwi_amj+ndwi_jas+ndwi_ond)/4,soil_phos,soil_copper,soil_iron,soil_magne,
 rainfall,soil_alumi,soil_potas,(lst_jfm+lst_amj+lst_jas+lst_ond)/4,slope,elevation,
-land_cover, gs_id from project_taco_schema.agric_indicator where gs_id<10 ''')
+land_cover, gs_id from project_taco_schema.agric_indicator where gs_id<50''')
 
 
     agricRows=cursor.fetchall()

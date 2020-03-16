@@ -1,44 +1,84 @@
 import React, { Component } from "react";
-// import L from "leaflet";
-import { Map, TileLayer, Marker, ZoomControl, GeoJSON } from "react-leaflet";
+import L from "leaflet";
+import { Map, TileLayer, Marker, ZoomControl, GeoJSON, Popup } from "react-leaflet";
 import Control from "react-leaflet-control";
 import grids from "./uganda_grid_5by5km_noWater_withDistrict.js";
 import { connect } from "react-redux";
 import { getMapGrids } from "../redux/actions/mapAction";
 import { getLocation } from "../redux/actions/locationActions";
 
-class UgMap extends Component {
-  constructor(props) {
-    super(props);
-    // this.state={feature:[this.props.lat, this.props.lng]}
-    this.state = {
-      currentPos: null
-    };
-    this.handleClick = this.handleClick.bind(this);
-  }
 
-  handleClick(e) {
-    this.setState({ currentPos: e.latlng });
-  }
+
+// var myIcon = L.Icon({
+// iconUrl: '',
+// iconSize: [25,41],
+// iconAnchor:[12.5, 41],
+// popupAnchor:[0, -41]
+// });
+
+
+
+class UgMap extends Component {
+//   constructor(props) {
+//     super(props);
+//     // this.state={feature:[this.props.lat, this.props.lng]}
+//     this.state = {
+//       currentPos: null
+//     };
+//     this.handleClick = this.handleClick.bind(this);
+//   }
+
+//   handleClick(e) {
+//     this.setState({ currentPos: e.latlng });
+//   }
+  
+   handleClick = e => {
+//     console.log(e);
+     this.setState({
+       lat: this.props.lat,
+       lng: this.props.lng
+//       zoom: this.props.zoom,
+//       district: this.props.locationValue,
+//       minZoom: this.props.minZoom,
+//       maxZoom: this.props.maxZoom
+     });
+ console.log(this.props.locationValue)
+   const { lat, lng } = e.latlng;
+   console.log(lat, lng);
+     };
+  
+
+    counter= 0
 
   onEachFeature = (feature, layer) => {
-    console.log("onEachFeature fired: ");
+    this.counter++
+    // console.log("onEachFeature fired: ");
     layer.on({
       mouseover: (e) => this.MouseOverFeature(e, feature),
-      mouseout: (e)=> this.MouseOutFeature(e, feature)
+      mouseout: (e)=> this.MouseOutFeature(e, feature),
+      
+
     });
   };
 
   MouseOverFeature(e, feature) {
+   
+    e.target.bindPopup(`${e.latlng}`);
+    e.target.openPopup();
+  
     // feature=this.state.feature
+    
 
     this.setState({
       lat: this.props.lat,
       lng: this.props.lng,
       zoom: this.props.zoom,
-      district: this.props.locationValue.data
+      data: this.props.locationValue
+      
     });
   }
+
+  // setZoomAround(fixedPoint, zoom)
 
 onEachFeature = (feature, layer) => {
   console.log('onEachFeature fired: ');
@@ -50,11 +90,13 @@ onEachFeature = (feature, layer) => {
   })}
 
   MouseOutFeature(e, feature){
+    e.target.closePopup();
     this.setState({
       lat: this.props.lat,
       lng: this.props.lng,
       zoom: this.props.zoom,
       district: this.props.district
+    
     });
     e.target.setStyle({
       // fillColor: '#ffffff',
@@ -65,23 +107,22 @@ onEachFeature = (feature, layer) => {
     // feature.showPopup();
   }
 
-  // handleMasaka = () => {
-  //   return districts.features[0].properties.DName2016;
+ 
 
-  // }
-
-  handleClick = e => {
-    // console.log(e);
-    this.setState({
-      lat: this.props.lat,
-      lng: this.props.lng,
-      zoom: this.props.zoom,
-      district: this.props.locationValue
-    });
-console.log(this.props.locationValue)
-    const { lat, lng } = e.latlng;
-    console.log(lat, lng);
-  };
+  // handleClick = e => {
+  //   console.log(e);
+  //   this.setState({
+  //     lat: this.props.lat,
+  //     lng: this.props.lng,
+  //     zoom: this.props.zoom,
+  //     district: this.props.locationValue,
+  //     minZoom: this.props.minZoom,
+  //     maxZoom: this.props.maxZoom
+  //   });
+// console.log(this.props.locationValue)
+//     const { lat, lng } = e.latlng;
+//     console.log(lat, lng);
+  // };
 
   render() {
     // const position = [{this.props.featureState.lat}, {this.props.featureState.lng}]
@@ -90,53 +131,84 @@ console.log(this.props.locationValue)
     // let status = this.state.feature.district;
     // var arr = this.props.mapValue;
     // var arr = this.props.mapGrids;
-    // // console.log(arr);
+
+    // console.log(arr);
+
+    
 
     let collection = this.props.mapGrids;
 
     if (collection[0]) {
-      // console.log(collection[0][0])
-      // console.log(this.props.locationValue)
+      console.log(collection[0][0])
+      console.log(this.props.locationValue)
       //  console.log('here')
      
 
            return (
           
-          
-            <Map className="map" center={[this.props.lat, this.props.lng]} zoom={this.props.zoom} style={{height:"800px"}} onClick={this.handleClick}>
-              {/* <ZoomControl position="topleft" /> */}
+           
+            <Map className="map" center={[this.props.lat, this.props.lng]} zoom={this.props.zoom}  style={{height:"800px"}} onClick={this.handleClick}  data={this.props.locationValue} onLocationfound={this.handleLocationFound} ref={this.mapRef} >
+             {/* <ZoomControl position="topleft" /> */}
+
+             
+             
               <TileLayer
               
               //  attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright"></a> contributors &copy; <a href="https://carto.com/attributions"></a>'
               //  url= 'http://{s}.tile.osm.org/{z}/{x}/{y}.png'
                 url='https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png'
-                maxzoom="10"
-              />
-              <Control position="topleft" >
-          <button 
-            onClick={ () => this.setState({bounds: [51.3, 0.7]}) }
-          >
-            
-          </button>
-        </Control>
-              
-          {/* {console.log(this.props.locationData)}  */}
-          {/* {console.log('in components',this.props.mapGrids)} */}
-          {/* console.log(this.props.locationData[2]); */}
 
-          {/* <GeoJSON data={this.props.MapValue} */}
-          <GeoJSON data={collection[0][0]} onEachFeature={this.onEachFeature} />
+              
+              />
+              {/* <Control > 
+          <button className="button">
+            243,980
+
+            {/* // onClick={ () => this.setState({bounds: [51.3, 0.7]}) } */}
+          
+{/*             
+          </button>
+        </Control> */} */}
+              
+          // {/* {console.log(this.props.locationData)}  */}
+          // {/* {console.log('in components',this.props.mapGrids)} */}
+          // {/* console.log(this.props.locationData[2]); */}
+
+          // {/* <GeoJSON data={this.props.MapValue} */}
+          <GeoJSON data={collection[0][0]} 
+          onEachFeature={this.onEachFeature} />
 
           {/* {console.log(this.props.locationValue.data)}  */}
           {/* {console.log(this.props.district)} */}
+
+
           <Control 
           className="info"
           position="topright">
             {/* <div>{this.props.locationValue}</div> */}
-            <div></div>
+             <div>
+               {this.counter}
+             </div>
           </Control>
-        </Map>
+{/*          
+          { this.state.currentPos &&
+          
+          <Marker position={this.state.currentPos} draggable={true} >  
+               
+        
+           
+             <Popup position={this.state.currentPos}>
+              Current location: <pre>{JSON.stringify(this.state.currentPos, null, 2)}</pre>
+           
+             
+             </Popup>
+            
+          
+          </Marker> */}
+
+            
+          }</Map>
       );
     } else return "hello";
   }

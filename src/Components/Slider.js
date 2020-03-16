@@ -27,12 +27,12 @@ class CustomizedSlider extends React.Component {
       }
     }
     let twoDimensionalArray = arr2;
-    console.log(twoDimensionalArray)
+    // console.log(twoDimensionalArray)
     let { sliderKey } = this.props;
     // console.log(this.props);
     let result = [1, 100];
     result = arrayColumn(twoDimensionalArray, sliderKey);
-    console.log(result)
+    // console.log(result)
     let value = [1, 100];
     if (result && typeof result !== undefined) {
       value = result;
