@@ -21,15 +21,9 @@ class PieChartComponent extends Component {
 
     render() {
     
-        // let arr = this.props.sliderValue;
-//   const onSlide = (render, handle, arr, un, percent) => {
-//     console.log(arr)
-//   };
+        let arr = this.props.sliderValue;
+        console.log(arr)
 
-//   let {MinValue, MaxValue} = this.props;
-//   MinValue = MinValue ? MinValue : 1
-//   MaxValue = MaxValue ? MaxValue : 100
-//   const range = { min: MinValue, max: MaxValue }
 
         return (
             <div className = "mega">
@@ -58,7 +52,7 @@ class PieChartComponent extends Component {
 const mapStateToProps = (state) => {
   
     return {
-      sliderValue: state.sliderValue
+      sliderValue: state.slider.sliderValue
         
     }
     
@@ -72,4 +66,4 @@ const mapStateToProps = (state) => {
     
   }
 
-export default connect (mapStateToProps,mapDispatchToProps)(PieChartComponent)
+export default connect (mapStateToProps, mapDispatchToProps)(PieChartComponent)

@@ -17,7 +17,7 @@ class CustomizedSlider extends React.Component {
     (() => {
       // console.log(value, this.props.sliderKey);
       let indicators = this.props.indicators;
-      let mapData = _.cloneDeep(this.props.mapGrids);
+      let mapData = /*_.cloneDeep*/(this.props.mapGrids);
       mapData[0][0].features = mapData[0][0].features.filter(piece => {
         for (let [key, property] of Object.entries(piece.properties)) {
           if (key === indicators[this.props.sliderKey]) {
@@ -28,7 +28,7 @@ class CustomizedSlider extends React.Component {
           }
         }
       });
-      console.log(mapData);
+      // console.log(mapData);
       this.props.dispatch({ type: updateGridData, payload: mapData });
     })();
   };

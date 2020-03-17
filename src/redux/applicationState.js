@@ -26,9 +26,10 @@ const AppState = {
       8: "ndwi_jfm",
       9: "rainfall",
       10: "ndvi_jfm",
-      11: "slope",
-      12: "elevation",
-      13: "lst_jfm",
+      11:"land_cover",
+      12: "slope",
+      13: "elevation",
+      14: "lst_jfm",
     },
     land_cover:{
       1:"land_cover",
@@ -45,9 +46,10 @@ const AppState = {
       8: "ndwi_jfm",
       9: "rainfall",
       10: "ndvi_jfm",
-      11: "slope",
-      12: "elevation",
-      13: "lst_jfm"
+      11:"land_cover",
+      12: "slope",
+      13: "elevation",
+      14: "lst_jfm"
     }
   }
 };
