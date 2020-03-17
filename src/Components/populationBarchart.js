@@ -53,7 +53,7 @@ export default class Population extends React.Component {
               }]
           }
           }}
-          height='110%'
+          height={100}
         />
       </div>
 

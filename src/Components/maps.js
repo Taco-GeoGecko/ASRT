@@ -132,6 +132,8 @@ class UgMap extends Component {
 } 
 const mapStateToProps = state => {
   return {
+  
+  
     lat: state.mapReducer.lat,
     lng: state.mapReducer.lng,
     zoom: state.mapReducer.zoom,
@@ -140,6 +142,9 @@ const mapStateToProps = state => {
     locationValue: state.locationReducer.locationValue,
     slider: state.sliderReducer.sliderKey,
     sliderValue: state.sliderReducer.sliderValue
+   
+    
+   
   };
 };
 const mapDispatchToProps = dispatch => {

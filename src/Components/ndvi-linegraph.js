@@ -59,7 +59,7 @@ export default class Ndvilinegraph extends React.Component {
               }]
           }
           }}
-          height='110%'
+          height={100}
         />
       </div>
       </div>
