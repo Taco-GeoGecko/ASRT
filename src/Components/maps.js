@@ -31,6 +31,8 @@ class UgMap extends Component {
   // handleClick(e) {
   //   this.setState({ currentPos: e.latlng });
   // }
+
+
   componentWillMount() {
     this.props.dispatch(getMapGrids());
     this.props.dispatch(getLocation());
@@ -45,7 +47,17 @@ class UgMap extends Component {
       this.props.dispatch({ type: updateGridDataSuccess, payload: false });
     }
   }
-
+  style(feature) {
+    return {
+      // color: color_outline,
+      opacity: 1,
+      fillColor: '#DDDDFF',
+      fillOpacity: 0.9,
+      // weight: 3,
+      // radius: 6,
+      clickable: true
+    }
+  }
   onEachFeature = (feature, layer) => {
     // console.log("onEachFeature fired: ");
     layer.on({
@@ -54,6 +66,9 @@ class UgMap extends Component {
 
 
     });
+    layer.setStyle(this.style(feature));
+    //  let totalMarkers = layer.getLayers().length
+    //   console.log(totalMarkers)
   };
 
   MouseOverFeature(e, feature) {
@@ -90,7 +105,7 @@ class UgMap extends Component {
 
     });
     e.target.setStyle({
-      // fillColor: '#ffffff',
+      // fillColor: '#A52A2A',
       // fillOpacity: 1,
     });
     // status = 'hello'
@@ -103,7 +118,7 @@ class UgMap extends Component {
 
   // }
 
-  handleClick = e => {
+  handleClick = (e, feature) => {
     // console.log(e);
     this.setState({
       lat: this.props.lat,
@@ -131,10 +146,9 @@ class UgMap extends Component {
           className="map"
           center={[this.props.lat, this.props.lng]}
           zoom={this.props.zoom}
-          style={{ height: "800px" }}
+          style={{ height: "800px", color: '#e15c26' }}
           onClick={this.handleClick}
         >
-          {/* <ZoomControl position="topleft" /> */}
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright"></a> contributors &copy; <a href="https://carto.com/attributions"></a>'
             url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
@@ -146,32 +160,14 @@ class UgMap extends Component {
             // data={collectionOfGridcells[0][0]}
             data={data}
             onEachFeature={this.onEachFeature}
+          // style={this.style} 
           />
-
-
-          {/* {<GeoJSON
-            data={data}
-            onEachFeature={this.onEachFeature} />} */}
+          {/* {console.log(this.props.mapGrids[0][0].features.length)}; */}
 
           <Control className="info" position="topright">
-            {/* <div><strong>{this.props.mapGrids[0][0].features.length} 5*5km <br></br> Grid-cells</strong></div> */}
-            <div>{status}</div>
-
-            {/*          
-          { this.state.currentPos &&
-          
-          <Marker position={this.state.currentPos} draggable={true} >  
-               
-        
-           
-             <Popup position={this.state.currentPos}>
-              Current location: <pre>{JSON.stringify(this.state.currentPos, null, 2)}</pre>
-           
-             
-             </Popup>
-            
-          
-          </Marker> */}
+            <div>
+              <strong> {this.props.mapGrids[0][0].features.length} Grid-cells</strong>
+            </div>
           </Control>
 
           }

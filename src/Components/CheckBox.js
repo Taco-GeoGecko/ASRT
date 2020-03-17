@@ -9,7 +9,6 @@ import { updateGridData } from "../redux/actions/actionTypes/actionTypes";
 
 
 function Checkboxes(props) {
-  const [checked, setChecked] = React.useState(true);
 
   let { checkboxKey } = props;
   let indicators = props.landCoverIndicators;
@@ -25,12 +24,14 @@ function Checkboxes(props) {
     checkboxKey=newResult
   }
 
+  const [state, setChecked] = React.useState({checked:false,data:mapData});
 
   const handleChange = event => {
-    if(setChecked(event.target.checked)){
 
     (() => {
-    // console.log(mapData);
+      if(setChecked(event.target.checked)){
+
+      // console.log(mapData);
     mapData[0][0].features = mapData[0][0].features.filter(piece => {
     // console.log(piece.properties.land_cover)
     // if (key===piece.properties.land_cover){
@@ -48,11 +49,13 @@ function Checkboxes(props) {
     }
       }
     }
-    });
+    })
+      }
       console.log(mapData);
       props.dispatch({ type: updateGridData, payload: mapData });
     })();
-  }
+  // }
+  
   };
   return (
     <div>
