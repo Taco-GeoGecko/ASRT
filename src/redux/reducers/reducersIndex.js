@@ -5,7 +5,9 @@ import { combineReducers } from 'redux'
 
   // creates a root reducer and combines different reducers
   const rootReducer = combineReducers({
-    mapReducer,locationReducer,sliderReducer
+    map: mapReducer,
+    location: locationReducer,
+    slider: sliderReducer
   })
   
   export default rootReducer;

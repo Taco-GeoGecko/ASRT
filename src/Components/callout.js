@@ -38,11 +38,3 @@ export default class Callouts extends Component {
     );
   }
 }
-
-//  Callouts.propTypes={
-//   myComponent:React.propTypes.,
-//   side:React.propTypes.,
-//   arrowsize:,
-//   message:,
-
-//  }
