@@ -1,12 +1,10 @@
-import {createStore, applyMiddleware} from 'redux';  
+import {createStore, applyMiddleware} from 'redux';
+import AppState from './applicationState';
 import thunk from 'redux-thunk';
 import rootReducer from '../redux/reducers/reducersIndex';
-// import locationReducer from './reducers/locationReducer';
-import sliderReducer from './reducers/slidersReducer';
-// import mapReducer from './reducers/mapreducer';
 
+const initialState = {};
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
-// const store = createStore(mapReducer);
+const store = createStore(rootReducer, initialState, applyMiddleware(thunk));
 export default store;
  

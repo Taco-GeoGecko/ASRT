@@ -6,7 +6,8 @@ import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import CustomizedSlider from "./Slider";
-import Checkboxes from "./CheckBox";
+import LandCover from "./Landcover";
+import CheckboxLabels from './sampling'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -115,7 +116,6 @@ export default function ControlledExpansionPanels() {
         <ExpansionPanelDetails>
           <div className={classes.spacing}>
             <CustomizedSlider IndicatorSlider="Vegetation health" sliderKey={10} />
-            <Checkboxes IndicatorSlider="Land cover" sliderKey={11} />
           </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>
@@ -123,6 +123,25 @@ export default function ControlledExpansionPanels() {
       <ExpansionPanel
         expanded={expanded === "panel5"}
         onChange={handleChange("panel5")}
+      >
+        <ExpansionPanelSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel4bh-content"
+          id="panel4bh-header"
+        >
+          <Typography className={classes.heading}>Land Cover</Typography>
+        </ExpansionPanelSummary>
+        <ExpansionPanelDetails>
+          <div className={classes.spacing}>
+           <LandCover IndicatorSlider="land cover" />
+           {/* <CheckboxLabels /> */}
+          </div>
+        </ExpansionPanelDetails>
+      </ExpansionPanel>
+
+      <ExpansionPanel
+        expanded={expanded === "panel6"}
+        onChange={handleChange("panel6")}
       >
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon />}
@@ -140,8 +159,8 @@ export default function ControlledExpansionPanels() {
         </ExpansionPanelDetails>
       </ExpansionPanel>
       <ExpansionPanel
-        expanded={expanded === "panel6"}
-        onChange={handleChange("panel6")}
+        expanded={expanded === "panel7"}
+        onChange={handleChange("panel7")}
       >
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon />}
@@ -154,7 +173,7 @@ export default function ControlledExpansionPanels() {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <div className={classes.spacing}>
-            <CustomizedSlider IndicatorSlider="" MinValue={10} MaxValue={30} sliderKey={14} />
+            <CustomizedSlider IndicatorSlider="" sliderKey={14} />
           </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>

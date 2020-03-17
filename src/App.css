@@ -213,8 +213,8 @@ margin-left: 10px;
   background: rgba(250, 243, 243, 0.603);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
-  width: 80px;
-  height: 30px;
+  width: 100px;
+  height: 50px;
  
 
 }
@@ -225,6 +225,3 @@ a:link {
 }
 
 
-.button{
-  border: none;
-}

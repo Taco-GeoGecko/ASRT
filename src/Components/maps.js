@@ -2,196 +2,162 @@ import React, { Component } from "react";
 import L from "leaflet";
 import { Map, TileLayer, Marker, ZoomControl, GeoJSON, Popup } from "react-leaflet";
 import Control from "react-leaflet-control";
-import grids from "./uganda_grid_5by5km_noWater_withDistrict.js";
 import { connect } from "react-redux";
+import { updateGridDataSuccess } from "../redux/actions/actionTypes/actionTypes";
 import { getMapGrids } from "../redux/actions/mapAction";
 import { getLocation } from "../redux/actions/locationActions";
-
-
-
-// var myIcon = L.Icon({
-// iconUrl: '',
-// iconSize: [25,41],
-// iconAnchor:[12.5, 41],
-// popupAnchor:[0, -41]
-// });
+import { getSliderData } from "../redux/actions/sliderActions";
+import districts from "../Components/uganda_districts_2019";
 
 
 
 class UgMap extends Component {
-//   constructor(props) {
-//     super(props);
-//     // this.state={feature:[this.props.lat, this.props.lng]}
-//     this.state = {
-//       currentPos: null
-//     };
-//     this.handleClick = this.handleClick.bind(this);
-//   }
+  constructor(props) {
+    super(props);
+    this.state = {
+      lat: this.props.lat,
+      lng: this.props.lng,
+      zoom: this.props.zoom,
+      data: this.props.locationValue,
+      district: 'Hover over district',
 
-//   handleClick(e) {
-//     this.setState({ currentPos: e.latlng });
-//   }
-  
-   handleClick = e => {
-//     console.log(e);
-     this.setState({
-       lat: this.props.lat,
-       lng: this.props.lng
-//       zoom: this.props.zoom,
-//       district: this.props.locationValue,
-//       minZoom: this.props.minZoom,
-//       maxZoom: this.props.maxZoom
-     });
- console.log(this.props.locationValue)
-   const { lat, lng } = e.latlng;
-   console.log(lat, lng);
-     };
-  
 
-    counter= 0
+      map: null
+    };
+    this.geoJsonLayer = React.createRef();
+    //   this.handleClick = this.handleClick.bind(this);
+  }
+
+  // handleClick(e) {
+  //   this.setState({ currentPos: e.latlng });
+  // }
+  componentWillMount() {
+    this.props.dispatch(getMapGrids());
+    this.props.dispatch(getLocation());
+    this.props.dispatch(getSliderData());
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // console.log(nextProps)
+    if (nextProps.mapUpdated === true) {
+      // console.log(this.props.mapGrids[0][0].features.length, this.state.map);
+      // this.geoJsonLayer.current.leafletElement.clearLayers().addData(this.props.mapGrids)
+      this.props.dispatch({ type: updateGridDataSuccess, payload: false });
+    }
+  }
 
   onEachFeature = (feature, layer) => {
-    this.counter++
     // console.log("onEachFeature fired: ");
     layer.on({
       mouseover: (e) => this.MouseOverFeature(e, feature),
-      mouseout: (e)=> this.MouseOutFeature(e, feature),
-      
+      mouseout: (e) => this.MouseOutFeature(e, feature),
+
 
     });
   };
 
   MouseOverFeature(e, feature) {
-   
-    e.target.bindPopup(`${e.latlng}`);
-    e.target.openPopup();
-  
-    // feature=this.state.feature
-    
 
     this.setState({
-      lat: this.props.lat,
-      lng: this.props.lng,
-      zoom: this.props.zoom,
-      data: this.props.locationValue
-      
-    });
+      district: feature.properties.DName2019,
+    })
+
+    e.target.bindPopup(this.state.district);
+
+    e.target.openPopup();
+
   }
 
   // setZoomAround(fixedPoint, zoom)
 
-onEachFeature = (feature, layer) => {
-  console.log('onEachFeature fired: ');
-  layer.on({
-    mouseover: (e) => this.MouseOverFeature(e, feature),
-    mouseout: (e) => this.MouseOutFeature(e, feature)
+  // onEachFeature = (feature, layer) => {
+  //   console.log('onEachFeature fired: ');
+  //   layer.on({
+  //     mouseover: (e) => this.MouseOverFeature(e, feature),
+  //     mouseout: (e) => this.MouseOutFeature(e, feature)
 
-    // feature.showPopup();
-  })}
+  //     // feature.showPopup();
+  //   })
+  // }
 
-  MouseOutFeature(e, feature){
+  MouseOutFeature(e, feature) {
     e.target.closePopup();
     this.setState({
       lat: this.props.lat,
       lng: this.props.lng,
       zoom: this.props.zoom,
       district: this.props.district
-    
+
     });
     e.target.setStyle({
       // fillColor: '#ffffff',
       // fillOpacity: 1,
     });
     // status = 'hello'
-    console.log(feature);
+    // console.log(feature);
     // feature.showPopup();
   }
 
- 
+  // handleMasaka = () => {
+  //   return districts.features[0].properties.DName2016;
 
-  // handleClick = e => {
-  //   console.log(e);
-  //   this.setState({
-  //     lat: this.props.lat,
-  //     lng: this.props.lng,
-  //     zoom: this.props.zoom,
-  //     district: this.props.locationValue,
-  //     minZoom: this.props.minZoom,
-  //     maxZoom: this.props.maxZoom
-  //   });
-// console.log(this.props.locationValue)
-//     const { lat, lng } = e.latlng;
-//     console.log(lat, lng);
-  // };
+  // }
+
+  handleClick = e => {
+    // console.log(e);
+    this.setState({
+      lat: this.props.lat,
+      lng: this.props.lng,
+      zoom: this.props.zoom,
+      district: this.props.locationValue
+    });
+  };
 
   render() {
-    // const position = [{this.props.featureState.lat}, {this.props.featureState.lng}]
-    // console.log(grids.features[2].properties.DName2019);
-
-    // let status = this.state.feature.district;
-    // var arr = this.props.mapValue;
-    // var arr = this.props.mapGrids;
-
-    // console.log(arr);
-
-    
-
-    let collection = this.props.mapGrids;
-
-    if (collection[0]) {
-      console.log(collection[0][0])
-      console.log(this.props.locationValue)
-      //  console.log('here')
-     
-
-           return (
-          
-           
-            <Map className="map" center={[this.props.lat, this.props.lng]} zoom={this.props.zoom}  style={{height:"800px"}} onClick={this.handleClick}  data={this.props.locationValue} onLocationfound={this.handleLocationFound} ref={this.mapRef} >
-             {/* <ZoomControl position="topleft" /> */}
-
-             
-             
-              <TileLayer
-              
-              //  attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright"></a> contributors &copy; <a href="https://carto.com/attributions"></a>'
-              //  url= 'http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-                url='https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png'
-
-              
-              />
-              {/* <Control > 
-          <button className="button">
-            243,980
-
-            {/* // onClick={ () => this.setState({bounds: [51.3, 0.7]}) } */}
-          
-{/*             
-          </button>
-        </Control> */} */}
-              
-          // {/* {console.log(this.props.locationData)}  */}
-          // {/* {console.log('in components',this.props.mapGrids)} */}
-          // {/* console.log(this.props.locationData[2]); */}
-
-          // {/* <GeoJSON data={this.props.MapValue} */}
-          <GeoJSON data={collection[0][0]} 
-          onEachFeature={this.onEachFeature} />
-
-          {/* {console.log(this.props.locationValue.data)}  */}
-          {/* {console.log(this.props.district)} */}
+    let status = this.state.district;
+    let collectionOfGridcells = this.props.mapGrids;
+    let data = districts
+    if (this.props.mapUpdated == false) {
+      data = data
+    } else {
+      data = collectionOfGridcells[0][0]
+      // console.log('hello')
+    }
 
 
-          <Control 
-          className="info"
-          position="topright">
-            {/* <div>{this.props.locationValue}</div> */}
-             <div>
-               {this.counter}
-             </div>
-          </Control>
-{/*          
+    if (collectionOfGridcells[0]) {
+      this.state.map = (
+        <Map
+          className="map"
+          center={[this.props.lat, this.props.lng]}
+          zoom={this.props.zoom}
+          style={{ height: "800px" }}
+          onClick={this.handleClick}
+        >
+          {/* <ZoomControl position="topleft" /> */}
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright"></a> contributors &copy; <a href="https://carto.com/attributions"></a>'
+            url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
+            maxzoom="10"
+          />
+
+          <GeoJSON
+            key={this.props.mapGrids[0][0].features.length}
+            // data={collectionOfGridcells[0][0]}
+            data={data}
+            onEachFeature={this.onEachFeature}
+          />
+
+
+          {/* {<GeoJSON
+            data={data}
+            onEachFeature={this.onEachFeature} />} */}
+
+          <Control className="info" position="topright">
+            {/* <div><strong>{this.props.mapGrids[0][0].features.length} 5*5km <br></br> Grid-cells</strong></div> */}
+            <div>{status}</div>
+
+            {/*          
           { this.state.currentPos &&
           
           <Marker position={this.state.currentPos} draggable={true} >  
@@ -206,27 +172,26 @@ onEachFeature = (feature, layer) => {
             
           
           </Marker> */}
+          </Control>
 
-            
-          }</Map>
+          }
+          </Map>
       );
+      return this.state.map;
     } else return "hello";
   }
-} 
+}
 const mapStateToProps = state => {
   return {
-    lat: state.mapReducer.lat,
-    lng: state.mapReducer.lng,
-    zoom: state.mapReducer.zoom,
-    district: state.locationReducer.district,
-    mapGrids: state.mapReducer.mapGrids,
-    locationValue: state.locationReducer.locationValue
+    lat: state.map.lat,
+    lng: state.map.lng,
+    zoom: state.map.zoom,
+    district: state.map.district,
+    mapGrids: state.map.updatedMapGrids,
+    locationValue: state.location.locationValue,
+    sliderValue: state.slider.sliderValue,
+    mapUpdated: state.map.mapUpdated
   };
 };
-const mapDispatchToProps = dispatch => {
-  return {
-    grids: dispatch(getMapGrids()),
-    location: dispatch(getLocation())
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(UgMap);
+
+export default connect(mapStateToProps)(UgMap);
