@@ -22,6 +22,8 @@ class UgMap extends Component {
   // handleClick(e) {
   //   this.setState({ currentPos: e.latlng });
   // }
+
+
   componentWillMount() {
     this.props.dispatch(getMapGrids());
     this.props.dispatch(getLocation());
@@ -51,9 +53,9 @@ class UgMap extends Component {
     // console.log("onEachFeature fired: ");
     layer.on({
       mouseover: e => this.MouseOverFeature(e, feature),
+
       // mouseout: (e) => this.MouseOutFeature(e, feature),
-    
-      
+
     });
     layer.setStyle(this.style(feature));
   //  let totalMarkers = layer.getLayers().length
@@ -91,7 +93,7 @@ class UgMap extends Component {
 
   // }
 
-  handleClick = e => {
+  handleClick = (e, feature) => {
     // console.log(e);
     this.setState({
       lat: this.props.lat,
