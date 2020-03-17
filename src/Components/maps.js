@@ -11,8 +11,8 @@ class UgMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      feature: [this.props.lat, this.props.lng],
-      district: this.props.locationValue,
+      // feature: [this.props.lat, this.props.lng],
+      // district: this.props.locationValue,
       map: null
     };
     this.geoJsonLayer = React.createRef();
@@ -36,15 +36,30 @@ class UgMap extends Component {
       this.props.dispatch({ type: updateGridDataSuccess, payload: false });
     }
   }
-
+  style(feature) {
+    return {
+        // color: color_outline,
+        opacity: 1,
+        fillColor: '#DDDDFF',
+        fillOpacity: 0.9,
+        // weight: 3,
+        // radius: 6,
+        clickable: true
+    }
+}
   onEachFeature = (feature, layer) => {
     // console.log("onEachFeature fired: ");
     layer.on({
-      mouseover: e => this.MouseOverFeature(e, feature)
-      // mouseout: (e) => this.MouseOutFeature(e, feature)
+      mouseover: e => this.MouseOverFeature(e, feature),
+      // mouseout: (e) => this.MouseOutFeature(e, feature),
+    
+      
     });
+    layer.setStyle(this.style(feature));
+  //  let totalMarkers = layer.getLayers().length
+  //   console.log(totalMarkers)
   };
-
+  
   MouseOverFeature(e, feature) {
     // feature=this.state.feature
 
@@ -63,7 +78,7 @@ class UgMap extends Component {
       district: this.props.district
     });
     e.target.setStyle({
-      // fillColor: '#ffffff',
+      // fillColor: '#A52A2A',
       // fillOpacity: 1,
     });
     // status = 'hello'
@@ -94,10 +109,9 @@ class UgMap extends Component {
           className="map"
           center={[this.props.lat, this.props.lng]}
           zoom={this.props.zoom}
-          style={{ height: "800px" }}
+          style={{ height: "800px", color: '#e15c26' }}
           onClick={this.handleClick}
-        >
-          {/* <ZoomControl position="topleft" /> */}
+         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright"></a> contributors &copy; <a href="https://carto.com/attributions"></a>'
             url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
@@ -107,9 +121,14 @@ class UgMap extends Component {
             key={this.props.mapGrids[0][0].features.length}
             data={collectionOfGridcells[0][0]}
             onEachFeature={this.onEachFeature}
+            // style={this.style} 
           />
+          {/* {console.log(this.props.mapGrids[0][0].features.length)}; */}
+
           <Control className="info" position="topright">
-            <div></div>
+            <div>
+            <strong> {this.props.mapGrids[0][0].features.length} Grid-cells</strong>
+            </div>
           </Control>
         </Map>
       );
