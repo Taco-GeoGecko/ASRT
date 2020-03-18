@@ -166,7 +166,7 @@ function Analysis() {
               >
                 <div className={classes.toolbar} />
                 <div id="indicatorText">
-<
+
                   <small>
                   <h1 id="CHARTS">CHARTS</h1>
                   </small>
