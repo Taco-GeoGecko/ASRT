@@ -28,19 +28,21 @@ export default function MatIcons() {
   const classes = useStyles();
   return (
     <div className="Icons">
-      
+      <div className="faqs">
       <a target="_blank" rel="noopener noreferrer" href="https://www.geogecko.com/"> 
-        <span className={classes.horizontalSpacing}>FAQS</span>
-      </a>
+        FAQS
+        
+      </a></div>
 
 
      {/* <a target="_blank" rel="noopener noreferrer" href="https://www.geogecko.com/"> */}
-        <span className={classes.horizontalSpacing} ><FormDialog /></span>
+       <div className="feedback"> <FormDialog /></div>
         
       {/* </a> */}
-    
+    <div id ="fourIcons">
+      
 
-      <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/geogecko">
+    <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/geogecko">
         <TwitterIcon
           className={classes.navigation}
           style={{ color: blue[500] }}
@@ -73,6 +75,7 @@ export default function MatIcons() {
           className={classes.navigation}
         />
       </a>
+    </div>
     </div>
   );
 }
