@@ -48,7 +48,7 @@ export default class Rainfall extends React.Component {
               }]
           }
           }}
-          height='110%'
+          height={100}
         />
       </div>
 

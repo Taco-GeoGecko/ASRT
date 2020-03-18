@@ -42,7 +42,7 @@ class PieChartComponent extends Component {
                     labels: this.state.labels,
                     datasets: this.state.datasets
                 }}
-                height='110%'
+                height={100}
                 options=
                 {{legend:{
                     display:true,
