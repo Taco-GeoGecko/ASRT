@@ -4,6 +4,9 @@ import _ from "lodash";
 import "nouislider/distribute/nouislider.css";
 import { connect } from "react-redux";
 import { updateGridData } from "../redux/actions/actionTypes/actionTypes";
+import { getMapGrids } from "../redux/actions/mapAction";
+import { getLocation } from "../redux/actions/locationActions";
+import { getSliderData } from "../redux/actions/sliderActions";
 const styles = {
   fontFamily: "sans-serif",
   textAlign: "center",
@@ -12,11 +15,14 @@ const styles = {
   marginTop: "60px"
 };
 class CustomizedSlider extends React.Component {
+  
   onSlide = (render, handle, value, un, percent) => {
+    
+   
     (() => {
       // console.log(value, this.props.sliderKey);
       let indicators = this.props.indicators;
-      let mapData = /*_.cloneDeep*/(this.props.mapGrids);
+      let mapData = _.cloneDeep(this.props.mapGrids);
       mapData[0][0].features = mapData[0][0].features.filter(piece => {
         for (let [key, property] of Object.entries(piece.properties)) {
           if (key === indicators[this.props.sliderKey]) {
@@ -27,8 +33,12 @@ class CustomizedSlider extends React.Component {
           }
         }
       });
-      // console.log(mapData);
-      this.props.dispatch({ type: updateGridData, payload: mapData });
+      console.log(mapData);
+      this.props.dispatch({ type: updateGridData, payload: mapData});
+     
+      // this.props.dispatch(getSliderData())
+      // this.props.dispatch(getMapGrids())
+      // this.props.dispatch(getLocation())
     })();
   };
 
@@ -68,5 +78,14 @@ const mapStateToProps = state => {
     indicators: state.slider.indicators,
     mapGrids: state.map.mapGrids
   };
-};
-export default connect(mapStateToProps)(CustomizedSlider);
+}
+//   const mapDispatchToProps=dispatch=>{
+//     return{
+//       grids: () => dispatch(getMapGrids()),
+//       location: () => dispatch(getLocation()),
+//       sliders: () => dispatch(getSliderData()),
+    
+//     }
+  
+// };
+export default connect(mapStateToProps/*, mapDispatchToProps*/)(CustomizedSlider);
