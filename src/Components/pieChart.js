@@ -1,10 +1,7 @@
 import { Pie } from "react-chartjs-2";
 import React, {Component} from 'react'
 import { connect }  from 'react-redux';
-
 import {getSliderData} from '../redux/actions/sliderActions';
-// import {getLocation} from '../redux/actions/locationActions';
-
 
 class PieChartComponent extends Component {
 
@@ -23,21 +20,22 @@ class PieChartComponent extends Component {
     }
 
     render() {
+    
+        let arr = this.props.sliderValue;
+        console.log(arr)
         return (
             <div className = "mega">
                 
             <div className= "charts" >
 
                 <h5 className="chartHeading">Soil Nutrients</h5>
-
                 <hr className="HR"/>
                 <Pie 
                 data={{
                     labels: this.state.labels,
                     datasets: this.state.datasets
                 }}
-
-                height='100%'
+                height={100}
                 options=
                 {{legend:{
                     display:true,
@@ -51,24 +49,17 @@ class PieChartComponent extends Component {
     }
 }
 
-
 const mapStateToProps = (state) => {
   
     return {
-      sliderValue: state.sliderReducer.sliderValue
-        
+      sliderValue: state.slider.sliderValue        
     }
     
   }
-
   const mapDispatchToProps = (dispatch) => {
     return {
       sliders: dispatch(getSliderData()),
-      
-  
     }
     
   }
-
 export default connect (mapStateToProps, mapDispatchToProps)(PieChartComponent)
-

@@ -116,6 +116,29 @@
   
   
 }
+ 
+#feedback {
+ margin-right: 5%;
+ float: left;
+ color: #007bff;
+ cursor: pointer;
+
+}
+/*
+}
+#fourIcons {
+margin-left: 30px;
+
+}
+.faqs {
+margin-left: 20px;
+margin-right: 150px ;
+margin-bottom: 10px;
+float: left;
+
+
+
+} */
 .MuiAppBar-colorPrimary {
   color: #fff;
   background-color: #2AB34B;
@@ -211,9 +234,9 @@ margin-left: 10px;
   background: white;
   background: rgba(250, 243, 243, 0.603);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  width: 150px;
-  height: 30px;
+  border-radius: 5px;
+  width: 100px;
+  height: 50px;
  
 
 }
@@ -221,4 +244,8 @@ margin-left: 10px;
 .btn-link:link,
 a:link {
   text-decoration: none;
+}
+
+path.leaflet-interactive{
+  stroke: #e15c26;
 }
