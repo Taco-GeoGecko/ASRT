@@ -4,7 +4,6 @@ import _ from "lodash";
 import "nouislider/distribute/nouislider.css";
 import { connect } from "react-redux";
 import { updateGridData } from "../redux/actions/actionTypes/actionTypes";
-
 const styles = {
   fontFamily: "sans-serif",
   textAlign: "center",
@@ -63,7 +62,6 @@ class CustomizedSlider extends React.Component {
     );
   }
 }
-
 const mapStateToProps = state => {
   return {
     sliderValue: state.slider.sliderValue,

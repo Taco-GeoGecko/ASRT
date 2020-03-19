@@ -47,23 +47,11 @@ class UgMap extends Component {
       this.props.dispatch({ type: updateGridDataSuccess, payload: false });
     }
   }
-  style(feature) {
-    return {
-      // color: color_outline,
-      opacity: 1,
-      fillColor: '#DDDDFF',
-      fillOpacity: 0.9,
-      // weight: 3,
-      // radius: 6,
-      clickable: true
-    }
-  }
   onEachFeature = (feature, layer) => {
     // console.log("onEachFeature fired: ");
     layer.on({
       mouseover: (e) => this.MouseOverFeature(e, feature),
-      mouseout: (e) => this.MouseOutFeature(e, feature),
-
+//       mouseout: (e) => this.MouseOutFeature(e, feature),
 
     });
     layer.setStyle(this.style(feature));
@@ -160,7 +148,6 @@ class UgMap extends Component {
             // data={collectionOfGridcells[0][0]}
             data={data}
             onEachFeature={this.onEachFeature}
-          // style={this.style} 
           />
           {/* {console.log(this.props.mapGrids[0][0].features.length)}; */}
 

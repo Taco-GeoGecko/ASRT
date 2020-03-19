@@ -26,6 +26,7 @@ def view(request):
      gs_id from project_taco_schema.agric_indicator where gs_id<10 ''')
 
 
+
     agricRows=cursor.fetchall()
 
 
