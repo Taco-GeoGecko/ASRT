@@ -7,7 +7,6 @@ import { updateGridData } from "../redux/actions/actionTypes/actionTypes";
 import { getMapGrids } from "../redux/actions/mapAction";
 import { getLocation } from "../redux/actions/locationActions";
 import { getSliderData } from "../redux/actions/sliderActions";
-
 const styles = {
   fontFamily: "sans-serif",
   textAlign: "center",
@@ -73,7 +72,6 @@ class CustomizedSlider extends React.Component {
     );
   }
 }
-
 const mapStateToProps = state => {
   return {
     sliderValue: state.slider.sliderValue,

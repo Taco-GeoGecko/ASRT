@@ -2,7 +2,6 @@ import { sliderData } from "../actions/actionTypes/actionTypes";
 import AppState from "../applicationState";
 
 const sliderReducer = (state = AppState.initialSliderState, action) => {
-  // console.log(action.landCoverResults);
   switch (action.type) {
     case sliderData:
       return {
