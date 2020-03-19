@@ -1,7 +1,7 @@
 import React from "react";
 import Checkbox from "@material-ui/core/Checkbox";
 import "../App.css";
-import Checkboxes from "./CheckBox";
+import Checkboxes from "./Checkbox";
 
 export default function LandCover(props) {
   // const [checked, setChecked] = React.useState(true);

@@ -11,6 +11,7 @@ import districts from "../Components/uganda_districts_2019";
 
 
 
+
 class UgMap extends Component {
   constructor(props) {
     super(props);
@@ -32,7 +33,6 @@ class UgMap extends Component {
   //   this.setState({ currentPos: e.latlng });
   // }
 
-
   componentWillMount() {
     this.props.dispatch(getMapGrids());
     this.props.dispatch(getLocation());
@@ -40,8 +40,9 @@ class UgMap extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // console.log(nextProps)
+    console.log(nextProps.mapGrids)
     if (nextProps.mapUpdated === true) {
+
       // console.log(this.props.mapGrids[0][0].features.length, this.state.map);
       // this.geoJsonLayer.current.leafletElement.clearLayers().addData(this.props.mapGrids)
       this.props.dispatch({ type: updateGridDataSuccess, payload: false });
@@ -50,13 +51,9 @@ class UgMap extends Component {
   onEachFeature = (feature, layer) => {
     // console.log("onEachFeature fired: ");
     layer.on({
-      mouseover: (e) => this.MouseOverFeature(e, feature),
-//       mouseout: (e) => this.MouseOutFeature(e, feature),
-
+      mouseover: e => this.MouseOverFeature(e, feature)
+      // mouseout: (e) => this.MouseOutFeature(e, feature),
     });
-    layer.setStyle(this.style(feature));
-    //  let totalMarkers = layer.getLayers().length
-    //   console.log(totalMarkers)
   };
 
   MouseOverFeature(e, feature) {
@@ -73,14 +70,6 @@ class UgMap extends Component {
 
   // setZoomAround(fixedPoint, zoom)
 
-  // onEachFeature = (feature, layer) => {
-  //   console.log('onEachFeature fired: ');
-  //   layer.on({
-  //     mouseover: (e) => this.MouseOverFeature(e, feature),
-  //     mouseout: (e) => this.MouseOutFeature(e, feature)
-
-  //     // feature.showPopup();
-  //   })
   // }
 
   MouseOutFeature(e, feature) {
@@ -119,13 +108,16 @@ class UgMap extends Component {
   render() {
     let status = this.state.district;
     let collectionOfGridcells = this.props.mapGrids;
-    let data = districts
-    if (this.props.mapUpdated == false) {
-      data = data
-    } else {
-      data = collectionOfGridcells[0][0]
-      // console.log('hello')
-    }
+    console.log(collectionOfGridcells)
+    // let data = districts
+    let statusArea=this.state.district
+    // if (this.props.mapUpdated == false) {
+      // data = data
+      // statusArea=statusArea
+    // } else {
+      // data = collectionOfGridcells[0][0]
+      // statusArea="Total grid cells: "+this.props.mapGrids[0][0].features.length + "<br /> "+" 5x5 square kilometers"
+    // }
 
 
     if (collectionOfGridcells[0]) {
@@ -134,7 +126,7 @@ class UgMap extends Component {
           className="map"
           center={[this.props.lat, this.props.lng]}
           zoom={this.props.zoom}
-          style={{ height: "800px", color: '#e15c26' }}
+          style={{ height: "800px", color: "#e15c26" }}
           onClick={this.handleClick}
         >
           <TileLayer
@@ -145,15 +137,18 @@ class UgMap extends Component {
 
           <GeoJSON
             key={this.props.mapGrids[0][0].features.length}
-            // data={collectionOfGridcells[0][0]}
-            data={data}
+            data={collectionOfGridcells[0][0]}
+            // data={data}
             onEachFeature={this.onEachFeature}
           />
-          {/* {console.log(this.props.mapGrids[0][0].features.length)}; */}
 
           <Control className="info" position="topright">
             <div>
-              <strong> {this.props.mapGrids[0][0].features.length} Grid-cells</strong>
+              <strong>
+                Total grid cells: {this.props.mapGrids[0][0].features.length}{" "}
+                <br /> 55x square kilometers
+                {/* {statusArea} */}
+              </strong>
             </div>
           </Control>
 
