@@ -23,7 +23,8 @@ const mapReducer = (state = AppState.initialMapState, action) => {
     case updateGridDataSuccess:
       return {
         ...state,
-        mapUpdated: action.payload
+        // mapGrids: action.payload,
+        mapUpdated:action.payload
       };
 
     default:
