@@ -90,7 +90,7 @@ DATABASES = {
         'NAME': 'project_taco_db',
         'USER': 'postgres',
 
-        'PASSWORD': 'lambtex',
+        'PASSWORD': 'paschal2020',
 
         'HOST': '127.0.0.1',
         'PORT': '5432',
