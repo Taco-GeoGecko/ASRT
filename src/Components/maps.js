@@ -15,14 +15,14 @@ class UgMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      damyZoom: 7,
       lat: this.props.lat,
       lng: this.props.lng,
       zoom: this.props.zoom,
       data: this.props.locationValue,
       district: 'Hover over district',
-
-
       map: null
+
     };
     this.geoJsonLayer = React.createRef();
     //   this.handleClick = this.handleClick.bind(this);
@@ -31,6 +31,8 @@ class UgMap extends Component {
   // handleClick(e) {
   //   this.setState({ currentPos: e.latlng });
   // }
+
+
 
 
   componentWillMount() {
@@ -47,17 +49,17 @@ class UgMap extends Component {
       this.props.dispatch({ type: updateGridDataSuccess, payload: false });
     }
   }
-  style(feature) {
-    return {
-      // color: color_outline,
-      opacity: 1,
-      fillColor: '#DDDDFF',
-      fillOpacity: 0.9,
-      // weight: 3,
-      // radius: 6,
-      clickable: true
-    }
-  }
+  // style(feature) {
+  //   return {
+  //     // color: color_outline,
+  //     opacity: 1,
+  //     fillColor: '#DDDDFF',
+  //     fillOpacity: 0.9,
+  //     // weight: 3,
+  //     // radius: 6,
+  //     clickable: true
+  //   }
+  // }
   onEachFeature = (feature, layer) => {
     // console.log("onEachFeature fired: ");
     layer.on({
@@ -66,7 +68,10 @@ class UgMap extends Component {
 
 
     });
-    layer.setStyle(this.style(feature));
+
+
+
+    // layer.setStyle(this.style(feature));
     //  let totalMarkers = layer.getLayers().length
     //   console.log(totalMarkers)
   };
@@ -121,12 +126,18 @@ class UgMap extends Component {
   handleClick = (e, feature) => {
     // console.log(e);
     this.setState({
-      lat: this.props.lat,
-      lng: this.props.lng,
-      zoom: this.props.zoom,
+      zoom: 10,
       district: this.props.locationValue
     });
+    // e.target.latlng();
   };
+
+
+  addMarker = (e) => {
+    const { markers } = this.state
+    markers.push(e.latlng)
+    this.setState({ markers })
+  }
 
   render() {
     let status = this.state.district;
@@ -146,6 +157,7 @@ class UgMap extends Component {
           className="map"
           center={[this.props.lat, this.props.lng]}
           zoom={this.props.zoom}
+          // zoom={this.state.damyZoom}
           style={{ height: "800px", color: '#e15c26' }}
           onClick={this.handleClick}
         >
@@ -166,7 +178,7 @@ class UgMap extends Component {
 
           <Control className="info" position="topright">
             <div>
-              <strong> {this.props.mapGrids[0][0].features.length} Grid-cells</strong>
+              <strong> 5 * 5 km <br></br> {this.props.mapGrids[0][0].features.length} Grid-cells</strong>
             </div>
           </Control>
 
@@ -191,3 +203,6 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps)(UgMap);
+
+
+
