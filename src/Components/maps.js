@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import L from "leaflet";
-import { Map, TileLayer, Marker, ZoomControl, GeoJSON, Popup } from "react-leaflet";
+import {
+  Map,
+  TileLayer,
+  Marker,
+  ZoomControl,
+  GeoJSON,
+  Popup
+} from "react-leaflet";
 import Control from "react-leaflet-control";
 import { connect } from "react-redux";
 import { updateGridDataSuccess } from "../redux/actions/actionTypes/actionTypes";
@@ -9,10 +16,11 @@ import { getLocation } from "../redux/actions/locationActions";
 import { getSliderData } from "../redux/actions/sliderActions";
 import districts from "../Components/uganda_districts_2019";
 
-
-
-
 class UgMap extends Component {
+  bounds = [
+    [-1.487315, 29.56346], // Southwest coordinates
+    [4.23314, 35.01031] // Northeast coordinates
+  ];
   constructor(props) {
     super(props);
     this.state = {
@@ -20,8 +28,8 @@ class UgMap extends Component {
       lng: this.props.lng,
       zoom: this.props.zoom,
       data: this.props.locationValue,
-      district: 'Hover over district',
-
+      district: "Hover over district",
+      bounds: this.bounds,
 
       map: null
     };
@@ -40,37 +48,41 @@ class UgMap extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.mapGrids)
+    // console.log(nextProps.mapGrids)
     if (nextProps.mapUpdated === true) {
-
       // console.log(this.props.mapGrids[0][0].features.length, this.state.map);
       // this.geoJsonLayer.current.leafletElement.clearLayers().addData(this.props.mapGrids)
       this.props.dispatch({ type: updateGridDataSuccess, payload: false });
     }
   }
+
   onEachFeature = (feature, layer) => {
     // console.log("onEachFeature fired: ");
     layer.on({
-      mouseover: e => this.MouseOverFeature(e, feature)
+      mouseover: e => this.MouseOverFeature(e, feature),
       // mouseout: (e) => this.MouseOutFeature(e, feature),
+      click: e => this.ZoomToFeature(e, feature)
     });
   };
-
-  MouseOverFeature(e, feature) {
-
-    this.setState({
-      district: feature.properties.DName2019,
-    })
-
-    e.target.bindPopup(this.state.district);
-
-    e.target.openPopup();
-
+  ZoomToFeature(e, feature) {
+    const map = this.refs.map.leafletElement; //get native Map instance
+    const district = this.refs.geojson.leafletElement; //get native featureGroup instance
+    if (this.refs.map && map && this.refs.geojson && district) {
+      map.fitBounds(e.target.getBounds());
+    } else {
+      map.fitBounds(district.getBounds());
+    }
   }
 
-  // setZoomAround(fixedPoint, zoom)
+  MouseOverFeature(e, feature) {
+    this.setState({
+      district: feature.properties.DName2019
+    });
 
-  // }
+    // e.target.bindPopup(this.state.district);
+
+    // e.target.openPopup();
+  }
 
   MouseOutFeature(e, feature) {
     e.target.closePopup();
@@ -79,7 +91,6 @@ class UgMap extends Component {
       lng: this.props.lng,
       zoom: this.props.zoom,
       district: this.props.district
-
     });
     e.target.setStyle({
       // fillColor: '#A52A2A',
@@ -95,30 +106,28 @@ class UgMap extends Component {
 
   // }
 
-  handleClick = (e, feature) => {
-    // console.log(e);
-    this.setState({
-      lat: this.props.lat,
-      lng: this.props.lng,
-      zoom: this.props.zoom,
-      district: this.props.locationValue
-    });
-  };
-
   render() {
     let status = this.state.district;
     let collectionOfGridcells = this.props.mapGrids;
-    console.log(collectionOfGridcells)
-    // let data = districts
-    let statusArea=this.state.district
-    // if (this.props.mapUpdated == false) {
-      // data = data
-      // statusArea=statusArea
-    // } else {
-      // data = collectionOfGridcells[0][0]
-      // statusArea="Total grid cells: "+this.props.mapGrids[0][0].features.length + "<br /> "+" 5x5 square kilometers"
-    // }
+    // console.log(collectionOfGridcells)
 
+    let data = districts;
+    let statusArea = "";
+    // if (this.props.mapUpdated == false) {
+    //   data = data;
+    //   statusArea = "District: "+ this.state.district;
+    // } else {
+    //   data = collectionOfGridcells[0][0];
+    //   if(this.props.mapGrids[0] !==undefined){
+    //     console.log(this.props.mapGrids[0][0].features.length)
+    //     statusArea =
+    //     "Total grid cells: " +
+    //     this.props.mapGrids[0][0].features.length +
+    //     "<br /> " +
+    //     " 5x5 square kilometers";
+
+    //   }
+    //       }
 
     if (collectionOfGridcells[0]) {
       this.state.map = (
@@ -126,34 +135,44 @@ class UgMap extends Component {
           className="map"
           center={[this.props.lat, this.props.lng]}
           zoom={this.props.zoom}
-          style={{ height: "800px", color: "#e15c26" }}
-          onClick={this.handleClick}
+          ref="map"
+          style={{ height: "550px", color: "#e15c26" }}
+          maxBounds={this.state.bounds}
+          maxZoom={9}
+          minZoom={this.props.zoom}
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright"></a> contributors &copy; <a href="https://carto.com/attributions"></a>'
             url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
-            maxzoom="10"
+            maxzoom="9"
           />
-
           <GeoJSON
             key={this.props.mapGrids[0][0].features.length}
             data={collectionOfGridcells[0][0]}
             // data={data}
+            ref="geojson"
             onEachFeature={this.onEachFeature}
           />
+          <GeoJSON
+            // key={this.props.mapGrids[0][0].features.length}
+            // data={collectionOfGridcells[0][0]}
 
+            data={districts}
+            // ref="geojson"
+            onEachFeature={this.onEachFeature}
+          />
           <Control className="info" position="topright">
             <div>
               <strong>
-                Total grid cells: {this.props.mapGrids[0][0].features.length}{" "}
-                <br /> 55x square kilometers
-                {/* {statusArea} */}
+                {/* {console.log(this.props.mapGrids[0][0])} */}
+                {/* Total grid cells: {this.props.mapGrids[0][0].features.length}{" "}
+                <br /> 55x square kilometers */}
+                {statusArea}
               </strong>
             </div>
           </Control>
-
           }
-          </Map>
+        </Map>
       );
       return this.state.map;
     } else return "hello";
