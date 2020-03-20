@@ -6,6 +6,7 @@ import TwitterIcon from "@material-ui/icons/Twitter";
 import FaceBook from "../Images/FaceBook.png";
 import Gmail from "../Images/Gmail.svg";
 import { blue} from "@material-ui/core/colors";
+import FormDialog from './formDialog';
 
 const useStyles = makeStyles(theme => ({
   horizontalSpacing: {
@@ -29,16 +30,18 @@ export default function MatIcons() {
     <div className="Icons">
       
       <a target="_blank" rel="noopener noreferrer" href="https://www.geogecko.com/"> 
-        <span className={classes.horizontalSpacing}>FAQS</span>
+        FAQS
+        
       </a>
 
 
-     <a target="_blank" rel="noopener noreferrer" href="https://www.geogecko.com/">
-        <span className={classes.horizontalSpacing} >Feedback</span>
-      </a>
-    
+     
+       <div id="feedback"> <FormDialog />
+        </div>
+  
+      
 
-      <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/geogecko">
+    <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/geogecko">
         <TwitterIcon
           className={classes.navigation}
           style={{ color: blue[500] }}
@@ -71,6 +74,7 @@ export default function MatIcons() {
           className={classes.navigation}
         />
       </a>
+    {/* </div> */}
     </div>
   );
 }

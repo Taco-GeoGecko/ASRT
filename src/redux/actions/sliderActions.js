@@ -17,13 +17,6 @@ export const getSliderData = () => {
       let landCoverResults=[]
        
       let slidersample = response.data.agridata;
-      // console.log(slidersample)
-      // let landCoverResults=slidersample.filter(pice=> {
-        // console.log(pice[11])
-      // })
-
-     
-
       for (
         let sliderCounter = 0;
         sliderCounter < sliderKey.length;

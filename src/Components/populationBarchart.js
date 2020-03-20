@@ -5,16 +5,18 @@ const state = {
   labels: ['Q1'],
   datasets: [
     {
-      label: 'Population',
-      backgroundColor: 'rgba(75,192,192,1)',
-      borderColor: 'rgba(75,192,192,1)',
+
+      label: ' National Population',
+      backgroundColor: '#929292',
+      borderColor: '#929292',
       borderWidth: 6,
-      data: [85]
+      data: [89]
     },
     {
-      label: 'Population',
+      label: ' District Population',
       backgroundColor: 'rgba(75,192,192,1)',
-      borderColor: 'rgba(255, 0, 0, 1)',
+      borderColor: 'rgba(75,192,192,1)',
+
       borderWidth: 6,
       data: [89]
     }
@@ -27,7 +29,9 @@ export default class Population extends React.Component {
      <div className= "mega">
 
 <div className="charts">
-      <h1 className="chartHeading">population</h1>
+
+      <h5 className="chartHeading">Population</h5>
+
       <hr className="HR"/>
         <Bar
           data={state}
@@ -43,7 +47,9 @@ export default class Population extends React.Component {
             scales: {
               yAxes: [{
                   gridLines: {
-                      color: 'white'
+
+                      color: '#929292'
+
                   }
               }],
               xAxes: [{
@@ -53,7 +59,7 @@ export default class Population extends React.Component {
               }]
           }
           }}
-          height='110%'
+          height={100}
         />
       </div>
 
