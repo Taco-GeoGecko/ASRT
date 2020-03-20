@@ -28,7 +28,7 @@ export default function ExpansionMaps() {
         side="left"
         arrowsize={20}
         styles={classes.calloutstyles}
-        message="This map shows district boundaries and reflects the various changes as per the user's filtering via the sliders."
+        message="This map shows district boundaries and reflects the  various changes as per the user's filtering via the sliders"
       />
     </div>
   );
