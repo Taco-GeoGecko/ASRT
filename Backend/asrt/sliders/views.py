@@ -9,7 +9,7 @@ def view(request):
     connection = psycopg2.connect(
                                     user = "postgres",
 
-                                    password = "lambtex",
+                                    password = "paschal2020",
 
                                     host = "127.0.0.1",
                                     port = "5432",
