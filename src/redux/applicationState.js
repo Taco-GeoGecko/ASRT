@@ -1,4 +1,3 @@
-
 const AppState = {
   initialMapState: {
     lat: 0.32958802605356885,

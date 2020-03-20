@@ -24,6 +24,7 @@ class UgMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      // center: this.maxzoom.props,
       lat: this.props.lat,
       lng: this.props.lng,
       zoom: this.props.zoom,
