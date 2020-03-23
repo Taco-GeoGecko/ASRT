@@ -89,8 +89,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'project_taco_db',
         'USER': 'postgres',
-        'PASSWORD': '508282044',
-        'HOST': '127.0.0.1',
+        'PASSWORD': 'postgres',
+        'HOST': 'localhost',
+
         'PORT': '5432',
         
          

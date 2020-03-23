@@ -8,11 +8,8 @@ def view(request):
         # establishing a connection
     connection = psycopg2.connect(
                                     user = "postgres",
-
-
-                                    password = "508282044",
-
-                                    host = "127.0.0.1",
+                                    password = "postgres",
+                                    host = "localhost",
 
                                     port = "5432",
                                     database = "project_taco_db")

@@ -5,14 +5,20 @@ import { makeStyles } from "@material-ui/core/styles";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import FaceBook from "../Images/FaceBook.png";
 import Gmail from "../Images/Gmail.svg";
-import { blue} from "@material-ui/core/colors";
+import { blue } from "@material-ui/core/colors";
 import FormDialog from './formDialog';
+import {
+  BrowserRouter as Router,
+  Link,
+  Route
+} from 'react-router-dom';
+
 
 const useStyles = makeStyles(theme => ({
   horizontalSpacing: {
     marginLeft: 5,
-    marginRight:20,
-    
+    marginRight: 20,
+
   },
   navigation: {
     height: 20,
@@ -20,7 +26,7 @@ const useStyles = makeStyles(theme => ({
 
     width: 25,
     marginLeft: "5%",
-    
+
   }
 }));
 
@@ -28,20 +34,13 @@ export default function MatIcons() {
   const classes = useStyles();
   return (
     <div className="Icons">
-      
-      <a target="_blank" rel="noopener noreferrer" href="http://localhost:3000/faqs"> 
+      <Link to='/faqs' target="_blank" rel="noopener noreferrer">
         FAQS
-        
-      </a>
+      </Link>
+      <div id="feedback"> <FormDialog />
+      </div>
 
-
-     
-       <div id="feedback"> <FormDialog />
-        </div>
-  
-      
-
-    <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/geogecko">
+      <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/geogecko">
         <TwitterIcon
           className={classes.navigation}
           style={{ color: blue[500] }}
@@ -74,7 +73,7 @@ export default function MatIcons() {
           className={classes.navigation}
         />
       </a>
-    {/* </div> */}
+      {/* </div> */}
     </div>
   );
 }
