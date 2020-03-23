@@ -13,7 +13,7 @@ const AppState = {
   },
   initialSliderState: {
     sliderValue: [],
-    landCoverResults:[],
+    landCoverResults: [],
     indicators: {
       0: "ppp_sum",
       1: "soil_copper",
@@ -26,15 +26,16 @@ const AppState = {
       8: "ndwi_jfm",
       9: "rainfall",
       10: "ndvi_jfm",
-      11:"land_cover",
+      11: "land_cover",
       12: "slope",
       13: "elevation",
       14: "lst_jfm",
     },
-    land_cover:{
-      1:"land_cover",
-      2:"cover"},
-    landCoverCheckBox:{
+    land_cover: {
+      1: "land_cover",
+      2: "cover"
+    },
+    landCoverCheckBox: {
       0: "ppp_sum",
       1: "soil_copper",
       2: "soil_phos",
@@ -46,7 +47,7 @@ const AppState = {
       8: "ndwi_jfm",
       9: "rainfall",
       10: "ndvi_jfm",
-      11:"land_cover",
+      11: "land_cover",
       12: "slope",
       13: "elevation",
       14: "lst_jfm"
@@ -54,3 +55,6 @@ const AppState = {
   }
 };
 export default AppState;
+
+
+

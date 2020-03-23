@@ -24,7 +24,6 @@ class UgMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // center: this.maxzoom.props,
       lat: this.props.lat,
       lng: this.props.lng,
       zoom: this.props.zoom,
@@ -33,6 +32,7 @@ class UgMap extends Component {
       bounds: this.bounds,
 
       map: null
+
     };
     this.geoJsonLayer = React.createRef();
     //   this.handleClick = this.handleClick.bind(this);
@@ -56,7 +56,6 @@ class UgMap extends Component {
       this.props.dispatch({ type: updateGridDataSuccess, payload: false });
     }
   }
-
   onEachFeature = (feature, layer) => {
     // console.log("onEachFeature fired: ");
     layer.on({
@@ -112,23 +111,26 @@ class UgMap extends Component {
     let collectionOfGridcells = this.props.mapGrids;
     // console.log(collectionOfGridcells)
 
-    let data = districts;
-    let statusArea = "";
-    // if (this.props.mapUpdated == false) {
-    //   data = data;
-    //   statusArea = "District: "+ this.state.district;
-    // } else {
-    //   data = collectionOfGridcells[0][0];
-    //   if(this.props.mapGrids[0] !==undefined){
-    //     console.log(this.props.mapGrids[0][0].features.length)
-    //     statusArea =
-    //     "Total grid cells: " +
-    //     this.props.mapGrids[0][0].features.length +
-    //     "<br /> " +
-    //     " 5x5 square kilometers";
+    let districtData = districts;
+    // let mapGridsData = collectionOfGridcells[0][0];
+    let data = districtData;
 
-    //   }
-    //       }
+    var statusArea = "";
+    if (this.props.mapUpdated == false) {
+      data = districtData;
+      statusArea = "District: " + this.state.district;
+    } else {
+      data = collectionOfGridcells[0][0];
+      if (this.props.mapGrids[0] != undefined) {
+        // console.log(this.props.mapGrids[0][0].features.length)
+        var statusGrids = "Total grid cells: " +
+          data.features.length +
+          "<br /> " +
+          " 5x5 square kilometers";
+        console.log(statusArea)
+
+      }
+    }
 
     if (collectionOfGridcells[0]) {
       this.state.map = (
@@ -139,7 +141,7 @@ class UgMap extends Component {
           ref="map"
           style={{ height: "550px", color: "#e15c26" }}
           maxBounds={this.state.bounds}
-          maxZoom={9}
+          maxZoom={10}
           minZoom={this.props.zoom}
         >
           <TileLayer
@@ -149,8 +151,8 @@ class UgMap extends Component {
           />
           <GeoJSON
             key={this.props.mapGrids[0][0].features.length}
-            data={collectionOfGridcells[0][0]}
-            // data={data}
+            // data={collectionOfGridcells[0][0]}
+            data={data}
             ref="geojson"
             onEachFeature={this.onEachFeature}
           />
@@ -158,18 +160,19 @@ class UgMap extends Component {
             // key={this.props.mapGrids[0][0].features.length}
             // data={collectionOfGridcells[0][0]}
 
-            data={districts}
+            data={districtData}
+
             // ref="geojson"
             onEachFeature={this.onEachFeature}
           />
+
+
+
           <Control className="info" position="topright">
             <div>
-              <strong>
-                {/* {console.log(this.props.mapGrids[0][0])} */}
-                {/* Total grid cells: {this.props.mapGrids[0][0].features.length}{" "}
-                <br /> 55x square kilometers */}
-                {statusArea}
-              </strong>
+              {/* <strong> 5 * 5 km <br></br> {this.props.mapGrids[0][0].features.length} Grid-cells</strong> */}
+              {/* {statusArea} */}
+              {status = this.props.mapUpdated == true ? statusGrids : statusArea}
             </div>
           </Control>
           }
@@ -193,3 +196,6 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps)(UgMap);
+
+
+

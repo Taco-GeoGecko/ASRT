@@ -6,16 +6,16 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
   root: {
     width: '0%',
-  //lor: theme.palette.text.secondary,
+    //lor: theme.palette.text.secondary,
   },
-  spacing:{
-    margin:0,
+  spacing: {
+    margin: 0,
   },
-  calloutstyles:{
-   
+  calloutstyles: {
+
     width: 200,
-  marginLeft:-350,
-    
+    marginLeft: -350,
+
   }
 }));
 
@@ -24,7 +24,7 @@ export default function ExpansionMaps() {
   return (
     <div className={classes.root}>
       <Callouts
-        myComponent={<UgMap/>}
+        myComponent={<UgMap />}
         side="left"
         arrowsize={20}
         styles={classes.calloutstyles}
