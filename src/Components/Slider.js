@@ -15,12 +15,17 @@ const styles = {
   marginTop: "60px"
 };
 class CustomizedSlider extends React.Component {
-  
+  // componentDidMount() {
+  //   this.props.dispatch(getMapGrids());
+  // }
+  // componentWillMount() {
+  //   let y = this.props.mapGrids;
+  //   // console.log(y);
+  // }
+
   onSlide = (render, handle, value, un, percent) => {
-    
-   
-    (() => {
-      // console.log(value, this.props.sliderKey);
+    // (() => {
+      // console.log(this.y);
       let indicators = this.props.indicators;
       let mapData = _.cloneDeep(this.props.mapGrids);
       mapData[0][0].features = mapData[0][0].features.filter(piece => {
@@ -29,17 +34,18 @@ class CustomizedSlider extends React.Component {
             if (property < value[0] || property > value[1]) {
               return false;
             }
+            // console.log(property)
             return true;
           }
         }
       });
-      console.log(mapData);
-      this.props.dispatch({ type: updateGridData, payload: mapData});
-     
+      // console.log( mapData[0][0].features);
+      this.props.dispatch({ type: updateGridData, payload: mapData });
+
       // this.props.dispatch(getSliderData())
       // this.props.dispatch(getMapGrids())
       // this.props.dispatch(getLocation())
-    })();
+    // })();
   };
 
   render() {
@@ -48,6 +54,7 @@ class CustomizedSlider extends React.Component {
     var { sliderKey } = this.props;
     result = result.map(sliderInfo => sliderInfo);
     let newResult = result[sliderKey];
+    // console.log(newResult)
     if (Array.isArray(newResult) && newResult.length) {
       value = newResult;
     }
@@ -78,14 +85,16 @@ const mapStateToProps = state => {
     indicators: state.slider.indicators,
     mapGrids: state.map.mapGrids
   };
-}
+};
 //   const mapDispatchToProps=dispatch=>{
 //     return{
 //       grids: () => dispatch(getMapGrids()),
 //       location: () => dispatch(getLocation()),
 //       sliders: () => dispatch(getSliderData()),
-    
+
 //     }
-  
+
 // };
-export default connect(mapStateToProps/*, mapDispatchToProps*/)(CustomizedSlider);
+export default connect(mapStateToProps /*, mapDispatchToProps*/)(
+  CustomizedSlider
+);

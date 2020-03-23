@@ -15,19 +15,17 @@ export default function LandCover(props) {
       <div style={{ textAlign: "center", marginTop: 20 }}>
         {props.IndicatorSlider}
       </div>
-      <Checkboxes label="No data" value={1} />
-      <Checkboxes label="Trees Cover Areas" value={2} />
-      <Checkboxes label="Shrub Cover Areas" value={3} />
-      <Checkboxes label="Grassland" value={4} />
-      <Checkboxes label="Cropland" value={5} />
-      <Checkboxes label="Vegetation aquatic or regularly flooded" value={6} />
-      <Checkboxes label="Lichen Mosses / Sparse vegetation" value={7} />
-      <Checkboxes label="Bare Areas" value={8} />
-      <Checkboxes label="Built Up areas" value={9} />
-      <Checkboxes label="snow and ice" value={10} />
-      <Checkboxes label="open water" value={11} />
-
-
+      <Checkboxes label="No data" checkboxKey="0" />
+      <Checkboxes label="Trees Cover Areas" checkboxKey="1" />
+      <Checkboxes label="Shrub Cover Areas" checkboxKey="2" />
+      <Checkboxes label="Grassland" checkboxKey="3" />
+      <Checkboxes label="Cropland" checkboxKey="4" />
+      <Checkboxes label="Vegetation aquatic or regularly flooded" checkboxKey="5" />
+      <Checkboxes label="Lichen Mosses / Sparse vegetation" checkboxKey="6" />
+      <Checkboxes label="Bare Areas" checkboxKey="7" />
+      <Checkboxes label="Built Up areas" checkboxKey="8" />
+      <Checkboxes label="snow and ice" checkboxKey="9" />
+      <Checkboxes label="open water" checkboxKey="10" />
     </div>
   );
 }

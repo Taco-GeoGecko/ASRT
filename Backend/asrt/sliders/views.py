@@ -25,7 +25,7 @@ def view(request):
 
     cursor.execute('''select ppp_sum,soil_copper,soil_phos,soil_potas,soil_boron,soil_alumi,soil_iron,soil_magne,ndwi_jfm,rainfall,
     ndvi_jfm,land_cover,slope,elevation,lst_jfm,
-     gs_id from project_taco_schema.agric_indicator where gs_id<10 ''')
+     gs_id from project_taco_schema.agric_indicator where gs_id<24320''')
 
 
 
