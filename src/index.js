@@ -7,6 +7,7 @@ import "leaflet/dist/leaflet.css"
 import {Provider} from 'react-redux';
 import store from './redux/store';
 import FormDialog from './Components/formDialog';
+import ControlledExpansionPanels from './Components/Faqs'
 // import ResponsiveDrawer from './Components/Analysis'
 
 //import * as serviceWorker from './serviceWorker';

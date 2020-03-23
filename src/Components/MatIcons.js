@@ -29,7 +29,7 @@ export default function MatIcons() {
   return (
     <div className="Icons">
       
-      <a target="_blank" rel="noopener noreferrer" href="https://www.geogecko.com/"> 
+      <a target="_blank" rel="noopener noreferrer" href="http://localhost:3000/faqs"> 
         FAQS
         
       </a>
