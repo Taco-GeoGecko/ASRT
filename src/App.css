@@ -219,12 +219,15 @@ margin-left: 10px;
 .info {
   padding: 6px 8px;
   font: 14px/16px Arial, Helvetica, sans-serif;
-  background: white;
-  background: rgba(250, 243, 243, 0.603);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  width: 200px;
-  height: 45px;
+  background: #d0d0d0;
+  /* background: rgba(250, 243, 243, 0.603); */
+  /* box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); */
+  border-color: black; 
+  border-radius: 5px;
+  width: 120px;
+  height: 50px;
+  
+  
  
 
 }
