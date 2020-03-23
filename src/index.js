@@ -6,6 +6,7 @@ import App from './App';
 import "leaflet/dist/leaflet.css"
 import {Provider} from 'react-redux';
 import store from './redux/store';
+import FormDialog from './Components/formDialog';
 // import ResponsiveDrawer from './Components/Analysis'
 
 //import * as serviceWorker from './serviceWorker';
