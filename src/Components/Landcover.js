@@ -1,15 +1,9 @@
 import React from "react";
 import Checkbox from "@material-ui/core/Checkbox";
 import "../App.css";
-import Checkboxes from "./Checkbox";
+import Checkboxes from "./CheckBox";
 
 export default function LandCover(props) {
-  // const [checked, setChecked] = React.useState(true);
-
-  // const handleChange = event => {
-  //   setChecked(event.target.checked);
-  // };
-
   return (
     <div>
       <div style={{ textAlign: "center", marginTop: 20 }}>
@@ -20,7 +14,10 @@ export default function LandCover(props) {
       <Checkboxes label="Shrub Cover Areas" checkboxKey="2" />
       <Checkboxes label="Grassland" checkboxKey="3" />
       <Checkboxes label="Cropland" checkboxKey="4" />
-      <Checkboxes label="Vegetation aquatic or regularly flooded" checkboxKey="5" />
+      <Checkboxes
+        label="Vegetation aquatic or regularly flooded"
+        checkboxKey="5"
+      />
       <Checkboxes label="Lichen Mosses / Sparse vegetation" checkboxKey="6" />
       <Checkboxes label="Bare Areas" checkboxKey="7" />
       <Checkboxes label="Built Up areas" checkboxKey="8" />

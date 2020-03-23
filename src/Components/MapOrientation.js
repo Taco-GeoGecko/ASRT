@@ -6,7 +6,6 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(theme => ({
   root: {
     width: "0%"
-    //lor: theme.palette.text.secondary,
   },
   spacing: {
     margin: 0
@@ -16,7 +15,6 @@ const useStyles = makeStyles(theme => ({
     marginLeft: -350
   }
 }));
-
 export default function ExpansionMaps() {
   const classes = useStyles();
   return (

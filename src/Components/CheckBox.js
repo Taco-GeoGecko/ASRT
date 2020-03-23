@@ -1,9 +1,8 @@
 import React from "react";
 import Checkbox from "@material-ui/core/Checkbox";
 import "../App.css";
-import { connect } from "react-redux";
-import _ from "lodash";
 import FormGroup from "@material-ui/core/FormGroup";
+import { connect } from "react-redux";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { updateGridData } from "../redux/actions/actionTypes/actionTypes";
 
@@ -11,28 +10,14 @@ function Checkboxes(props) {
   let { checkboxKey } = props;
   let checkboxValue = 0;
   let indicators = props.landCoverIndicators;
-  // console.log(indicators)
-  let defaultIndicator = props.indicator;
   let result = props.landCoverValue;
   result = result.map(sliderInfo => sliderInfo);
-  // console.log(result)
   let newResult = result[checkboxKey];
-  // console.log(checkboxKey)
-  // if (newResult !== undefined) {
   checkboxValue = newResult;
-  // }
-  // console.log(props.name)
-
-  const [state, setState] = React.useState({id:false, value:0});
-  // console.log(state.value);
-
+  const [state, setState] = React.useState({ id: false, value: 0 });
   const handleChange = event => {
-    // (() => {
-      // console.log(mapData)
-      let mapData = _.cloneDeep(props.mapGrids);
-
-    setState({...state, id:event.target.checked, value:checkboxValue});
-    
+    let mapData = props.mapGrids;
+    setState({ ...state, id: event.target.checked, value: checkboxValue });
     console.log(state.value);
     mapData[0][0].features = mapData[0][0].features.filter(piece => {
       for (let [key, property] of Object.entries(piece.properties)) {
@@ -47,9 +32,7 @@ function Checkboxes(props) {
         }
       }
     });
-    // console.log(mapData[0][0].features);
     props.dispatch({ type: updateGridData, payload: mapData });
-    // })();
   };
   return (
     <div>
@@ -70,7 +53,6 @@ function Checkboxes(props) {
     </div>
   );
 }
-
 const mapStateToProps = state => {
   return {
     landCoverValue: state.slider.landCoverResults,
