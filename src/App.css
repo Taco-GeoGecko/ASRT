@@ -124,21 +124,9 @@
  cursor: pointer;
 
 }
-/*
+#faq{
+  background-color:#e15c26;
 }
-#fourIcons {
-margin-left: 30px;
-
-}
-.faqs {
-margin-left: 20px;
-margin-right: 150px ;
-margin-bottom: 10px;
-float: left;
-
-
-
-} */
 .MuiAppBar-colorPrimary {
   color: #fff;
   background-color: #2AB34B;
