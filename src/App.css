@@ -25,6 +25,9 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+#FAQ{
+  text-align: center;
+}
 
 .App-link {
   color: #2db44b;
