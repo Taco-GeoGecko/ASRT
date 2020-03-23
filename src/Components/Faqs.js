@@ -30,7 +30,7 @@ export default function ControlledExpansionPanels() {
   };
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} id="faq">
       <ExpansionPanel
         expanded={expanded === "panel1"}
         onChange={handleChange("panel1")}
@@ -48,7 +48,7 @@ export default function ControlledExpansionPanels() {
         <ExpansionPanelDetails>
           <Typography>
             When done with filtering through various agricultural indicators, 
-            the map records the changes and shows areas for which your criteria is correct.
+            the map records the changes and shows areas for which your criteria is valid.
             What you search for is reflected in the remaining grid cells on the map.
           </Typography>
         </ExpansionPanelDetails>
@@ -69,7 +69,7 @@ export default function ControlledExpansionPanels() {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Typography>
-            Each grid cell, represnts 5*5 square kilometre areas hoverd on the map.
+            Each grid cell, represents 5km x 5km square kilometre areas on the ground.
           </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>
@@ -89,7 +89,7 @@ export default function ControlledExpansionPanels() {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Typography>
-            Yes it can, this web portal doesn't change in operation on the phone.
+            Yes it can, this web portal doesn't change when being used on the phone.
             Only the resolutions of the page changes.
           </Typography>
         </ExpansionPanelDetails>
@@ -111,7 +111,7 @@ export default function ControlledExpansionPanels() {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Typography>
-            How do I monitor my land ?
+           TBD.
           </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>
@@ -131,7 +131,7 @@ export default function ControlledExpansionPanels() {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Typography>
-            No, you don't need membership. But you can leave youur contactin the feedbacklink 
+            No, you don't need membership. But you can leave youur contact in the feedbacklink 
             at the bottom left corner of this portal, Thank you.
           </Typography>
         </ExpansionPanelDetails>
@@ -153,8 +153,8 @@ export default function ControlledExpansionPanels() {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Typography>
-           Yes you can use one indicator to determine what you wwant.
-            You are at liberty o use any numbers of the available indicatorsso as to magnify your search.
+           Yes you can use one indicator to determine what you want.
+           You are at liberty to use any number / combination of the available indicators so as to amplify your search.
           </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>
@@ -174,7 +174,7 @@ export default function ControlledExpansionPanels() {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Typography>
-            Yes please if required .
+            Yes please. If required .
           </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>

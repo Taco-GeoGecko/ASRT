@@ -12,7 +12,7 @@ def view(request):
     connection = psycopg2.connect(
                                     user = "postgres",
                                     password = "postgres",
-                                    host = "localhost",
+                                    host = "paschal2020",
                                     port = "5432",
                                     database = "project_taco_db")
         # creating the cursor (vessel to the db)
