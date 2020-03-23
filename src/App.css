@@ -243,3 +243,7 @@ a:link {
 path.leaflet-interactive{
   stroke: #e15c26;
 }
+
+.MuiCheckbox-colorSecondary.Mui-checked {
+  color: black;
+}

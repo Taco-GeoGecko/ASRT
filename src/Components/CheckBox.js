@@ -1,61 +1,38 @@
 import React from "react";
-import Checkbox from "@material-ui/core/CheckBox";
+import Checkbox from "@material-ui/core/Checkbox";
 import "../App.css";
-import { connect } from "react-redux";
-import { green } from "@material-ui/core/colors";
 import FormGroup from "@material-ui/core/FormGroup";
+import { connect } from "react-redux";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { updateGridData } from "../redux/actions/actionTypes/actionTypes";
 
-
 function Checkboxes(props) {
-
   let { checkboxKey } = props;
+  let checkboxValue = 0;
   let indicators = props.landCoverIndicators;
-  let defaultIndicator = props.indicator;
   let result = props.landCoverValue;
-  let mapData = props.mapGrids;
-
   result = result.map(sliderInfo => sliderInfo);
-  // console.log(props.value)
-  let newResult = result[props.value];
-  // console.log(newResult)
-  if (newResult !== undefined) {
-    checkboxKey = newResult
-  }
-
-  const [state, setChecked] = React.useState({ checked: false, data: mapData });
-
+  let newResult = result[checkboxKey];
+  checkboxValue = newResult;
+  const [state, setState] = React.useState({ id: false, value: 0 });
   const handleChange = event => {
-
-    (() => {
-      if (setChecked(event.target.checked)) {
-
-        // console.log(mapData);
-        mapData[0][0].features = mapData[0][0].features.filter(piece => {
-          // console.log(piece.properties.land_cover)
-          // if (key===piece.properties.land_cover){
-          // console.log("here i am")
-          for (let [key, property] of Object.entries(piece.properties)) {
-            // console.log(key)
-            if (key == "land_cover") {
-              // console.log(property)
-              // console.log(checkboxKey)
-              if (property > 16 || property < 0) {
-                return false;
-                console.log("warning")
-              } else {
-                return true;
-              }
+    let mapData = props.mapGrids;
+    setState({ ...state, id: event.target.checked, value: checkboxValue });
+    console.log(state.value);
+    mapData[0][0].features = mapData[0][0].features.filter(piece => {
+      for (let [key, property] of Object.entries(piece.properties)) {
+        if (key === "land_cover") {
+          if (indicators[checkboxKey] == props.label) {
+            if (property < checkboxValue) {
+              return true;
+            } else {
+              return false;
             }
           }
-        })
+        }
       }
-      console.log(mapData);
-      props.dispatch({ type: updateGridData, payload: mapData });
-    })();
-    // }
-
+    });
+    props.dispatch({ type: updateGridData, payload: mapData });
   };
   return (
     <div>
@@ -63,16 +40,16 @@ function Checkboxes(props) {
         <FormControlLabel
           control={
             <Checkbox
-              // checked={checked}
+              checked={state.checked}
               onChange={handleChange}
-              value={checkboxKey}
+              value={checkboxValue}
+              id={checkboxKey}
               inputProps={{ "aria-label": "checkbox with default color" }}
             />
           }
           label={props.label}
         />
       </FormGroup>
-
     </div>
   );
 }
