@@ -107,7 +107,7 @@ class UgMap extends Component {
           "<br /> " +
           " 5x5 square kilometers";
       }
-    }
+    } 
 
     if (collectionOfGridcells[0]) {
       this.state.map = (
@@ -133,19 +133,21 @@ class UgMap extends Component {
             onEachFeature={this.onEachFeature}
           />
           <GeoJSON data={districtData} onEachFeature={this.onEachFeature} />
+         
           <Control className="info" position="topright">
+              
             <div>
               {
                 (status =
-                  this.props.mapUpdated == true ? statusGrids : statusArea)
-              }
+                  this.props.mapUpdated === true ? statusGrids : statusArea)
+              } 
             </div>
           </Control>
           }
         </Map>
       );
       return this.state.map;
-    } else return "hello";
+    } else return "Failed to load the map";
   }
 }
 const mapStateToProps = state => {
