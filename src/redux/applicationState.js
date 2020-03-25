@@ -6,7 +6,9 @@ const AppState = {
     district: "Hover over district",
     mapGrids: [],
     updatedMapGrids: [],
-    mapUpdated: false
+    mapUpdated: false,
+    sliderValues: {}
+
   },
   initialLocationState: {
     locationValue: []

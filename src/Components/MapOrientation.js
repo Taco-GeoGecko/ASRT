@@ -22,7 +22,7 @@ export default function ExpansionMaps() {
       <Callouts
         myComponent={<UgMap />}
         side="left"
-        arrowsize={20}
+        arrowsize={0}
         styles={classes.calloutstyles}
         message="This map shows district boundaries and reflects the  various changes as per the user's filtering via the sliders"
       />
