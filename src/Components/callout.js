@@ -20,7 +20,7 @@ export default class Callouts extends Component {
 
   render() {
     return (
-      <StylesProvider injectFirst>
+      // <StylesProvider injectFirst>
         <div style={{ display: "flex", justifyContent: "center" }}>
           <div ref={this.boxEl}>{this.props.myComponent}</div>
           <Callout
@@ -34,7 +34,7 @@ export default class Callouts extends Component {
             <span style={{ color: "white" }}>{this.props.message}</span>
           </Callout>
         </div>
-      </StylesProvider>
+      //  </StylesProvider>
     );
   }
 }

@@ -3,6 +3,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import "../App.css";
 import FormGroup from "@material-ui/core/FormGroup";
 import { connect } from "react-redux";
+import _ from "lodash";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { updateGridData } from "../redux/actions/actionTypes/actionTypes";
 
@@ -14,24 +15,48 @@ function Checkboxes(props) {
   result = result.map(sliderInfo => sliderInfo);
   let newResult = result[checkboxKey];
   checkboxValue = newResult;
+  // props.sliderValues[checkboxKey] = checkboxValue;
+  // console.log(props.sliderValues)
+  // console.log(checkboxValue)
+
   const [state, setState] = React.useState({ id: false, value: 0 });
   const handleChange = event => {
-    let mapData = props.mapGrids;
-    setState({ ...state, id: event.target.checked, value: checkboxValue });
-    console.log(state.value);
-    mapData[0][0].features = mapData[0][0].features.filter(piece => {
-      for (let [key, property] of Object.entries(piece.properties)) {
-        if (key === "land_cover") {
-          if (indicators[checkboxKey] == props.label) {
-            if (property < checkboxValue) {
-              return true;
-            } else {
-              return false;
+    props.sliderValues[checkboxKey] = checkboxValue;
+    let mapData = _.cloneDeep(props.mapGrids);
+    setState({
+      ...state,
+      id: event.target.checked,
+      value: props.sliderValues
+    });
+
+    // for (let [landCoverKey, values] of Object.entries(props.sliderValues)) {
+    // console.log(values)
+    // console.log(indicators[landCoverKey])
+    for (let [landCoverKey, values] of Object.entries(props.sliderValues)) {
+      // console.log(landCoverKey)
+
+      mapData[0][0].features = mapData[0][0].features.filter(piece => {
+        for (let [key, property] of Object.entries(piece.properties)) {
+          if (key === "land_cover") {
+            // console.log(indicators);
+            if (landCoverKey === checkboxKey) {
+              console.log(landCoverKey + ", " + checkboxKey);
+            }
+            // console.log(indicators[landCoverKey]);
+
+            if (indicators[landCoverKey] == props.label) {
+              // console.log(property);
+              // console.log(values)
+              if (property < values) {
+                return true;
+              } else {
+                return false;
+              }
             }
           }
         }
-      }
-    });
+      });
+    }
     props.dispatch({ type: updateGridData, payload: mapData });
   };
   return (
@@ -42,7 +67,7 @@ function Checkboxes(props) {
             <Checkbox
               checked={state.checked}
               onChange={handleChange}
-              value={checkboxValue}
+              value={props.sliderValues}
               id={checkboxKey}
               inputProps={{ "aria-label": "checkbox with default color" }}
             />
@@ -58,7 +83,8 @@ const mapStateToProps = state => {
     landCoverValue: state.slider.landCoverResults,
     landCoverIndicators: state.slider.landCoverCheckBox,
     indicator: state.slider.land_cover,
-    mapGrids: state.map.mapGrids
+    mapGrids: state.map.mapGrids,
+    sliderValues: state.map.sliderValues
   };
 };
 export default connect(mapStateToProps)(Checkboxes);
