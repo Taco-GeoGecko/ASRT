@@ -11,10 +11,9 @@ def view(request):
         # establishing a connection
     connection = psycopg2.connect(
                                     user = "postgres",
+                                    password = "lambtex",
+                                    host = "localhost",
 
-                                    password = "paschal2020",
-
-                                    host = "127.0.0.1",
                                     port = "5432",
                                     database = "project_taco_db")
         # creating the cursor (vessel to the db)

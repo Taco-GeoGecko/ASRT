@@ -25,6 +25,9 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+#FAQ{
+  text-align: center;
+}
 
 .App-link {
   color: #2db44b;
@@ -124,21 +127,9 @@
  cursor: pointer;
 
 }
-/*
+#faq{
+  background-color:#e15c26;
 }
-#fourIcons {
-margin-left: 30px;
-
-}
-.faqs {
-margin-left: 20px;
-margin-right: 150px ;
-margin-bottom: 10px;
-float: left;
-
-
-
-} */
 .MuiAppBar-colorPrimary {
   color: #fff;
   background-color: #2AB34B;
@@ -231,12 +222,15 @@ margin-left: 10px;
 .info {
   padding: 6px 8px;
   font: 14px/16px Arial, Helvetica, sans-serif;
-  background: white;
-  background: rgba(250, 243, 243, 0.603);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  width: 200px;
-  height: 45px;
+  background: #d0d0d0;
+  /* background: rgba(250, 243, 243, 0.603); */
+  /* box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); */
+  border-color: black; 
+  border-radius: 5px;
+  width: 120px;
+  height: 50px;
+  
+  
  
 
 }
@@ -248,4 +242,8 @@ a:link {
 
 path.leaflet-interactive{
   stroke: #e15c26;
+}
+
+.MuiCheckbox-colorSecondary.Mui-checked {
+  color: black;
 }
