@@ -20,7 +20,6 @@ import Ndwilinegraph from "./ndwi-linegraph";
 import Population from "./populationBarchart";
 import Lst from "./lst-Linegraph";
 
-
 const drawerWidth = 650;
 const useStyles = makeStyles(theme => ({
   backgroundColor: "white",
@@ -167,7 +166,7 @@ function Analysis() {
                 <div className={classes.toolbar} />
                 <div id="indicatorText">
                   <small>
-                  <h1 id="CHARTS">CHARTS</h1>
+                    <h1 id="CHARTS">CHARTS</h1>
                   </small>
                 </div>
 
