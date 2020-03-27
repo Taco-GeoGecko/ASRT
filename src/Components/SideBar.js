@@ -186,11 +186,12 @@ export default function ControlledExpansionPanels() {
         </ExpansionPanelDetails>
       </ExpansionPanel>
 
-      <ExpansionPanel
+      {/* <ExpansionPanel
         expanded={expanded === "panel7"}
         onChange={handleChange("panel7")}
       >
         <ExpansionPanelSummary
+        
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel5bh-content"
           id="panel5bh-header"
@@ -202,7 +203,7 @@ export default function ControlledExpansionPanels() {
           <PieChartComponent />
           </div>
         </ExpansionPanelDetails>
-      </ExpansionPanel>
+      </ExpansionPanel> */}
     </div>
   );
 }

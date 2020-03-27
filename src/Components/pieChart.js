@@ -1,12 +1,12 @@
-import { Pie } from "react-chartjs-2";
+import { Pie, Doughnut } from "react-chartjs-2";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getSliderData } from "../redux/actions/sliderActions";
 
 class PieChartComponent extends Component {
-  // indicators = this.props.indicators;
+  indicators = this.props.indicators;
   // console.log(this.indicators)
-  // labels1=Object.values(this.props.indicators)
+  labels1=Object.values(this.props.indicators)
   colors1 = [
     "red",
     "blue",
@@ -26,33 +26,19 @@ class PieChartComponent extends Component {
   ];
   constructor(props) {
     super(props);
-    let data1=[];
-    data1.push(
-      [89, 98],
-      [17, 52],
-      [25, 29],
-      [9, 36],
-      [18, 34],
-      [20, 62]
-    );
+    let data1=[2,4,5,6];
+    // data1.push({0:1,1:34,2:5});
     // let labels1 = ["pp", "iron", "rf", "coper"];
     // let soilNutrientsData = this.props.sliderValues;
     // console.log(soilNutrientsData);
     
     // let data1=soilNutrientsData;
     // data1.push(soilNutrientsData)
-    let data2 = this.soilNutrientsData;
+    // let data2 = this.soilNutrientsData;
     let indicators = this.props.indicators;
-    console.log(indicators);
-    let labels1 = Object.values(indicators);
+    console.log(indicators[1]);
 
-    // let labels1 = [
-    //   "ppp_sum",
-    //   "soil_copper",
-    //   "soil_phos",
-    //   "soil_potas",
-    //   "soil_boron"
-    // ];
+    let labels1 = Object.values(indicators);
 
     // for (let [key, value] of Object.entries(soilNutrientsData)) {
 
@@ -73,22 +59,24 @@ class PieChartComponent extends Component {
       ]
     };
   }
+  
   componentWillMount(){
     var soilNutrientsData = this.props.sliderValues;
-    console.log(soilNutrientsData);
+    let indicators = this.props.indicators;
+    let allData=[];
+    let labels2=[];
+    let data2=[];
+      allData.push(soilNutrientsData);
+      for(let a=0; a<allData.length;a++){
+        labels2.push(indicators[a])
+        data2.push(allData[a])
+      }
+    
+      console.log(labels2);
+      console.log(data2)
+
   }
-  handleChange() {
-    this.setState({
-      labels: this.labels1,
-      datasets: [
-        {
-          //   data: this.data1,
-          data: this.data2,
-          backgroundColor: this.colors1
-        }
-      ]
-    });
-  }
+
 
   render() {
     // let soilNutrientsData = this.props.sliderValues;
@@ -107,6 +95,7 @@ class PieChartComponent extends Component {
         <div className="charts">
           <h5 className="chartHeading">Soil Nutrients</h5>
           <hr className="HR" />
+          {/* <Doughnut data={this.state.data} /> */}
           <Pie
             data={{
               labels: this.state.labels,
