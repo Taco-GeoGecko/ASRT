@@ -91,7 +91,9 @@ class UgMap extends Component {
       lat: this.props.lat,
       lng: this.props.lng,
       zoom: this.props.zoom,
-      district: this.props.district
+      // district: this.props.district
+      district: "Hover over district",
+
     });
     e.target.setStyle({
       // fillColor: '#A52A2A',
@@ -106,6 +108,7 @@ class UgMap extends Component {
   //   return districts.features[0].properties.DName2016;
 
   // }
+
 
   render() {
     let status = this.state.district;
@@ -130,7 +133,11 @@ class UgMap extends Component {
           " 5x5 square kilometers";
         console.log(statusArea)
 
+
+
       }
+
+      // else return "Hover over district";
     }
 
     if (collectionOfGridcells[0]) {
