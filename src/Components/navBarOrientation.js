@@ -48,9 +48,9 @@ export default function MenuAppBarOrientation() {
         </Typography>
         <Callouts
           myComponent={
-            <Link to="/" className="btn-link">
-              <ContainedButtons caption="Home" />
-            </Link>
+            // <Link to="/" className="btn-link">
+            <ContainedButtons caption="Home" />
+            // </Link>
           }
           side="bottom"
           styles={classes.calloutstyles}
@@ -58,6 +58,7 @@ export default function MenuAppBarOrientation() {
           message="Click this button to return to the home page"
 
         />
+        {/* <ContainedButtons caption="Home" /> */}
         <div className={classes.spacing} />
         <Link to="/orientation" className="btn-link">
           <ContainedButtons caption="Orientation" />

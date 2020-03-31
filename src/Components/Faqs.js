@@ -151,7 +151,7 @@ export default function ControlledExpansionPanels() {
 
           <Typography className={classes.heading}></Typography>
           <Typography className={classes.secondaryHeading}>
-            Qtn 6. Can I use one indicator to dertime what I want?
+            Qtn 6. Can I use one indicator to determine what I want?
           </Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
@@ -172,7 +172,7 @@ export default function ControlledExpansionPanels() {
         >
           <Typography className={classes.heading}></Typography>
           <Typography className={classes.secondaryHeading}>
-            Qtn 7. Can there be other indicators to add in this portal?
+            Qtn 7. Can there be other indicators to add to this portal?
           </Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
