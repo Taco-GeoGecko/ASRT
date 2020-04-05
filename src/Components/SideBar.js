@@ -186,7 +186,7 @@ export default function ControlledExpansionPanels() {
         </ExpansionPanelDetails>
       </ExpansionPanel>
 
-      {/* <ExpansionPanel
+      <ExpansionPanel
         expanded={expanded === "panel7"}
         onChange={handleChange("panel7")}
       >
@@ -203,7 +203,7 @@ export default function ControlledExpansionPanels() {
           <PieChartComponent />
           </div>
         </ExpansionPanelDetails>
-      </ExpansionPanel> */}
+      </ExpansionPanel>
     </div>
   );
 }

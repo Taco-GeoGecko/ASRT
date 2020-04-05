@@ -29,7 +29,6 @@ export default function MatIcons() {
         FAQS
       </Link>
       <div id="feedback">
-        {" "}
         <FormDialog />
       </div>
 

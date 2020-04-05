@@ -133,7 +133,7 @@ class UgMap extends Component {
             onEachFeature={this.onEachFeature}
           />
           <GeoJSON data={districtData} onEachFeature={this.onEachFeature} />
-         
+          
           <Control className="info" position="topright">
               
             <div>
