@@ -1,19 +1,20 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
+import { connect } from "react-redux";
 
 const state = {
   labels: ['Q1'],
   datasets: [
     {
 
-      label: ' National Population',
+      label: ' National Average',
       backgroundColor: '#929292',
       borderColor: '#929292',
       borderWidth: 6,
       data: [89]
     },
     {
-      label: ' District Population',
+      label: ' District Grid Cell Average',
       backgroundColor: 'rgba(75,192,192,1)',
       borderColor: 'rgba(75,192,192,1)',
 
@@ -23,7 +24,32 @@ const state = {
   ]
 }
 
-export default class Population extends React.Component {
+
+
+class Population extends React.Component {
+
+
+
+  componentWillMount() {
+    var populationData = this.props.sliderValues;
+    let indicators = this.props.indicators;
+    let allData = [];
+    let labels2 = [];
+    let data2 = [];
+    allData.push(populationData);
+    for (let a = 0; a < allData.length; a++) {
+      labels2.push(indicators[a])
+      data2.push(allData[a])
+    }
+
+    console.log(labels2);
+    console.log(data2)
+
+  }
+
+
+
+
   render() {
     return (
       <div className="mega">
@@ -67,3 +93,12 @@ export default class Population extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    sliderValue: state.slider.sliderValue,
+    sliderValues: state.map.sliderValues,
+    indicators: state.slider.indicators
+  };
+};
+export default connect(mapStateToProps)(Population);

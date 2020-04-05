@@ -24,25 +24,16 @@ class UgMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
       lat: this.props.lat,
       lng: this.props.lng,
       zoom: this.props.zoom,
       data: this.props.locationValue,
       district: "Hover over district",
       bounds: this.bounds,
-
       map: null
-
     };
     this.geoJsonLayer = React.createRef();
-    //   this.handleClick = this.handleClick.bind(this);
   }
-
-  // handleClick(e) {
-  //   this.setState({ currentPos: e.latlng });
-  // }
-
   componentWillMount() {
     this.props.dispatch(getMapGrids());
     this.props.dispatch(getLocation());
@@ -50,15 +41,11 @@ class UgMap extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // console.log(nextProps.mapGrids)
     if (nextProps.mapUpdated === true) {
-      // console.log(this.props.mapGrids[0][0].features.length, this.state.map);
-      // this.geoJsonLayer.current.leafletElement.clearLayers().addData(this.props.mapGrids)
       this.props.dispatch({ type: updateGridDataSuccess, payload: false });
     }
   }
   onEachFeature = (feature, layer) => {
-    // console.log("onEachFeature fired: ");
     layer.on({
       mouseover: e => this.MouseOverFeature(e, feature),
       // mouseout: (e) => this.MouseOutFeature(e, feature),
@@ -66,8 +53,8 @@ class UgMap extends Component {
     });
   };
   ZoomToFeature(e, feature) {
-    const map = this.refs.map.leafletElement; //get native Map instance
-    const district = this.refs.geojson.leafletElement; //get native featureGroup instance
+    const map = this.refs.map.leafletElement;
+    const district = this.refs.geojson.leafletElement;
     if (this.refs.map && map && this.refs.geojson && district) {
       map.fitBounds(e.target.getBounds());
     } else {
@@ -104,21 +91,11 @@ class UgMap extends Component {
     // feature.showPopup();
   }
 
-  // handleMasaka = () => {
-  //   return districts.features[0].properties.DName2016;
-
-  // }
-
-
   render() {
     let status = this.state.district;
     let collectionOfGridcells = this.props.mapGrids;
-    // console.log(collectionOfGridcells)
-
     let districtData = districts;
-    // let mapGridsData = collectionOfGridcells[0][0];
     let data = districtData;
-
     var statusArea = "";
     if (this.props.mapUpdated == false) {
       data = districtData;
@@ -126,8 +103,8 @@ class UgMap extends Component {
     } else {
       data = collectionOfGridcells[0][0];
       if (this.props.mapGrids[0] != undefined) {
-        // console.log(this.props.mapGrids[0][0].features.length)
-        var statusGrids = "Total grid cells: " +
+        var statusGrids =
+          "Total grid cells: " +
           data.features.length +
           "<br /> " +
           " 5x5 square kilometers";
@@ -159,35 +136,26 @@ class UgMap extends Component {
           />
           <GeoJSON
             key={this.props.mapGrids[0][0].features.length}
-            // data={collectionOfGridcells[0][0]}
             data={data}
             ref="geojson"
             onEachFeature={this.onEachFeature}
           />
-          <GeoJSON
-            // key={this.props.mapGrids[0][0].features.length}
-            // data={collectionOfGridcells[0][0]}
-
-            data={districtData}
-
-            // ref="geojson"
-            onEachFeature={this.onEachFeature}
-          />
-
-
+          <GeoJSON data={districtData} onEachFeature={this.onEachFeature} />
 
           <Control className="info" position="topright">
+
             <div>
-              {/* <strong> 5 * 5 km <br></br> {this.props.mapGrids[0][0].features.length} Grid-cells</strong> */}
-              {/* {statusArea} */}
-              {status = this.props.mapUpdated == true ? statusGrids : statusArea}
+              {
+                (status =
+                  this.props.mapUpdated === true ? statusGrids : statusArea)
+              }
             </div>
           </Control>
           }
         </Map>
       );
       return this.state.map;
-    } else return "hello";
+    } else return "Failed to load the map";
   }
 }
 const mapStateToProps = state => {
@@ -204,6 +172,3 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps)(UgMap);
-
-
-

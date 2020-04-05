@@ -1,5 +1,6 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
+import { connect } from "react-redux";
 
 const state = {
   labels: ['Q1', 'Q2', 'Q3',
@@ -15,7 +16,26 @@ const state = {
   ]
 }
 
-export default class Rainfall extends React.Component {
+class Rainfall extends React.Component {
+
+  componentWillMount() {
+    var rainfallData = this.props.sliderValues;
+    let indicators = this.props.indicators;
+    let allData = [];
+    let labels2 = [];
+    let data2 = [];
+    allData.push(rainfallData);
+    for (let a = 0; a < allData.length; a++) {
+      labels2.push(indicators[a])
+      data2.push(allData[a])
+    }
+
+    console.log(labels2);
+    console.log(data2)
+
+  }
+
+
   render() {
     return (
       <div className="mega">
@@ -61,3 +81,12 @@ export default class Rainfall extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    sliderValue: state.slider.sliderValue,
+    sliderValues: state.map.sliderValues,
+    indicators: state.slider.indicators
+  };
+};
+export default connect(mapStateToProps)(Rainfall);

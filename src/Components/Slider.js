@@ -4,9 +4,6 @@ import _ from "lodash";
 import "nouislider/distribute/nouislider.css";
 import { connect } from "react-redux";
 import { updateGridData } from "../redux/actions/actionTypes/actionTypes";
-import { getMapGrids } from "../redux/actions/mapAction";
-import { getLocation } from "../redux/actions/locationActions";
-import { getSliderData } from "../redux/actions/sliderActions";
 const styles = {
   fontFamily: "sans-serif",
   textAlign: "center",
@@ -15,31 +12,25 @@ const styles = {
   marginTop: "60px"
 };
 class CustomizedSlider extends React.Component {
-  
   onSlide = (render, handle, value, un, percent) => {
-    
-   
-    (() => {
-      // console.log(value, this.props.sliderKey);
-      let indicators = this.props.indicators;
-      let mapData = _.cloneDeep(this.props.mapGrids);
+    let indicators = this.props.indicators;
+    this.props.sliderValues[this.props.sliderKey] = value;
+    let mapData = _.cloneDeep(this.props.mapGrids);
+    for (let [sliderKey, values] of Object.entries(this.props.sliderValues)) {
+// console.log(this.props.sliderValues)
       mapData[0][0].features = mapData[0][0].features.filter(piece => {
         for (let [key, property] of Object.entries(piece.properties)) {
-          if (key === indicators[this.props.sliderKey]) {
-            if (property < value[0] || property > value[1]) {
+          // console.log(indicators[sliderKey])
+          if (key === indicators[sliderKey]) {
+            if (property < values[0] || property > values[1]) {
               return false;
             }
             return true;
           }
         }
       });
-      console.log(mapData);
-      this.props.dispatch({ type: updateGridData, payload: mapData});
-     
-      // this.props.dispatch(getSliderData())
-      // this.props.dispatch(getMapGrids())
-      // this.props.dispatch(getLocation())
-    })();
+    }
+    this.props.dispatch({ type: updateGridData, payload: mapData });
   };
 
   render() {
@@ -76,16 +67,10 @@ const mapStateToProps = state => {
   return {
     sliderValue: state.slider.sliderValue,
     indicators: state.slider.indicators,
-    mapGrids: state.map.mapGrids
+    mapGrids: state.map.mapGrids,
+    mapUpdated: state.map.mapUpdated,
+    sliderValues: state.map.sliderValues
   };
-}
-//   const mapDispatchToProps=dispatch=>{
-//     return{
-//       grids: () => dispatch(getMapGrids()),
-//       location: () => dispatch(getLocation()),
-//       sliders: () => dispatch(getSliderData()),
-    
-//     }
-  
-// };
-export default connect(mapStateToProps/*, mapDispatchToProps*/)(CustomizedSlider);
+};
+
+export default connect(mapStateToProps)(CustomizedSlider);

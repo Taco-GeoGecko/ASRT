@@ -7,13 +7,15 @@ import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import CustomizedSlider from "./Slider";
 import LandCover from "./Landcover";
-import CheckboxLabels from './sampling'
+import CheckboxLabels from "./sampling";
+import Analysis from "./Analysis";
+import PieChartComponent from "./pieChart";
+
 
 const useStyles = makeStyles(theme => ({
   root: {
     width: "100%",
-    marginTop: 35,
-  
+    marginTop: 35
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -72,7 +74,10 @@ export default function ControlledExpansionPanels() {
         <ExpansionPanelDetails>
           <div className={classes.spacing}>
             <CustomizedSlider IndicatorSlider="Soil Copper" sliderKey={1} />
-            <CustomizedSlider IndicatorSlider="Soil Phosphorous" sliderKey={2} />
+            <CustomizedSlider
+              IndicatorSlider="Soil Phosphorous"
+              sliderKey={2}
+            />
             <CustomizedSlider IndicatorSlider="Soil Potassium" sliderKey={3} />
             <CustomizedSlider IndicatorSlider="Soil Boron" sliderKey={4} />
             <CustomizedSlider IndicatorSlider="Soil Aluminium" sliderKey={5} />
@@ -115,7 +120,10 @@ export default function ControlledExpansionPanels() {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <div className={classes.spacing}>
-            <CustomizedSlider IndicatorSlider="Vegetation health" sliderKey={10} />
+            <CustomizedSlider
+              IndicatorSlider="Vegetation health"
+              sliderKey={10}
+            />
           </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>
@@ -133,8 +141,8 @@ export default function ControlledExpansionPanels() {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <div className={classes.spacing}>
-           <LandCover IndicatorSlider="land cover" />
-           {/* <CheckboxLabels /> */}
+            <LandCover IndicatorSlider="land cover" />
+            {/* <CheckboxLabels /> */}
           </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>
@@ -151,7 +159,7 @@ export default function ControlledExpansionPanels() {
           <Typography className={classes.heading}>Terrain</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-        <div className={classes.spacing}>
+          <div className={classes.spacing}>
             <CustomizedSlider IndicatorSlider="Slope" sliderKey={12} />
 
             <CustomizedSlider IndicatorSlider="Elevation" sliderKey={13} />
@@ -174,6 +182,25 @@ export default function ControlledExpansionPanels() {
         <ExpansionPanelDetails>
           <div className={classes.spacing}>
             <CustomizedSlider IndicatorSlider="" sliderKey={14} />
+          </div>
+        </ExpansionPanelDetails>
+      </ExpansionPanel>
+
+      <ExpansionPanel
+        expanded={expanded === "panel7"}
+        onChange={handleChange("panel7")}
+      >
+        <ExpansionPanelSummary
+
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel5bh-content"
+          id="panel5bh-header"
+        >
+          <Typography className={classes.heading}>charts</Typography>
+        </ExpansionPanelSummary>
+        <ExpansionPanelDetails>
+          <div className={classes.spacing}>
+            <PieChartComponent />
           </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>
