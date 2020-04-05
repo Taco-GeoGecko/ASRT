@@ -1,3 +1,5 @@
+import pieChart from "../Components/pieChart";
+
 const AppState = {
   initialMapState: {
     lat: 0.32958802605356885,
@@ -7,7 +9,9 @@ const AppState = {
     mapGrids: [],
     updatedMapGrids: [],
     mapUpdated: false,
-    sliderValues: {}
+    sliderValues: {},
+    pieChartData:[],
+    updatedPieChart: [],
 
   },
   initialLocationState: {

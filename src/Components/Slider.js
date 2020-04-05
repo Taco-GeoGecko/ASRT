@@ -3,7 +3,7 @@ import Nouislider from "nouislider-react";
 import _ from "lodash";
 import "nouislider/distribute/nouislider.css";
 import { connect } from "react-redux";
-import { updateGridData } from "../redux/actions/actionTypes/actionTypes";
+import { updateGridData, updatePieChartData } from "../redux/actions/actionTypes/actionTypes";
 const styles = {
   fontFamily: "sans-serif",
   textAlign: "center",
@@ -15,21 +15,36 @@ class CustomizedSlider extends React.Component {
   onSlide = (render, handle, value, un, percent) => {
     let indicators = this.props.indicators;
     this.props.sliderValues[this.props.sliderKey] = value;
+    let piechartData= this.props.piechartData
     let mapData = _.cloneDeep(this.props.mapGrids);
     for (let [sliderKey, values] of Object.entries(this.props.sliderValues)) {
-// console.log(this.props.sliderValues)
+      if (indicators[sliderKey]){
+        console.log(values);
+        
+        piechartData.push(values)
+      }
+      
+      
+      // console.log(this.props.piechartData);
+
       mapData[0][0].features = mapData[0][0].features.filter(piece => {
         for (let [key, property] of Object.entries(piece.properties)) {
           // console.log(indicators[sliderKey])
-          if (key === indicators[sliderKey]) {
+  
+          if (key === indicators[sliderKey]) {       
+            
+            // console.log(piechartData);
+            
             if (property < values[0] || property > values[1]) {
               return false;
             }
+            
             return true;
           }
         }
       });
     }
+    this.props.dispatch({ type: updatePieChartData, payload: piechartData });
     this.props.dispatch({ type: updateGridData, payload: mapData });
   };
 
@@ -69,7 +84,10 @@ const mapStateToProps = state => {
     indicators: state.slider.indicators,
     mapGrids: state.map.mapGrids,
     mapUpdated: state.map.mapUpdated,
-    sliderValues: state.map.sliderValues
+    sliderValues: state.map.sliderValues,
+    piechartData: state.map.pieChartData
+
+  
   };
 };
 
