@@ -50,7 +50,7 @@ class PieChartComponent extends Component {
     this.state = {
       // labels: this.labels1,
       labels: labels1,
-      datasets: [
+      datasets: [aznmujumzz,
         {
           //   data: this.data1,
           data: data1,
