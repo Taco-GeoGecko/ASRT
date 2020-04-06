@@ -130,6 +130,10 @@
 #faq{
   background-color:#e15c26;
 }
+#pic {
+  width: 500px;
+  height: 300px;
+}
 .MuiAppBar-colorPrimary {
   color: #fff;
   background-color: #2AB34B;

@@ -17,7 +17,7 @@ const state = {
       data: [65, 59, 80, 81]
     },
     {
-      label: 'vegetation health',
+      label: 'National Vegetation Health',
       fill: false,
 
       // lineTension: 0.5,
