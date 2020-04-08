@@ -5,6 +5,7 @@ import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import pic from "./geogecko.png";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -178,6 +179,28 @@ export default function ControlledExpansionPanels() {
         <ExpansionPanelDetails>
           <Typography>
             Yes please. If required .
+          </Typography>
+        </ExpansionPanelDetails>
+      </ExpansionPanel>
+      <ExpansionPanel
+        expanded={expanded === "panel1"}
+        onChange={handleChange("panel1")}
+      >
+        <ExpansionPanelSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1bh-content"
+          id="panel1bh-header"
+        >
+          <Typography ></Typography>
+          <Typography className={classes.secondaryHeading}>
+          8. What does the box in the top right corner show?
+          </Typography>
+        </ExpansionPanelSummary>
+        <ExpansionPanelDetails>
+        
+          <Typography>
+          <img id = "pic" src={pic} alt="District name" /> <br /><br />
+            This feature shows the name of the district that is being hovered over.
           </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>
