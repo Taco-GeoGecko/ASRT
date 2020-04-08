@@ -1,6 +1,6 @@
 import React from "react";
 import UgMap from "./maps";
-import Callouts from "./Callout";
+import Callouts from "./callout";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({

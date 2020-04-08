@@ -1,12 +1,8 @@
 import { Pie, Doughnut } from "react-chartjs-2";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getSliderData } from "../redux/actions/sliderActions";
 
 class PieChartComponent extends Component {
-  indicators = this.props.indicators;
-  // console.log(this.indicators)
-  labels1=Object.values(this.props.indicators)
   colors1 = [
     "red",
     "blue",
@@ -17,98 +13,60 @@ class PieChartComponent extends Component {
     "gray",
     "maroon",
     "brown",
-    "pink",
-    "orange",
-    "purple",
-    "cyan",
-    "indigo",
-    "violet"
   ];
+
   constructor(props) {
     super(props);
-    let data1=[2,4,5,6];
-    // data1.push({0:1,1:34,2:5});
-    // let labels1 = ["pp", "iron", "rf", "coper"];
-    // let soilNutrientsData = this.props.sliderValues;
-    // console.log(soilNutrientsData);
-    
-    // let data1=soilNutrientsData;
-    // data1.push(soilNutrientsData)
-    // let data2 = this.soilNutrientsData;
-    let indicators = this.props.indicators;
-    console.log(indicators[1]);
-
-    let labels1 = Object.values(indicators);
-
-    // for (let [key, value] of Object.entries(soilNutrientsData)) {
-
-    // if(key===labels1[sliderKey]){
-    // console.log(key);
-    // }
-    // }
+    this.chartReference = React.createRef();
+    this.PieChart = this.chartReference.chartInstance;
 
     this.state = {
-      // labels: this.labels1,
-      labels: labels1,
+      labels: this.props.updatePieChartIndicators,
+      // labels: ["population", "rainfall", "boron"],
+      // data: this.props.piechartData,
       datasets: [
         {
-          //   data: this.data1,
-          data: data1,
-          backgroundColor: this.colors1
-        }
-      ]
+          data: this.props.piechartData,
+          // data: [530, 600, 750],
+          backgroundColor: this.colors1,
+        },
+      ],
     };
   }
-  
-  componentWillMount(){
-    var soilNutrientsData = this.props.sliderValues;
-    let indicators = this.props.indicators;
-    let allData=[];
-    let labels2=[];
-    let data2=[];
-      allData.push(soilNutrientsData);
-      for(let a=0; a<allData.length;a++){
-        labels2.push(indicators[a])
-        data2.push(allData[a])
-      }
-    
-      console.log(labels2);
-      console.log(data2)
+  componentDidMount() {
+    this.PieChart = this.chartReference.chartInstance;
+    this.setState({
+      ...this.state,
+    });
+    this.PieChart.update();
 
+    // console.log(PieChart);
+    // console.log(this.PieChart); // returns a Chart.js instance reference
   }
 
-
   render() {
-    // let soilNutrientsData = this.props.sliderValues;
-    // console.log(soilNutrientsData);
-    // let labels1 = [];
-    // let data1 = [];
-    // let data1=[19, 201, 34, 20];
-    // let labes1=["pp", "iron", "rf", "coper"]
-    // data1.push(arr);
-    // console.log(data1);
-    // let indicators = this.props.indicators;
-    // labels1.push(indicators);
-    // console.log(Object.values(indicators));
+    console.log(this.PieChart);
     return (
       <div className="mega">
         <div className="charts">
           <h5 className="chartHeading">Soil Nutrients</h5>
           <hr className="HR" />
-          {/* <Doughnut data={this.state.data} /> */}
           <Pie
+            ref={(reference) => (this.chartReference = reference)}
+            // ref={this.chartReference}
             data={{
               labels: this.state.labels,
-              datasets: this.state.datasets
+              datasets: this.state.datasets,
             }}
+            // data={this.updataChart}
             height={100}
             options={{
               legend: {
                 display: true,
-                position: "right"
-              }
+                position: "right",
+              },
             }}
-            onChange={this.handleChange}
+            redraw
           />
           <br />
         </div>
@@ -117,11 +75,13 @@ class PieChartComponent extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     sliderValue: state.slider.sliderValue,
     sliderValues: state.map.sliderValues,
-    indicators: state.slider.indicators
+    indicators: state.slider.indicators,
+    piechartData: state.map.pieChartData,
+    updatePieChartIndicators: state.map.piechartIndicators,
   };
 };
 export default connect(mapStateToProps)(PieChartComponent);

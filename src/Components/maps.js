@@ -49,9 +49,23 @@ class UgMap extends Component {
     layer.on({
       mouseover: e => this.MouseOverFeature(e, feature),
       // mouseout: (e) => this.MouseOutFeature(e, feature),
-      click: e => this.ZoomToFeature(e, feature)
-    });
+      // click: e => this.ZoomToFeature(e, feature),
+      click: e => this.ZoomToFeature(e, feature),
+      preclick: e => this.Highlight(e, feature)
+
+    }); 
   };
+  
+  Highlight(e, feature) {
+  
+    var layer = e.target;
+    layer.setStyle({
+      weight: 2,
+      color: '#666',
+      dashArray: '',
+      fillOpacity: 0.7
+    });
+  }
   ZoomToFeature(e, feature) {
     const map = this.refs.map.leafletElement;
     const district = this.refs.geojson.leafletElement;
@@ -133,7 +147,7 @@ class UgMap extends Component {
             onEachFeature={this.onEachFeature}
           />
           <GeoJSON data={districtData} onEachFeature={this.onEachFeature} />
-         
+          
           <Control className="info" position="topright">
               
             <div>

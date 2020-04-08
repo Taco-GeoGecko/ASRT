@@ -11,19 +11,19 @@ const state = {
 
       // lineTension: 0.5,
       backgroundColor: 'rgba(75,192,192,1)',
-      borderColor: 'green',
+      borderColor: '#77BB85',
 
       borderWidth: 6,
       data: [65, 59, 80, 81]
     },
     {
-      label: 'vegetation health',
+      label: 'National Vegetation Health',
       fill: false,
 
       // lineTension: 0.5,
 
       backgroundColor: 'rgba(75,192,192,1)',
-      borderColor: 'red',
+      borderColor: '#616161',
       borderWidth: 6,
       data: [68, 68, 90, 76]
     }
