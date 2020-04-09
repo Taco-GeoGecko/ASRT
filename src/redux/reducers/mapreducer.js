@@ -1,7 +1,8 @@
 import {
   updateGridData,
   loadGridData,
-  updateGridDataSuccess
+  updateGridDataSuccess,
+  updatePieChartData
 } from "../actions/actionTypes/actionTypes";
 import AppState from "../applicationState";
 
@@ -20,6 +21,12 @@ const mapReducer = (state = AppState.initialMapState, action) => {
         updatedMapGrids: action.payload,
         mapUpdated: true
       };
+      case updatePieChartData:
+        return {
+          ...state,
+          updatedPieChart: action.payload,
+          // mapUpdated: true
+        };
     case updateGridDataSuccess:
       return {
         ...state,

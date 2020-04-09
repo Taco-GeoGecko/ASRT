@@ -27,7 +27,7 @@ export default function ExpansionSideBar() {
         arrowsize={20}
         styles={classes.calloutstyles}
         message="These are the agricultural indicators available in this portal. Utilise the sliders with in these headings to filter 
-      through the various agricultural indicators that fit in your criteria."
+      through the various agricultural indicators that fit your criteria."
       />
       {/* <ControlledExpansionPanels /> */}
     </div>

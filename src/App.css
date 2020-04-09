@@ -1,7 +1,6 @@
 .App {
   text-align: center;
   font-family: "Arial Narrow", "Roboto", "Helvetica", sans-serif, Arial;
-
 }
 
 .App-logo {
@@ -25,7 +24,7 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-#FAQ{
+#FAQ {
   text-align: center;
 }
 
@@ -41,15 +40,15 @@
     transform: rotate(360deg);
   }
 }
-#button{
+#button {
   /* background-color: #616161; */
   width: 100%;
   text-transform: capitalize;
   /* border-radius: 15px; */
   /* border: 1px solid #2AB34B; */
   color: #616161;
-  }
-#button:hover{
+}
+#button:hover {
   /* background-color: #616161; */
   color: #616161;
   /* border-color: #77BB85; */
@@ -64,8 +63,8 @@
 #CHARTS {
   text-align: center;
   margin-bottom: 35px;
-  color:#0d0d0d;
-  font-size:50px;
+  color: #0d0d0d;
+  font-size: 50px;
 }
 .mega {
   /* margin-bottom: 30px; */
@@ -76,85 +75,71 @@
   margin-left: 40px;
   margin-right: 40px;
   /* background-color: #77BB85; */
-
 }
-.chartHeading{
+.chartHeading {
   text-align: center;
   color: rgb(49, 51, 53);
-
-
-} 
-.HR{
-  width:'50%';
+}
+.HR {
+  width: "50%";
   border-color: #d3d0d0;
 }
-.charts{
-  width:'100%';
+.charts {
+  width: "100%";
 }
 
-.makeStyles-drawerPaper-6{
+.makeStyles-drawerPaper-6 {
   width: 300px;
   /* background-color: rgb(43, 47, 58); */
   background-color: #e15c26;
 }
-.map{
+.map {
   height: 700px;
   width: 99%;
   margin-left: 0px;
   margin-top: 78px;
-  }
-  /* .ugmap{
+}
+/* .ugmap{
     margin-top: 0px;
     width: 50%;
     height: 80%;
   } */
 
-
-  .MuiPaper-root {
+.MuiPaper-root {
   background-color: #fff;
-  border: #77bb85  solid 2px;
+  border: #77bb85 solid 2px;
   border-top: springgreen;
-  
-
-  
-  
 }
- 
+
 #feedback {
- margin-right: 5%;
- float: left;
- color: #007bff;
- cursor: pointer;
-
+  margin-right: 5%;
+  float: left;
+  color: #007bff;
+  cursor: pointer;
 }
-#faq{
-  background-color:#e15c26;
+#faq {
+  background-color: #e15c26;
 }
 .MuiAppBar-colorPrimary {
   color: #fff;
-  background-color: #2AB34B;
+  background-color: #2ab34b;
   border: solid #77bb85 1px;
   position: fixed;
- 
-  border-radius: 0.5em;
-  
 
+  border-radius: 0.5em;
 }
 
-
-#indicatorText{
-  
+#indicatorText {
   color: #616161;
   text-align: center;
-background-color:#d0d0d0 ;
-border-radius: 0.5em;
-padding-top: 1em;
-margin-top: 20px;
-margin-right: 10px;
-margin-left: 10px;
+  background-color: #d0d0d0;
+  border-radius: 0.5em;
+  padding-top: 1em;
+  margin-top: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
-.Icons{
-  
+.Icons {
   color: #fff;
   /* display: inline; */
   position: relative;
@@ -164,26 +149,21 @@ margin-left: 10px;
   border-radius: 0.5em;
   margin-right: 10px;
   margin-left: 10px;
- 
-
 }
- 
 
-#twitter{
+#twitter {
   padding-right: 140px;
   color: blue;
   size: 50px;
 }
 
-#facebook{
+#facebook {
   color: blue;
 }
-.MuiExpansionPanel-rounded{
-  background-color: #2AB34B;
+.MuiExpansionPanel-rounded {
+  background-color: #2ab34b;
   color: #fff;
   margin: 2%;
-  
- 
 }
 .MuiExpansionPanel-rounded:first-child {
   border-top-left-radius: 0px;
@@ -191,10 +171,9 @@ margin-left: 10px;
 }
 /* .MuiIconButton-root {
   /* color: #fff; */
- 
-/* } */ */
 
-.makeStyles-heading-128{
+/* } */
+*/ .makeStyles-heading-128 {
   font-size: large;
   font-weight: 100;
   flex-basis: 80%;
@@ -207,29 +186,26 @@ margin-left: 10px;
   padding: 8px;
   cursor: pointer;
   z-index: 9999;
-  display: block; 
- }
+  display: block;
+}
 
 .callout-arrow {
   height: 0;
   width: 0;
   position: absolute;
   cursor: pointer;
-  
 }
-
 
 .info {
   padding: 6px 8px;
   font: 14px/16px Arial, Helvetica, sans-serif;
-  background: white;
-  background: rgba(250, 243, 243, 0.603);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  width: 200px;
-  height: 45px;
- 
-
+  background: #d0d0d0;
+  /* background: rgba(250, 243, 243, 0.603); */
+  /* box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); */
+  border-color: black;
+  border-radius: 5px;
+  width: 120px;
+  height: 50px;
 }
 
 .btn-link:link,
@@ -237,6 +213,24 @@ a:link {
   text-decoration: none;
 }
 
-path.leaflet-interactive{
+path.leaflet-interactive {
   stroke: #e15c26;
+}
+
+.MuiCheckbox-colorSecondary.Mui-checked {
+  color: black;
+}
+#contact-form {
+  width: 400px;
+  padding: 10px;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #2ab34b;
+  border-color: #2ab34b;
+}
+.btn-primary:hover {
+
+text-decoration: none;
+
 }

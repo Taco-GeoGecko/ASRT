@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
 
   },
   heading: {
-    fontSize: theme.typography.pxToRem(15),
+    fontSize: theme.typography.pxToRem(20),
     flexBasis: "20%",
     flexShrink: 0
   },
@@ -33,7 +33,7 @@ export default function ControlledExpansionPanels() {
 
   return (
     <div className={classes.root} id="faq">
-      <h1 id="FAQ">FAQ - Frequently Asked Questions</h1>
+      <h1 id="FAQ">FAQ's - Frequently Asked Questions</h1>
       <ExpansionPanel
         expanded={expanded === "panel1"}
         onChange={handleChange("panel1")}
@@ -43,9 +43,9 @@ export default function ControlledExpansionPanels() {
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
-          <Typography className={classes.heading}></Typography>
-          <Typography className={classes.secondaryHeading}>
-            Qtn 1. How do i get to know, very well, what I have searched for ?
+          <Typography ></Typography>
+          <Typography >
+           1. How do i get to know, very well, what I have searched for ?
           </Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
@@ -65,9 +65,9 @@ export default function ControlledExpansionPanels() {
           aria-controls="panel2bh-content"
           id="panel2bh-header"
         >
-          <Typography className={classes.heading}></Typography>
+          <Typography ></Typography>
           <Typography className={classes.secondaryHeading}>
-            Qtn 2. I don't understand the grid cells, how do they work ?
+          2. I don't understand the grid cells, how do they work ?
           </Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
@@ -85,9 +85,9 @@ export default function ControlledExpansionPanels() {
           aria-controls="panel3bh-content"
           id="panel3bh-header"
         >
-          <Typography className={classes.heading}></Typography>
+          <Typography></Typography>
           <Typography className={classes.secondaryHeading}>
-            Qtn 3. Can this web portal be used on phone ?
+          3. Can this web portal be used on phone ?
           </Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
@@ -107,9 +107,9 @@ export default function ControlledExpansionPanels() {
           aria-controls="panel4bh-content"
           id="panel4bh-header"
         >
-          <Typography className={classes.heading}></Typography>
+          <Typography ></Typography>
           <Typography className={classes.secondaryHeading}>
-            Qtn 4. How do I monitor my land ?
+          4. How do I monitor my land ?
           </Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
@@ -127,9 +127,9 @@ export default function ControlledExpansionPanels() {
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
-          <Typography className={classes.heading}></Typography>
+          <Typography ></Typography>
           <Typography className={classes.secondaryHeading}>
-            Qtn 5. Do I need membership to frequently use this portal ?
+          5. Do I need membership to frequently use this portal ?
           </Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
@@ -149,9 +149,9 @@ export default function ControlledExpansionPanels() {
           id="panel1bh-header"
         >
 
-          <Typography className={classes.heading}></Typography>
+          <Typography ></Typography>
           <Typography className={classes.secondaryHeading}>
-            Qtn 6. Can I use one indicator to determine what I want?
+          6. Can I use one indicator to dertime what I want?
           </Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
@@ -170,9 +170,9 @@ export default function ControlledExpansionPanels() {
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
-          <Typography className={classes.heading}></Typography>
+          <Typography ></Typography>
           <Typography className={classes.secondaryHeading}>
-            Qtn 7. Can there be other indicators to add to this portal?
+          7. Can there be other indicators to add in this portal?
           </Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
