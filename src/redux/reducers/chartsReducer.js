@@ -1,6 +1,10 @@
 // import {sliderData} from '../actions/actionTypes/actionTypes';
 import AppState from "../applicationState";
-import { updatePieChartIndicators, updatePieChartData } from "../actions/actionTypes/actionTypes";
+import {
+  updatePieChartIndicators,
+  updatePieChartData,
+  updatePieChartDataSuccess,
+} from "../actions/actionTypes/actionTypes";
 import pieChart from "../../Components/pieChart";
 
 const chartReducer = (state = AppState.initialMapState, action) => {
@@ -8,15 +12,19 @@ const chartReducer = (state = AppState.initialMapState, action) => {
     case updatePieChartIndicators:
       return {
         ...state,
-        piechartIndicators:[action.payload]
+        piechartIndicators: [action.payload],
       };
-      case updatePieChartData:
-        return {
-          ...state,
-          pieChartData:[action.payload]
-          // updatedPieChart: action.payload,
-          // mapUpdated: true
-        };
+    case updatePieChartData:
+      return {
+        ...state,
+        pieChartData: action.payload,
+        pieChartDataUpdated: true,
+      };
+    case updatePieChartDataSuccess:
+      return {
+        ...state,
+        pieChartDataUpdated: action.payload,
+      };
     default:
       return state;
   }
