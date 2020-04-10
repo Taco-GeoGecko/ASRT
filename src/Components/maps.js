@@ -6,7 +6,7 @@ import {
   Marker,
   ZoomControl,
   GeoJSON,
-  Popup
+  Popup,
 } from "react-leaflet";
 import Control from "react-leaflet-control";
 import { connect } from "react-redux";
@@ -19,7 +19,7 @@ import districts from "../Components/uganda_districts_2019";
 class UgMap extends Component {
   bounds = [
     [-1.487315, 29.56346], // Southwest coordinates
-    [4.23314, 35.01031] // Northeast coordinates
+    [4.23314, 35.01031], // Northeast coordinates
   ];
   constructor(props) {
     super(props);
@@ -30,7 +30,7 @@ class UgMap extends Component {
       data: this.props.locationValue,
       district: "Hover over district",
       bounds: this.bounds,
-      map: null
+      map: null,
     };
     this.geoJsonLayer = React.createRef();
   }
@@ -41,29 +41,28 @@ class UgMap extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log(nextProps.mapUpdated);
     if (nextProps.mapUpdated === true) {
       this.props.dispatch({ type: updateGridDataSuccess, payload: false });
     }
   }
   onEachFeature = (feature, layer) => {
     layer.on({
-      mouseover: e => this.MouseOverFeature(e, feature),
+      mouseover: (e) => this.MouseOverFeature(e, feature),
       // mouseout: (e) => this.MouseOutFeature(e, feature),
       // click: e => this.ZoomToFeature(e, feature),
-      click: e => this.ZoomToFeature(e, feature),
-      preclick: e => this.Highlight(e, feature)
-
-    }); 
+      click: (e) => this.ZoomToFeature(e, feature),
+      preclick: (e) => this.Highlight(e, feature),
+    });
   };
-  
+
   Highlight(e, feature) {
-  
     var layer = e.target;
     layer.setStyle({
       weight: 2,
-      color: '#666',
-      dashArray: '',
-      fillOpacity: 0.7
+      color: "#666",
+      dashArray: "",
+      fillOpacity: 0.7,
     });
   }
   ZoomToFeature(e, feature) {
@@ -78,7 +77,7 @@ class UgMap extends Component {
 
   MouseOverFeature(e, feature) {
     this.setState({
-      district: feature.properties.DName2019
+      district: feature.properties.DName2019,
     });
 
     // e.target.bindPopup(this.state.district);
@@ -92,7 +91,7 @@ class UgMap extends Component {
       lat: this.props.lat,
       lng: this.props.lng,
       zoom: this.props.zoom,
-      district: this.props.district
+      district: this.props.district,
     });
     e.target.setStyle({
       // fillColor: '#A52A2A',
@@ -121,7 +120,7 @@ class UgMap extends Component {
           "<br /> " +
           " 5x5 square kilometers";
       }
-    } 
+    }
 
     if (collectionOfGridcells[0]) {
       this.state.map = (
@@ -147,14 +146,12 @@ class UgMap extends Component {
             onEachFeature={this.onEachFeature}
           />
           <GeoJSON data={districtData} onEachFeature={this.onEachFeature} />
-          
           <Control className="info" position="topright">
-              
             <div>
               {
                 (status =
                   this.props.mapUpdated === true ? statusGrids : statusArea)
-              } 
+              }
             </div>
           </Control>
           }
@@ -164,7 +161,7 @@ class UgMap extends Component {
     } else return "Failed to load the map";
   }
 }
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     lat: state.map.lat,
     lng: state.map.lng,
@@ -173,7 +170,7 @@ const mapStateToProps = state => {
     mapGrids: state.map.updatedMapGrids,
     locationValue: state.location.locationValue,
     sliderValue: state.slider.sliderValue,
-    mapUpdated: state.map.mapUpdated
+    mapUpdated: state.map.mapUpdated,
   };
 };
 

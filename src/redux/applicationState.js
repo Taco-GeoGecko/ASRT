@@ -9,14 +9,14 @@ const AppState = {
     mapGrids: [],
     updatedMapGrids: [],
     mapUpdated: false,
+    pieChartDataUpdated: false,
     sliderValues: {},
-    pieChartData:[],
-    piechartIndicators:[],
+    pieChartData: [],
+    piechartIndicators: [],
     updatedPieChart: [],
-
   },
   initialLocationState: {
-    locationValue: []
+    locationValue: [],
   },
   initialSliderState: {
     sliderValue: [],
@@ -36,10 +36,10 @@ const AppState = {
       11: "land_cover",
       12: "slope",
       13: "elevation",
-      14: "lst_jfm"
+      14: "lst_jfm",
     },
     land_cover: {
-      1: "land_cover"
+      1: "land_cover",
     },
     landCoverCheckBox: {
       0: "No data",
@@ -52,8 +52,8 @@ const AppState = {
       7: "Bare Areas",
       8: "Built Up areas",
       9: "snow and ice",
-      10: "open water"
-    }
-  }
+      10: "open water",
+    },
+  },
 };
 export default AppState;

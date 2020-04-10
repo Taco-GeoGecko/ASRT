@@ -27,43 +27,20 @@ class CustomizedSlider extends React.Component {
       let range = value[1] - value[0];
       let indicator = indicators[this.props.sliderKey];
       console.log(indicator);
-      // let pieData = { [indicator]: range };
-      // pieData.indicator=indicator
-      // pieData.range=range
-      // pieData.push({indicator: range})
       if (UpdatedIndicators.includes(indicator) === false) {
         UpdatedIndicators.push(indicator);
       }
-      // console.log(UpdatedIndicators.indexOf(indicator));
       piechartData[UpdatedIndicators.indexOf(indicator)] = range;
     }
-    // console.log(UpdatedIndicators);
-    // console.log(piechartData);
+    this.props.dispatch({ type: updatePieChartData, payload: piechartData });
+
 
     for (let [sliderKey, values] of Object.entries(this.props.sliderValues)) {
-      // if (indicators[sliderKey]) {
-      //   let range = values[1] - values[0];
-      //   console.log(range);
-      //   console.log(indicators[sliderKey]);
-      //   let indicator = indicators[sliderKey];
-      //   let pieData={[indicator]:range}
-      //   // pieData.indicator=indicator
-      //   // pieData.range=range
-      //   // pieData.push({indicator: range})
-
-      //   piechartData.push(pieData);
-      // }
-
-      // console.log(this.props.piechartData);
 
       mapData[0][0].features = mapData[0][0].features.filter((piece) => {
         for (let [key, property] of Object.entries(piece.properties)) {
-          // console.log(indicators[sliderKey])
-
-          if (key === indicators[sliderKey]) {
-            // console.log(piechartData);
-
-            if (property < values[0] || property > values[1]) {
+            if (key === indicators[sliderKey]) {
+                      if (property < values[0] || property > values[1]) {
               return false;
             }
 
@@ -72,7 +49,7 @@ class CustomizedSlider extends React.Component {
         }
       });
     }
-    this.props.dispatch({ type: updatePieChartData, payload: piechartData });
+    // this.props.dispatch({ type: updatePieChartData, payload: piechartData });
     this.props.dispatch({ type: updateGridData, payload: mapData });
     this.props.dispatch({
       type: updatePieChartIndicators,
@@ -119,6 +96,8 @@ const mapStateToProps = (state) => {
     sliderValues: state.map.sliderValues,
     piechartData: state.map.pieChartData,
     updatePieChartIndicators: state.map.piechartIndicators,
+    pieChartDataUpdated: state.map.pieChartDataUpdated,
+
   };
 };
 
