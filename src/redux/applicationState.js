@@ -9,11 +9,13 @@ const AppState = {
     mapGrids: [],
     updatedMapGrids: [],
     mapUpdated: false,
-    pieChartDataUpdated: false,
     sliderValues: {},
+  },
+  initialChartState: {
     pieChartData: [],
     piechartIndicators: [],
     updatedPieChart: [],
+    pieChartDataUpdated: false,
   },
   initialLocationState: {
     locationValue: [],

@@ -34,16 +34,10 @@ class PieChartComponent extends Component {
       ],
     };
   }
-  // componentDidMount() {
-  //   this.PieChart = this.chartReference.chartInstance;
-  //   // this.setState({
-  //   //   ...this.state,
-  //   // });
-  //   this.PieChart.update();
-  // }
+
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.pieChartDataUpdated);
-    if (nextProps.pieChartDataUpdated === false) {
+    // if (nextProps.piechartData !== this.state.datasets[0].data)
+    if (nextProps.pieChartDataUpdated === true) {
       this.PieChart = this.chartReference.chartInstance;
       this.setState({ shouldRedraw: true });
       this.PieChart.update();
@@ -51,7 +45,10 @@ class PieChartComponent extends Component {
     } else this.setState({ shouldRedraw: false });
   }
   render() {
-    console.log(this.state.shouldRedraw);
+    // console.log(this.state.shouldRedraw);
+    // console.log(this.props.pieChartDataUpdated);
+    // console.log(this.props.updatePieChartIndicators);
+
     return (
       <div className="mega">
         <div className="charts">
@@ -84,9 +81,9 @@ const mapStateToProps = (state) => {
     sliderValue: state.slider.sliderValue,
     sliderValues: state.map.sliderValues,
     indicators: state.slider.indicators,
-    piechartData: state.map.pieChartData,
-    updatePieChartIndicators: state.map.piechartIndicators,
-    pieChartDataUpdated: state.map.pieChartDataUpdated,
+    piechartData: state.chart.pieChartData,
+    updatePieChartIndicators: state.chart.piechartIndicators,
+    pieChartDataUpdated: state.chart.pieChartDataUpdated,
   };
 };
 export default connect(mapStateToProps)(PieChartComponent);
