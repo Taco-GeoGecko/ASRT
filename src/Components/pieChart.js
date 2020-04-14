@@ -1,6 +1,7 @@
 import { Pie, Doughnut } from "react-chartjs-2";
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { updatePieChartDataSuccess } from "../redux/actions/actionTypes/actionTypes";
 
 class PieChartComponent extends Component {
   colors1 = [
@@ -23,7 +24,7 @@ class PieChartComponent extends Component {
     this.state = {
       labels: this.props.updatePieChartIndicators,
       // labels: ["population", "rainfall", "boron"],
-      // data: this.props.piechartData,
+      shouldRedraw: false,
       datasets: [
         {
           data: this.props.piechartData,
@@ -33,19 +34,21 @@ class PieChartComponent extends Component {
       ],
     };
   }
-  componentDidMount() {
-    this.PieChart = this.chartReference.chartInstance;
-    this.setState({
-      ...this.state,
-    });
-    this.PieChart.update();
 
-    // console.log(PieChart);
-    // console.log(this.PieChart); // returns a Chart.js instance reference
+  componentWillReceiveProps(nextProps) {
+    // if (nextProps.piechartData !== this.state.datasets[0].data)
+    if (nextProps.pieChartDataUpdated === true) {
+      this.PieChart = this.chartReference.chartInstance;
+      this.setState({ shouldRedraw: true });
+      this.PieChart.update();
+      this.props.dispatch({ type: updatePieChartDataSuccess, payload: false });
+    } else this.setState({ shouldRedraw: false });
   }
-
   render() {
-    console.log(this.PieChart);
+    // console.log(this.state.shouldRedraw);
+    // console.log(this.props.pieChartDataUpdated);
+    // console.log(this.props.updatePieChartIndicators);
+
     return (
       <div className="mega">
         <div className="charts">
@@ -53,12 +56,10 @@ class PieChartComponent extends Component {
           <hr className="HR" />
           <Pie
             ref={(reference) => (this.chartReference = reference)}
-            // ref={this.chartReference}
             data={{
               labels: this.state.labels,
               datasets: this.state.datasets,
             }}
-            // data={this.updataChart}
             height={100}
             options={{
               legend: {
@@ -66,7 +67,7 @@ class PieChartComponent extends Component {
                 position: "right",
               },
             }}
-            redraw
+            redraw={this.state.shouldRedraw}
           />
           <br />
         </div>
@@ -80,8 +81,9 @@ const mapStateToProps = (state) => {
     sliderValue: state.slider.sliderValue,
     sliderValues: state.map.sliderValues,
     indicators: state.slider.indicators,
-    piechartData: state.map.pieChartData,
-    updatePieChartIndicators: state.map.piechartIndicators,
+    piechartData: state.chart.pieChartData,
+    updatePieChartIndicators: state.chart.piechartIndicators,
+    pieChartDataUpdated: state.chart.pieChartDataUpdated,
   };
 };
 export default connect(mapStateToProps)(PieChartComponent);
