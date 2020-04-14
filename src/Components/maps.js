@@ -41,7 +41,7 @@ class UgMap extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.mapUpdated);
+    // console.log(nextProps.mapUpdated);
     if (nextProps.mapUpdated === true) {
       this.props.dispatch({ type: updateGridDataSuccess, payload: false });
     }

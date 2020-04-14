@@ -1,13 +1,11 @@
-// import {sliderData} from '../actions/actionTypes/actionTypes';
 import AppState from "../applicationState";
 import {
   updatePieChartIndicators,
   updatePieChartData,
   updatePieChartDataSuccess,
 } from "../actions/actionTypes/actionTypes";
-import pieChart from "../../Components/pieChart";
 
-const chartReducer = (state = AppState.initialMapState, action) => {
+const chartReducer = (state = AppState.initialChartState, action) => {
   switch (action.type) {
     case updatePieChartIndicators:
       return {

@@ -19,28 +19,35 @@ class CustomizedSlider extends React.Component {
   onSlide = (render, handle, value, un, percent) => {
     let indicators = this.props.indicators;
     this.props.sliderValues[this.props.sliderKey] = value;
-    let piechartData = this.props.piechartData;
+    let piechartData = _.cloneDeep(this.props.piechartData);
     let mapData = _.cloneDeep(this.props.mapGrids);
     let UpdatedIndicators = this.props.updatePieChartIndicators;
+    let indicator = indicators[this.props.sliderKey];
+    // let newIndictor = [];
+    // if (indicators[this.props.sliderKey]) {
+    let range = value[1] - value[0];
+    // console.log(indicator);
 
-    if (indicators[this.props.sliderKey]) {
-      let range = value[1] - value[0];
-      let indicator = indicators[this.props.sliderKey];
-      console.log(indicator);
-      if (UpdatedIndicators.includes(indicator) === false) {
-        UpdatedIndicators.push(indicator);
-      }
-      piechartData[UpdatedIndicators.indexOf(indicator)] = range;
+    if (UpdatedIndicators.includes(indicator) === false) {
+      UpdatedIndicators.push(indicator);
+      console.log(UpdatedIndicators);
+    } else {
+      console.log("i exist");
     }
+    piechartData[UpdatedIndicators.indexOf(indicator)] = range;
+    // }
+    // newIndictor.push(piechartData);
+
+    // console.log(newIndictor);
+
+    console.log(piechartData);
     this.props.dispatch({ type: updatePieChartData, payload: piechartData });
 
-
     for (let [sliderKey, values] of Object.entries(this.props.sliderValues)) {
-
       mapData[0][0].features = mapData[0][0].features.filter((piece) => {
         for (let [key, property] of Object.entries(piece.properties)) {
-            if (key === indicators[sliderKey]) {
-                      if (property < values[0] || property > values[1]) {
+          if (key === indicators[sliderKey]) {
+            if (property < values[0] || property > values[1]) {
               return false;
             }
 
@@ -94,10 +101,9 @@ const mapStateToProps = (state) => {
     mapGrids: state.map.mapGrids,
     mapUpdated: state.map.mapUpdated,
     sliderValues: state.map.sliderValues,
-    piechartData: state.map.pieChartData,
-    updatePieChartIndicators: state.map.piechartIndicators,
-    pieChartDataUpdated: state.map.pieChartDataUpdated,
-
+    piechartData: state.chart.pieChartData,
+    updatePieChartIndicators: state.chart.piechartIndicators,
+    pieChartDataUpdated: state.chart.pieChartDataUpdated,
   };
 };
 
