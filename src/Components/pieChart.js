@@ -48,7 +48,7 @@ class PieChartComponent extends Component {
     // console.log(this.state.shouldRedraw);
     // console.log(this.props.pieChartDataUpdated);
     // console.log(this.props.updatePieChartIndicators);
-
+    // console.log(this.props.piechartData);
     return (
       <div className="mega">
         <div className="charts">
