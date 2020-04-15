@@ -13,7 +13,7 @@ import MatIcons from "./MatIcons";
 import PrimarySearchAppBar from "./navbar";
 import "../App.css";
 import UgMap from "./maps";
-import PieChartComponent from "./pieChart";
+import PieChartComponent from "./PpieChart";
 import Rainfall from "./rainfallBarChart";
 import Ndvilinegraph from "./ndvi-linegraph";
 import Ndwilinegraph from "./ndwi-linegraph";
