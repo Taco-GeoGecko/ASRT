@@ -3,7 +3,7 @@ import { Bar } from 'react-chartjs-2';
 import { connect } from "react-redux";
 
 const state = {
-  labels: ['Q1'],
+  labels: ['Q1'], 
   datasets: [
     {
 
