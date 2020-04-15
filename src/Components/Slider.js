@@ -16,33 +16,24 @@ const styles = {
   marginTop: "60px",
 };
 class CustomizedSlider extends React.Component {
+  UpdatedIndicators = this.props.updatePieChartIndicators;
+
   onSlide = (render, handle, value, un, percent) => {
     let indicators = this.props.indicators;
     this.props.sliderValues[this.props.sliderKey] = value;
     let piechartData = _.cloneDeep(this.props.piechartData);
     let mapData = _.cloneDeep(this.props.mapGrids);
-    let UpdatedIndicators = this.props.updatePieChartIndicators;
     let indicator = indicators[this.props.sliderKey];
-    // let newIndictor = [];
-    // if (indicators[this.props.sliderKey]) {
+
     let range = value[1] - value[0];
-    // console.log(indicator);
-
-    if (UpdatedIndicators.includes(indicator) === false) {
-      UpdatedIndicators.push(indicator);
-      console.log(UpdatedIndicators);
-    } else {
-      console.log("i exist");
+    if (this.UpdatedIndicators.includes(indicator) === false) {
+      if (this.props.sliderKey <= 7 && this.props.sliderKey >= 1) {
+        console.log(this.props.sliderKey);
+        this.UpdatedIndicators.push(indicator);
+      }
     }
-    piechartData[UpdatedIndicators.indexOf(indicator)] = range;
-    // }
-    // newIndictor.push(piechartData);
-
-    // console.log(newIndictor);
-
-    console.log(piechartData);
+    piechartData[this.UpdatedIndicators.indexOf(indicator)] = range;
     this.props.dispatch({ type: updatePieChartData, payload: piechartData });
-
     for (let [sliderKey, values] of Object.entries(this.props.sliderValues)) {
       mapData[0][0].features = mapData[0][0].features.filter((piece) => {
         for (let [key, property] of Object.entries(piece.properties)) {
@@ -50,17 +41,15 @@ class CustomizedSlider extends React.Component {
             if (property < values[0] || property > values[1]) {
               return false;
             }
-
             return true;
           }
         }
       });
     }
-    // this.props.dispatch({ type: updatePieChartData, payload: piechartData });
     this.props.dispatch({ type: updateGridData, payload: mapData });
     this.props.dispatch({
       type: updatePieChartIndicators,
-      payload: UpdatedIndicators,
+      payload: this.UpdatedIndicators,
     });
   };
 
