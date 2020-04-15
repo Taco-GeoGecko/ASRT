@@ -3,6 +3,7 @@ import {
   updatePieChartIndicators,
   updatePieChartData,
   updatePieChartDataSuccess,
+  updatePopulationChartData
 } from "../actions/actionTypes/actionTypes";
 
 const chartReducer = (state = AppState.initialChartState, action) => {
@@ -18,6 +19,13 @@ const chartReducer = (state = AppState.initialChartState, action) => {
         pieChartData: action.payload,
         pieChartDataUpdated: true,
       };
+      case updatePopulationChartData:
+      return {
+        ...state,
+        populationChartData: action.payload,
+        // pieChartDataUpdated: true,
+      };
+      
     case updatePieChartDataSuccess:
       return {
         ...state,

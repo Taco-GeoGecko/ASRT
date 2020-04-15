@@ -11,6 +11,7 @@ import CheckboxLabels from "./sampling";
 import Analysis from "./Analysis";
 // import PieChartComponent from "./PpieChart";
 import PieChartComponent from "./pieChart";
+import Population from "./populationBarchart";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -199,7 +200,9 @@ export default function ControlledExpansionPanels() {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <div className={classes.spacing}>
-            <PieChartComponent />
+            <div id="POPULATION">
+              <Population />
+            </div>
           </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>
