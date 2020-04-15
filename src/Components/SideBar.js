@@ -9,8 +9,8 @@ import CustomizedSlider from "./Slider";
 import LandCover from "./Landcover";
 import CheckboxLabels from "./sampling";
 import Analysis from "./Analysis";
+// import PieChartComponent from "./PpieChart";
 import PieChartComponent from "./pieChart";
-import ChartComponent from "./pieDummy";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -200,7 +200,6 @@ export default function ControlledExpansionPanels() {
         <ExpansionPanelDetails>
           <div className={classes.spacing}>
             <PieChartComponent />
-            {/* <ChartComponent /> */}
           </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>

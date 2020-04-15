@@ -24,15 +24,16 @@ class CustomizedSlider extends React.Component {
     let piechartData = _.cloneDeep(this.props.piechartData);
     let mapData = _.cloneDeep(this.props.mapGrids);
     let indicator = indicators[this.props.sliderKey];
+
     let range = value[1] - value[0];
     if (this.UpdatedIndicators.includes(indicator) === false) {
-      this.UpdatedIndicators.push(indicator);
+      if (this.props.sliderKey <= 7 && this.props.sliderKey >= 1) {
+        console.log(this.props.sliderKey);
+        this.UpdatedIndicators.push(indicator);
+      }
     }
-    // console.log(this.UpdatedIndicators);
     piechartData[this.UpdatedIndicators.indexOf(indicator)] = range;
-    // console.log(piechartData);
     this.props.dispatch({ type: updatePieChartData, payload: piechartData });
-
     for (let [sliderKey, values] of Object.entries(this.props.sliderValues)) {
       mapData[0][0].features = mapData[0][0].features.filter((piece) => {
         for (let [key, property] of Object.entries(piece.properties)) {

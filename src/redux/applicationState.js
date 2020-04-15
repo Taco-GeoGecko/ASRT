@@ -1,4 +1,4 @@
-import pieChart from "../Components/pieChart";
+import pieChart from "../Components/PpieChart";
 
 const AppState = {
   initialMapState: {
