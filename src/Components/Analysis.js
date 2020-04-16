@@ -168,8 +168,10 @@ function Analysis() {
                 <small>
                   <h6>population</h6>
                   <CustomizedSlider IndicatorSlider="" sliderKey={0} />
-                  <CustomizedSlider IndicatorSlider="Soil Copper" sliderKey={1} />
-
+                  <CustomizedSlider
+                    IndicatorSlider="Soil Copper"
+                    sliderKey={1}
+                  />
                 </small>
                 <div id="indicatorText">
                   <small>

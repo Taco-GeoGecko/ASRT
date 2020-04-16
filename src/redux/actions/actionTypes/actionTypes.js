@@ -7,3 +7,4 @@ export const updatePopulationChartData = "update population data";
 export const updatePieChartDataSuccess = "piechart data successfullyupdated";
 export const updateGridDataSuccess = "grid data successfully updated";
 export const updatePieChartIndicators = "updated pie chart indicators";
+export const updateChartView = "update the chart view";

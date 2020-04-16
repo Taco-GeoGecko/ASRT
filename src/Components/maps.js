@@ -10,7 +10,10 @@ import {
 } from "react-leaflet";
 import Control from "react-leaflet-control";
 import { connect } from "react-redux";
-import { updateGridDataSuccess } from "../redux/actions/actionTypes/actionTypes";
+import {
+  updateGridDataSuccess,
+  updateChartView,
+} from "../redux/actions/actionTypes/actionTypes";
 import { getMapGrids } from "../redux/actions/mapAction";
 import { getLocation } from "../redux/actions/locationActions";
 import { getSliderData } from "../redux/actions/sliderActions";
@@ -70,7 +73,8 @@ class UgMap extends Component {
     const district = this.refs.geojson.leafletElement;
     if (this.refs.map && map && this.refs.geojson && district) {
       map.fitBounds(e.target.getBounds());
-      
+      this.props.dispatch({ type: updateChartView, payload: true });
+      // console.log("hellllllo" + this.props.chartView);
     } else {
       map.fitBounds(district.getBounds());
     }
@@ -104,6 +108,8 @@ class UgMap extends Component {
   }
 
   render() {
+    // console.log(this.props.mapGrids);
+    // console.log(districts);
     let status = this.state.district;
     let collectionOfGridcells = this.props.mapGrids;
     let districtData = districts;
@@ -172,6 +178,7 @@ const mapStateToProps = (state) => {
     locationValue: state.location.locationValue,
     sliderValue: state.slider.sliderValue,
     mapUpdated: state.map.mapUpdated,
+    chartView: state.chart.chartView,
   };
 };
 

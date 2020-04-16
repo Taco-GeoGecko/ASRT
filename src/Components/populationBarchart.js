@@ -100,6 +100,7 @@ class Population extends React.Component {
     };
   }
   render() {
+    console.log(this.props.populationchartData)
     return (
       <div className="mega">
         <div className="charts">
