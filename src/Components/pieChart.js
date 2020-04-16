@@ -12,12 +12,6 @@ class PieChartComponent extends Component {
     this.state = {
       labels: this.props.updatePieChartIndicators,
       shouldRedraw: false,
-      datasets: [
-        {
-          data: this.props.piechartData,
-          backgroundColor: this.colors1,
-        },
-      ],
     };
   }
   render() {
