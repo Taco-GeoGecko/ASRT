@@ -13,66 +13,67 @@ import MatIcons from "./MatIcons";
 import PrimarySearchAppBar from "./navbar";
 import "../App.css";
 import UgMap from "./maps";
-import PieChartComponent from "./PpieChart";
+import PieChartComponent from "./pieChart";
 import Rainfall from "./rainfallBarChart";
 import Ndvilinegraph from "./ndvi-linegraph";
 import Ndwilinegraph from "./ndwi-linegraph";
 import Population from "./populationBarchart";
 import Lst from "./lst-Linegraph";
+import CustomizedSlider from "./Slider";
 
 const drawerWidth = 650;
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   backgroundColor: "white",
   root: {
-    display: "flex"
+    display: "flex",
   },
   grow: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   sectionDesktop: {
     display: "none",
     [theme.breakpoints.up("md")]: {
-      display: "flex"
-    }
+      display: "flex",
+    },
   },
   drawer: {
     [theme.breakpoints.up("sm")]: {
       width: drawerWidth,
 
-      flexShrink: 0
-    }
+      flexShrink: 0,
+    },
   },
   appBar: {
-    zIndex: theme.zIndex.drawer + 1
+    zIndex: theme.zIndex.drawer + 1,
   },
   menuButton: {
     marginRight: theme.spacing(2),
     [theme.breakpoints.up("sm")]: {
-      display: "none"
-    }
+      display: "none",
+    },
   },
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
-    width: drawerWidth
+    width: drawerWidth,
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3)
+    padding: theme.spacing(3),
   },
   closeMenuButton: {
     marginRight: "auto",
-    marginLeft: 0
+    marginLeft: 0,
   },
   spacing: {
-    margin: 10
+    margin: 10,
   },
   navigation: {
     height: 50,
-    width: 120
+    width: 120,
   },
   whitediv: {
-    backgroundColor: "white"
-  }
+    backgroundColor: "white",
+  },
 }));
 function Analysis() {
   const classes = useStyles();
@@ -110,10 +111,10 @@ function Analysis() {
                 open={mobileOpen}
                 onClose={handleDrawerToggle}
                 classes={{
-                  paper: classes.drawerPaper
+                  paper: classes.drawerPaper,
                 }}
                 ModalProps={{
-                  keepMounted: true // Better open performance on mobile.
+                  keepMounted: true, // Better open performance on mobile.
                 }}
               >
                 <IconButton
@@ -160,10 +161,16 @@ function Analysis() {
                 className={classes.drawer}
                 variant="permanent"
                 classes={{
-                  paper: classes.drawerPaper
+                  paper: classes.drawerPaper,
                 }}
               >
                 <div className={classes.toolbar} />
+                <small>
+                  <h6>population</h6>
+                  <CustomizedSlider IndicatorSlider="" sliderKey={0} />
+                  <CustomizedSlider IndicatorSlider="Soil Copper" sliderKey={1} />
+
+                </small>
                 <div id="indicatorText">
                   <small>
                     <h1 id="CHARTS">CHARTS</h1>
