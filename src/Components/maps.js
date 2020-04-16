@@ -70,6 +70,7 @@ class UgMap extends Component {
     const district = this.refs.geojson.leafletElement;
     if (this.refs.map && map && this.refs.geojson && district) {
       map.fitBounds(e.target.getBounds());
+      
     } else {
       map.fitBounds(district.getBounds());
     }
