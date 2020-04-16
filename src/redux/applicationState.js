@@ -16,7 +16,8 @@ const AppState = {
     piechartIndicators: [],
     updatedPieChart: [],
     pieChartDataUpdated: false,
-    populationChartData:[]
+    populationChartData: [],
+    rainfallChartData: [],
   },
   initialLocationState: {
     locationValue: [],
