@@ -7,11 +7,9 @@ import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import CustomizedSlider from "./Slider";
 import LandCover from "./Landcover";
-import CheckboxLabels from "./sampling";
-import Analysis from "./Analysis";
-// import PieChartComponent from "./PpieChart";
-import PieChartComponent from "./pieChart";
-import Population from "./populationBarchart";
+// import Analysis from "./Analysis";
+// import PieChartComponent from "./pieChart";
+// import Population from "./populationBarchart";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -187,7 +185,7 @@ export default function ControlledExpansionPanels() {
         </ExpansionPanelDetails>
       </ExpansionPanel>
 
-      <ExpansionPanel
+      {/* <ExpansionPanel
         expanded={expanded === "panel7"}
         onChange={handleChange("panel7")}
       >
@@ -201,11 +199,11 @@ export default function ControlledExpansionPanels() {
         <ExpansionPanelDetails>
           <div className={classes.spacing}>
             <div id="POPULATION">
-              <Population />
+              <PieChartComponent />
             </div>
           </div>
         </ExpansionPanelDetails>
-      </ExpansionPanel>
+      </ExpansionPanel> */}
     </div>
   );
 }
