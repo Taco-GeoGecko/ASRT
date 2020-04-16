@@ -1,4 +1,4 @@
-import pieChart from "../Components/pieChart";
+import pieChart from "../Components/PpieChart";
 
 const AppState = {
   initialMapState: {
@@ -16,6 +16,7 @@ const AppState = {
     piechartIndicators: [],
     updatedPieChart: [],
     pieChartDataUpdated: false,
+    populationChartData:[]
   },
   initialLocationState: {
     locationValue: [],
