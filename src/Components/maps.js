@@ -49,25 +49,54 @@ class UgMap extends Component {
       // this.props.dispatch({ type: updateGridDataSuccess, payload: false });
     }
   }
+
+  
+
+
   onEachFeature = (feature, layer) => {
     layer.on({
-      mouseover: (e) => this.MouseOverFeature(e, feature),
-      // mouseout: (e) => this.MouseOutFeature(e, feature),
-      // click: e => this.ZoomToFeature(e, feature),
-      click: (e) => this.ZoomToFeature(e, feature),
-      preclick: (e) => this.Highlight(e, feature),
-    });
+      mouseover: e => this.MouseOverFeature(e, feature),
+      //   mouseout: (e) => this.MouseOutFeature(e, feature),
+      click: e => this.ZoomToFeature(e, feature),
+      
+      // mouseout: e => this.resetHighlight(e, feature),
+      preclick: e => this.Highlight(e, feature)
+
+    }); 
   };
+    
 
   Highlight(e, feature) {
     var layer = e.target;
     layer.setStyle({
       weight: 2,
-      color: "#666",
-      dashArray: "",
-      fillOpacity: 0.7,
+      color: '#666',
+      dashArray: '',
+      fillOpacity: 0.5
     });
   }
+
+// so this here below is the reset hightlight function
+// that needs line 58 needs but it
+// has a small error
+// which you will see if you run.
+
+//  resetHighlight(e, feature)
+// {  GeoJSON.resetStyle(e.target);
+// }
+
+
+  highlightSelection(e, feature)
+{
+  var layer = e.target;
+  layer.setStyle({
+        weight: 2,
+        opacity: 0.5,
+        color: '#666',
+        fillOpacity: 0.7
+    });
+}
+
   ZoomToFeature(e, feature) {
     const map = this.refs.map.leafletElement;
     const district = this.refs.geojson.leafletElement;
