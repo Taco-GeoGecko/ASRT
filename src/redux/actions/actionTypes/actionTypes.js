@@ -8,3 +8,5 @@ export const updateRainfallChartData = "update rainfall data";
 export const updatePieChartDataSuccess = "piechart data successfullyupdated";
 export const updateGridDataSuccess = "grid data successfully updated";
 export const updatePieChartIndicators = "updated pie chart indicators";
+export const updateChartView = "update the chart view";
+export const updateChartViewSuccess = "updated the chart view";

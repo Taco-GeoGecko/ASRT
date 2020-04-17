@@ -8,7 +8,7 @@ import {
   updatePieChartData,
   updatePieChartIndicators,
   updatePopulationChartData,
-  updateRainfallChartData
+  updateRainfallChartData,
 } from "../redux/actions/actionTypes/actionTypes";
 const styles = {
   fontFamily: "sans-serif",
@@ -34,19 +34,25 @@ class CustomizedSlider extends React.Component {
         this.UpdatedIndicators.push(indicator);
       }
     }
+    console.log(this.props.populationchartData);
 
     piechartData[this.UpdatedIndicators.indexOf(indicator)] = range;
     if (this.props.sliderKey === 0) {
-      populationchartData[this.props.sliderKey] = range;
+      populationchartData[0] = range;
     }
     if (this.props.sliderKey === 9) {
-      rainfallchartData[this.props.sliderKey] = range;
+      rainfallchartData[0] = range;
     }
-    console.log(rainfallchartData)
 
-    this.props.dispatch({ type: updatePopulationChartData, payload: populationchartData });
+    this.props.dispatch({
+      type: updatePopulationChartData,
+      payload: populationchartData,
+    });
     this.props.dispatch({ type: updatePieChartData, payload: piechartData });
-    this.props.dispatch({ type: updateRainfallChartData, payload: rainfallchartData });
+    this.props.dispatch({
+      type: updateRainfallChartData,
+      payload: rainfallchartData,
+    });
 
     for (let [sliderKey, values] of Object.entries(this.props.sliderValues)) {
       mapData[0][0].features = mapData[0][0].features.filter((piece) => {

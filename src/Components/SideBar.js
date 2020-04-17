@@ -8,7 +8,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import CustomizedSlider from "./Slider";
 import LandCover from "./Landcover";
 // import Analysis from "./Analysis";
-// import PieChartComponent from "./pieChart";
+import PieChartComponent from "./pieChart";
 // import Population from "./populationBarchart";
 
 const useStyles = makeStyles((theme) => ({
@@ -185,7 +185,7 @@ export default function ControlledExpansionPanels() {
         </ExpansionPanelDetails>
       </ExpansionPanel>
 
-      {/* <ExpansionPanel
+      <ExpansionPanel
         expanded={expanded === "panel7"}
         onChange={handleChange("panel7")}
       >
@@ -203,7 +203,7 @@ export default function ControlledExpansionPanels() {
             </div>
           </div>
         </ExpansionPanelDetails>
-      </ExpansionPanel> */}
+      </ExpansionPanel>
     </div>
   );
 }
