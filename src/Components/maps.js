@@ -10,7 +10,10 @@ import {
 } from "react-leaflet";
 import Control from "react-leaflet-control";
 import { connect } from "react-redux";
-import { updateGridDataSuccess } from "../redux/actions/actionTypes/actionTypes";
+import {
+  updateGridDataSuccess,
+  updateChartView,
+} from "../redux/actions/actionTypes/actionTypes";
 import { getMapGrids } from "../redux/actions/mapAction";
 import { getLocation } from "../redux/actions/locationActions";
 import { getSliderData } from "../redux/actions/sliderActions";
@@ -43,34 +46,64 @@ class UgMap extends Component {
   componentWillReceiveProps(nextProps) {
     // console.log(nextProps.mapUpdated);
     if (nextProps.mapUpdated === true) {
-      this.props.dispatch({ type: updateGridDataSuccess, payload: false });
+      // this.props.dispatch({ type: updateGridDataSuccess, payload: false });
     }
   }
+
+  
+
+
   onEachFeature = (feature, layer) => {
     layer.on({
-      mouseover: (e) => this.MouseOverFeature(e, feature),
-      // mouseout: (e) => this.MouseOutFeature(e, feature),
-      // click: e => this.ZoomToFeature(e, feature),
-      click: (e) => this.ZoomToFeature(e, feature),
-      preclick: (e) => this.Highlight(e, feature),
-    });
+      mouseover: e => this.MouseOverFeature(e, feature),
+      //   mouseout: (e) => this.MouseOutFeature(e, feature),
+      click: e => this.ZoomToFeature(e, feature),
+      
+      // mouseout: e => this.resetHighlight(e, feature),
+      preclick: e => this.Highlight(e, feature)
+
+    }); 
   };
+    
 
   Highlight(e, feature) {
     var layer = e.target;
     layer.setStyle({
       weight: 2,
-      color: "#666",
-      dashArray: "",
-      fillOpacity: 0.7,
+      color: '#666',
+      dashArray: '',
+      fillOpacity: 0.5
     });
   }
+
+// so this here below is the reset hightlight function
+// that needs line 58 needs but it
+// has a small error
+// which you will see if you run.
+
+//  resetHighlight(e, feature)
+// {  GeoJSON.resetStyle(e.target);
+// }
+
+
+  highlightSelection(e, feature)
+{
+  var layer = e.target;
+  layer.setStyle({
+        weight: 2,
+        opacity: 0.5,
+        color: '#666',
+        fillOpacity: 0.7
+    });
+}
+
   ZoomToFeature(e, feature) {
     const map = this.refs.map.leafletElement;
     const district = this.refs.geojson.leafletElement;
     if (this.refs.map && map && this.refs.geojson && district) {
       map.fitBounds(e.target.getBounds());
-      
+      this.props.dispatch({ type: updateChartView, payload: true });
+      // console.log("hellllllo" + this.props.chartView);
     } else {
       map.fitBounds(district.getBounds());
     }
@@ -104,6 +137,8 @@ class UgMap extends Component {
   }
 
   render() {
+    // console.log(this.props.mapGrids);
+    // console.log(districts);
     let status = this.state.district;
     let collectionOfGridcells = this.props.mapGrids;
     let districtData = districts;
@@ -120,6 +155,10 @@ class UgMap extends Component {
           data.features.length +
           "<br /> " +
           " 5x5 square kilometers";
+        console.log(statusArea)
+
+
+
       }
     }
 
@@ -172,6 +211,7 @@ const mapStateToProps = (state) => {
     locationValue: state.location.locationValue,
     sliderValue: state.slider.sliderValue,
     mapUpdated: state.map.mapUpdated,
+    chartView: state.chart.chartView,
   };
 };
 

@@ -7,7 +7,8 @@ import {
   updateGridData,
   updatePieChartData,
   updatePieChartIndicators,
-  updatePopulationChartData
+  updatePopulationChartData,
+  updateRainfallChartData,
 } from "../redux/actions/actionTypes/actionTypes";
 const styles = {
   fontFamily: "sans-serif",
@@ -24,6 +25,7 @@ class CustomizedSlider extends React.Component {
     this.props.sliderValues[this.props.sliderKey] = value;
     let piechartData = _.cloneDeep(this.props.piechartData);
     let populationchartData = _.cloneDeep(this.props.populationchartData);
+    let rainfallchartData = _.cloneDeep(this.props.rainfallchartData);
     let mapData = _.cloneDeep(this.props.mapGrids);
     let indicator = indicators[this.props.sliderKey];
     let range = value[1] - value[0];
@@ -32,13 +34,26 @@ class CustomizedSlider extends React.Component {
         this.UpdatedIndicators.push(indicator);
       }
     }
+    console.log(this.props.populationchartData);
 
     piechartData[this.UpdatedIndicators.indexOf(indicator)] = range;
     if (this.props.sliderKey === 0) {
-      populationchartData[this.props.sliderKey] = range;
+      populationchartData[0] = range;
     }
-    this.props.dispatch({ type: updatePopulationChartData, payload: populationchartData });
+    if (this.props.sliderKey === 9) {
+      rainfallchartData[0] = range;
+    }
+
+    this.props.dispatch({
+      type: updatePopulationChartData,
+      payload: populationchartData,
+    });
     this.props.dispatch({ type: updatePieChartData, payload: piechartData });
+    this.props.dispatch({
+      type: updateRainfallChartData,
+      payload: rainfallchartData,
+    });
+
     for (let [sliderKey, values] of Object.entries(this.props.sliderValues)) {
       mapData[0][0].features = mapData[0][0].features.filter((piece) => {
         for (let [key, property] of Object.entries(piece.properties)) {
@@ -99,6 +114,7 @@ const mapStateToProps = (state) => {
     updatePieChartIndicators: state.chart.piechartIndicators,
     pieChartDataUpdated: state.chart.pieChartDataUpdated,
     populationchartData: state.chart.populationChartData,
+    rainfallchartData: state.chart.rainfallChartData,
   };
 };
 

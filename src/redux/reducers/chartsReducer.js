@@ -3,7 +3,10 @@ import {
   updatePieChartIndicators,
   updatePieChartData,
   updatePieChartDataSuccess,
-  updatePopulationChartData
+  updatePopulationChartData,
+  updateChartView,
+  updateRainfallChartData,
+  updateChartViewSuccess,
 } from "../actions/actionTypes/actionTypes";
 
 const chartReducer = (state = AppState.initialChartState, action) => {
@@ -19,17 +22,33 @@ const chartReducer = (state = AppState.initialChartState, action) => {
         pieChartData: action.payload,
         pieChartDataUpdated: true,
       };
-      case updatePopulationChartData:
+    case updatePopulationChartData:
       return {
         ...state,
         populationChartData: action.payload,
         // pieChartDataUpdated: true,
       };
-      
+
+    case updateRainfallChartData:
+      return {
+        ...state,
+        rainfallChartData: action.payload,
+      };
+
     case updatePieChartDataSuccess:
       return {
         ...state,
         pieChartDataUpdated: action.payload,
+      };
+    // case updateChartViewSuccess:
+    //   return {
+    //     ...state,
+    //     chartView: action.payload,
+    //   };
+    case updateChartView:
+      return {
+        ...state,
+        chartView: action.payload,
       };
     default:
       return state;
