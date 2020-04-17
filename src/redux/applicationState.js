@@ -18,6 +18,7 @@ const AppState = {
     pieChartDataUpdated: false,
     populationChartData:[],
     chartView:false,
+    rainfallChartData: [],
   },
   initialLocationState: {
     locationValue: [],

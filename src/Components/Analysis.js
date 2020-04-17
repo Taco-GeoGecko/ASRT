@@ -168,23 +168,10 @@ function Analysis() {
                 <small>
                   <h6>population</h6>
                   <CustomizedSlider IndicatorSlider="" sliderKey={0} />
-                  <CustomizedSlider
-                    IndicatorSlider="Soil Copper"
-                    sliderKey={1}
-                  />
+                  <CustomizedSlider IndicatorSlider="Rainfall" sliderKey={9} />
                 </small>
                 <div id="indicatorText">
-                  <small>
-                    <h1 id="CHARTS">CHARTS</h1>
-                  </small>
-                </div>
-
-                {/* <ControlledExpansionPanels /> */}
-                <div id="PIECHART">
-                  <PieChartComponent />
-                </div>
-                <div className={classes.spacing} />
-                <div id="RAINFALL">
+                  {/* <ControlledExpansionPanels /> */}
                   <Rainfall />
                 </div>
                 <div className={classes.spacing} />

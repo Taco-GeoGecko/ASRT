@@ -46,7 +46,7 @@ class UgMap extends Component {
   componentWillReceiveProps(nextProps) {
     // console.log(nextProps.mapUpdated);
     if (nextProps.mapUpdated === true) {
-      this.props.dispatch({ type: updateGridDataSuccess, payload: false });
+      // this.props.dispatch({ type: updateGridDataSuccess, payload: false });
     }
   }
   onEachFeature = (feature, layer) => {
@@ -126,6 +126,10 @@ class UgMap extends Component {
           data.features.length +
           "<br /> " +
           " 5x5 square kilometers";
+        console.log(statusArea)
+
+
+
       }
     }
 

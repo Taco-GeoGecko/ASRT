@@ -91,7 +91,6 @@ DATABASES = {
         'USER': 'postgres',
         'PASSWORD': 'lambtex',
         'HOST': 'localhost',
-
         'PORT': '5432',
         
          

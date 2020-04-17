@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -22,13 +22,17 @@ import Ndwilinegraph from "./ndwi-linegraph";
 import Population from "./populationBarchart";
 import Lst from "./lst-Linegraph";
 import { connect } from "react-redux";
+import { updateChartViewSuccess } from "../redux/actions/actionTypes/actionTypes";
+import CustomizedSlider from "./Slider";
 
 function ResponsiveDrawer(props) {
   let drawerWidth = 400;
   let distinctlayout = <ControlledExpansionPanels />;
-  console.log(props.mapUpdated)
-  if (props.chartView == true) {
+  console.log(props.mapUpdated);
+  let title = "AGRICULTURAL INDICATORS";
+  if (props.chartView == true && props.mapUpdated == true) {
     drawerWidth = 650;
+    title = "CHARTS";
   }
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -88,19 +92,23 @@ function ResponsiveDrawer(props) {
     setMobileOpen(!mobileOpen);
   }
 
-  // if (newlayout === 0)
-  if (props.chartView == true) {
-    // drawerWidth = 650;
+  // useEffect(() => {
+  //   if (props.chartView == true) {
+  //     props.dispatch({ type: updateChartViewSuccess, payload: false });
+  //     console.log("helloooooooo");
+  //   }
+  // }, [props.chartView]);
+  if (props.chartView == true && props.mapUpdated == true) {
     distinctlayout = (
       <div>
-        <div id="PIECHART">
+        <div>
           <PieChartComponent />
         </div>
         <div className={classes.spacing} />
         <div id="RAINFALL">
           <Rainfall />
         </div>
-        <div className={classes.spacing} />
+        {/* <div className={classes.spacing} />
         <div id="NDVI">
           <Ndvilinegraph />
         </div>
@@ -111,7 +119,7 @@ function ResponsiveDrawer(props) {
         <div className={classes.spacing} />
         <div id="LST">
           <Lst />
-        </div>
+        </div> */}
         <div className={classes.spacing} />
         <div id="POPULATION">
           <Population />
@@ -162,7 +170,7 @@ function ResponsiveDrawer(props) {
               </IconButton>
               <div id="indicatorText">
                 <small>
-                  <h6>AGRICULTURAL INDICATORS</h6>
+                  <h6>{title}</h6>
                 </small>
               </div>
 
@@ -182,8 +190,12 @@ function ResponsiveDrawer(props) {
               <div className={classes.toolbar} />
               <div id="indicatorText">
                 <small>
-                  <h6>AGRICULTURAL INDICATORS</h6>
+                  <h6>{title}</h6>
                 </small>
+                {/* <CustomizedSlider IndicatorSlider="Soil Potassium" sliderKey={3} />
+            <CustomizedSlider IndicatorSlider="Soil Boron" sliderKey={4} />
+            <CustomizedSlider IndicatorSlider="Soil Aluminium" sliderKey={5} />
+            <CustomizedSlider IndicatorSlider="Soil Iron" sliderKey={6} /> */}
               </div>
               <div>{distinctlayout}</div>
 
@@ -206,6 +218,7 @@ const mapStateToProps = (state) => {
   return {
     mapUpdated: state.map.mapUpdated,
     chartView: state.chart.chartView,
+    piechartData: state.chart.pieChartData,
   };
 };
 
