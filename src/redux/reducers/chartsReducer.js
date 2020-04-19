@@ -1,22 +1,55 @@
-// import {sliderData} from '../actions/actionTypes/actionTypes';
 import AppState from "../applicationState";
-import { updatePieChartIndicators, updatePieChartData } from "../actions/actionTypes/actionTypes";
-import pieChart from "../../Components/pieChart";
+import {
+  updatePieChartIndicators,
+  updatePieChartData,
+  updatePieChartDataSuccess,
+  updatePopulationChartData,
+  updateChartView,
+  updateRainfallChartData,
+  updateChartViewSuccess,
+} from "../actions/actionTypes/actionTypes";
 
-const chartReducer = (state = AppState.initialMapState, action) => {
+const chartReducer = (state = AppState.initialChartState, action) => {
   switch (action.type) {
     case updatePieChartIndicators:
       return {
         ...state,
-        piechartIndicators:[action.payload]
+        piechartIndicators: [action.payload],
       };
-      case updatePieChartData:
-        return {
-          ...state,
-          pieChartData:[action.payload]
-          // updatedPieChart: action.payload,
-          // mapUpdated: true
-        };
+    case updatePieChartData:
+      return {
+        ...state,
+        pieChartData: action.payload,
+        pieChartDataUpdated: true,
+      };
+    case updatePopulationChartData:
+      return {
+        ...state,
+        populationChartData: action.payload,
+        // pieChartDataUpdated: true,
+      };
+
+    case updateRainfallChartData:
+      return {
+        ...state,
+        rainfallChartData: action.payload,
+      };
+
+    case updatePieChartDataSuccess:
+      return {
+        ...state,
+        pieChartDataUpdated: action.payload,
+      };
+    // case updateChartViewSuccess:
+    //   return {
+    //     ...state,
+    //     chartView: action.payload,
+    //   };
+    case updateChartView:
+      return {
+        ...state,
+        chartView: action.payload,
+      };
     default:
       return state;
   }

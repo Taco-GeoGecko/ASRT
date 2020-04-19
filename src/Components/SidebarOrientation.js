@@ -3,18 +3,18 @@ import ControlledExpansionPanels from "./SideBar";
 import Callouts from "./callout";
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    lor: theme.palette.text.secondary
+    lor: theme.palette.text.secondary,
   },
   spacing: {
-    margin: 10
+    margin: 10,
   },
   calloutstyles: {
     // height:100
-    width: 200
-  }
+    width: 200,
+  },
 }));
 
 export default function ExpansionSideBar() {

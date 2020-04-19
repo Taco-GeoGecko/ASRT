@@ -6,7 +6,7 @@ import {
   Marker,
   ZoomControl,
   GeoJSON,
-  Popup
+  Popup,
 } from "react-leaflet";
 import Control from "react-leaflet-control";
 import { connect } from "react-redux";
@@ -19,7 +19,7 @@ import districts from "../Components/uganda_districts_2019";
 class UgMap extends Component {
   bounds = [
     [-1.487315, 29.56346], // Southwest coordinates
-    [4.23314, 35.01031] // Northeast coordinates
+    [4.23314, 35.01031], // Northeast coordinates
   ];
   constructor(props) {
     super(props);
@@ -30,7 +30,7 @@ class UgMap extends Component {
       data: this.props.locationValue,
       district: "Hover over district",
       bounds: this.bounds,
-      map: null
+      map: null,
     };
     this.geoJsonLayer = React.createRef();
   }
@@ -41,6 +41,7 @@ class UgMap extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    // console.log(nextProps.mapUpdated);
     if (nextProps.mapUpdated === true) {
       // this.props.dispatch({ type: updateGridDataSuccess, payload: false });
     }
@@ -123,7 +124,7 @@ ZoomToFeature(e, feature) {
 
   MouseOverFeature(e, feature) {
     this.setState({
-      district: feature.properties.DName2019
+      district: feature.properties.DName2019,
     });
 
     // e.target.bindPopup(this.state.district);
@@ -137,7 +138,7 @@ ZoomToFeature(e, feature) {
       lat: this.props.lat,
       lng: this.props.lng,
       zoom: this.props.zoom,
-      district: this.props.district
+      district: this.props.district,
     });
     e.target.setStyle({
       // fillColor: '#A52A2A',
@@ -149,6 +150,8 @@ ZoomToFeature(e, feature) {
   }
 
   render() {
+    // console.log(this.props.mapGrids);
+    // console.log(districts);
     let status = this.state.district;
     let collectionOfGridcells = this.props.mapGrids;
     let districtData = districts;
@@ -165,8 +168,12 @@ ZoomToFeature(e, feature) {
           data.features.length +
           "<br /> " +
           " 5x5 square kilometers";
+        console.log(statusArea)
+
+
+
       }
-    } 
+    }
 
     if (collectionOfGridcells[0]) {
       this.state.map = (
@@ -192,14 +199,12 @@ ZoomToFeature(e, feature) {
             onEachFeature={this.onEachFeature}
           />
           <GeoJSON data={districtData} onEachFeature={this.onEachFeature} />
-          
           <Control className="info" position="topright">
-              
             <div>
               {
                 (status =
                   this.props.mapUpdated === true ? statusGrids : statusArea)
-              } 
+              }
             </div>
           </Control>
           }
@@ -209,7 +214,7 @@ ZoomToFeature(e, feature) {
     } else return "Failed to load the map";
   }
 }
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     lat: state.map.lat,
     lng: state.map.lng,

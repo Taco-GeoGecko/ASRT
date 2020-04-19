@@ -2,7 +2,7 @@ import {
   updateGridData,
   loadGridData,
   updateGridDataSuccess,
-  updatePieChartData
+  updatePieChartData,
 } from "../actions/actionTypes/actionTypes";
 import AppState from "../applicationState";
 
@@ -13,21 +13,21 @@ const mapReducer = (state = AppState.initialMapState, action) => {
       return {
         ...state,
         mapGrids: action.payload,
-        updatedMapGrids: action.payload
+        updatedMapGrids: action.payload,
       };
     case updateGridData:
       return {
         ...state,
         updatedMapGrids: action.payload,
-        mapUpdated: true
+        mapUpdated: true,
       };
-      
-    case updateGridDataSuccess:
-      return {
-        ...state,
-        // mapGrids: action.payload,
-        mapUpdated:action.payload
-      };
+
+    // case updateGridDataSuccess:
+    //   return {
+    //     ...state,
+    //     // mapGrids: action.payload,
+    //     mapUpdated: action.payload,
+    //   };
 
     default:
       return state;

@@ -7,6 +7,8 @@ import {
   updateGridData,
   updatePieChartData,
   updatePieChartIndicators,
+  updatePopulationChartData,
+  updateRainfallChartData,
 } from "../redux/actions/actionTypes/actionTypes";
 const styles = {
   fontFamily: "sans-serif",
@@ -16,67 +18,58 @@ const styles = {
   marginTop: "60px",
 };
 class CustomizedSlider extends React.Component {
+  UpdatedIndicators = this.props.updatePieChartIndicators;
+
   onSlide = (render, handle, value, un, percent) => {
     let indicators = this.props.indicators;
     this.props.sliderValues[this.props.sliderKey] = value;
-    let piechartData = this.props.piechartData;
+    let piechartData = _.cloneDeep(this.props.piechartData);
+    let populationchartData = _.cloneDeep(this.props.populationchartData);
+    let rainfallchartData = _.cloneDeep(this.props.rainfallchartData);
     let mapData = _.cloneDeep(this.props.mapGrids);
-    let UpdatedIndicators = this.props.updatePieChartIndicators;
-
-    if (indicators[this.props.sliderKey]) {
-      let range = value[1] - value[0];
-      let indicator = indicators[this.props.sliderKey];
-      console.log(indicator);
-      // let pieData = { [indicator]: range };
-      // pieData.indicator=indicator
-      // pieData.range=range
-      // pieData.push({indicator: range})
-      if (UpdatedIndicators.includes(indicator) === false) {
-        UpdatedIndicators.push(indicator);
+    let indicator = indicators[this.props.sliderKey];
+    let range = value[1] - value[0];
+    if (this.UpdatedIndicators.includes(indicator) === false) {
+      if (this.props.sliderKey <= 7 && this.props.sliderKey >= 1) {
+        this.UpdatedIndicators.push(indicator);
       }
-      // console.log(UpdatedIndicators.indexOf(indicator));
-      piechartData[UpdatedIndicators.indexOf(indicator)] = range;
     }
-    // console.log(UpdatedIndicators);
-    // console.log(piechartData);
+    console.log(this.props.populationchartData);
+
+    piechartData[this.UpdatedIndicators.indexOf(indicator)] = range;
+    if (this.props.sliderKey === 0) {
+      populationchartData[0] = range;
+    }
+    if (this.props.sliderKey === 9) {
+      rainfallchartData[0] = range;
+    }
+
+    this.props.dispatch({
+      type: updatePopulationChartData,
+      payload: populationchartData,
+    });
+    this.props.dispatch({ type: updatePieChartData, payload: piechartData });
+    this.props.dispatch({
+      type: updateRainfallChartData,
+      payload: rainfallchartData,
+    });
 
     for (let [sliderKey, values] of Object.entries(this.props.sliderValues)) {
-      // if (indicators[sliderKey]) {
-      //   let range = values[1] - values[0];
-      //   console.log(range);
-      //   console.log(indicators[sliderKey]);
-      //   let indicator = indicators[sliderKey];
-      //   let pieData={[indicator]:range}
-      //   // pieData.indicator=indicator
-      //   // pieData.range=range
-      //   // pieData.push({indicator: range})
-
-      //   piechartData.push(pieData);
-      // }
-
-      // console.log(this.props.piechartData);
-
       mapData[0][0].features = mapData[0][0].features.filter((piece) => {
         for (let [key, property] of Object.entries(piece.properties)) {
-          // console.log(indicators[sliderKey])
-
           if (key === indicators[sliderKey]) {
-            // console.log(piechartData);
-
             if (property < values[0] || property > values[1]) {
               return false;
             }
-
             return true;
           }
         }
       });
     }
-    this.props.dispatch({ type: updatePieChartData, payload: piechartData });
     this.props.dispatch({ type: updateGridData, payload: mapData });
     this.props.dispatch({
       type: updatePieChartIndicators,
-      payload: UpdatedIndicators,
+      payload: this.UpdatedIndicators,
     });
   };
 
@@ -117,8 +110,11 @@ const mapStateToProps = (state) => {
     mapGrids: state.map.mapGrids,
     mapUpdated: state.map.mapUpdated,
     sliderValues: state.map.sliderValues,
-    piechartData: state.map.pieChartData,
-    updatePieChartIndicators: state.map.piechartIndicators,
+    piechartData: state.chart.pieChartData,
+    updatePieChartIndicators: state.chart.piechartIndicators,
+    pieChartDataUpdated: state.chart.pieChartDataUpdated,
+    populationchartData: state.chart.populationChartData,
+    rainfallchartData: state.chart.rainfallChartData,
   };
 };
 
