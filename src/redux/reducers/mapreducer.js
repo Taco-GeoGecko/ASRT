@@ -22,12 +22,12 @@ const mapReducer = (state = AppState.initialMapState, action) => {
         mapUpdated: true,
       };
 
-    case updateGridDataSuccess:
-      return {
-        ...state,
-        // mapGrids: action.payload,
-        mapUpdated: action.payload,
-      };
+    // case updateGridDataSuccess:
+    //   return {
+    //     ...state,
+    //     // mapGrids: action.payload,
+    //     mapUpdated: action.payload,
+    //   };
 
     default:
       return state;
