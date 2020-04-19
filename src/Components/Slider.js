@@ -37,10 +37,10 @@ class CustomizedSlider extends React.Component {
 
     piechartData[this.UpdatedIndicators.indexOf(indicator)] = range;
     if (this.props.sliderKey === 0) {
-      populationchartData[this.props.sliderKey] = range;
+      populationchartData[0] = range;
     }
     if (this.props.sliderKey === 9) {
-      rainfallchartData[this.props.sliderKey] = range;
+      rainfallchartData[0] = range;
     }
     console.log(rainfallchartData)
 
