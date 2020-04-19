@@ -126,10 +126,7 @@ class UgMap extends Component {
           data.features.length +
           "<br /> " +
           " 5x5 square kilometers";
-        console.log(statusArea)
-
-
-
+        console.log(statusArea);
       }
     }
 
