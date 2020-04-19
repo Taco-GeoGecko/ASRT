@@ -10,7 +10,7 @@ import {
 } from "react-leaflet";
 import Control from "react-leaflet-control";
 import { connect } from "react-redux";
-import { updateGridDataSuccess } from "../redux/actions/actionTypes/actionTypes";
+import { updateGridDataSuccess   } from "../redux/actions/actionTypes/actionTypes";
 import { getMapGrids } from "../redux/actions/mapAction";
 import { getLocation } from "../redux/actions/locationActions";
 import { getSliderData } from "../redux/actions/sliderActions";
@@ -42,7 +42,7 @@ class UgMap extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.mapUpdated === true) {
-      this.props.dispatch({ type: updateGridDataSuccess, payload: false });
+      // this.props.dispatch({ type: updateGridDataSuccess, payload: false });
     }
   }
 
@@ -56,31 +56,12 @@ class UgMap extends Component {
       click: e => this.ZoomToFeature(e, feature),
       
       // mouseout: e => this.resetHighlight(e, feature),
-      preclick: e => this.Highlight(e, feature)
+      // preclick: e => this.Highlight(e, feature)
 
     }); 
   };
     
 
-  Highlight(e, feature) {
-  
-    var layer = e.target;
-    layer.setStyle({
-      weight: 2,
-      color: '#666',
-      dashArray: '',
-      fillOpacity: 0.5
-    });
-  }
-
-// so this here below is the reset hightlight function
-// that needs line 58 needs but it
-// has a small error
-// which you will see if you run.
-
-//  resetHighlight(e, feature)
-// {  GeoJSON.resetStyle(e.target);
-// }
 
 
   highlightSelection(e, feature)
@@ -93,16 +74,52 @@ class UgMap extends Component {
         fillOpacity: 0.7
     });
 }
+     
 
-  ZoomToFeature(e, feature) {
-    const map = this.refs.map.leafletElement;
-    const district = this.refs.geojson.leafletElement;
-    if (this.refs.map && map && this.refs.geojson && district) {
-      map.fitBounds(e.target.getBounds());
-    } else {
-      map.fitBounds(district.getBounds());
+ZoomToFeature(e, feature) {
+
+  const map = this.refs.map.leafletElement;
+
+  /*loop through all features, if not polygons and not basemap.
+  this will also affect the gridcells so if you want to remove that behaviour you'll need to include a filter to not affect the gridcells on map*/
+
+  Object.keys(map["_layers"]).forEach(element => {
+    if (
+      typeof map["_layers"][element]["feature"] !== "undefined" &&
+      map["_layers"][element]["feature"]["geometry"]["type"] === "Polygon"
+    ) {
+      var l = map["_layers"][element];
+      l.setStyle({
+        weight: 2,
+        color: '#3388ff',
+        dashArray: '',
+        fillOpacity: 0.2
+      });
     }
+  });
+
+  const district = this.refs.geojson.leafletElement;
+  if (this.refs.map && map && this.refs.geojson && district) {
+    map.fitBounds(e.target.getBounds());
+    // this.props.dispatch({ type: updateChartView, payload: true });
+    // console.log("hellllllo" + this.props.chartView);
+  } else {
+    map.fitBounds(district.getBounds());
   }
+
+  /*finally set the target feature colour there*/
+  var layer = e.target;
+  layer.setStyle({
+    weight: 2,
+    color: '#666',
+    dashArray: '',
+    fillOpacity: 0.5
+  });
+
+}
+
+
+  
 
   MouseOverFeature(e, feature) {
     this.setState({
@@ -201,7 +218,8 @@ const mapStateToProps = state => {
     mapGrids: state.map.updatedMapGrids,
     locationValue: state.location.locationValue,
     sliderValue: state.slider.sliderValue,
-    mapUpdated: state.map.mapUpdated
+    mapUpdated: state.map.mapUpdated,
+   
   };
 };
 
