@@ -11,6 +11,7 @@ const AppState = {
     mapUpdated: false,
     sliderValues: {},
     pieChartData:[],
+    piechartIndicators:[],
     updatedPieChart: [],
 
   },

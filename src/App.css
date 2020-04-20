@@ -120,8 +120,12 @@
 #faq {
   background-color: #e15c26;
 }
+#pic {
+  width: 500px;
+  height: 300px;
+}
 .MuiAppBar-colorPrimary {
-  color: #fff;
+  color: rgb(243, 230, 230);
   background-color: #2ab34b;
   border: solid #77bb85 1px;
   position: fixed;
