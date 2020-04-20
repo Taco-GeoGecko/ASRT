@@ -198,7 +198,7 @@ export default function ControlledExpansionPanels() {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <div className={classes.spacing}>
-            <div id="POPULATION">
+            <div>
               <PieChartComponent />
             </div>
           </div>
