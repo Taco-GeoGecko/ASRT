@@ -43,7 +43,7 @@ class PieChartComponent extends Component {
       
       this.setState({ shouldRedraw: true });
      
-      this.props.dispatch({ type: updatePieChartDataSuccess, payload: false });
+      // this.props.dispatch({ type: updatePieChartDataSuccess, payload: false });
     } else this.setState({ shouldRedraw: false });
   }
   render() {

@@ -1,6 +1,6 @@
 import React from "react";
 import ControlledExpansionPanels from "./SideBar";
-import Callouts from "./callout";
+import Callouts from "./Callout";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
