@@ -8,6 +8,7 @@ def view(request):
         # establishing a connection
     connection = psycopg2.connect(
                                     user = "postgres",
+
                                     password = "lambtex",
                                     host = "localhost",
 

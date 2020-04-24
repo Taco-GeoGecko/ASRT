@@ -6,7 +6,7 @@ const state = {
            'Q4'],
   datasets: [
     {
-      label: 'vegetation health',
+      label: 'National vegetation health',
       fill: false,
 
       // lineTension: 0.5,
@@ -17,13 +17,13 @@ const state = {
       data: [65, 59, 80, 81]
     },
     {
-      label: 'National Vegetation Health',
+      label: ' District vegetation health',
       fill: false,
 
       // lineTension: 0.5,
 
       backgroundColor: 'rgba(75,192,192,1)',
-      borderColor: '#616161',
+      borderColor: '#77BB85',
       borderWidth: 6,
       data: [68, 68, 90, 76]
     }
