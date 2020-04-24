@@ -7,35 +7,34 @@ import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import CustomizedSlider from "./Slider";
 import LandCover from "./Landcover";
-import CheckboxLabels from "./sampling";
-import Analysis from "./Analysis";
+// import Analysis from "./Analysis";
 import PieChartComponent from "./pieChart";
+// import Population from "./populationBarchart";
 
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    marginTop: 35
+    marginTop: 35,
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
     flexBasis: "80%",
-    flexShrink: 0
+    flexShrink: 0,
   },
   secondaryHeading: {
     fontSize: theme.typography.pxToRem(15),
-    color: theme.palette.text.secondary
+    color: theme.palette.text.secondary,
   },
   spacing: {
-    margin: 10
-  }
+    margin: 10,
+  },
 }));
 
 export default function ControlledExpansionPanels() {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
-  const handleChange = panel => (event, isExpanded) => {
+  const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
 
@@ -191,7 +190,6 @@ export default function ControlledExpansionPanels() {
         onChange={handleChange("panel7")}
       >
         <ExpansionPanelSummary
-        
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel5bh-content"
           id="panel5bh-header"
@@ -200,7 +198,9 @@ export default function ControlledExpansionPanels() {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <div className={classes.spacing}>
-          <PieChartComponent />
+            <div>
+              <PieChartComponent />
+            </div>
           </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>
