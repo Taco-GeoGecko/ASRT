@@ -100,7 +100,6 @@ class Population extends React.Component {
     };
   }
   render() {
-    console.log(this.props.populationchartData);
     return (
       <div className="mega">
         <div className="charts">
@@ -119,7 +118,7 @@ class Population extends React.Component {
                 borderWidth: 2,
                 hoverBackgroundColor: "rgba(255,99,132,0.4)",
                 hoverBorderColor: "rgba(255,99,132,1)",
-                data: [2990],
+                data: this.props.populationAverageNationalGridcells,
               },
               {
                 label: " District Population",
@@ -150,6 +149,8 @@ class Population extends React.Component {
 const mapStateToProps = (state) => {
   return {
     populationchartData: state.chart.populationChartData,
+    populationAverageNationalGridcells:
+      state.chart.populationAverageNationalGridcells,
     pieChartDataUpdated: state.chart.pieChartDataUpdated,
   };
 };

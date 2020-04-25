@@ -12,8 +12,6 @@ class Rainfall extends React.Component {
   }
 
   render() {
-    console.log(this.props.rainfallchartData);
-
     return (
       <div className="mega">
         <div className="charts">
@@ -32,7 +30,7 @@ class Rainfall extends React.Component {
                 borderWidth: 2,
                 hoverBackgroundColor: "rgba(255,99,132,0.4)",
                 hoverBorderColor: "rgba(255,99,132,1)",
-                data: [2990],
+                data: this.props.averagenationalGridcells,
               },
               {
                 label: " District Rainfall",
@@ -64,6 +62,7 @@ const mapStateToProps = (state) => {
   return {
     rainfallchartData: state.chart.rainfallChartData,
     pieChartDataUpdated: state.chart.pieChartDataUpdated,
+    averagenationalGridcells: state.chart.averagenationalGridcells,
   };
 };
 export default connect(mapStateToProps)(Rainfall);

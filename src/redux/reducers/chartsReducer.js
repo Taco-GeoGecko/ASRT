@@ -14,7 +14,7 @@ const chartReducer = (state = AppState.initialChartState, action) => {
     case updatePieChartIndicators:
       return {
         ...state,
-        piechartIndicators: [action.payload],
+        piechartIndicators: action.payload,
       };
     case updatePieChartData:
       return {
@@ -26,6 +26,8 @@ const chartReducer = (state = AppState.initialChartState, action) => {
       return {
         ...state,
         populationChartData: action.payload,
+        populationAverageNationalGridcells:
+          action.populationAverageNationalGridcells,
         // pieChartDataUpdated: true,
       };
 
@@ -33,6 +35,7 @@ const chartReducer = (state = AppState.initialChartState, action) => {
       return {
         ...state,
         rainfallChartData: action.payload,
+        averagenationalGridcells: action.averagenationalGridcells,
       };
 
     case updatePieChartDataSuccess:

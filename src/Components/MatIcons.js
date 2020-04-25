@@ -9,16 +9,16 @@ import { blue } from "@material-ui/core/colors";
 import FormDialog from "./formDialog";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   horizontalSpacing: {
     marginLeft: 5,
-    marginRight: 20
+    marginRight: 20,
   },
   navigation: {
     height: 20,
     width: 25,
-    marginLeft: "5%"
-  }
+    marginLeft: "5%",
+  },
 }));
 
 export default function MatIcons() {
@@ -72,11 +72,17 @@ export default function MatIcons() {
         href="https://www.info@geogecko.com/"
       >
         <img
-          src={Gmail}
+          src="https://img.icons8.com/ultraviolet/120/000000/domain.png"
           target="blank"
           alt="geo gecko logo"
           className={classes.navigation}
         />
+        {/* <img
+          src={Gmail}
+          target="blank"
+          alt="geo gecko logo"
+          className={classes.navigation}
+        /> */}
       </a>
     </div>
   );
