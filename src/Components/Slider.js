@@ -55,8 +55,10 @@ class CustomizedSlider extends React.Component {
     });
 
     for (let [sliderKey, values] of Object.entries(this.props.sliderValues)) {
+      // console.log(sliderKey)
       mapData[0][0].features = mapData[0][0].features.filter((piece) => {
         for (let [key, property] of Object.entries(piece.properties)) {
+          // console.log(sliderKey);
           if (key === indicators[sliderKey]) {
             if (property < values[0] || property > values[1]) {
               return false;

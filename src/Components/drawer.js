@@ -88,16 +88,17 @@ function ResponsiveDrawer(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
+
   function handleDrawerToggle() {
     setMobileOpen(!mobileOpen);
   }
 
-  // useEffect(() => {
-  //   if (props.chartView == true) {
-  //     props.dispatch({ type: updateChartViewSuccess, payload: false });
-  //     console.log("helloooooooo");
-  //   }
-  // }, [props.chartView]);
+  useEffect(() => {
+    if (props.mapUpdated === true) {
+      // props.dispatch({ type: updateChartViewSuccess, payload: false });
+      console.log("helloooooooo");
+    }
+  }, [props.mapUpdated]);
   if (props.chartView == true && props.mapUpdated == true) {
     distinctlayout = (
       <div>

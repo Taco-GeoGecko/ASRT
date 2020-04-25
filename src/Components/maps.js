@@ -10,7 +10,10 @@ import {
 } from "react-leaflet";
 import Control from "react-leaflet-control";
 import { connect } from "react-redux";
-import { updateGridDataSuccess   } from "../redux/actions/actionTypes/actionTypes";
+import {
+  updateGridDataSuccess,
+  updateChartView,
+} from "../redux/actions/actionTypes/actionTypes";
 import { getMapGrids } from "../redux/actions/mapAction";
 import { getLocation } from "../redux/actions/locationActions";
 import { getSliderData } from "../redux/actions/sliderActions";
@@ -18,7 +21,7 @@ import districts from "../Components/uganda_districts_2019";
 
 class UgMap extends Component {
   bounds = [
-    [-1.487315, 29.56346], // Southwest coordinates
+    [-1.487315, 30.56346], // Southwest coordinates
     [4.23314, 35.01031], // Northeast coordinates
   ];
   constructor(props) {
@@ -28,7 +31,7 @@ class UgMap extends Component {
       lng: this.props.lng,
       zoom: this.props.zoom,
       data: this.props.locationValue,
-      district: "Hover over district",
+      district: this.props.district,
       bounds: this.bounds,
       map: null,
     };
@@ -39,88 +42,72 @@ class UgMap extends Component {
     this.props.dispatch(getLocation());
     this.props.dispatch(getSliderData());
   }
-
   componentWillReceiveProps(nextProps) {
     // console.log(nextProps.mapUpdated);
     if (nextProps.mapUpdated === true) {
       // this.props.dispatch({ type: updateGridDataSuccess, payload: false });
     }
   }
-
-  
-
-
   onEachFeature = (feature, layer) => {
     layer.on({
-      mouseover: e => this.MouseOverFeature(e, feature),
+      mouseover: (e) => this.MouseOverFeature(e, feature),
       //   mouseout: (e) => this.MouseOutFeature(e, feature),
-      click: e => this.ZoomToFeature(e, feature),
-      
+      click: (e) => this.ZoomToFeature(e, feature),
+
       // mouseout: e => this.resetHighlight(e, feature),
       // preclick: e => this.Highlight(e, feature)
-
-    }); 
-  };
-    
-
-
-
-  highlightSelection(e, feature)
-{
-  var layer = e.target;
-  layer.setStyle({
-        weight: 2,
-        opacity: 0.5,
-        color: '#666',
-        fillOpacity: 0.7
     });
-}
-     
+  };
 
-ZoomToFeature(e, feature) {
-
-  const map = this.refs.map.leafletElement;
-
-  /*loop through all features, if not polygons and not basemap.
-  this will also affect the gridcells so if you want to remove that behaviour you'll need to include a filter to not affect the gridcells on map*/
-
-  Object.keys(map["_layers"]).forEach(element => {
-    if (
-      typeof map["_layers"][element]["feature"] !== "undefined" &&
-      map["_layers"][element]["feature"]["geometry"]["type"] === "Polygon"
-    ) {
-      var l = map["_layers"][element];
-      l.setStyle({
-        weight: 2,
-        color: '#3388ff',
-        dashArray: '',
-        fillOpacity: 0.2
-      });
-    }
-  });
-
-  const district = this.refs.geojson.leafletElement;
-  if (this.refs.map && map && this.refs.geojson && district) {
-    map.fitBounds(e.target.getBounds());
-    // this.props.dispatch({ type: updateChartView, payload: true });
-    // console.log("hellllllo" + this.props.chartView);
-  } else {
-    map.fitBounds(district.getBounds());
+  highlightSelection(e, feature) {
+    var layer = e.target;
+    layer.setStyle({
+      weight: 2,
+      opacity: 0.5,
+      color: "#666",
+      fillOpacity: 0.7,
+    });
   }
 
-  /*finally set the target feature colour there*/
-  var layer = e.target;
-  layer.setStyle({
-    weight: 2,
-    color: '#666',
-    dashArray: '',
-    fillOpacity: 0.5
-  });
+  ZoomToFeature(e, feature) {
+    const map = this.refs.map.leafletElement;
 
-}
+    /*loop through all features, if not polygons and not basemap.
+  this will also affect the gridcells so if you want to remove that behaviour you'll need to include a filter to not affect the gridcells on map*/
 
+    Object.keys(map["_layers"]).forEach((element) => {
+      if (
+        typeof map["_layers"][element]["feature"] !== "undefined" &&
+        map["_layers"][element]["feature"]["geometry"]["type"] === "Polygon"
+      ) {
+        var l = map["_layers"][element];
+        l.setStyle({
+          weight: 2,
+          color: "#3388ff",
+          dashArray: "",
+          fillOpacity: 0.2,
+        });
+      }
+    });
 
-  
+    const district = this.refs.geojson.leafletElement;
+    if (this.refs.map && map && this.refs.geojson && district) {
+      map.fitBounds(e.target.getBounds());
+      this.props.dispatch({ type: updateChartView, payload: true });
+      // console.log("hellllllo" + this.props.chartView);
+    } else {
+      map.fitBounds(district.getBounds());
+    }
+
+    /*finally set the target feature colour there*/
+    var layer = e.target;
+    layer.setStyle({
+      weight: 2,
+      color: "#666",
+      dashArray: "",
+      fillOpacity: 0.5,
+    });
+  }
 
   MouseOverFeature(e, feature) {
     this.setState({
@@ -157,21 +144,17 @@ ZoomToFeature(e, feature) {
     let districtData = districts;
     let data = districtData;
     var statusArea = "";
-    if (this.props.mapUpdated == false) {
+    if (this.props.mapUpdated === false) {
       data = districtData;
       statusArea = "District: " + this.state.district;
     } else {
       data = collectionOfGridcells[0][0];
       if (this.props.mapGrids[0] != undefined) {
-        var statusGrids =
+        statusArea =
           "Total grid cells: " +
           data.features.length +
-          "<br /> " +
-          " 5x5 square kilometers";
-        console.log(statusArea)
-
-
-
+          " 5x5 square km";
+        // console.log(statusArea);
       }
     }
 
@@ -202,8 +185,8 @@ ZoomToFeature(e, feature) {
           <Control className="info" position="topright">
             <div>
               {
-                (status =
-                  this.props.mapUpdated === true ? statusGrids : statusArea)
+                (status = statusArea)
+                // this.props.mapUpdated === true ? statusGrids : statusArea)
               }
             </div>
           </Control>
@@ -224,7 +207,6 @@ const mapStateToProps = (state) => {
     locationValue: state.location.locationValue,
     sliderValue: state.slider.sliderValue,
     mapUpdated: state.map.mapUpdated,
-   
   };
 };
 

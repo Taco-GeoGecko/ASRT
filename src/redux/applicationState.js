@@ -1,11 +1,11 @@
-import pieChart from "../Components/PpieChart";
+// import pieChart from "../Components/PpieChart";
 
 const AppState = {
   initialMapState: {
     lat: 0.32958802605356885,
     lng: 32.34375,
     zoom: 7,
-    district: "Hover over district",
+    district: "Hover over the map",
     mapGrids: [],
     updatedMapGrids: [],
     mapUpdated: false,
@@ -16,8 +16,8 @@ const AppState = {
     piechartIndicators: [],
     updatedPieChart: [],
     pieChartDataUpdated: false,
-    populationChartData:[],
-    chartView:false,
+    populationChartData: [],
+    chartView: false,
     rainfallChartData: [],
   },
   initialLocationState: {
