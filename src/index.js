@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import FormDialog from "./Components/formDialog";
 import Form from "./Components/Form";
+import ToggleButton from "./Components/Togglebutton";
 // import ResponsiveDrawer from './Components/Analysis'
 
 //import * as serviceWorker from './serviceWorker';
@@ -15,6 +16,7 @@ import Form from "./Components/Form";
 ReactDOM.render(
   <Provider store={store}>
     <App />
+  
   </Provider>,
   document.getElementById("root")
 );

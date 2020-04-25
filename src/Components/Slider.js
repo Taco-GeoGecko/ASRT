@@ -5,10 +5,7 @@ import "nouislider/distribute/nouislider.css";
 import { connect } from "react-redux";
 import {
   updateGridData,
-  updatePieChartData,
   updatePieChartIndicators,
-  updatePopulationChartData,
-  updateRainfallChartData,
 } from "../redux/actions/actionTypes/actionTypes";
 const styles = {
   fontFamily: "sans-serif",
@@ -19,47 +16,23 @@ const styles = {
 };
 class CustomizedSlider extends React.Component {
   UpdatedIndicators = this.props.updatePieChartIndicators;
-
+  Range = this.props.DistrictGridcells;
   onSlide = (render, handle, value, un, percent) => {
-    let indicators = this.props.indicators;
+    this.indicators = this.props.indicators;
     this.props.sliderValues[this.props.sliderKey] = value;
-    let piechartData = _.cloneDeep(this.props.piechartData);
-    let populationchartData = _.cloneDeep(this.props.populationchartData);
-    let rainfallchartData = _.cloneDeep(this.props.rainfallchartData);
     let mapData = _.cloneDeep(this.props.mapGrids);
-    let indicator = indicators[this.props.sliderKey];
-    let range = value[1] - value[0];
-    if (this.UpdatedIndicators.includes(indicator) === false) {
+    this.indicator = this.indicators[this.props.sliderKey];
+
+    if (this.UpdatedIndicators.includes(this.indicator) === false) {
       if (this.props.sliderKey <= 7 && this.props.sliderKey >= 1) {
-        this.UpdatedIndicators.push(indicator);
+        this.UpdatedIndicators.push(this.indicator);
       }
     }
-    console.log(this.props.populationchartData);
-
-    piechartData[this.UpdatedIndicators.indexOf(indicator)] = range;
-    if (this.props.sliderKey === 0) {
-      populationchartData[0] = range;
-    }
-    if (this.props.sliderKey === 9) {
-      rainfallchartData[0] = range;
-    }
-
-    this.props.dispatch({
-      type: updatePopulationChartData,
-      payload: populationchartData,
-    });
-    this.props.dispatch({ type: updatePieChartData, payload: piechartData });
-    this.props.dispatch({
-      type: updateRainfallChartData,
-      payload: rainfallchartData,
-    });
 
     for (let [sliderKey, values] of Object.entries(this.props.sliderValues)) {
-      // console.log(sliderKey)
       mapData[0][0].features = mapData[0][0].features.filter((piece) => {
         for (let [key, property] of Object.entries(piece.properties)) {
-          // console.log(sliderKey);
-          if (key === indicators[sliderKey]) {
+          if (key === this.indicators[sliderKey]) {
             if (property < values[0] || property > values[1]) {
               return false;
             }
@@ -74,6 +47,7 @@ class CustomizedSlider extends React.Component {
       payload: this.UpdatedIndicators,
     });
   };
+  componentWillUpdate() {}
 
   render() {
     let value = [1, 100];
@@ -107,6 +81,8 @@ class CustomizedSlider extends React.Component {
 }
 const mapStateToProps = (state) => {
   return {
+    district: state.map.district,
+    chartView: state.chart.chartView,
     sliderValue: state.slider.sliderValue,
     indicators: state.slider.indicators,
     mapGrids: state.map.mapGrids,
@@ -115,8 +91,8 @@ const mapStateToProps = (state) => {
     piechartData: state.chart.pieChartData,
     updatePieChartIndicators: state.chart.piechartIndicators,
     pieChartDataUpdated: state.chart.pieChartDataUpdated,
-    populationchartData: state.chart.populationChartData,
-    rainfallchartData: state.chart.rainfallChartData,
+    locationValue: state.location.locationValue,
+    DistrictGridcells: state.map.DistrictGridcells,
   };
 };
 
