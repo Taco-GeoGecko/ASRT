@@ -7,7 +7,7 @@ class Form extends React.Component {
       reply_to: "",
       from_name: "",
       message_html: "",
-      open:true,
+      open: true,
     };
   }
   render() {
@@ -50,14 +50,10 @@ class Form extends React.Component {
         <button type="submit" className="btn btn-primary">
           Submit
         </button>
-   
       </form>
     );
   }
-  // const handleClose = () => {
-  //   setOpen(false);
-  //   this.setState({ setOpen:  });
-  // };
+
   onNameChange(event) {
     this.setState({ from_name: event.target.value });
   }
@@ -85,20 +81,23 @@ class Form extends React.Component {
       emailjs.send(service_id, template_id, this.state, user_id).then(
         (response) => {
           alert("Sent!");
-          console.log("SUCCESS!", response.status, response.text);
-          return true
+          return true;
         },
         (err) => {
           alert("Send email failed!\r\n Response:\n " + JSON.stringify(err));
-          console.log("FAILED...", err);
-          return false
+          return false;
         }
       );
+      this.setState({
+        reply_to: "",
+        from_name: "",
+        message_html: "",
+        open: false,
+      });
     } else {
-      alert("there is a problem");
+      alert("Please provide your right credentials");
       return false;
     }
-    
   }
 }
 // }

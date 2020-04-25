@@ -7,7 +7,7 @@ const sliderReducer = (state = AppState.initialSliderState, action) => {
       return {
         ...state,
         sliderValue: action.payload,
-        landCoverResults: action.landCoverResults
+        landCoverResults: action.landCoverResults,
       };
     default:
       return state;

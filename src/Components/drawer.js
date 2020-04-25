@@ -28,7 +28,6 @@ import CustomizedSlider from "./Slider";
 function ResponsiveDrawer(props) {
   let drawerWidth = 400;
   let distinctlayout = <ControlledExpansionPanels />;
-  console.log(props.mapUpdated);
   let title = "AGRICULTURAL INDICATORS";
   if (props.chartView == true && props.mapUpdated == true) {
     drawerWidth = 650;
@@ -93,12 +92,6 @@ function ResponsiveDrawer(props) {
     setMobileOpen(!mobileOpen);
   }
 
-  useEffect(() => {
-    if (props.mapUpdated === true) {
-      // props.dispatch({ type: updateChartViewSuccess, payload: false });
-      console.log("helloooooooo");
-    }
-  }, [props.mapUpdated]);
   if (props.chartView == true && props.mapUpdated == true) {
     distinctlayout = (
       <div>
@@ -193,10 +186,6 @@ function ResponsiveDrawer(props) {
                 <small>
                   <h6>{title}</h6>
                 </small>
-                {/* <CustomizedSlider IndicatorSlider="Soil Potassium" sliderKey={3} />
-            <CustomizedSlider IndicatorSlider="Soil Boron" sliderKey={4} />
-            <CustomizedSlider IndicatorSlider="Soil Aluminium" sliderKey={5} />
-            <CustomizedSlider IndicatorSlider="Soil Iron" sliderKey={6} /> */}
               </div>
               <div>{distinctlayout}</div>
 
@@ -211,8 +200,6 @@ function ResponsiveDrawer(props) {
   );
 }
 ResponsiveDrawer.propTypes = {
-  // Injected by the documentation to work in an iframe.
-  // You won't need it on your project.
   container: PropTypes.object,
 };
 const mapStateToProps = (state) => {
