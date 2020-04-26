@@ -8,6 +8,8 @@ const AppState = {
     updatedMapGrids: [],
     mapUpdated: false,
     sliderValues: {},
+    toglebtn: "",
+    expansionBar: "",
     DistrictGridcells: [],
     dist_ref: [
       "ABIM",
@@ -154,7 +156,7 @@ const AppState = {
     chartView: false,
     rainfallChartData: [],
     averagenationalGridcells: [],
-    populationAverageNationalGridcells:[]
+    populationAverageNationalGridcells: [],
   },
   initialLocationState: {
     locationValue: [],
