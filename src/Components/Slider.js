@@ -47,7 +47,6 @@ class CustomizedSlider extends React.Component {
       payload: this.UpdatedIndicators,
     });
   };
-  componentWillUpdate() {}
 
   render() {
     let value = [1, 100];

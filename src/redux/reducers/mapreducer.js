@@ -5,6 +5,7 @@ import {
   updateGridDataSuccess,
   updatePieChartData,
   districtGridcellsData,
+  updateExpansionBar,
 } from "../actions/actionTypes/actionTypes";
 import AppState from "../applicationState";
 
@@ -41,7 +42,11 @@ const mapReducer = (state = AppState.initialMapState, action) => {
     //     // mapGrids: action.payload,
     //     mapUpdated: action.payload,
     //   };
-
+    case updateExpansionBar:
+      return {
+        ...state,
+        expansionBar: action.payload,
+      };
     default:
       return state;
   }

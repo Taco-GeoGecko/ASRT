@@ -7,7 +7,6 @@ import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import CustomizedSlider from "./Slider";
 import LandCover from "./Landcover";
-
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
