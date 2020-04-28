@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -29,26 +29,27 @@ import {
 import CustomizedSlider from "./Slider";
 import Switches from "./Togglebutton";
 
-function ResponsiveDrawer(props) {
-  // const [data, setData] = useState({data: ''});
+const ResponsiveDrawer = (props) => {
+  let distinctlayout = <ControlledExpansionPanels />;
+  let data = distinctlayout;
+
+  // const [data, setData] = useState(distinctlayout);
   // //useEffect
   // useEffect(() => {
+  //   setData(data);
   //     if (props.chartView == true && props.mapUpdated == true) {
 
   //       // props.dispatch({ type: updateExpansionBar, payload: distinctlayout });
   //     }
   //     setData({data:props.expansionBar});
-  // });
+  // }, [data]);
   let drawerWidth = 400;
-  let distinctlayout = <ControlledExpansionPanels />;
-  let data = <ControlledExpansionPanels />;
-
   let title = "AGRICULTURAL INDICATORS";
-  let toggle = <Switches />;
+  let chartData = "CHARTS";
+  let agricTitle = title;
   if (props.chartView == true && props.mapUpdated == true) {
-    drawerWidth = 650;
-    title = "CHARTS";
-    // toggle = toggle;
+    drawerWidth = 600;
+    // title = "CHARTS";
   }
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -109,9 +110,8 @@ function ResponsiveDrawer(props) {
   function handleDrawerToggle() {
     setMobileOpen(!mobileOpen);
   }
-
+  // let layout = data;
   if (props.chartView == true && props.mapUpdated == true) {
-    // props.dispatch({ type: updateExpansionBar, payload: distinctlayout });
     let layout = (
       <div>
         <div>
@@ -140,20 +140,16 @@ function ResponsiveDrawer(props) {
         <div className={classes.spacing} />
       </div>
     );
-    distinctlayout = <Switches componentData={layout} data={data} />;
+    distinctlayout = (
+      <Switches
+        componentData={layout}
+        // chartData={chartData}
+        // agricTitle={agricTitle}
+        data={data}
+      />
+    );
   }
-  // if (
-  //   distinctlayout !== <ControlledExpansionPanels /> &&
-  //   props.chartView == true
-  // ) {
-  // props.dispatch({ type: updateChartViewSuccess, payload: false });
-  // layout=<ControlledExpansionPanels />
-  // console.log("okkkkkkkay");
-  // }
-  // else {
-  //   distinctlayout = <ControlledExpansionPanels />;
-  //   // props.toglebtn=distict
-  // }
+
   return (
     <StylesProvider injectFirst>
       <div className={classes.root}>
@@ -194,8 +190,7 @@ function ResponsiveDrawer(props) {
               </IconButton>
               <div id="indicatorText">
                 <small>
-                  <h6>{title}</h6>
-                  <h3>{toggle}</h3>
+                  <h6>{props.indicatorTitle}</h6>
                 </small>
               </div>
 
@@ -215,7 +210,7 @@ function ResponsiveDrawer(props) {
               <div className={classes.toolbar} />
               <div id="indicatorText">
                 <small>
-                  <h6>{title}</h6>
+                  <h6>{props.indicatorTitle}</h6>
                 </small>
               </div>
               <div>{distinctlayout}</div>
@@ -229,7 +224,7 @@ function ResponsiveDrawer(props) {
       </div>
     </StylesProvider>
   );
-}
+};
 ResponsiveDrawer.propTypes = {
   container: PropTypes.object,
 };
@@ -240,6 +235,7 @@ const mapStateToProps = (state) => {
     piechartData: state.chart.pieChartData,
     toglebtn: state.map.toglebtn,
     expansionBar: state.map.expansionBar,
+    indicatorTitle: state.map.indicatorTitle,
   };
 };
 

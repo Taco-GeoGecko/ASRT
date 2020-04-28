@@ -25,8 +25,7 @@ export default function ExpansionMaps() {
         arrowsize={0}
         styles={classes.calloutstyles}
         message="This map shows district boundaries and reflects the  various changes as per the user's filtering via the sliders"
-      /> */}
-      {/* <UgMap/> */}
+      />
     </div>
   );
 }

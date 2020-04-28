@@ -56,7 +56,7 @@ class UgMap extends Component {
   onEachFeature = (feature, layer) => {
     layer.on({
       mouseover: (e) => this.MouseOverFeature(e, feature),
-      //   mouseout: (e) => this.MouseOutFeature(e, feature),
+      mouseout: (e) => this.MouseOutFeature(e, feature),
       click: (e) => this.ZoomToFeature(e, feature),
     });
   };
@@ -213,12 +213,12 @@ class UgMap extends Component {
     this.ironValue = this.ironValue / this.rf.length;
     this.magneValue = this.magneValue / this.rf.length;
 
-    console.log(this.copperValue);
+    // console.log(this.copperValue);
     this.UpdatedIndicators = this.props.updatePieChartIndicators;
-    console.log(this.UpdatedIndicators.length);
+    // console.log(this.UpdatedIndicators.length);
 
     for (let a = 0; a <= this.UpdatedIndicators.length; a++) {
-      console.log(this.UpdatedIndicators[a]);
+      // console.log(this.UpdatedIndicators[a]);
       if (this.UpdatedIndicators[a] == "soil_copper") {
         this.piechartData[
           this.UpdatedIndicators.indexOf(this.UpdatedIndicators[a])
@@ -249,7 +249,7 @@ class UgMap extends Component {
         ] = this.magneValue;
       }
     }
-    console.log(this.piechartData[0]);
+    // console.log(this.piechartData[0]);
 
     this.props.dispatch({
       type: updatePieChartData,
@@ -286,7 +286,7 @@ class UgMap extends Component {
       lat: this.props.lat,
       lng: this.props.lng,
       zoom: this.props.zoom,
-      district: this.props.district,
+      district: "Hover over the map",
     });
     e.target.setStyle({});
   }

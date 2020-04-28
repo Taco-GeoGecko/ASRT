@@ -16,11 +16,14 @@ const styles = {
 };
 class CustomizedSlider extends React.Component {
   UpdatedIndicators = this.props.updatePieChartIndicators;
-  Range = this.props.DistrictGridcells;
+  // mapData = _.cloneDeep(this.props.mapGrids);
+  // updatedmapData = _.cloneDeep(this.props.updatedMapGrids);
+  // selectedmapData = this.props.landCovermapUpdated == true ?_.cloneDeep(this.props.updatedMapGrids): _.cloneDeep(this.props.mapGrids);
+
   onSlide = (render, handle, value, un, percent) => {
     this.indicators = this.props.indicators;
     this.props.sliderValues[this.props.sliderKey] = value;
-    let mapData = _.cloneDeep(this.props.mapGrids);
+
     this.indicator = this.indicators[this.props.sliderKey];
 
     if (this.UpdatedIndicators.includes(this.indicator) === false) {
@@ -30,18 +33,27 @@ class CustomizedSlider extends React.Component {
     }
 
     for (let [sliderKey, values] of Object.entries(this.props.sliderValues)) {
-      mapData[0][0].features = mapData[0][0].features.filter((piece) => {
-        for (let [key, property] of Object.entries(piece.properties)) {
-          if (key === this.indicators[sliderKey]) {
-            if (property < values[0] || property > values[1]) {
-              return false;
+      this.props.currentsliderValues.push(values);
+
+      this.selectedmapData[0][0].features = this.selectedmapData[0][0].features.filter(
+        (piece) => {
+          for (let [key, property] of Object.entries(piece.properties)) {
+            if (key === this.indicators[sliderKey]) {
+              if (property < values[0] || property > values[1]) {
+                return false;
+              }
+              return true;
             }
-            return true;
           }
         }
-      });
+      );
     }
-    this.props.dispatch({ type: updateGridData, payload: mapData });
+    // console.log(this.selectedmapData);
+
+    this.props.dispatch({
+      type: updateGridData,
+      payload: this.selectedmapData,
+    });
     this.props.dispatch({
       type: updatePieChartIndicators,
       payload: this.UpdatedIndicators,
@@ -49,17 +61,42 @@ class CustomizedSlider extends React.Component {
   };
 
   render() {
+    this.selectedmapData =
+      this.props.landCovermapUpdated == true
+        ? _.cloneDeep(this.props.updatedMapGrids)
+        : _.cloneDeep(this.props.mapGrids);
+
+    // console.log(this.props.landCovermapUpdated);
+    // console.log(this.selectedmapData);
+    // console.log(this.props.sliderValue);
+    // console.log(this.props.currentsliderValues);
+    // Object.values(this.props.sliderValues).forEach((element) => {
+    //   console.log(element);
+    // });
+
     let value = [1, 100];
     let result = this.props.sliderValue;
     var { sliderKey } = this.props;
+    // result = result;
     result = result.map((sliderInfo) => sliderInfo);
     let newResult = result[sliderKey];
     if (Array.isArray(newResult) && newResult.length) {
       value = newResult;
     }
+    if (this.props.chartView == true && this.props.mapUpdated == true) {
+      result = this.props.sliderValues;
+      for (let [Key, values] of Object.entries(this.props.sliderValues)) {
+        if (Key == sliderKey) {
+          value = values;
+        } else {
+          value = value;
+        }
+      }
+    }
+
     let range = { min: 1, max: 100 };
-    if (value) {
-      range = { min: value[0], max: value[1] };
+    if (newResult) {
+      range = { min: newResult[0], max: newResult[1] };
     }
 
     return (
@@ -86,12 +123,16 @@ const mapStateToProps = (state) => {
     indicators: state.slider.indicators,
     mapGrids: state.map.mapGrids,
     mapUpdated: state.map.mapUpdated,
+    landCovermapUpdated: state.map.landCovermapUpdated,
     sliderValues: state.map.sliderValues,
+    currentsliderValues: state.map.currentsliderValues,
     piechartData: state.chart.pieChartData,
     updatePieChartIndicators: state.chart.piechartIndicators,
     pieChartDataUpdated: state.chart.pieChartDataUpdated,
     locationValue: state.location.locationValue,
     DistrictGridcells: state.map.DistrictGridcells,
+    updatedMapGrids: state.map.updatedMapGrids,
+    chartView: state.chart.chartView,
   };
 };
 

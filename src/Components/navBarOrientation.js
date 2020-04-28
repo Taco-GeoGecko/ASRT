@@ -48,9 +48,9 @@ export default function MenuAppBarOrientation() {
         </Typography>
         <Callouts
           myComponent={
-            // <Link to="/" className="btn-link">
+            <Link to="/" className="btn-link">
             <ContainedButtons caption="Home" />
-            // </Link>
+          </Link>
           }
           side="bottom"
           styles={classes.calloutstyles}

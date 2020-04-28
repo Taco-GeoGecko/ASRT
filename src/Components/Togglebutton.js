@@ -1,32 +1,7 @@
-// import React from "react";
-// import CheckIcon from "@material-ui/icons/Check";
-// import {ToggleButton} from "@material-ui/lab";
-// import SideBar from "./SideBar";
-// import { makeStyles } from "@material-ui/core/styles";
-// import ExpansionPanel from "@material-ui/core/ExpansionPanel";
-// import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
-// import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
-// import "../App.css";
-
-// function ToggleButon() {
-//   const [selected, setSelected] = React.useState(false);
-
-//   return (
-//     <ToggleButton
-//       value="check"
-//       selected={selected}
-//       onChange={() => {
-//         setSelected(!selected);
-//       }}
-//     >
-//       <CheckIcon />
-//     </ToggleButton>
-//   );
-// }
-// export default ToggleButon;
 import React from "react";
 import Switch from "@material-ui/core/Switch";
 import { connect } from "react-redux";
+import { updateTitle } from "../redux/actions/actionTypes/actionTypes";
 
 function Switches(props) {
   const [state, setState] = React.useState({
@@ -42,23 +17,30 @@ function Switches(props) {
     });
   };
   const showContent = state.checkedA;
+  // let title = props.indicatorTitle;
+  // if (showContent == true) {
+  //   title = "CHARTS";
+  // } else title = "AGRICULTURE INDICATORS";
   return (
     <div>
       <Switch
         checked={state.checkedA}
         onChange={handleChange}
         name="checkedA"
-        // data= {data}
         inputProps={{ "aria-label": "secondary checkbox" }}
       />
       {/* {props.componentData} */}
       {showContent === true ? props.componentData : props.data}
+      {/* {props.dispatch({ type: updateTitle, payload: title })} */}
+
+      {/* {showContent === true ? props.chartData : props.agricTitle} */}
     </div>
   );
 }
 const mapStateToProps = (state) => {
   return {
     toglebtn: state.map.toglebtn,
+    indicatorTitle: state.map.indicatorTitle,
   };
 };
 
