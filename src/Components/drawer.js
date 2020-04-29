@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -17,39 +17,32 @@ import "../App.css";
 import UgMap from "./maps";
 import PieChartComponent from "./pieChart";
 import Rainfall from "./rainfallBarChart";
-import Ndvilinegraph from "./ndvi-linegraph";
-import Ndwilinegraph from "./ndwi-linegraph";
+// import Ndvilinegraph from "./ndvi-linegraph";
+// import Ndwilinegraph from "./ndwi-linegraph";
+// import Lst from "./lst-Linegraph";
 import Population from "./populationBarchart";
-import Lst from "./lst-Linegraph";
 import { connect } from "react-redux";
-import {
-  updateChartViewSuccess,
-  updateExpansionBar,
-} from "../redux/actions/actionTypes/actionTypes";
-import CustomizedSlider from "./Slider";
 import Switches from "./Togglebutton";
 
-function ResponsiveDrawer(props) {
-  // const [data, setData] = useState({data: ''});
-  // //useEffect
-  // useEffect(() => {
-  //     if (props.chartView == true && props.mapUpdated == true) {
-
-  //       // props.dispatch({ type: updateExpansionBar, payload: distinctlayout });
-  //     }
-  //     setData({data:props.expansionBar});
-  // });
+const ResponsiveDrawer = (props) => {
   let drawerWidth = 400;
-  let distinctlayout = <ControlledExpansionPanels />;
+  let charts = "CHARTS";
+  let indicatorTitle = "AGRICULTURAL INDICATORS";
+  let title = (
+    <div>
+      <div id="indicatorText">
+        <small>
+          <h6>{indicatorTitle}</h6>
+        </small>
+      </div>
+      <ControlledExpansionPanels />;
+    </div>
+  );
   let data = <ControlledExpansionPanels />;
-
-  let title = "AGRICULTURAL INDICATORS";
-  let toggle = <Switches />;
   if (props.chartView == true && props.mapUpdated == true) {
-    drawerWidth = 650;
-    title = "CHARTS";
-    // toggle = toggle;
+    drawerWidth = 600;
   }
+
   const useStyles = makeStyles((theme) => ({
     root: {
       display: "flex",
@@ -104,14 +97,11 @@ function ResponsiveDrawer(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  // props.dispatch({ type: updateExpansionBar, payload: distinctlayout });
 
   function handleDrawerToggle() {
     setMobileOpen(!mobileOpen);
   }
-
   if (props.chartView == true && props.mapUpdated == true) {
-    // props.dispatch({ type: updateExpansionBar, payload: distinctlayout });
     let layout = (
       <div>
         <div>
@@ -140,20 +130,29 @@ function ResponsiveDrawer(props) {
         <div className={classes.spacing} />
       </div>
     );
-    distinctlayout = <Switches componentData={layout} data={data} />;
+    let chartData = (
+      <div>
+        <div id="indicatorText">
+          <small>
+            <h6>{charts}</h6>
+          </small>
+        </div>
+        {layout}
+      </div>
+    );
+    let agricTitle = (
+      <div>
+        <div id="indicatorText">
+          <small>
+            <h6>{indicatorTitle}</h6>
+          </small>
+        </div>
+        {data}
+      </div>
+    );
+    title = <Switches chartData={chartData} agricTitle={agricTitle} />;
   }
-  // if (
-  //   distinctlayout !== <ControlledExpansionPanels /> &&
-  //   props.chartView == true
-  // ) {
-  // props.dispatch({ type: updateChartViewSuccess, payload: false });
-  // layout=<ControlledExpansionPanels />
-  // console.log("okkkkkkkay");
-  // }
-  // else {
-  //   distinctlayout = <ControlledExpansionPanels />;
-  //   // props.toglebtn=distict
-  // }
+
   return (
     <StylesProvider injectFirst>
       <div className={classes.root}>
@@ -192,14 +191,13 @@ function ResponsiveDrawer(props) {
               >
                 <CloseIcon />
               </IconButton>
-              <div id="indicatorText">
+              {/* <div id="indicatorText">
                 <small>
                   <h6>{title}</h6>
-                  <h3>{toggle}</h3>
                 </small>
-              </div>
+              </div> */}
 
-              {distinctlayout}
+              {title}
               <Divider />
               <MatIcons />
             </Drawer>
@@ -213,12 +211,12 @@ function ResponsiveDrawer(props) {
               }}
             >
               <div className={classes.toolbar} />
-              <div id="indicatorText">
-                <small>
+              {/* <div id="indicatorText"> */}
+              {/* <small>
                   <h6>{title}</h6>
                 </small>
-              </div>
-              <div>{distinctlayout}</div>
+              </div> */}
+              <div>{title}</div>
 
               <Divider />
               <MatIcons />
@@ -229,7 +227,7 @@ function ResponsiveDrawer(props) {
       </div>
     </StylesProvider>
   );
-}
+};
 ResponsiveDrawer.propTypes = {
   container: PropTypes.object,
 };
@@ -238,8 +236,6 @@ const mapStateToProps = (state) => {
     mapUpdated: state.map.mapUpdated,
     chartView: state.chart.chartView,
     piechartData: state.chart.pieChartData,
-    toglebtn: state.map.toglebtn,
-    expansionBar: state.map.expansionBar,
   };
 };
 

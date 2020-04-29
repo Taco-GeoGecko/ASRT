@@ -234,7 +234,5 @@ path.leaflet-interactive {
   border-color: #2ab34b;
 }
 .btn-primary:hover {
-
-text-decoration: none;
-
+  text-decoration: none;
 }

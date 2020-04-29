@@ -69,7 +69,7 @@ export default function MatIcons() {
       <a
         target="_blank"
         rel="noopener noreferrer"
-        href="https://www.info@geogecko.com/"
+        href="https://www.geogecko.com/"
       >
         <img
           src="https://img.icons8.com/ultraviolet/120/000000/domain.png"

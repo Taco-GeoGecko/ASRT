@@ -6,25 +6,28 @@ import ContainedButtons from "./Button";
 import geoLogo from "../Images/geoLogo.png";
 import { Link } from "react-router-dom";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   title: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   spacing: {
-    margin: 10
+    margin: 10,
   },
   navigation: {
     height: 50,
     width: 120,
-    marginLeft: -40
-  }
+    marginLeft: -40,
+  },
 }));
 
 export default function MenuAppBar(props) {
   const classes = useStyles();
+  function refreshPage() {
+    window.location.reload();
+  }
   return (
     <div className={classes.root}>
       <Toolbar>
@@ -42,13 +45,12 @@ export default function MenuAppBar(props) {
           </a>
         </Typography>
         <Link to="/" className="btn-link">
-        <ContainedButtons caption="Home" />
+          <ContainedButtons caption="Home" click={refreshPage} />
         </Link>
         <div className={classes.spacing} />
         <Link to="/orientation" className="btn-link">
-        <ContainedButtons caption="Orientation" />
+          <ContainedButtons caption="Orientation" />
         </Link>
-        
       </Toolbar>
     </div>
   );

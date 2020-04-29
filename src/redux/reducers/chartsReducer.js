@@ -43,11 +43,11 @@ const chartReducer = (state = AppState.initialChartState, action) => {
         ...state,
         pieChartDataUpdated: action.payload,
       };
-    // case updateChartViewSuccess:
-    //   return {
-    //     ...state,
-    //     chartView: action.payload,
-    //   };
+    case updateChartViewSuccess:
+      return {
+        ...state,
+        chartView: action.payload,
+      };
     case updateChartView:
       return {
         ...state,
