@@ -8,9 +8,13 @@ const AppState = {
     updatedMapGrids: [],
     mapUpdated: false,
     sliderValues: {},
+    currentsliderValues: [],
+    landCoverSliderValues: {},
+    landCovermapUpdated: false,
     toglebtn: "",
     expansionBar: "",
     DistrictGridcells: [],
+    indicatorTitle: "",
     dist_ref: [
       "ABIM",
       "ADJUMANI",

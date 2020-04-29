@@ -3,7 +3,6 @@ import ResponsiveDrawer from './Components/drawer';
 import Orientation from './Components/orientation';
 import Analysis from './Components/Analysis';
 import ControlledExpansionPanels from './Components/Faqs';
-// import ResponsiveDrawer from './Components/drawer';
 import {
     BrowserRouter as Router,
     Switch,
