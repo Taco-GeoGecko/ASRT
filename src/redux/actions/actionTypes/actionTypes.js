@@ -12,5 +12,4 @@ export const updatePieChartIndicators = "updated pie chart indicators";
 export const updateChartView = "update the chart view";
 export const updateChartViewSuccess = "updated the chart view";
 export const districtGridcellsData = "get the grid cells in a district";
-export const updateExpansionBar = "update expansion bar";
-export const updateTitle = "update the title";
+

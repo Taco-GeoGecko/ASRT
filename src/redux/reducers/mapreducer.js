@@ -2,16 +2,14 @@ import {
   updateGridData,
   loadGridData,
   updateLandCoverGridData,
-  updateGridDataSuccess,
-  updatePieChartData,
+  // updateGridDataSuccess,
+  // updatePieChartData,
   districtGridcellsData,
-  updateExpansionBar,
-  updateTitle,
+ 
 } from "../actions/actionTypes/actionTypes";
 import AppState from "../applicationState";
 
 const mapReducer = (state = AppState.initialMapState, action) => {
-  // console.log(action)
   switch (action.type) {
     case loadGridData:
       return {
@@ -37,11 +35,7 @@ const mapReducer = (state = AppState.initialMapState, action) => {
         ...state,
         DistrictGridcells: action.payload,
       };
-    case updateTitle:
-      return {
-        ...state,
-        indicatorTitle: action.payload,
-      };
+  
 
     // case updateGridDataSuccess:
     //   return {
@@ -49,11 +43,7 @@ const mapReducer = (state = AppState.initialMapState, action) => {
     //     // mapGrids: action.payload,
     //     mapUpdated: action.payload,
     //   };
-    case updateExpansionBar:
-      return {
-        ...state,
-        expansionBar: action.payload,
-      };
+    
     default:
       return state;
   }

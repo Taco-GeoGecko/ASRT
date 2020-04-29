@@ -17,40 +17,32 @@ import "../App.css";
 import UgMap from "./maps";
 import PieChartComponent from "./pieChart";
 import Rainfall from "./rainfallBarChart";
-import Ndvilinegraph from "./ndvi-linegraph";
-import Ndwilinegraph from "./ndwi-linegraph";
+// import Ndvilinegraph from "./ndvi-linegraph";
+// import Ndwilinegraph from "./ndwi-linegraph";
+// import Lst from "./lst-Linegraph";
 import Population from "./populationBarchart";
-import Lst from "./lst-Linegraph";
 import { connect } from "react-redux";
-import {
-  updateChartViewSuccess,
-  updateExpansionBar,
-} from "../redux/actions/actionTypes/actionTypes";
-import CustomizedSlider from "./Slider";
 import Switches from "./Togglebutton";
 
 const ResponsiveDrawer = (props) => {
-  let distinctlayout = <ControlledExpansionPanels />;
-  let data = distinctlayout;
-
-  // const [data, setData] = useState(distinctlayout);
-  // //useEffect
-  // useEffect(() => {
-  //   setData(data);
-  //     if (props.chartView == true && props.mapUpdated == true) {
-
-  //       // props.dispatch({ type: updateExpansionBar, payload: distinctlayout });
-  //     }
-  //     setData({data:props.expansionBar});
-  // }, [data]);
   let drawerWidth = 400;
-  let title = "AGRICULTURAL INDICATORS";
-  let chartData = "CHARTS";
-  let agricTitle = title;
+  let charts = "CHARTS";
+  let indicatorTitle = "AGRICULTURAL INDICATORS";
+  let title = (
+    <div>
+      <div id="indicatorText">
+        <small>
+          <h6>{indicatorTitle}</h6>
+        </small>
+      </div>
+      <ControlledExpansionPanels />;
+    </div>
+  );
+  let data = <ControlledExpansionPanels />;
   if (props.chartView == true && props.mapUpdated == true) {
     drawerWidth = 600;
-    // title = "CHARTS";
   }
+
   const useStyles = makeStyles((theme) => ({
     root: {
       display: "flex",
@@ -105,12 +97,10 @@ const ResponsiveDrawer = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  // props.dispatch({ type: updateExpansionBar, payload: distinctlayout });
 
   function handleDrawerToggle() {
     setMobileOpen(!mobileOpen);
   }
-  // let layout = data;
   if (props.chartView == true && props.mapUpdated == true) {
     let layout = (
       <div>
@@ -140,14 +130,27 @@ const ResponsiveDrawer = (props) => {
         <div className={classes.spacing} />
       </div>
     );
-    distinctlayout = (
-      <Switches
-        componentData={layout}
-        // chartData={chartData}
-        // agricTitle={agricTitle}
-        data={data}
-      />
+    let chartData = (
+      <div>
+        <div id="indicatorText">
+          <small>
+            <h6>{charts}</h6>
+          </small>
+        </div>
+        {layout}
+      </div>
     );
+    let agricTitle = (
+      <div>
+        <div id="indicatorText">
+          <small>
+            <h6>{indicatorTitle}</h6>
+          </small>
+        </div>
+        {data}
+      </div>
+    );
+    title = <Switches chartData={chartData} agricTitle={agricTitle} />;
   }
 
   return (
@@ -188,13 +191,13 @@ const ResponsiveDrawer = (props) => {
               >
                 <CloseIcon />
               </IconButton>
-              <div id="indicatorText">
+              {/* <div id="indicatorText">
                 <small>
-                  <h6>{props.indicatorTitle}</h6>
+                  <h6>{title}</h6>
                 </small>
-              </div>
+              </div> */}
 
-              {distinctlayout}
+              {title}
               <Divider />
               <MatIcons />
             </Drawer>
@@ -208,12 +211,12 @@ const ResponsiveDrawer = (props) => {
               }}
             >
               <div className={classes.toolbar} />
-              <div id="indicatorText">
-                <small>
-                  <h6>{props.indicatorTitle}</h6>
+              {/* <div id="indicatorText"> */}
+              {/* <small>
+                  <h6>{title}</h6>
                 </small>
-              </div>
-              <div>{distinctlayout}</div>
+              </div> */}
+              <div>{title}</div>
 
               <Divider />
               <MatIcons />
@@ -233,9 +236,6 @@ const mapStateToProps = (state) => {
     mapUpdated: state.map.mapUpdated,
     chartView: state.chart.chartView,
     piechartData: state.chart.pieChartData,
-    toglebtn: state.map.toglebtn,
-    expansionBar: state.map.expansionBar,
-    indicatorTitle: state.map.indicatorTitle,
   };
 };
 

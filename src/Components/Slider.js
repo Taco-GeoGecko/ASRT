@@ -66,18 +66,9 @@ class CustomizedSlider extends React.Component {
         ? _.cloneDeep(this.props.updatedMapGrids)
         : _.cloneDeep(this.props.mapGrids);
 
-    // console.log(this.props.landCovermapUpdated);
-    // console.log(this.selectedmapData);
-    // console.log(this.props.sliderValue);
-    // console.log(this.props.currentsliderValues);
-    // Object.values(this.props.sliderValues).forEach((element) => {
-    //   console.log(element);
-    // });
-
     let value = [1, 100];
     let result = this.props.sliderValue;
     var { sliderKey } = this.props;
-    // result = result;
     result = result.map((sliderInfo) => sliderInfo);
     let newResult = result[sliderKey];
     if (Array.isArray(newResult) && newResult.length) {

@@ -23,7 +23,6 @@ export const getSliderData = () => {
 
         let slidersample = response.data.agridata;
 
-        // console.log(slidersample);
         for (
           let sliderCounter = 0;
           sliderCounter < sliderKey.length;
