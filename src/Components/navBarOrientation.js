@@ -7,29 +7,32 @@ import geoLogo from "../Images/geoLogo.png";
 import Callouts from "./callout";
 import { Link } from "react-router-dom";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   title: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   spacing: {
-    margin: 10
+    margin: 10,
   },
   navigation: {
     height: 50,
     width: 120,
-    marginLeft: -40
+    marginLeft: -40,
   },
   calloutstyles: {
     height: 100,
-    width: 130
-  }
+    width: 130,
+  },
 }));
 
 export default function MenuAppBarOrientation() {
   const classes = useStyles();
+  function refreshPage() {
+    window.location.reload();
+  }
   return (
     <div className={classes.root}>
       <Toolbar>
@@ -49,15 +52,14 @@ export default function MenuAppBarOrientation() {
         <Callouts
           myComponent={
             <Link to="/" className="btn-link">
-              <ContainedButtons caption="Home" />
+              <ContainedButtons caption="Home" click={refreshPage} />
             </Link>
           }
           side="bottom"
           styles={classes.calloutstyles}
-
           message="Click this button to return to the home page"
-
         />
+        {/* <ContainedButtons caption="Home" /> */}
         <div className={classes.spacing} />
         <Link to="/orientation" className="btn-link">
           <ContainedButtons caption="Orientation" />

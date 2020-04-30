@@ -2,13 +2,14 @@ import {
   updateGridData,
   loadGridData,
   updateLandCoverGridData,
-  updateGridDataSuccess,
-  updatePieChartData,
+  // updateGridDataSuccess,
+  // updatePieChartData,
+  districtGridcellsData,
+ 
 } from "../actions/actionTypes/actionTypes";
 import AppState from "../applicationState";
 
 const mapReducer = (state = AppState.initialMapState, action) => {
-  // console.log(action)
   switch (action.type) {
     case loadGridData:
       return {
@@ -26,8 +27,15 @@ const mapReducer = (state = AppState.initialMapState, action) => {
       return {
         ...state,
         updatedMapGrids: action.payload,
+        landCovermapUpdated: true,
         mapUpdated: true,
       };
+    case districtGridcellsData:
+      return {
+        ...state,
+        DistrictGridcells: action.payload,
+      };
+  
 
     // case updateGridDataSuccess:
     //   return {
@@ -35,7 +43,7 @@ const mapReducer = (state = AppState.initialMapState, action) => {
     //     // mapGrids: action.payload,
     //     mapUpdated: action.payload,
     //   };
-
+    
     default:
       return state;
   }

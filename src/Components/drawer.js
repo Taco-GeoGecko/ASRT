@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -17,23 +17,32 @@ import "../App.css";
 import UgMap from "./maps";
 import PieChartComponent from "./pieChart";
 import Rainfall from "./rainfallBarChart";
-import Ndvilinegraph from "./ndvi-linegraph";
-import Ndwilinegraph from "./ndwi-linegraph";
+// import Ndvilinegraph from "./ndvi-linegraph";
+// import Ndwilinegraph from "./ndwi-linegraph";
+// import Lst from "./lst-Linegraph";
 import Population from "./populationBarchart";
-import Lst from "./lst-Linegraph";
 import { connect } from "react-redux";
-import { updateChartViewSuccess } from "../redux/actions/actionTypes/actionTypes";
-import CustomizedSlider from "./Slider";
+import Switches from "./Togglebutton";
 
-function ResponsiveDrawer(props) {
+const ResponsiveDrawer = (props) => {
   let drawerWidth = 400;
-  let distinctlayout = <ControlledExpansionPanels />;
-  console.log(props.mapUpdated);
-  let title = "AGRICULTURAL INDICATORS";
+  let charts = "CHARTS";
+  let indicatorTitle = "AGRICULTURAL INDICATORS";
+  let title = (
+    <div>
+      <div id="indicatorText">
+        <small>
+          <h6>{indicatorTitle}</h6>
+        </small>
+      </div>
+      <ControlledExpansionPanels />;
+    </div>
+  );
+  let data = <ControlledExpansionPanels />;
   if (props.chartView == true && props.mapUpdated == true) {
-    drawerWidth = 650;
-    title = "CHARTS";
+    drawerWidth = 600;
   }
+
   const useStyles = makeStyles((theme) => ({
     root: {
       display: "flex",
@@ -92,15 +101,8 @@ function ResponsiveDrawer(props) {
   function handleDrawerToggle() {
     setMobileOpen(!mobileOpen);
   }
-
-  useEffect(() => {
-    if (props.mapUpdated === true) {
-      // props.dispatch({ type: updateChartViewSuccess, payload: false });
-      console.log("helloooooooo");
-    }
-  }, [props.mapUpdated]);
   if (props.chartView == true && props.mapUpdated == true) {
-    distinctlayout = (
+    let layout = (
       <div>
         <div>
           <PieChartComponent />
@@ -128,9 +130,29 @@ function ResponsiveDrawer(props) {
         <div className={classes.spacing} />
       </div>
     );
-  } else {
-    distinctlayout = <ControlledExpansionPanels />;
+    let chartData = (
+      <div>
+        <div id="indicatorText">
+          <small>
+            <h6>{charts}</h6>
+          </small>
+        </div>
+        {layout}
+      </div>
+    );
+    let agricTitle = (
+      <div>
+        <div id="indicatorText">
+          <small>
+            <h6>{indicatorTitle}</h6>
+          </small>
+        </div>
+        {data}
+      </div>
+    );
+    title = <Switches chartData={chartData} agricTitle={agricTitle} />;
   }
+
   return (
     <StylesProvider injectFirst>
       <div className={classes.root}>
@@ -169,13 +191,13 @@ function ResponsiveDrawer(props) {
               >
                 <CloseIcon />
               </IconButton>
-              <div id="indicatorText">
+              {/* <div id="indicatorText">
                 <small>
                   <h6>{title}</h6>
                 </small>
-              </div>
+              </div> */}
 
-              {distinctlayout}
+              {title}
               <Divider />
               <MatIcons />
             </Drawer>
@@ -189,16 +211,12 @@ function ResponsiveDrawer(props) {
               }}
             >
               <div className={classes.toolbar} />
-              <div id="indicatorText">
-                <small>
+              {/* <div id="indicatorText"> */}
+              {/* <small>
                   <h6>{title}</h6>
                 </small>
-                {/* <CustomizedSlider IndicatorSlider="Soil Potassium" sliderKey={3} />
-            <CustomizedSlider IndicatorSlider="Soil Boron" sliderKey={4} />
-            <CustomizedSlider IndicatorSlider="Soil Aluminium" sliderKey={5} />
-            <CustomizedSlider IndicatorSlider="Soil Iron" sliderKey={6} /> */}
-              </div>
-              <div>{distinctlayout}</div>
+              </div> */}
+              <div>{title}</div>
 
               <Divider />
               <MatIcons />
@@ -209,10 +227,8 @@ function ResponsiveDrawer(props) {
       </div>
     </StylesProvider>
   );
-}
+};
 ResponsiveDrawer.propTypes = {
-  // Injected by the documentation to work in an iframe.
-  // You won't need it on your project.
   container: PropTypes.object,
 };
 const mapStateToProps = (state) => {
