@@ -14,13 +14,7 @@ class PieChartComponent extends Component {
       shouldRedraw: false,
     };
   }
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.pieChartDataUpdated === true) {
-  //     this.setState({ shouldRedraw: true });
-
-  //     // this.props.dispatch({ type: updatePieChartDataSuccess, payload: false });
-  //   } else this.setState({ shouldRedraw: false });
-  // }
+  
   render() {
     return (
       <div className="mega">

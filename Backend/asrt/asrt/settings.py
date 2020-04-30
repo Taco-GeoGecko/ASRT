@@ -89,7 +89,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'project_taco_db',
         'USER': 'postgres',
-        'PASSWORD': '508282044',
+        'PASSWORD': 'lambtex',
         'HOST': 'localhost',
         'PORT': '5432',
         

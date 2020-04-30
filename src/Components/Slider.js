@@ -12,7 +12,7 @@ const styles = {
   textAlign: "center",
   width: "300px",
   marginLeft: "10px",
-  marginTop: "60px",
+  marginBottom: "40px",
 };
 class CustomizedSlider extends React.Component {
   UpdatedIndicators = this.props.updatePieChartIndicators;
