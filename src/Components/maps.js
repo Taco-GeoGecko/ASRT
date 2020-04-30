@@ -119,7 +119,7 @@ class UgMap extends Component {
         aarrr.push(m);
       }
     });
-    this.props.dispatch({ type: districtGridcellsData, payload: aarrr });
+
     this.rainfallchartData = _.cloneDeep(this.props.rainfallchartData);
     this.populationchartData = _.cloneDeep(this.props.populationchartData);
     this.piechartData = _.cloneDeep(this.props.piechartData);
@@ -182,8 +182,8 @@ class UgMap extends Component {
     this.FinalNationalValue =
       this.nationalGridValue / this.nationalGridcells.length;
     if (this.newValue !== 0) {
-      this.rainfallchartData[0] = this.FinalValue;
-      this.averagenationalGridcells[0] = this.FinalNationalValue;
+      this.rainfallchartData[0] = this.FinalValue.toFixed(2);
+      this.averagenationalGridcells[0] = this.FinalNationalValue.toFixed(2);
     }
     this.props.dispatch({
       type: updateRainfallChartData,
@@ -194,8 +194,10 @@ class UgMap extends Component {
     this.populationFinalNationalValue =
       this.PopulationNationalGridValue / this.nationalGridcells.length;
     if (this.populationValue !== 0) {
-      this.populationchartData[0] = this.populationFinalValue;
-      this.populationAverageNationalGridcells[0] = this.populationFinalNationalValue;
+      this.populationchartData[0] = this.populationFinalValue.toFixed(2);
+      this.populationAverageNationalGridcells[0] = this.populationFinalNationalValue.toFixed(
+        2
+      );
     }
 
     this.props.dispatch({
@@ -205,13 +207,13 @@ class UgMap extends Component {
         .populationAverageNationalGridcells,
     });
 
-    this.copperValue = this.copperValue / this.rf.length;
-    this.alumiValue = this.alumiValue / this.rf.length;
-    this.phosValue = this.phosValue / this.rf.length;
-    this.potasValue = this.potasValue / this.rf.length;
-    this.boronValue = this.boronValue / this.rf.length;
-    this.ironValue = this.ironValue / this.rf.length;
-    this.magneValue = this.magneValue / this.rf.length;
+    this.copperValue = (this.copperValue / this.rf.length).toFixed(2);
+    this.alumiValue = (this.alumiValue / this.rf.length).toFixed(2);
+    this.phosValue = (this.phosValue / this.rf.length).toFixed(2);
+    this.potasValue = (this.potasValue / this.rf.length).toFixed(2);
+    this.boronValue = (this.boronValue / this.rf.length).toFixed(2);
+    this.ironValue = (this.ironValue / this.rf.length).toFixed(2);
+    this.magneValue = (this.magneValue / this.rf.length).toFixed(2);
 
     this.UpdatedIndicators = this.props.updatePieChartIndicators;
 

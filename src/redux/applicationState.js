@@ -11,9 +11,9 @@ const AppState = {
     currentsliderValues: [],
     landCoverSliderValues: {},
     landCovermapUpdated: false,
-    toglebtn: "",
-    expansionBar: "",
-    DistrictGridcells: [],
+    updateIndicatorSize:"",
+    initialIndicatorSize:"",
+    updateInitialIndicatorSize:false,
     indicatorTitle: "",
     dist_ref: [
       "ABIM",

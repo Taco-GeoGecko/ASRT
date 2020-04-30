@@ -2,10 +2,10 @@ import {
   updateGridData,
   loadGridData,
   updateLandCoverGridData,
-  // updateGridDataSuccess,
+  updateGridDataSuccess,
   // updatePieChartData,
-  districtGridcellsData,
- 
+  updateIndicatorSize,
+  updateIndicatorSizeSuccess,
 } from "../actions/actionTypes/actionTypes";
 import AppState from "../applicationState";
 
@@ -30,20 +30,26 @@ const mapReducer = (state = AppState.initialMapState, action) => {
         landCovermapUpdated: true,
         mapUpdated: true,
       };
-    case districtGridcellsData:
+    case updateIndicatorSize:
       return {
         ...state,
-        DistrictGridcells: action.payload,
+        updateIndicatorSize: action.payload,
+        // updateInitialIndicatorSize: true,
       };
-  
-
+    case updateIndicatorSizeSuccess:
+      return {
+        ...state,
+        updateIndicatorSize: action.payload,
+        // updateInitialIndicatorSize:false
+      };
     // case updateGridDataSuccess:
     //   return {
     //     ...state,
-    //     // mapGrids: action.payload,
-    //     mapUpdated: action.payload,
-    //   };
-    
+        // updateInitialIndicatorSize: action.payload,
+        //     // mapGrids: action.payload,
+        //     mapUpdated: action.payload,
+      // };
+
     default:
       return state;
   }
