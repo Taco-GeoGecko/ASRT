@@ -13,7 +13,9 @@ def view(request):
     connection = psycopg2.connect(
                                     user = "postgres",
 
+
                                     password = "lambtex",
+
                                     host = "localhost",
 
                                     port = "5432",
