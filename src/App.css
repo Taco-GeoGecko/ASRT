@@ -133,12 +133,12 @@
   border-radius: 0.5em;
 }
 
-#indicatorText {
+#indicatorText,#chartText {
   color: #616161;
   text-align: center;
   background-color: #d0d0d0;
   border-radius: 0.5em;
-  padding-top: 1em;
+  padding: 0.3em;
   margin-top: 20px;
   margin-right: 10px;
   margin-left: 10px;
@@ -218,7 +218,8 @@ a:link {
 }
 
 path.leaflet-interactive {
-  stroke: #e15c26;
+  stroke: #959791;
+  fill: #2ab34b;
 }
 
 .MuiCheckbox-colorSecondary.Mui-checked {
@@ -235,4 +236,11 @@ path.leaflet-interactive {
 }
 .btn-primary:hover {
   text-decoration: none;
+}
+.MuiSwitch-colorSecondary.Mui-checked {
+  color: #2ab34b;
+}
+.MuiSwitch-track,
+.MuiSwitch-colorSecondary.Mui-checked + .MuiSwitch-track {
+  background-color: #2ab34b;
 }

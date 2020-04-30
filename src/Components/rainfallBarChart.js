@@ -24,7 +24,7 @@ class Rainfall extends React.Component {
             labels: this.state.labels,
             datasets: [
               {
-                label: "National Rainfall",
+                label: "National Rainfall grid-cell average",
                 backgroundColor: "rgba(255,99,132,0.2)",
                 borderColor: "rgba(255,99,132,1)",
                 borderWidth: 2,
@@ -33,7 +33,7 @@ class Rainfall extends React.Component {
                 data: this.props.averagenationalGridcells,
               },
               {
-                label: " District Rainfall",
+                label: " District Rainfall grid-cell average",
                 backgroundColor: "rgba(75,192,192,1)",
                 borderColor: "rgba(75,192,192,1)",
                 hoverBackgroundColor: "rgba(75,192,192,2)",

@@ -10,11 +10,11 @@ import LandCover from "./Landcover";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    marginTop: 35,
+    marginTop: 25,
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
-    flexBasis: "80%",
+    flexBasis: "70%",
     flexShrink: 0,
   },
   secondaryHeading: {
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
   spacing: {
-    margin: 10,
+    margin: 7,
   },
 }));
 
@@ -46,12 +46,11 @@ export default function ControlledExpansionPanels() {
           id="panel1bh-header"
         >
           <Typography className={classes.heading}>Population</Typography>
-          <Typography className={classes.secondaryHeading}></Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <div className={classes.spacing}>
-            <CustomizedSlider IndicatorSlider="" sliderKey={0} />
-          </div>
+          {/* <div className={classes.spacing}> */}
+          <CustomizedSlider IndicatorSlider="" sliderKey={0} />
+          {/* </div> */}
         </ExpansionPanelDetails>
       </ExpansionPanel>
 
@@ -91,9 +90,8 @@ export default function ControlledExpansionPanels() {
           id="panel3bh-header"
         >
           <Typography className={classes.heading}>
-            Soil Moisture and Rainfall{" "}
+            Soil Moisture and Rainfall
           </Typography>
-          <Typography className={classes.secondaryHeading}></Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <div className={classes.spacing}>
@@ -116,7 +114,7 @@ export default function ControlledExpansionPanels() {
         <ExpansionPanelDetails>
           <div className={classes.spacing}>
             <CustomizedSlider
-              IndicatorSlider="Vegetation health"
+              IndicatorSlider=""
               sliderKey={10}
             />
           </div>

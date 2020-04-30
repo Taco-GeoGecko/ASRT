@@ -17,30 +17,45 @@ import "../App.css";
 import UgMap from "./maps";
 import PieChartComponent from "./pieChart";
 import Rainfall from "./rainfallBarChart";
-// import Ndvilinegraph from "./ndvi-linegraph";
-// import Ndwilinegraph from "./ndwi-linegraph";
-// import Lst from "./lst-Linegraph";
+
 import Population from "./populationBarchart";
 import { connect } from "react-redux";
 import Switches from "./Togglebutton";
 
 const ResponsiveDrawer = (props) => {
   let drawerWidth = 400;
+  let finalLayout = <ControlledExpansionPanels />;
+  let layout = "";
   let charts = "CHARTS";
   let indicatorTitle = "AGRICULTURAL INDICATORS";
-  let title = (
-    <div>
-      <div id="indicatorText">
-        <small>
-          <h6>{indicatorTitle}</h6>
-        </small>
-      </div>
-      <ControlledExpansionPanels />;
-    </div>
-  );
+  let title = indicatorTitle;
   let data = <ControlledExpansionPanels />;
   if (props.chartView == true && props.mapUpdated == true) {
-    drawerWidth = 600;
+    layout = (
+      <div>
+        <div>
+          <PieChartComponent />
+        </div>
+        <div style={{ margin: 10 }} />
+        <div id="RAINFALL">
+          <Rainfall />
+        </div>
+        <div style={{ margin: 10 }} />
+        <div id="POPULATION">
+          <Population />
+        </div>
+        <div style={{ margin: 10 }} />
+      </div>
+    );
+    title = <Switches chartData={charts} agricTitle={indicatorTitle} />;
+
+    if (title["props"]["chartData"] == props.updateIndicatorSize) {
+      drawerWidth = 600;
+      finalLayout = layout;
+    } else {
+      drawerWidth = 400;
+      finalLayout = data;
+    }
   }
 
   const useStyles = makeStyles((theme) => ({
@@ -101,58 +116,6 @@ const ResponsiveDrawer = (props) => {
   function handleDrawerToggle() {
     setMobileOpen(!mobileOpen);
   }
-  if (props.chartView == true && props.mapUpdated == true) {
-    let layout = (
-      <div>
-        <div>
-          <PieChartComponent />
-        </div>
-        <div className={classes.spacing} />
-        <div id="RAINFALL">
-          <Rainfall />
-        </div>
-        {/* <div className={classes.spacing} />
-        <div id="NDVI">
-          <Ndvilinegraph />
-        </div>
-        <div className={classes.spacing} />
-        <div id="NDWI">
-          <Ndwilinegraph />
-        </div>
-        <div className={classes.spacing} />
-        <div id="LST">
-          <Lst />
-        </div> */}
-        <div className={classes.spacing} />
-        <div id="POPULATION">
-          <Population />
-        </div>
-        <div className={classes.spacing} />
-      </div>
-    );
-    let chartData = (
-      <div>
-        <div id="indicatorText">
-          <small>
-            <h6>{charts}</h6>
-          </small>
-        </div>
-        {layout}
-      </div>
-    );
-    let agricTitle = (
-      <div>
-        <div id="indicatorText">
-          <small>
-            <h6>{indicatorTitle}</h6>
-          </small>
-        </div>
-        {data}
-      </div>
-    );
-    title = <Switches chartData={chartData} agricTitle={agricTitle} />;
-  }
-
   return (
     <StylesProvider injectFirst>
       <div className={classes.root}>
@@ -191,13 +154,13 @@ const ResponsiveDrawer = (props) => {
               >
                 <CloseIcon />
               </IconButton>
-              {/* <div id="indicatorText">
-                <small>
-                  <h6>{title}</h6>
-                </small>
-              </div> */}
+              <div id="indicatorText">
+                <h6>
+                  <strong>{title}</strong>
+                </h6>
+              </div>
 
-              {title}
+              {finalLayout}
               <Divider />
               <MatIcons />
             </Drawer>
@@ -211,12 +174,12 @@ const ResponsiveDrawer = (props) => {
               }}
             >
               <div className={classes.toolbar} />
-              {/* <div id="indicatorText"> */}
-              {/* <small>
-                  <h6>{title}</h6>
-                </small>
-              </div> */}
-              <div>{title}</div>
+              <div id="indicatorText">
+                <h6>
+                  <strong>{title}</strong>
+                </h6>
+              </div>
+              {finalLayout}
 
               <Divider />
               <MatIcons />
@@ -236,6 +199,9 @@ const mapStateToProps = (state) => {
     mapUpdated: state.map.mapUpdated,
     chartView: state.chart.chartView,
     piechartData: state.chart.pieChartData,
+    updateIndicatorSize: state.map.updateIndicatorSize,
+    initialIndicatorSize: state.map.initialIndicatorSize,
+    updateInitialIndicatorSize: state.map.updateInitialIndicatorSize,
   };
 };
 
