@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/ASRT/static/css/main.f59aa5a7.chunk.css",
+    "main.js": "/ASRT/static/js/main.7ba0a543.chunk.js",
+    "main.js.map": "/ASRT/static/js/main.7ba0a543.chunk.js.map",
+    "runtime-main.js": "/ASRT/static/js/runtime-main.b716013d.js",
+    "runtime-main.js.map": "/ASRT/static/js/runtime-main.b716013d.js.map",
+    "static/css/2.ba87ed55.chunk.css": "/ASRT/static/css/2.ba87ed55.chunk.css",
+    "static/js/2.8392d5ad.chunk.js": "/ASRT/static/js/2.8392d5ad.chunk.js",
+    "static/js/2.8392d5ad.chunk.js.map": "/ASRT/static/js/2.8392d5ad.chunk.js.map",
+    "index.html": "/ASRT/index.html",
+    "precache-manifest.80884bb3bf61dad48a9aa42a196c7792.js": "/ASRT/precache-manifest.80884bb3bf61dad48a9aa42a196c7792.js",
+    "service-worker.js": "/ASRT/service-worker.js",
+    "static/css/2.ba87ed55.chunk.css.map": "/ASRT/static/css/2.ba87ed55.chunk.css.map",
+    "static/css/main.f59aa5a7.chunk.css.map": "/ASRT/static/css/main.f59aa5a7.chunk.css.map",
+    "static/js/2.8392d5ad.chunk.js.LICENSE.txt": "/ASRT/static/js/2.8392d5ad.chunk.js.LICENSE.txt",
+    "static/media/Gmail.svg": "/ASRT/static/media/Gmail.e67c6af8.svg",
+    "static/media/Instagram.png": "/ASRT/static/media/Instagram.3d8e0c91.png",
+    "static/media/geoLogo.png": "/ASRT/static/media/geoLogo.ccb98897.png",
+    "static/media/geogecko.png": "/ASRT/static/media/geogecko.efa29216.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b716013d.js",
+    "static/css/2.ba87ed55.chunk.css",
+    "static/js/2.8392d5ad.chunk.js",
+    "static/css/main.f59aa5a7.chunk.css",
+    "static/js/main.7ba0a543.chunk.js"
+  ]
+}
